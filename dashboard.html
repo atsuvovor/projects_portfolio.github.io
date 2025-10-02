@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Designs</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .dashboards {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .dashboard-box {
+            width: 30%;
+            aspect-ratio: 1 / 1;
+            padding: 10px;
+            background: white;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            margin: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+            text-align: center;
+            box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .dashboard-box:hover {
+            transform: scale(1.05);
+        }
+
+        .dashboard-box img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        .dashboard-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin: 10px 0;
+            color: #007acc;
+        }
+       
+        
+    </style>
+</head>
+<body>
+    <header class="container">
+        <h1>Data Visualization Dashboards</h1>
+    </header>   
+    <main class="container">
+        <section>
+            <p>Click on any dashboard below to explore our interactive data insights.</p>
+            <div class="dashboards">
+                <div class="dashboard-box" onclick="window.location.href='CybersecurityKeyTerms.html'">
+                    <div class="dashboard-title">Cybersecurity Key Terms</div>
+                    <img src="https://public.tableau.com/static/images/Cy/CybersecurityKeyTerms/CybersecurityKeyTerms/1.png" alt="Cybersecurity Key Terms">
+                </div>
+                <div class="dashboard-box" onclick="window.location.href='NumberofFileAccessedTracker.html'">
+                    <div class="dashboard-title">Number of File Accessed Tracker</div>
+                    <img src="https://public.tableau.com/static/images/Cy/CyberThreatInsight-NumberoffileAccessDashboard/NumberofFileAccessedTracker/1.png" alt="Number of File Accessed Tracker">
+                </div>
+                <div class="dashboard-box" onclick="window.location.href='LoginAttemptsAnalytics.html'">
+                    <div class="dashboard-title">Login Attempts Analytics</div>
+                    <img src="https://public.tableau.com/static/images/M3/M3B4J9MKB/1.png" alt="Login Attempts Analytics">
+                </div>
+                <div class="dashboard-box" onclick="window.location.href='ThreatInsightReporting.html'">
+                    <div class="dashboard-title">Threat Insight Reporting</div>
+                    <img src="https://public.tableau.com/static/images/Cy/CyberThreatInsightDashboard/IncidentSummaryandTrends/1.png" alt="Threat Insight Reporting">
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="container">
+        <p>&copy; 2025 Your Company</p>
+    </footer>
+</body>
+</html>
+

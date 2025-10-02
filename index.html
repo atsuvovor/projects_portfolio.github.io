@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #f1f1f1;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  margin: 0;
+}
+
+/* Center website */
+.main {
+  max-width: 1000px;
+  margin: auto;
+}
+
+/* Modern header with gradient background */
+.header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+  gap: 20px;
+  padding: 20px;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #4e54c8, #8f94fb); /* subtle blue gradient */
+  color: white;
+}
+
+/* Profile picture */
+.header img {
+  width: 120px;      /* slightly smaller */
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid white; /* white border to contrast with gradient */
+  flex-shrink: 0;
+}
+
+/* Header text */
+.header-text h1 {
+  margin: 0;
+  font-size: 38px;
+  font-weight: bold;
+  color: white;
+}
+
+.header-text h2 {
+  margin: 5px 0 0 0;
+  font-size: 20px;
+  color: #e0e0ff;
+}
+
+/* Portfolio grid */
+.row {
+  margin: 8px -16px;
+}
+
+.row,
+.row > .column {
+  padding: 8px;
+}
+
+.column {
+  float: left;
+  width: 50%;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.content {
+  background-color: white;
+  padding: 10px;
+  transition: transform 0.3s, box-shadow 0.3s;
+  border-radius: 5px;
+}
+
+/* Hover effect */
+.content:hover {
+  transform: scale(1.03);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+.content img {
+  width: 100%;
+  height: 230px;       /* slightly smaller frame */
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.content h3 {
+  margin-top: 10px;
+}
+
+.content p {
+  color: #555;
+  font-size: 14px;
+}
+
+/* Responsive layout */
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+  }
+  .header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .header img {
+    width: 100px;
+    height: 100px;
+  }
+  .header-text h1 {
+    font-size: 32px;
+  }
+  .header-text h2 {
+    font-size: 18px;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="main">
+
+  <!-- Header -->
+  <div class="header">
+    <img src="Atsu-Vovor.jpg" alt="Atsu Vovor">
+    <div class="header-text">
+      <h1>Atsu Vovor</h1>
+      <h2>Data & Analytics Portfolio</h2>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- Portfolio Gallery Grid -->
+
+  <!-- Row 1 -->
+  <div class="row">
+    <div class="column">
+      <div class="content">
+        <img src="cyberSecurityHeaderImage.png" alt="Cybersecurity">
+        <h3>Cybersecurity Analytics</h3>
+        <p>Advanced threat detection and attack simulation dashboards for monitoring and mitigating cyber risks.</p>
+      </div>
+    </div>
+    <div class="column">
+      <div class="content">
+        <img src="Data-governance.png" alt="Data Governance">
+        <h3>Data Governance</h3>
+        <p>Frameworks and tools for ensuring data quality, compliance, and integrity across enterprise systems.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Row 2 -->
+  <div class="row">
+    <div class="column">
+      <div class="content">
+        <img src="fraud_detection.png" alt="Fraud Detection">
+        <h3>Fraud Detection</h3>
+        <p>Machine learning models to identify suspicious activities and prevent financial fraud in real time.</p>
+      </div>
+    </div>
+    <div class="column">
+      <div class="content">
+        <img src="healthcare_intelligence.png" alt="Healthcare Intelligence">
+        <h3>Healthcare Intelligence</h3>
+        <p>AI-powered insights to improve patient outcomes, optimize resources, and support healthcare decisions.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Row 3 -->
+  <div class="row">
+    <div class="column">
+      <div class="content">
+        <img src="marcket_intelligence.jpg" alt="Market Intelligence">
+        <h3>Market Intelligence</h3>
+        <p>Data-driven analytics for tracking trends, competitor performance, and emerging business opportunities.</p>
+      </div>
+    </div>
+    <div class="column">
+      <div class="content">
+        <img src="stock_portfolio_analytics.png" alt="Stock Portfolio Analytics">
+        <h3>Stock Portfolio Analytics</h3>
+        <p>Interactive dashboards and predictive models for portfolio optimization and investment risk analysis.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Row 4 -->
+  <div class="row">
+    <div class="column">
+      <div class="content">
+        <img src="business_continuity_plan.png" alt="Business Continuity Plan">
+        <h3>Business Continuity Plan</h3>
+        <p>Strategic frameworks to ensure organizational resilience and operational continuity during disruptions.</p>
+      </div>
+    </div>
+    <div class="column">
+      <div class="content">
+        <img src="process_engineering.png" alt="Process Engineering">
+        <h3>Process Engineering</h3>
+        <p>Optimizing business processes through analytics and workflow design for improved efficiency and outcomes.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Row 5 -->
+  <div class="row">
+    <div class="column">
+      <div class="content">
+        <img src="data_visualization_dashboards.png" alt="Data Visualization Dashboards">
+        <h3>Data Visualization Dashboards</h3>
+        <p>Interactive dashboards built with Tableau, Power BI, and Streamlit for executive-level analytics and reporting.</p>
+      </div>
+    </div>
+    <div class="column">
+      <div class="content">
+        <img src="articles_publication.png" alt="Articles & Publications">
+        <h3>Articles & Publications</h3>
+        <p>Thought leadership articles and technical publications on data analytics, AI, and cybersecurity topics.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
