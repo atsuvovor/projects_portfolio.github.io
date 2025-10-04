@@ -76,7 +76,6 @@ body {
   flex-direction: column;
   text-decoration: none;
   color: inherit;
-  cursor: pointer;
 }
 .card:hover {
   transform: translateY(-5px);
@@ -189,17 +188,13 @@ body {
     </div>
   </a>
 
-  <!-- Stock Portfolio Card (Gist Embed) -->
-  <div id="stock-portfolio" class="card" onclick="loadGist()">
+  <a id="stock-portfolio" href="https://github.com/atsuvovor/Projects/blob/main/Stock_Portfolio_Analytics_v1_1.pdf" target="_blank" class="card">
     <img src="stock_portfolio_analytics.png" alt="Stock Portfolio Analytics">
     <div class="card-content">
       <h3>Stock Portfolio Analytics</h3>
-      <p>Click to view interactive dashboards and predictive models embedded from GitHub Gist.</p>
+      <p>Interactive dashboards and predictive models for portfolio optimization and investment risk analysis.</p>
     </div>
-  </div>
-
-  <!-- Container to load Gist -->
-  <div id="gist-container" style="margin-top:30px;"></div>
+  </a>
 
   <a id="business-continuity" href="business-continuity-plan.html" target="_blank" class="card">
     <img src="business_continuity_plan.png" alt="Business Continuity Plan">
@@ -234,20 +229,6 @@ body {
   </a>
 
 </div>
-
-<script>
-function loadGist() {
-  const container = document.getElementById('gist-container');
-  container.innerHTML = ''; // clear previous gist
-
-  const script = document.createElement('script');
-  script.src = "https://gist.github.com/atsuvovor/763a4743caf1a48026d98892185cf7e4.js";
-  script.async = true;
-
-  container.appendChild(script);
-  container.scrollIntoView({ behavior: 'smooth' });
-}
-</script>
 
 </body>
 </html>
