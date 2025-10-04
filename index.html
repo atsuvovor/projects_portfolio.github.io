@@ -1,238 +1,233 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Atsu Vovor | Data & Analytics Portfolio</title>
 <style>
+/* Reset and basic */
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
-
 body {
-  background-color: #f1f1f1;
-  padding: 20px;
-  font-family: Arial, sans-serif;
-  margin: 0;
-}
-
-/* Center website */
-.main {
-  max-width: 1000px;
-  margin: auto;
-}
-
-/* Modern header with gradient background */
-.header {
+  font-family: 'Arial', sans-serif;
+  background-color: #f5f5f7;
+  color: #333;
   display: flex;
-  align-items: center;
-  margin-bottom: 30px;
-  gap: 20px;
-  padding: 20px;
-  border-radius: 10px;
-  background: linear-gradient(90deg, #4e54c8, #8f94fb);
-  color: white;
+  min-height: 100vh;
 }
 
-.header img {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 3px solid white;
+/* Sidebar Navigation */
+.sidebar {
+  width: 250px;
+  background: linear-gradient(180deg, #4e54c8, #8f94fb);
+  color: white;
   flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  position: sticky;
+  top: 0;
 }
-
-.header-text h1 {
-  margin: 0;
-  font-size: 38px;
-  font-weight: bold;
-  color: white;
+.sidebar h1 {
+  font-size: 28px;
+  margin-bottom: 10px;
+  text-align: center;
 }
-
-.header-text h2 {
-  margin: 5px 0 0 0;
-  font-size: 20px;
+.sidebar h2 {
+  font-size: 16px;
+  margin-bottom: 40px;
+  text-align: center;
+  font-weight: normal;
   color: #e0e0ff;
 }
-
-/* Portfolio grid */
-.row {
-  margin: 8px -16px;
+.sidebar nav a {
+  text-decoration: none;
+  color: white;
+  padding: 12px 15px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  transition: background 0.3s;
+  display: block;
+}
+.sidebar nav a:hover {
+  background-color: rgba(255,255,255,0.2);
 }
 
-.row,
-.row > .column {
-  padding: 8px;
+/* Main content area */
+.main {
+  flex: 1;
+  padding: 30px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 25px;
 }
 
-.column {
-  float: left;
-  width: 50%;
-}
-
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-.content {
-  background-color: white;
-  padding: 10px;
+/* Portfolio Cards */
+.card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
   transition: transform 0.3s, box-shadow 0.3s;
-  border-radius: 5px;
-  text-decoration: none; /* remove underline */
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
   color: inherit;
 }
-
-.content:hover {
-  transform: scale(1.03);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
 }
-
-.content img {
+.card img {
   width: 100%;
-  height: 230px;
+  height: 200px;
   object-fit: cover;
-  border-radius: 5px;
 }
-
-.content h3 {
-  margin-top: 10px;
+.card-content {
+  padding: 15px 20px;
 }
-
-.content p {
-  color: #555;
+.card-content h3 {
+  margin-bottom: 10px;
+  font-size: 20px;
+  color: #4e54c8;
+}
+.card-content p {
   font-size: 14px;
+  color: #555;
+  line-height: 1.4;
 }
 
-@media screen and (max-width: 600px) {
-  .column {
-    width: 100%;
-  }
-  .header {
+/* Responsive adjustments */
+@media screen and (max-width: 900px) {
+  body {
     flex-direction: column;
-    align-items: center;
-    text-align: center;
   }
-  .header img {
-    width: 100px;
-    height: 100px;
+  .sidebar {
+    width: 100%;
+    flex-direction: row;
+    overflow-x: auto;
+    padding: 10px;
   }
-  .header-text h1 {
-    font-size: 32px;
+  .sidebar nav {
+    display: flex;
+    gap: 10px;
   }
-  .header-text h2 {
-    font-size: 18px;
+  .sidebar nav a {
+    flex-shrink: 0;
+  }
+  .main {
+    padding: 20px 10px;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   }
 }
 </style>
 </head>
 <body>
 
+<!-- Sidebar -->
+<div class="sidebar">
+  <h1>Atsu Vovor</h1>
+  <h2>Data & Analytics Portfolio</h2>
+  <nav>
+    <a href="#cybersecurity">Cybersecurity</a>
+    <a href="#data-governance">Data Governance</a>
+    <a href="#fraud-detection">Fraud Detection</a>
+    <a href="#healthcare">Healthcare Intelligence</a>
+    <a href="#market-intelligence">Market Intelligence</a>
+    <a href="#stock-portfolio">Stock Portfolio</a>
+    <a href="#business-continuity">Business Continuity</a>
+    <a href="#process-engineering">Process Engineering</a>
+    <a href="#dashboards">Dashboards</a>
+    <a href="#articles">Articles & Publications</a>
+  </nav>
+</div>
+
+<!-- Main Content -->
 <div class="main">
 
-  <!-- Header -->
-  <div class="header">
-    <img src="Atsu-Vovor.jpg" alt="Atsu Vovor">
-    <div class="header-text">
-      <h1>Atsu Vovor</h1>
-      <h2>Data & Analytics Portfolio</h2>
+  <a id="cybersecurity" href="https://github.com/atsuvovor/CyberThreat_Insight" target="_blank" class="card">
+    <img src="cyberSecurityHeaderImage.png" alt="Cybersecurity Analytics">
+    <div class="card-content">
+      <h3>Cybersecurity Analytics</h3>
+      <p>Advanced threat detection and attack simulation dashboards for monitoring and mitigating cyber risks.</p>
     </div>
-  </div>
+  </a>
 
-  <hr>
+  <a id="data-governance" href="data-governance.html" target="_blank" class="card">
+    <img src="Data-governance.png" alt="Data Governance">
+    <div class="card-content">
+      <h3>Data Governance</h3>
+      <p>Frameworks and tools for ensuring data quality, compliance, and integrity across enterprise systems.</p>
+    </div>
+  </a>
 
-  <!-- Portfolio Gallery Grid -->
+  <a id="fraud-detection" href="fraud-detection.html" target="_blank" class="card">
+    <img src="fraud_detection.png" alt="Fraud Detection">
+    <div class="card-content">
+      <h3>Fraud Detection</h3>
+      <p>Machine learning models to identify suspicious activities and prevent financial fraud in real time.</p>
+    </div>
+  </a>
 
-  <!-- Row 1 -->
-  <div class="row">
-    <div class="column">
-      <a href="https://github.com/atsuvovor/CyberThreat_Insight" target="_blank" class="content">
-        <img src="cyberSecurityHeaderImage.png" alt="Cybersecurity">
-        <h3>Cybersecurity Analytics</h3>
-        <p>Advanced threat detection and attack simulation dashboards for monitoring and mitigating cyber risks.</p>
-      </a>
+  <a id="healthcare" href="healthcare-intelligence.html" target="_blank" class="card">
+    <img src="healthcare_intelligence.png" alt="Healthcare Intelligence">
+    <div class="card-content">
+      <h3>Healthcare Intelligence</h3>
+      <p>AI-powered insights to improve patient outcomes, optimize resources, and support healthcare decisions.</p>
     </div>
-    <div class="column">
-      <a href="data-governance.html" target="_blank" class="content">
-        <img src="Data-governance.png" alt="Data Governance">
-        <h3>Data Governance</h3>
-        <p>Frameworks and tools for ensuring data quality, compliance, and integrity across enterprise systems.</p>
-      </a>
-    </div>
-  </div>
+  </a>
 
-  <!-- Row 2 -->
-  <div class="row">
-    <div class="column">
-      <a href="fraud-detection.html" target="_blank" class="content">
-        <img src="fraud_detection.png" alt="Fraud Detection">
-        <h3>Fraud Detection</h3>
-        <p>Machine learning models to identify suspicious activities and prevent financial fraud in real time.</p>
-      </a>
+  <a id="market-intelligence" href="market-intelligence.html" target="_blank" class="card">
+    <img src="marcket_intelligence.jpg" alt="Market Intelligence">
+    <div class="card-content">
+      <h3>Market Intelligence</h3>
+      <p>Data-driven analytics for tracking trends, competitor performance, and emerging business opportunities.</p>
     </div>
-    <div class="column">
-      <a href="healthcare-intelligence.html" target="_blank" class="content">
-        <img src="healthcare_intelligence.png" alt="Healthcare Intelligence">
-        <h3>Healthcare Intelligence</h3>
-        <p>AI-powered insights to improve patient outcomes, optimize resources, and support healthcare decisions.</p>
-      </a>
-    </div>
-  </div>
+  </a>
 
-  <!-- Row 3 -->
-  <div class="row">
-    <div class="column">
-      <a href="market-intelligence.html" target="_blank" class="content">
-        <img src="marcket_intelligence.jpg" alt="Market Intelligence">
-        <h3>Market Intelligence</h3>
-        <p>Data-driven analytics for tracking trends, competitor performance, and emerging business opportunities.</p>
-      </a>
+  <a id="stock-portfolio" href="https://github.com/atsuvovor/Projects/blob/main/Stock_Portfolio_Analytics_v1_1.pdf" target="_blank" class="card">
+    <img src="stock_portfolio_analytics.png" alt="Stock Portfolio Analytics">
+    <div class="card-content">
+      <h3>Stock Portfolio Analytics</h3>
+      <p>Interactive dashboards and predictive models for portfolio optimization and investment risk analysis.</p>
     </div>
-    <div class="column">
-      <a href="https://github.com/atsuvovor/Projects/blob/main/Stock_Portfolio_Analytics_v1_1.pdf" target="_blank" class="content">
-        <img src="stock_portfolio_analytics.png" alt="Stock Portfolio Analytics">
-        <h3>Stock Portfolio Analytics</h3>
-        <p>Interactive dashboards and predictive models for portfolio optimization and investment risk analysis.</p>
-      </a>
-    </div>
-  </div>
+  </a>
 
-  <!-- Row 4 -->
-  <div class="row">
-    <div class="column">
-      <a href="business-continuity-plan.html" target="_blank" class="content">
-        <img src="business_continuity_plan.png" alt="Business Continuity Plan">
-        <h3>Business Continuity Plan</h3>
-        <p>Strategic frameworks to ensure organizational resilience and operational continuity during disruptions.</p>
-      </a>
+  <a id="business-continuity" href="business-continuity-plan.html" target="_blank" class="card">
+    <img src="business_continuity_plan.png" alt="Business Continuity Plan">
+    <div class="card-content">
+      <h3>Business Continuity Plan</h3>
+      <p>Strategic frameworks to ensure organizational resilience and operational continuity during disruptions.</p>
     </div>
-    <div class="column">
-      <a href="Interactive DMAIC Case StudySPA.html" target="_blank" class="content">
-        <img src="process_engineering.png" alt="Process Engineering">
-        <h3>Process Engineering</h3>
-        <p>Optimizing business processes through analytics and workflow design for improved efficiency and outcomes.</p>
-      </a>
-    </div>
-  </div>
+  </a>
 
-  <!-- Row 5 -->
-  <div class="row">
-    <div class="column">
-      <a href="dashboard.html" target="_blank" class="content">
-        <img src="data_visualization_dashboards.png" alt="Data Visualization Dashboards">
-        <h3>Data Visualization Dashboards</h3>
-        <p>Interactive dashboards built with Tableau, Power BI, and Streamlit for executive-level analytics and reporting.</p>
-      </a>
+  <a id="process-engineering" href="Interactive DMAIC Case StudySPA.html" target="_blank" class="card">
+    <img src="process_engineering.png" alt="Process Engineering">
+    <div class="card-content">
+      <h3>Process Engineering</h3>
+      <p>Optimizing business processes through analytics and workflow design for improved efficiency and outcomes.</p>
     </div>
-    <div class="column">
-      <a href="https://github.com/atsuvovor/Articles" target="_blank" class="content">
-        <img src="articles_publication.png" alt="Articles & Publications">
-        <h3>Articles & Publications</h3>
-        <p>Thought leadership articles and technical publications on data analytics, AI, and cybersecurity topics.</p>
-      </a>
+  </a>
+
+  <a id="dashboards" href="dashboard.html" target="_blank" class="card">
+    <img src="data_visualization_dashboards.png" alt="Data Visualization Dashboards">
+    <div class="card-content">
+      <h3>Data Visualization Dashboards</h3>
+      <p>Interactive dashboards built with Tableau, Power BI, and Streamlit for executive-level analytics and reporting.</p>
     </div>
-  </div>
+  </a>
+
+  <a id="articles" href="https://github.com/atsuvovor/Articles" target="_blank" class="card">
+    <img src="articles_publication.png" alt="Articles & Publications">
+    <div class="card-content">
+      <h3>Articles & Publications</h3>
+      <p>Thought leadership articles and technical publications on data analytics, AI, and cybersecurity topics.</p>
+    </div>
+  </a>
+
 </div>
 
 </body>
