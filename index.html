@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Atsu Vovor | Data & Analytics Portfolio</title>
 <style>
-/* Reset and basic */
+/* Reset and layout */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -22,10 +22,9 @@ body {
 
 /* Sidebar */
 .sidebar {
-  width: 250px;
+  width: 260px;
   background: linear-gradient(180deg, #4e54c8, #8f94fb);
   color: white;
-  flex-shrink: 0;
   display: flex;
   flex-direction: column;
   padding: 20px;
@@ -38,7 +37,7 @@ body {
 /* Sidebar Header */
 .sidebar .header {
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
 }
 .sidebar .header img {
   width: 110px;
@@ -56,7 +55,6 @@ body {
   font-size: 14px;
   font-weight: 300;
   color: #e0e0ff;
-  margin-bottom: 20px;
 }
 
 /* Sidebar Links */
@@ -93,8 +91,6 @@ body {
   transition: transform 0.3s, box-shadow 0.3s;
   display: flex;
   flex-direction: column;
-  text-decoration: none;
-  color: inherit;
   cursor: pointer;
 }
 .card:hover {
@@ -120,6 +116,22 @@ body {
   line-height: 1.5;
 }
 
+/* Embedded iframe box */
+.iframe-box {
+  grid-column: 1 / -1;
+  background: white;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+  height: 600px;
+  overflow: hidden;
+}
+.iframe-box iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
 /* Responsive */
 @media (max-width: 900px) {
   body {
@@ -135,9 +147,6 @@ body {
   .sidebar nav {
     display: flex;
     gap: 10px;
-  }
-  .sidebar nav a {
-    flex-shrink: 0;
   }
   .main {
     padding: 20px 10px;
@@ -173,7 +182,7 @@ body {
 <!-- Main Content -->
 <div class="main" id="portfolio-cards">
 
-  <div id="cybersecurity" class="card">
+  <div id="cybersecurity" class="card" data-url="https://github.com/atsuvovor/CyberThreat_Insight">
     <img src="cyberSecurityHeaderImage.png" alt="Cybersecurity Analytics">
     <div class="card-content">
       <h3>Cybersecurity Analytics</h3>
@@ -181,7 +190,7 @@ body {
     </div>
   </div>
 
-  <div id="data-governance" class="card">
+  <div id="data-governance" class="card" data-url="data-governance.html">
     <img src="Data-governance.png" alt="Data Governance">
     <div class="card-content">
       <h3>Data Governance</h3>
@@ -189,7 +198,7 @@ body {
     </div>
   </div>
 
-  <div id="fraud-detection" class="card">
+  <div id="fraud-detection" class="card" data-url="fraud-detection.html">
     <img src="fraud_detection.png" alt="Fraud Detection">
     <div class="card-content">
       <h3>Fraud Detection</h3>
@@ -197,7 +206,7 @@ body {
     </div>
   </div>
 
-  <div id="healthcare" class="card">
+  <div id="healthcare" class="card" data-url="healthcare-intelligence.html">
     <img src="healthcare_intelligence.png" alt="Healthcare Intelligence">
     <div class="card-content">
       <h3>Healthcare Intelligence</h3>
@@ -205,7 +214,7 @@ body {
     </div>
   </div>
 
-  <div id="market-intelligence" class="card">
+  <div id="market-intelligence" class="card" data-url="market-intelligence.html">
     <img src="marcket_intelligence.jpg" alt="Market Intelligence">
     <div class="card-content">
       <h3>Market Intelligence</h3>
@@ -213,16 +222,16 @@ body {
     </div>
   </div>
 
-  <div id="stock-portfolio" class="card">
+  <div id="stock-portfolio" class="card" data-url="https://gist.github.com/atsuvovor/763a4743caf1a48026d98892185cf7e4.js">
     <img src="stock_portfolio_analytics.png" alt="Stock Portfolio Analytics">
     <div class="card-content">
       <h3>Stock Portfolio Analytics</h3>
       <p>Interactive dashboards and predictive models for portfolio optimization and investment risk analysis.</p>
     </div>
   </div>
-  <div id="gist-container" style="grid-column: 1/-1; margin-top: 20px;"></div>
+  <div id="iframe-container" class="iframe-box" style="display:none;"></div>
 
-  <div id="business-continuity" class="card">
+  <div id="business-continuity" class="card" data-url="business-continuity-plan.html">
     <img src="business_continuity_plan.png" alt="Business Continuity Plan">
     <div class="card-content">
       <h3>Business Continuity Plan</h3>
@@ -230,7 +239,7 @@ body {
     </div>
   </div>
 
-  <div id="process-engineering" class="card">
+  <div id="process-engineering" class="card" data-url="Interactive DMAIC Case StudySPA.html">
     <img src="process_engineering.png" alt="Process Engineering">
     <div class="card-content">
       <h3>Process Engineering</h3>
@@ -238,7 +247,7 @@ body {
     </div>
   </div>
 
-  <div id="dashboards" class="card">
+  <div id="dashboards" class="card" data-url="dashboard.html">
     <img src="data_visualization_dashboards.png" alt="Dashboards">
     <div class="card-content">
       <h3>Data Visualization Dashboards</h3>
@@ -246,7 +255,7 @@ body {
     </div>
   </div>
 
-  <div id="articles" class="card">
+  <div id="articles" class="card" data-url="https://github.com/atsuvovor/Articles">
     <img src="articles_publication.png" alt="Articles">
     <div class="card-content">
       <h3>Articles & Publications</h3>
@@ -258,45 +267,58 @@ body {
 
 <script>
 const allCards = document.querySelectorAll('.card');
-const gistContainer = document.getElementById('gist-container');
+const iframeContainer = document.getElementById('iframe-container');
 const navLinks = document.querySelectorAll('.sidebar nav a');
 
 function clearActiveLinks() {
   navLinks.forEach(link => link.classList.remove('active'));
 }
 
+/* Show all projects */
 function showAllProjects() {
   allCards.forEach(card => card.style.display = 'flex');
-  gistContainer.innerHTML = '';
+  iframeContainer.style.display = 'none';
+  iframeContainer.innerHTML = '';
   clearActiveLinks();
   navLinks[0].classList.add('active');
 }
 
+/* Show single project */
 function showSingleProject(id) {
   allCards.forEach(card => {
-    if (card.id === id) {
-      card.style.display = 'flex';
-      card.scrollIntoView({behavior: 'smooth'});
-    } else {
-      card.style.display = 'none';
-    }
+    if (card.id === id) card.style.display = 'flex';
+    else card.style.display = 'none';
   });
-
-  gistContainer.innerHTML = '';
   clearActiveLinks();
   document.querySelector(`.sidebar nav a[onclick="showSingleProject('${id}')"]`).classList.add('active');
+  const card = document.getElementById(id);
+  openProject(card);
+}
 
-  if (id === 'stock-portfolio') {
-    loadGist();
+/* Open project inline */
+function openProject(card) {
+  const url = card.getAttribute('data-url');
+  iframeContainer.style.display = 'block';
+  iframeContainer.innerHTML = '';
+
+  // If it’s a GitHub Gist
+  if (url.includes('gist.github.com')) {
+    const iframe = document.createElement('iframe');
+    iframe.srcdoc = `<script src="${url}"></script>`;
+    iframeContainer.appendChild(iframe);
+  } else {
+    const iframe = document.createElement('iframe');
+    iframe.src = url;
+    iframeContainer.appendChild(iframe);
   }
 }
 
-function loadGist() {
-  gistContainer.innerHTML = '';
-  const script = document.createElement('script');
-  script.src = "https://gist.github.com/atsuvovor/763a4743caf1a48026d98892185cf7e4.js";
-  gistContainer.appendChild(script);
-}
+/* Allow clicking directly on cards */
+allCards.forEach(card => {
+  card.addEventListener('click', () => {
+    showSingleProject(card.id);
+  });
+});
 </script>
 
 </body>
