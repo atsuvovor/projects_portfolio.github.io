@@ -75,7 +75,7 @@ body { font-family: Arial, sans-serif; display:flex; min-height:100vh; backgroun
 .card-content h3 { margin-bottom:10px; color:#4e54c8; }
 .card-content p { font-size:14px; color:#555; line-height:1.4; }
 
-/* iframe for local HTML projects */
+/* iframe for projects */
 #projectFrame { width:100%; height:80vh; border:none; display:none; }
 /* container for Gists */
 #projectContent { width:100%; display:none; }
@@ -201,10 +201,10 @@ body { font-family: Arial, sans-serif; display:flex; min-height:100vh; backgroun
 
   </div>
 
-  <!-- iframe for local HTML projects -->
+  <!-- iframe for raw HTML projects -->
   <iframe id="projectFrame"></iframe>
 
-  <!-- container for Gists -->
+  <!-- container for embedded Gists -->
   <div id="projectContent"></div>
 
 </div>
@@ -217,7 +217,7 @@ function showAllProjects(){
   document.getElementById('projectContent').style.display='none';
 }
 
-// Load a project
+// Load project dynamically
 function loadProject(project){
   const home = document.getElementById('homeView');
   const frame = document.getElementById('projectFrame');
@@ -225,49 +225,47 @@ function loadProject(project){
   home.style.display='none';
   frame.style.display='none';
   content.style.display='none';
+  content.innerHTML='';
 
+  // Gists
   if(project==='stock-portfolio'){
-    content.innerHTML='';
     content.style.display='block';
     const script = document.createElement('script');
     script.src='https://gist.github.com/atsuvovor/763a4743caf1a48026d98892185cf7e4.js';
     content.appendChild(script);
-  } else if(project==='cybersecurity'){
-    frame.src='cybersecurity.html';
-    frame.style.display='block';
-  } else if(project==='data-governance'){
-    frame.src='data-governance.html';
-    frame.style.display='block';
-  } else if(project==='fraud-detection'){
-    frame.src='fraud-detection.html';
-    frame.style.display='block';
-  } else if(project==='healthcare'){
-    frame.src='healthcare-intelligence.html';
-    frame.style.display='block';
-  } else if(project==='market-intelligence'){
-    frame.src='market-intelligence.html';
-    frame.style.display='block';
+  } else if(project==='articles'){
+    content.style.display='block';
+    const iframe = document.createElement('iframe');
+    iframe.src='https://gist.github.com/atsuvovor/Articles.js'; // or any raw embedable GitHub Gist
+    iframe.style.width='100%';
+    iframe.style.height='80vh';
+    iframe.style.border='none';
+    content.appendChild(iframe);
   } else if(project==='process-engineering'){
     frame.src='https://raw.githubusercontent.com/atsuvovor/projects_portfolio.github.io/refs/heads/main/interactive_DMAIC_case_studySPA.html';
     frame.style.display='block';
-  } else if(project==='business-continuity'){
-    frame.src='business-continuity-plan.html';
-    frame.style.display='block';
-  } else if(project==='dashboards'){
-    frame.src='dashboard.html';
-    frame.style.display='block';
-  } else if(project==='articles'){
-    frame.src='https://github.com/atsuvovor/Articles';
+  } else {
+    // Other local HTML projects
+    let urlMap = {
+      'cybersecurity':'cybersecurity.html',
+      'data-governance':'data-governance.html',
+      'fraud-detection':'fraud-detection.html',
+      'healthcare':'healthcare-intelligence.html',
+      'market-intelligence':'market-intelligence.html',
+      'business-continuity':'business-continuity-plan.html',
+      'dashboards':'dashboard.html'
+    };
+    frame.src = urlMap[project];
     frame.style.display='block';
   }
 }
 
-// Add card click events
+// Card click events
 document.querySelectorAll('.card').forEach(card=>{
   card.addEventListener('click',()=>loadProject(card.dataset.project));
 });
 
-// Initialize to show all projects
+// Initialize
 showAllProjects();
 </script>
 
