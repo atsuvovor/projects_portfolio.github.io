@@ -17,6 +17,7 @@ body {
   color: #333;
   display: flex;
   min-height: 100vh;
+  scroll-behavior: smooth;
 }
 
 /* Sidebar Navigation */
@@ -30,6 +31,8 @@ body {
   padding: 20px;
   position: sticky;
   top: 0;
+  height: 100vh;
+  overflow-y: auto;
 }
 
 /* Sidebar Header */
@@ -65,6 +68,7 @@ body {
   margin-bottom: 10px;
   transition: background 0.3s;
   display: block;
+  cursor: pointer;
 }
 .sidebar nav a:hover {
   background-color: rgba(255,255,255,0.2);
@@ -77,6 +81,7 @@ body {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 25px;
+  transition: all 0.3s;
 }
 
 /* Portfolio Cards */
@@ -124,6 +129,7 @@ body {
     width: 100%;
     flex-direction: row;
     overflow-x: auto;
+    height: auto;
     padding: 10px;
   }
   .sidebar nav {
@@ -144,72 +150,69 @@ body {
 
 <!-- Sidebar -->
 <div class="sidebar">
-  <!-- Profile Header -->
   <div class="header">
     <img src="Atsu-Vovor.jpg" alt="Atsu Vovor">
     <h1>Atsu Vovor</h1>
     <h2>Data & Analytics Portfolio</h2>
   </div>
-
-  <!-- Navigation -->
   <nav>
-    <a href="#cybersecurity">Cybersecurity</a>
-    <a href="#data-governance">Data Governance</a>
-    <a href="#fraud-detection">Fraud Detection</a>
-    <a href="#healthcare">Healthcare Intelligence</a>
-    <a href="#market-intelligence">Market Intelligence</a>
-    <a href="#stock-portfolio">Stock Portfolio</a>
-    <a href="#business-continuity">Business Continuity</a>
-    <a href="#process-engineering">Process Engineering</a>
-    <a href="#dashboards">Dashboards</a>
-    <a href="#articles">Articles & Publications</a>
+    <a onclick="showAllProjects()">All Projects</a>
+    <a onclick="scrollToCard('cybersecurity')">Cybersecurity</a>
+    <a onclick="scrollToCard('data-governance')">Data Governance</a>
+    <a onclick="scrollToCard('fraud-detection')">Fraud Detection</a>
+    <a onclick="scrollToCard('healthcare')">Healthcare Intelligence</a>
+    <a onclick="scrollToCard('market-intelligence')">Market Intelligence</a>
+    <a onclick="scrollToCard('stock-portfolio')">Stock Portfolio</a>
+    <a onclick="scrollToCard('business-continuity')">Business Continuity</a>
+    <a onclick="scrollToCard('process-engineering')">Process Engineering</a>
+    <a onclick="scrollToCard('dashboards')">Dashboards</a>
+    <a onclick="scrollToCard('articles')">Articles & Publications</a>
   </nav>
 </div>
 
 <!-- Main Content -->
-<div class="main">
+<div class="main" id="portfolio-cards">
 
-  <a id="cybersecurity" href="https://github.com/atsuvovor/CyberThreat_Insight" target="_blank" class="card">
+  <div id="cybersecurity" class="card" onclick="window.open('https://github.com/atsuvovor/CyberThreat_Insight', '_blank')">
     <img src="cyberSecurityHeaderImage.png" alt="Cybersecurity Analytics">
     <div class="card-content">
       <h3>Cybersecurity Analytics</h3>
       <p>Advanced threat detection and attack simulation dashboards for monitoring and mitigating cyber risks.</p>
     </div>
-  </a>
+  </div>
 
-  <a id="data-governance" href="data-governance.html" target="_blank" class="card">
+  <div id="data-governance" class="card" onclick="window.open('data-governance.html', '_blank')">
     <img src="Data-governance.png" alt="Data Governance">
     <div class="card-content">
       <h3>Data Governance</h3>
       <p>Frameworks and tools for ensuring data quality, compliance, and integrity across enterprise systems.</p>
     </div>
-  </a>
+  </div>
 
-  <a id="fraud-detection" href="fraud-detection.html" target="_blank" class="card">
+  <div id="fraud-detection" class="card" onclick="window.open('fraud-detection.html', '_blank')">
     <img src="fraud_detection.png" alt="Fraud Detection">
     <div class="card-content">
       <h3>Fraud Detection</h3>
       <p>Machine learning models to identify suspicious activities and prevent financial fraud in real time.</p>
     </div>
-  </a>
+  </div>
 
-  <a id="healthcare" href="healthcare-intelligence.html" target="_blank" class="card">
+  <div id="healthcare" class="card" onclick="window.open('healthcare-intelligence.html', '_blank')">
     <img src="healthcare_intelligence.png" alt="Healthcare Intelligence">
     <div class="card-content">
       <h3>Healthcare Intelligence</h3>
       <p>AI-powered insights to improve patient outcomes, optimize resources, and support healthcare decisions.</p>
     </div>
-  </a>
+  </div>
 
-  <a id="market-intelligence" href="market-intelligence.html" target="_blank" class="card">
+  <div id="market-intelligence" class="card" onclick="window.open('market-intelligence.html', '_blank')">
     <img src="marcket_intelligence.jpg" alt="Market Intelligence">
     <div class="card-content">
       <h3>Market Intelligence</h3>
       <p>Data-driven analytics for tracking trends, competitor performance, and emerging business opportunities.</p>
     </div>
-  </a>
+  </div>
 
-  <!-- Stock Portfolio Card (Gist Embed) -->
   <div id="stock-portfolio" class="card" onclick="loadGist()">
     <img src="stock_portfolio_analytics.png" alt="Stock Portfolio Analytics">
     <div class="card-content">
@@ -217,55 +220,62 @@ body {
       <p>Click to view interactive dashboards and predictive models embedded from GitHub Gist.</p>
     </div>
   </div>
-
-  <!-- Container to load Gist -->
   <div id="gist-container" style="margin-top:30px;"></div>
 
-  <a id="business-continuity" href="business-continuity-plan.html" target="_blank" class="card">
+  <div id="business-continuity" class="card" onclick="window.open('business-continuity-plan.html', '_blank')">
     <img src="business_continuity_plan.png" alt="Business Continuity Plan">
     <div class="card-content">
       <h3>Business Continuity Plan</h3>
       <p>Strategic frameworks to ensure organizational resilience and operational continuity during disruptions.</p>
     </div>
-  </a>
+  </div>
 
-  <a id="process-engineering" href="Interactive DMAIC Case StudySPA.html" target="_blank" class="card">
+  <div id="process-engineering" class="card" onclick="window.open('Interactive DMAIC Case StudySPA.html', '_blank')">
     <img src="process_engineering.png" alt="Process Engineering">
     <div class="card-content">
       <h3>Process Engineering</h3>
       <p>Optimizing business processes through analytics and workflow design for improved efficiency and outcomes.</p>
     </div>
-  </a>
+  </div>
 
-  <a id="dashboards" href="dashboard.html" target="_blank" class="card">
+  <div id="dashboards" class="card" onclick="window.open('dashboard.html', '_blank')">
     <img src="data_visualization_dashboards.png" alt="Data Visualization Dashboards">
     <div class="card-content">
       <h3>Data Visualization Dashboards</h3>
       <p>Interactive dashboards built with Tableau, Power BI, and Streamlit for executive-level analytics and reporting.</p>
     </div>
-  </a>
+  </div>
 
-  <a id="articles" href="https://github.com/atsuvovor/Articles" target="_blank" class="card">
+  <div id="articles" class="card" onclick="window.open('https://github.com/atsuvovor/Articles', '_blank')">
     <img src="articles_publication.png" alt="Articles & Publications">
     <div class="card-content">
       <h3>Articles & Publications</h3>
       <p>Thought leadership articles and technical publications on data analytics, AI, and cybersecurity topics.</p>
     </div>
-  </a>
+  </div>
 
 </div>
 
 <script>
+// Load Gist dynamically
 function loadGist() {
   const container = document.getElementById('gist-container');
-  container.innerHTML = ''; // clear previous gist
-
+  container.innerHTML = '';
   const script = document.createElement('script');
   script.src = "https://gist.github.com/atsuvovor/763a4743caf1a48026d98892185cf7e4.js";
   script.async = true;
-
   container.appendChild(script);
   container.scrollIntoView({ behavior: 'smooth' });
+}
+
+// Scroll to specific card
+function scrollToCard(id) {
+  document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+}
+
+// Show all projects (home page)
+function showAllProjects() {
+  document.getElementById('portfolio-cards').scrollIntoView({ behavior: 'smooth' });
 }
 </script>
 
