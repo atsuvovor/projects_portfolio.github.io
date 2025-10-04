@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Atsu Vovor | Analytics Projects</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Atsu Vovor | Analytics Portfolio</title>
 
 <style>
-/* General layout */
+/* ====== GENERAL LAYOUT ====== */
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
@@ -15,21 +15,21 @@ body {
   background: #f7f8fc;
 }
 
-/* Sidebar */
+/* ====== SIDEBAR ====== */
 #sidebar {
   width: 270px;
   background: linear-gradient(180deg, #4e54c8, #8f94fb);
   color: #fff;
   display: flex;
   flex-direction: column;
-  padding-top: 20px;
+  justify-content: space-between;
   box-shadow: 2px 0 10px rgba(0,0,0,0.1);
   overflow-y: auto;
 }
 
 #sidebar h2 {
   text-align: center;
-  margin-bottom: 20px;
+  margin: 20px 0;
   font-size: 1.5em;
 }
 
@@ -44,11 +44,12 @@ body {
   background: rgba(255, 255, 255, 0.15);
 }
 
-/* Submenu */
+/* ====== SUBMENU ====== */
 .submenu {
   display: none;
   flex-direction: column;
   margin-left: 20px;
+  margin-bottom: 20px;
 }
 
 .submenu a {
@@ -63,7 +64,28 @@ body {
   background: rgba(255,255,255,0.2);
 }
 
-/* Main content area */
+/* ====== SIDEBAR FOOTER ICONS ====== */
+#sidebar-footer {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  padding: 15px;
+  border-top: 1px solid rgba(255,255,255,0.3);
+}
+
+#sidebar-footer a img {
+  width: 28px;
+  height: 28px;
+  filter: brightness(0) invert(1);
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+#sidebar-footer a:hover img {
+  transform: scale(1.15);
+  opacity: 0.9;
+}
+
+/* ====== MAIN CONTENT ====== */
 #main {
   flex: 1;
   display: flex;
@@ -72,7 +94,7 @@ body {
   overflow: hidden;
 }
 
-/* Top header */
+/* Header */
 #header {
   background: #fff;
   padding: 15px 25px;
@@ -82,20 +104,13 @@ body {
   color: #4e54c8;
 }
 
-/* Content iframe */
-#contentFrame {
-  flex: 1;
-  width: 100%;
-  border: none;
-  background: #f8f9fc;
-}
-
-/* Home gallery */
+/* Home Gallery */
 #homeGallery {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 20px;
   padding: 20px;
+  transition: all 0.3s ease;
 }
 
 .project-card {
@@ -124,29 +139,50 @@ body {
   font-size: 1.1em;
 }
 
-.hidden { display: none; }
+/* Iframe */
+#contentFrame {
+  flex: 1;
+  width: 100%;
+  border: none;
+  display: none;
+  background: #f8f9fc;
+}
+
+/* Hidden */
+.hidden { display: none !important; }
 </style>
 </head>
 
 <body>
+  <!-- ====== SIDEBAR ====== -->
   <div id="sidebar">
-    <h2>📊 Atsu Vovor</h2>
-    <div class="sidebar-item" id="homeToggle">🏠 Home ▾</div>
-    <div class="submenu" id="homeMenu">
-      <a href="#" data-page="stock-portfolio">Stock Portfolio Analytics</a>
-      <a href="#" data-page="cybersecurity">Cybersecurity Analytics</a>
-      <a href="#" data-page="data-governance">Data Governance</a>
-      <a href="#" data-page="fraud-detection">Fraud Detection</a>
-      <a href="#" data-page="healthcare">Healthcare Intelligence</a>
-      <a href="#" data-page="market-intelligence">Market Intelligence</a>
-      <a href="#" data-page="business-continuity">Business Continuity</a>
-      <a href="#" data-page="dashboards">Executive Dashboards</a>
-      <a href="#" data-page="process-engineering">Process Engineering</a>
+    <div>
+      <h2>📊 Atsu Vovor</h2>
+      <div class="sidebar-item" id="homeToggle">🏠 Home ▾</div>
+      <div class="submenu" id="homeMenu">
+        <a href="#" data-page="stock-portfolio">Stock Portfolio Analytics</a>
+        <a href="#" data-page="cybersecurity">Cybersecurity Analytics</a>
+        <a href="#" data-page="data-governance">Data Governance</a>
+        <a href="#" data-page="fraud-detection">Fraud Detection</a>
+        <a href="#" data-page="healthcare">Healthcare Intelligence</a>
+        <a href="#" data-page="market-intelligence">Market Intelligence</a>
+        <a href="#" data-page="business-continuity">Business Continuity</a>
+        <a href="#" data-page="dashboards">Executive Dashboards</a>
+        <a href="#" data-page="process-engineering">Process Engineering</a>
+      </div>
+    </div>
+    <div id="sidebar-footer">
+      <a href="https://github.com/atsuvovor" target="_blank"><img src="icons/github.png" alt="GitHub"></a>
+      <a href="https://www.linkedin.com/in/atsu-vovor-mmai-9188326/" target="_blank"><img src="icons/linkedin.png" alt="LinkedIn"></a>
+      <a href="https://public.tableau.com/app/profile/atsu.vovor8645/vizzes" target="_blank"><img src="icons/tableau.png" alt="Tableau"></a>
     </div>
   </div>
 
+  <!-- ====== MAIN CONTENT ====== -->
   <div id="main">
     <div id="header">Home</div>
+
+    <!-- Home Cards -->
     <div id="homeGallery">
       <div class="project-card" data-page="stock-portfolio">
         <img src="images/stock_portfolio.jpg" alt="Stock Portfolio Analytics">
@@ -185,7 +221,9 @@ body {
         <h3>Process Engineering (DMAIC)</h3>
       </div>
     </div>
-    <iframe id="contentFrame" class="hidden"></iframe>
+
+    <!-- Iframe -->
+    <iframe id="contentFrame"></iframe>
   </div>
 
 <script>
@@ -207,46 +245,43 @@ const homeGallery = document.getElementById('homeGallery');
 const contentFrame = document.getElementById('contentFrame');
 const header = document.getElementById('header');
 
+/* Toggle submenu + go back home */
 homeToggle.addEventListener('click', () => {
   const visible = homeMenu.style.display === 'flex';
   homeMenu.style.display = visible ? 'none' : 'flex';
   homeToggle.textContent = visible ? '🏠 Home ▸' : '🏠 Home ▾';
-  if (!visible) {
-    showHomeGallery();
-  }
+  showHome();
 });
 
-function showHomeGallery() {
+/* Show all cards and hide iframe */
+function showHome() {
   header.textContent = 'Home';
-  homeGallery.classList.remove('hidden');
-  contentFrame.classList.add('hidden');
+  homeGallery.style.display = 'grid';
+  contentFrame.style.display = 'none';
 }
 
-function loadPage(pageKey) {
-  const page = projectPages[pageKey];
+/* Load selected project */
+function loadPage(key) {
+  const page = projectPages[key];
   if (page) {
-    header.textContent = pageKey.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+    header.textContent = key.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+    homeGallery.style.display = 'none';
     contentFrame.src = page;
-    contentFrame.classList.remove('hidden');
-    homeGallery.classList.add('hidden');
+    contentFrame.style.display = 'block';
   }
 }
 
-// Sidebar links
+/* Sidebar links */
 homeMenu.querySelectorAll('a').forEach(link => {
   link.addEventListener('click', e => {
     e.preventDefault();
-    const key = link.getAttribute('data-page');
-    loadPage(key);
+    loadPage(link.dataset.page);
   });
 });
 
-// Card clicks
+/* Card clicks */
 homeGallery.querySelectorAll('.project-card').forEach(card => {
-  card.addEventListener('click', () => {
-    const key = card.getAttribute('data-page');
-    loadPage(key);
-  });
+  card.addEventListener('click', () => loadPage(card.dataset.page));
 });
 </script>
 </body>
