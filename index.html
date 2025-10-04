@@ -230,28 +230,43 @@ function loadProject(project){
     frame.src='https://raw.githubusercontent.com/atsuvovor/projects_portfolio.github.io/refs/heads/main/interactive_DMAIC_case_studySPA.html';
     frame.style.display='block';
   }
-  else if(project==='articles'){
-    frame.src='https://raw.githubusercontent.com/atsuvovor/Articles/main/index.html';
+  else if(project==='cybersecurity'){
+    frame.src='cybersecurity.html';
     frame.style.display='block';
   }
-  else {
-    // Other local HTML projects
-    let projectPages = {
-      'cybersecurity':'cybersecurity.html',
-      'data-governance':'data-governance.html',
-      'fraud-detection':'fraud-detection.html',
-      'healthcare':'healthcare-intelligence.html',
-      'market-intelligence':'market-intelligence.html',
-      'business-continuity':'business-continuity-plan.html',
-      'dashboards':'dashboard.html'
-    };
-    frame.src = projectPages[project] || '';
+  else if(project==='data-governance'){
+    frame.src='data-governance.html';
     frame.style.display='block';
+  }
+  else if(project==='fraud-detection'){
+    frame.src='fraud-detection.html';
+    frame.style.display='block';
+  }
+  else if(project==='healthcare'){
+    frame.src='healthcare-intelligence.html';
+    frame.style.display='block';
+  }
+  else if(project==='market-intelligence'){
+    frame.src='market-intelligence.html';
+    frame.style.display='block';
+  }
+  else if(project==='business-continuity'){
+    frame.src='business-continuity-plan.html';
+    frame.style.display='block';
+  }
+  else if(project==='dashboards'){
+    frame.src='dashboard.html';
+    frame.style.display='block';
+  }
+  else if(project==='articles'){
+    window.open('https://github.com/atsuvovor/Articles','_blank'); // cannot embed
   }
 }
 </script>
 
 </body>
 </html>
+
+
 
 
