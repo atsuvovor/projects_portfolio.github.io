@@ -228,12 +228,8 @@ function loadProject(project){
   content.innerHTML='';
 
   // Gists
-  if(project==='stock-portfolio'){
-    content.style.display='block';
-    const script = document.createElement('script');
-    script.src='https://gist.github.com/atsuvovor/763a4743caf1a48026d98892185cf7e4.js';
-    content.appendChild(script);
-  } else if(project==='articles'){
+  
+    if(project==='articles'){
     content.style.display='block';
     const iframe = document.createElement('iframe');
     iframe.src='https://atsuvovor.github.io/Articles/'; // or any raw embedable GitHub Gist
@@ -247,6 +243,7 @@ function loadProject(project){
   } else {
     // Other local HTML projects
     let urlMap = {
+      'stock-portfolio-analytics':'stock_portfolio_analytics.md'
       'cybersecurity':'https://github.com/atsuvovor/CyberThreat_Insight',
       'data-governance':'data-governance.html',
       'fraud-detection':'fraud-detection.html',
@@ -271,5 +268,6 @@ showAllProjects();
 
 </body>
 </html>
+
 
 
