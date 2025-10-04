@@ -157,16 +157,16 @@ body {
   </div>
   <nav>
     <a onclick="showAllProjects()">All Projects</a>
-    <a onclick="scrollToCard('cybersecurity')">Cybersecurity</a>
-    <a onclick="scrollToCard('data-governance')">Data Governance</a>
-    <a onclick="scrollToCard('fraud-detection')">Fraud Detection</a>
-    <a onclick="scrollToCard('healthcare')">Healthcare Intelligence</a>
-    <a onclick="scrollToCard('market-intelligence')">Market Intelligence</a>
-    <a onclick="scrollToCard('stock-portfolio')">Stock Portfolio</a>
-    <a onclick="scrollToCard('business-continuity')">Business Continuity</a>
-    <a onclick="scrollToCard('process-engineering')">Process Engineering</a>
-    <a onclick="scrollToCard('dashboards')">Dashboards</a>
-    <a onclick="scrollToCard('articles')">Articles & Publications</a>
+    <a onclick="showSingleProject('cybersecurity')">Cybersecurity</a>
+    <a onclick="showSingleProject('data-governance')">Data Governance</a>
+    <a onclick="showSingleProject('fraud-detection')">Fraud Detection</a>
+    <a onclick="showSingleProject('healthcare')">Healthcare Intelligence</a>
+    <a onclick="showSingleProject('market-intelligence')">Market Intelligence</a>
+    <a onclick="showSingleProject('stock-portfolio')">Stock Portfolio</a>
+    <a onclick="showSingleProject('business-continuity')">Business Continuity</a>
+    <a onclick="showSingleProject('process-engineering')">Process Engineering</a>
+    <a onclick="showSingleProject('dashboards')">Dashboards</a>
+    <a onclick="showSingleProject('articles')">Articles & Publications</a>
   </nav>
 </div>
 
@@ -236,48 +236,4 @@ body {
       <h3>Process Engineering</h3>
       <p>Optimizing business processes through analytics and workflow design for improved efficiency and outcomes.</p>
     </div>
-  </div>
-
-  <div id="dashboards" class="card" onclick="window.open('dashboard.html', '_blank')">
-    <img src="data_visualization_dashboards.png" alt="Data Visualization Dashboards">
-    <div class="card-content">
-      <h3>Data Visualization Dashboards</h3>
-      <p>Interactive dashboards built with Tableau, Power BI, and Streamlit for executive-level analytics and reporting.</p>
-    </div>
-  </div>
-
-  <div id="articles" class="card" onclick="window.open('https://github.com/atsuvovor/Articles', '_blank')">
-    <img src="articles_publication.png" alt="Articles & Publications">
-    <div class="card-content">
-      <h3>Articles & Publications</h3>
-      <p>Thought leadership articles and technical publications on data analytics, AI, and cybersecurity topics.</p>
-    </div>
-  </div>
-
-</div>
-
-<script>
-// Load Gist dynamically
-function loadGist() {
-  const container = document.getElementById('gist-container');
-  container.innerHTML = '';
-  const script = document.createElement('script');
-  script.src = "https://gist.github.com/atsuvovor/763a4743caf1a48026d98892185cf7e4.js";
-  script.async = true;
-  container.appendChild(script);
-  container.scrollIntoView({ behavior: 'smooth' });
-}
-
-// Scroll to specific card
-function scrollToCard(id) {
-  document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
-}
-
-// Show all projects (home page)
-function showAllProjects() {
-  document.getElementById('portfolio-cards').scrollIntoView({ behavior: 'smooth' });
-}
-</script>
-
-</body>
-</html>
+  </
