@@ -55,7 +55,6 @@ body { font-family: Arial, sans-serif; display:flex; min-height:100vh; backgroun
   flex-direction:column;
   text-decoration:none;
   color:inherit;
-  cursor:pointer;
 }
 .card:hover { transform:translateY(-5px); box-shadow:0 10px 25px rgba(0,0,0,0.2); }
 .card img { width:100%; height:200px; object-fit:cover; }
@@ -66,7 +65,7 @@ body { font-family: Arial, sans-serif; display:flex; min-height:100vh; backgroun
 /* iframe for local HTML projects */
 #projectFrame { width:100%; height:80vh; border:none; display:none; }
 
-/* container for Gists */
+/* Gist container */
 #projectContent { width:100%; display:none; }
 
 /* Responsive */
@@ -106,7 +105,7 @@ body { font-family: Arial, sans-serif; display:flex; min-height:100vh; backgroun
   <!-- Home cards grid -->
   <div id="homeView" class="cards-grid">
 
-    <div class="card" data-project="stock-portfolio">
+    <div class="card" onclick="loadProject('stock-portfolio')">
       <img src="stock_portfolio_analytics.png" alt="Stock Portfolio Analytics">
       <div class="card-content">
         <h3>Stock Portfolio Analytics</h3>
@@ -114,7 +113,7 @@ body { font-family: Arial, sans-serif; display:flex; min-height:100vh; backgroun
       </div>
     </div>
 
-    <div class="card" data-project="cybersecurity">
+    <div class="card" onclick="loadProject('cybersecurity')">
       <img src="cyberSecurityHeaderImage.png" alt="Cybersecurity Analytics">
       <div class="card-content">
         <h3>Cybersecurity Analytics</h3>
@@ -122,7 +121,7 @@ body { font-family: Arial, sans-serif; display:flex; min-height:100vh; backgroun
       </div>
     </div>
 
-    <div class="card" data-project="data-governance">
+    <div class="card" onclick="loadProject('data-governance')">
       <img src="Data-governance.png" alt="Data Governance">
       <div class="card-content">
         <h3>Data Governance</h3>
@@ -130,7 +129,7 @@ body { font-family: Arial, sans-serif; display:flex; min-height:100vh; backgroun
       </div>
     </div>
 
-    <div class="card" data-project="fraud-detection">
+    <div class="card" onclick="loadProject('fraud-detection')">
       <img src="fraud_detection.png" alt="Fraud Detection">
       <div class="card-content">
         <h3>Fraud Detection</h3>
@@ -138,7 +137,7 @@ body { font-family: Arial, sans-serif; display:flex; min-height:100vh; backgroun
       </div>
     </div>
 
-    <div class="card" data-project="healthcare">
+    <div class="card" onclick="loadProject('healthcare')">
       <img src="healthcare_intelligence.png" alt="Healthcare Intelligence">
       <div class="card-content">
         <h3>Healthcare Intelligence</h3>
@@ -146,7 +145,7 @@ body { font-family: Arial, sans-serif; display:flex; min-height:100vh; backgroun
       </div>
     </div>
 
-    <div class="card" data-project="market-intelligence">
+    <div class="card" onclick="loadProject('market-intelligence')">
       <img src="marcket_intelligence.jpg" alt="Market Intelligence">
       <div class="card-content">
         <h3>Market Intelligence</h3>
@@ -154,7 +153,7 @@ body { font-family: Arial, sans-serif; display:flex; min-height:100vh; backgroun
       </div>
     </div>
 
-    <div class="card" data-project="process-engineering">
+    <div class="card" onclick="loadProject('process-engineering')">
       <img src="process_engineering.png" alt="Process Engineering">
       <div class="card-content">
         <h3>Process Engineering</h3>
@@ -162,7 +161,7 @@ body { font-family: Arial, sans-serif; display:flex; min-height:100vh; backgroun
       </div>
     </div>
 
-    <div class="card" data-project="business-continuity">
+    <div class="card" onclick="loadProject('business-continuity')">
       <img src="business_continuity_plan.png" alt="Business Continuity Plan">
       <div class="card-content">
         <h3>Business Continuity Plan</h3>
@@ -170,7 +169,7 @@ body { font-family: Arial, sans-serif; display:flex; min-height:100vh; backgroun
       </div>
     </div>
 
-    <div class="card" data-project="dashboards">
+    <div class="card" onclick="loadProject('dashboards')">
       <img src="data_visualization_dashboards.png" alt="Data Visualization Dashboards">
       <div class="card-content">
         <h3>Data Visualization Dashboards</h3>
@@ -178,7 +177,7 @@ body { font-family: Arial, sans-serif; display:flex; min-height:100vh; backgroun
       </div>
     </div>
 
-    <div class="card" data-project="articles">
+    <div class="card" onclick="loadProject('articles')">
       <img src="articles_publication.png" alt="Articles & Publications">
       <div class="card-content">
         <h3>Articles & Publications</h3>
@@ -188,7 +187,7 @@ body { font-family: Arial, sans-serif; display:flex; min-height:100vh; backgroun
 
   </div>
 
-  <!-- iframe for local HTML projects -->
+  <!-- iframe for local HTML -->
   <iframe id="projectFrame"></iframe>
 
   <!-- container for Gists -->
@@ -197,11 +196,6 @@ body { font-family: Arial, sans-serif; display:flex; min-height:100vh; backgroun
 </div>
 
 <script>
-// Card click handler
-document.querySelectorAll('.card[data-project]').forEach(card => {
-  card.addEventListener('click', () => loadProject(card.dataset.project));
-});
-
 function showAllProjects(){
   document.getElementById('homeView').style.display='grid';
   document.getElementById('projectFrame').style.display='none';
@@ -231,7 +225,7 @@ function loadProject(project){
     frame.style.display='block';
   }
   else if(project==='cybersecurity'){
-    frame.src='cybersecurity.html';
+    frame.src='cybersecurity.html'; // local copy
     frame.style.display='block';
   }
   else if(project==='data-governance'){
@@ -259,14 +253,10 @@ function loadProject(project){
     frame.style.display='block';
   }
   else if(project==='articles'){
-    window.open('https://github.com/atsuvovor/Articles','_blank'); // cannot embed
+    window.open('https://github.com/atsuvovor/Articles','_blank'); // external repo
   }
 }
 </script>
 
 </body>
 </html>
-
-
-
-
