@@ -1,223 +1,281 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Atsu Vovor Portfolio</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: "Segoe UI", sans-serif;
-      display: flex;
-      height: 100vh;
-      overflow: hidden;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Atsu Vovor | Analytics Portfolio</title>
 
-    /* Sidebar */
-    .sidebar {
-      width: 270px;
-      background: #0e1117;
-      color: white;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      padding: 1rem;
-      box-sizing: border-box;
-    }
+<style>
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  display: flex;
+  height: 100vh;
+  background: #f7f8fc;
+  overflow: hidden;
+}
 
-    .sidebar-header {
-      text-align: center;
-      margin-bottom: 1rem;
-    }
+/* ===== SIDEBAR ===== */
+#sidebar {
+  width: 270px;
+  background: linear-gradient(180deg, #4e54c8, #8f94fb);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+  overflow-y: auto;
+}
 
-    .sidebar-header img {
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
-      object-fit: cover;
-      margin-bottom: 10px;
-      border: 2px solid #00c0ff;
-    }
+.sidebar-header {
+  text-align: center;
+  padding: 20px 10px;
+}
 
-    .sidebar-header h1 {
-      font-size: 1.4rem;
-      margin: 5px 0 2px;
-      color: #00c0ff;
-    }
+.sidebar-header img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #fff;
+  margin-bottom: 10px;
+}
 
-    .sidebar-header h2 {
-      font-size: 0.9rem;
-      color: #a0aec0;
-      margin: 0;
-    }
+.sidebar-header h1 {
+  font-size: 1.4em;
+  margin: 0;
+}
 
-    .menu {
-      flex-grow: 1;
-      overflow-y: auto;
-      margin-top: 1rem;
-    }
+.sidebar-header h2 {
+  font-size: 0.9em;
+  font-weight: normal;
+  color: rgba(255,255,255,0.85);
+  margin: 5px 0 0;
+}
 
-    .menu a {
-      display: block;
-      padding: 10px 15px;
-      color: white;
-      text-decoration: none;
-      border-radius: 8px;
-      margin-bottom: 5px;
-      transition: background 0.2s;
-    }
+/* ===== SIDEBAR MENU ===== */
+#menu {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 0;
+}
 
-    .menu a:hover {
-      background: #1f2937;
-    }
+#menu a {
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 20px;
+  display: block;
+  transition: background 0.3s;
+}
 
-    .social {
-      text-align: center;
-      margin-top: 15px;
-      padding-top: 10px;
-      border-top: 1px solid #1f2937;
-    }
+#menu a:hover {
+  background: rgba(255,255,255,0.15);
+}
 
-    .social a {
-      margin: 0 8px;
-      color: #00c0ff;
-      text-decoration: none;
-      font-size: 22px;
-      transition: color 0.2s;
-    }
+/* ===== FOOTER ICONS ===== */
+#sidebar-footer {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  padding: 15px;
+  border-top: 1px solid rgba(255,255,255,0.3);
+}
 
-    .social a:hover {
-      color: #66e0ff;
-    }
+#sidebar-footer a img {
+  width: 28px;
+  height: 28px;
+  filter: brightness(0) invert(1);
+  transition: transform 0.3s, opacity 0.3s;
+}
 
-    /* Main content */
-    .main {
-      flex-grow: 1;
-      background: #f7f9fb;
-      overflow-y: auto;
-      padding: 20px;
-      box-sizing: border-box;
-    }
+#sidebar-footer a:hover img {
+  transform: scale(1.15);
+  opacity: 0.9;
+}
 
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 20px;
-    }
+/* ===== MAIN AREA ===== */
+#main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
 
-    .card {
-      background: white;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      cursor: pointer;
-      transition: transform 0.3s;
-      overflow: hidden;
-    }
+#header {
+  background: #fff;
+  padding: 15px 25px;
+  font-size: 1.3em;
+  border-bottom: 1px solid #ddd;
+  font-weight: bold;
+  color: #4e54c8;
+}
 
-    .card:hover {
-      transform: translateY(-5px);
-    }
+#homeGallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  overflow-y: auto;
+  flex: 1;
+}
 
-    .card img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-    }
+.project-card {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+}
 
-    .card h3 {
-      margin: 10px;
-    }
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+}
 
-    iframe {
-      width: 100%;
-      height: 80vh;
-      border: none;
-      border-radius: 10px;
-    }
+.project-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
 
-    #backBtn {
-      display: none;
-      margin-bottom: 15px;
-      padding: 10px 15px;
-      background-color: #00c0ff;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 15px;
-      transition: background-color 0.3s;
-    }
+.project-card h3 {
+  margin: 15px;
+  color: #4e54c8;
+  font-size: 1.1em;
+}
 
-    #backBtn:hover {
-      background-color: #0090cc;
-    }
-  </style>
+/* Iframe */
+#contentFrame {
+  flex: 1;
+  width: 100%;
+  border: none;
+  display: none;
+  background: #f8f9fc;
+}
+
+.hidden { display: none !important; }
+</style>
 </head>
+
 <body>
-  <div class="sidebar">
+  <!-- SIDEBAR -->
+  <div id="sidebar">
     <div>
       <div class="sidebar-header">
-        <img src="Atsu-Vovor.jpg" alt="Atsu Vovor" />
+        <img src="Atsu-Vovor.jpg" alt="Atsu Vovor">
         <h1>Atsu Vovor</h1>
         <h2>Data & Analytics Portfolio</h2>
       </div>
 
-      <div class="menu">
-        <a href="#" onclick="showProject('project1.html')">Stock Portfolio Analytics</a>
-        <a href="#" onclick="showProject('project2.html')">Cyber Attack Simulator</a>
-        <a href="#" onclick="showProject('project3.html')">IAM Risk Dashboard</a>
+      <div id="menu">
+        <a href="#" onclick="showAllProjects()">All Projects</a>
+        <a href="#" onclick="loadProject('stock-portfolio')">Stock Portfolio</a>
+        <a href="#" onclick="loadProject('cybersecurity')">Cybersecurity</a>
+        <a href="#" onclick="loadProject('data-governance')">Data Governance</a>
+        <a href="#" onclick="loadProject('fraud-detection')">Fraud Detection</a>
+        <a href="#" onclick="loadProject('healthcare')">Healthcare Intelligence</a>
+        <a href="#" onclick="loadProject('market-intelligence')">Market Intelligence</a>
+        <a href="#" onclick="loadProject('process-engineering')">Process Engineering</a>
+        <a href="#" onclick="loadProject('business-continuity')">Business Continuity</a>
+        <a href="#" onclick="loadProject('dashboards')">Dashboards</a>
+        <a href="#" onclick="loadProject('articles')">Articles & Publications</a>
       </div>
     </div>
 
-    <div class="social">
-      <a href="https://github.com/atsuvovor" target="_blank">🐙</a>
-      <a href="https://linkedin.com/in/atsu-vovor-mmai-9188326/" target="_blank">🔗</a>
-      <a href="https://public.tableau.com/app/profile/atsu.vovor8645/vizzes" target="_blank">📊</a>
+    <div id="sidebar-footer">
+      <a href="https://github.com/atsuvovor" target="_blank"><img src="icons/github.png" alt="GitHub"></a>
+      <a href="https://www.linkedin.com/in/atsu-vovor-mmai-9188326/" target="_blank"><img src="icons/linkedin.png" alt="LinkedIn"></a>
+      <a href="https://public.tableau.com/app/profile/atsu.vovor8645/vizzes" target="_blank"><img src="icons/tableau.png" alt="Tableau"></a>
     </div>
   </div>
 
-  <div class="main" id="main">
-    <button id="backBtn" onclick="showGallery()">← Back to Portfolio</button>
+  <!-- MAIN -->
+  <div id="main">
+    <div id="header">Home</div>
 
-    <!-- Gallery View -->
-    <div class="gallery" id="gallery">
-      <div class="card" onclick="showProject('project1.html')">
-        <img src="images/project1.jpg" alt="Stock Portfolio Analytics" />
+    <div id="homeGallery">
+      <div class="project-card" onclick="loadProject('stock-portfolio')">
+        <img src="stock_portfolio_analytics.png" alt="">
         <h3>Stock Portfolio Analytics</h3>
       </div>
-
-      <div class="card" onclick="showProject('project2.html')">
-        <img src="images/project2.jpg" alt="Cyber Attack Simulator" />
-        <h3>Cyber Attack Simulator</h3>
+      <div class="project-card" onclick="loadProject('cybersecurity')">
+        <img src="cyberSecurityHeaderImage.png" alt="">
+        <h3>Cybersecurity Analytics</h3>
       </div>
-
-      <div class="card" onclick="showProject('project3.html')">
-        <img src="images/project3.jpg" alt="IAM Risk Dashboard" />
-        <h3>IAM Risk Dashboard</h3>
+      <div class="project-card" onclick="loadProject('data-governance')">
+        <img src="Data-governance.png" alt="">
+        <h3>Data Governance</h3>
+      </div>
+      <div class="project-card" onclick="loadProject('fraud-detection')">
+        <img src="fraud_detection.png" alt="">
+        <h3>Fraud Detection</h3>
+      </div>
+      <div class="project-card" onclick="loadProject('healthcare')">
+        <img src="healthcare_intelligence.png" alt="">
+        <h3>Healthcare Intelligence</h3>
+      </div>
+      <div class="project-card" onclick="loadProject('market-intelligence')">
+        <img src="marcket_intelligence.jpg" alt="">
+        <h3>Market Intelligence</h3>
+      </div>
+      <div class="project-card" onclick="loadProject('process-engineering')">
+        <img src="process_engineering.png" alt="">
+        <h3>Process Engineering</h3>
+      </div>
+      <div class="project-card" onclick="loadProject('business-continuity')">
+        <img src="business_continuity_plan.png" alt="">
+        <h3>Business Continuity</h3>
+      </div>
+      <div class="project-card" onclick="loadProject('dashboards')">
+        <img src="data_visualization_dashboards.png" alt="">
+        <h3>Dashboards</h3>
+      </div>
+      <div class="project-card" onclick="loadProject('articles')">
+        <img src="articles_publication.png" alt="">
+        <h3>Articles & Publications</h3>
       </div>
     </div>
 
-    <!-- Project iframe -->
-    <iframe id="projectFrame" style="display:none;"></iframe>
+    <iframe id="contentFrame"></iframe>
   </div>
 
-  <script>
-    function showProject(url) {
-      document.getElementById("gallery").style.display = "none";
-      document.getElementById("backBtn").style.display = "block";
-      const frame = document.getElementById("projectFrame");
-      frame.style.display = "block";
-      frame.src = url;
-      document.getElementById("main").scrollTop = 0;
-    }
+<script>
+const projectPages = {
+  'stock-portfolio': 'Stock_Portfolio_Analytics_v1.html',
+  'cybersecurity': 'CyberThreat_Insight_V31.html',
+  'data-governance': 'data-governance.html',
+  'fraud-detection': 'fraud-detection.html',
+  'healthcare': 'healthcare-intelligence.html',
+  'market-intelligence': 'market-intelligence.html',
+  'business-continuity': 'business-continuity-plan.html',
+  'dashboards': 'dashboard.html',
+  'process-engineering': 'interactive_DMAIC_case_studySPA.html',
+  'articles': 'articles.html'
+};
 
-    function showGallery() {
-      document.getElementById("gallery").style.display = "grid";
-      document.getElementById("backBtn").style.display = "none";
-      const frame = document.getElementById("projectFrame");
-      frame.style.display = "none";
-      frame.src = "";
-    }
-  </script>
+const header = document.getElementById('header');
+const homeGallery = document.getElementById('homeGallery');
+const contentFrame = document.getElementById('contentFrame');
+
+/* Load selected project */
+function loadProject(key) {
+  const page = projectPages[key];
+  if (page) {
+    header.textContent = key.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+    homeGallery.style.display = 'none';
+    contentFrame.src = page;
+    contentFrame.style.display = 'block';
+  }
+}
+
+/* Show all projects */
+function showAllProjects() {
+  header.textContent = 'Home';
+  contentFrame.style.display = 'none';
+  contentFrame.src = '';
+  homeGallery.style.display = 'grid';
+}
+</script>
 </body>
 </html>
