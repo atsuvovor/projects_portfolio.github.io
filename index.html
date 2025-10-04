@@ -12,15 +12,15 @@
   padding: 0;
 }
 body {
-  font-family: 'Arial', sans-serif;
-  background-color: #f5f5f7;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background-color: #f4f4f9;
   color: #333;
   display: flex;
   min-height: 100vh;
   scroll-behavior: smooth;
 }
 
-/* Sidebar Navigation */
+/* Sidebar */
 .sidebar {
   width: 250px;
   background: linear-gradient(180deg, #4e54c8, #8f94fb);
@@ -41,50 +41,50 @@ body {
   margin-bottom: 20px;
 }
 .sidebar .header img {
-  width: 120px;
-  height: 120px;
+  width: 110px;
+  height: 110px;
   border-radius: 50%;
   border: 3px solid white;
   object-fit: cover;
   margin-bottom: 10px;
 }
 .sidebar .header h1 {
-  font-size: 24px;
-  margin-bottom: 5px;
+  font-size: 22px;
+  margin-bottom: 4px;
 }
 .sidebar .header h2 {
   font-size: 14px;
-  font-weight: normal;
+  font-weight: 300;
   color: #e0e0ff;
   margin-bottom: 20px;
 }
 
-/* Sidebar Navigation Links */
+/* Sidebar Links */
 .sidebar nav a {
   text-decoration: none;
   color: white;
-  padding: 12px 15px;
+  padding: 10px 12px;
   border-radius: 8px;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
   transition: background 0.3s;
   display: block;
   cursor: pointer;
 }
-.sidebar nav a:hover {
+.sidebar nav a:hover,
+.sidebar nav a.active {
   background-color: rgba(255,255,255,0.2);
 }
 
-/* Main content area */
+/* Main */
 .main {
   flex: 1;
   padding: 30px;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 25px;
-  transition: all 0.3s;
 }
 
-/* Portfolio Cards */
+/* Cards */
 .card {
   background: white;
   border-radius: 12px;
@@ -117,11 +117,11 @@ body {
 .card-content p {
   font-size: 14px;
   color: #555;
-  line-height: 1.4;
+  line-height: 1.5;
 }
 
-/* Responsive adjustments */
-@media screen and (max-width: 900px) {
+/* Responsive */
+@media (max-width: 900px) {
   body {
     flex-direction: column;
   }
@@ -156,7 +156,7 @@ body {
     <h2>Data & Analytics Portfolio</h2>
   </div>
   <nav>
-    <a onclick="showAllProjects()">All Projects</a>
+    <a onclick="showAllProjects()" class="active">All Projects</a>
     <a onclick="showSingleProject('cybersecurity')">Cybersecurity</a>
     <a onclick="showSingleProject('data-governance')">Data Governance</a>
     <a onclick="showSingleProject('fraud-detection')">Fraud Detection</a>
@@ -166,14 +166,14 @@ body {
     <a onclick="showSingleProject('business-continuity')">Business Continuity</a>
     <a onclick="showSingleProject('process-engineering')">Process Engineering</a>
     <a onclick="showSingleProject('dashboards')">Dashboards</a>
-    <a onclick="showSingleProject('articles')">Articles & Publications</a>
+    <a onclick="showSingleProject('articles')">Articles</a>
   </nav>
 </div>
 
 <!-- Main Content -->
 <div class="main" id="portfolio-cards">
 
-  <div id="cybersecurity" class="card" data-link="https://github.com/atsuvovor/CyberThreat_Insight">
+  <div id="cybersecurity" class="card">
     <img src="cyberSecurityHeaderImage.png" alt="Cybersecurity Analytics">
     <div class="card-content">
       <h3>Cybersecurity Analytics</h3>
@@ -181,7 +181,7 @@ body {
     </div>
   </div>
 
-  <div id="data-governance" class="card" data-link="data-governance.html">
+  <div id="data-governance" class="card">
     <img src="Data-governance.png" alt="Data Governance">
     <div class="card-content">
       <h3>Data Governance</h3>
@@ -189,7 +189,7 @@ body {
     </div>
   </div>
 
-  <div id="fraud-detection" class="card" data-link="fraud-detection.html">
+  <div id="fraud-detection" class="card">
     <img src="fraud_detection.png" alt="Fraud Detection">
     <div class="card-content">
       <h3>Fraud Detection</h3>
@@ -197,7 +197,7 @@ body {
     </div>
   </div>
 
-  <div id="healthcare" class="card" data-link="healthcare-intelligence.html">
+  <div id="healthcare" class="card">
     <img src="healthcare_intelligence.png" alt="Healthcare Intelligence">
     <div class="card-content">
       <h3>Healthcare Intelligence</h3>
@@ -205,7 +205,7 @@ body {
     </div>
   </div>
 
-  <div id="market-intelligence" class="card" data-link="market-intelligence.html">
+  <div id="market-intelligence" class="card">
     <img src="marcket_intelligence.jpg" alt="Market Intelligence">
     <div class="card-content">
       <h3>Market Intelligence</h3>
@@ -217,12 +217,12 @@ body {
     <img src="stock_portfolio_analytics.png" alt="Stock Portfolio Analytics">
     <div class="card-content">
       <h3>Stock Portfolio Analytics</h3>
-      <p>Click to view interactive dashboards and predictive models embedded from GitHub Gist.</p>
+      <p>Interactive dashboards and predictive models for portfolio optimization and investment risk analysis.</p>
     </div>
   </div>
-  <div id="gist-container" style="margin-top:30px;"></div>
+  <div id="gist-container" style="grid-column: 1/-1; margin-top: 20px;"></div>
 
-  <div id="business-continuity" class="card" data-link="business-continuity-plan.html">
+  <div id="business-continuity" class="card">
     <img src="business_continuity_plan.png" alt="Business Continuity Plan">
     <div class="card-content">
       <h3>Business Continuity Plan</h3>
@@ -230,7 +230,7 @@ body {
     </div>
   </div>
 
-  <div id="process-engineering" class="card" data-link="Interactive DMAIC Case StudySPA.html">
+  <div id="process-engineering" class="card">
     <img src="process_engineering.png" alt="Process Engineering">
     <div class="card-content">
       <h3>Process Engineering</h3>
@@ -238,16 +238,16 @@ body {
     </div>
   </div>
 
-  <div id="dashboards" class="card" data-link="dashboard.html">
-    <img src="data_visualization_dashboards.png" alt="Data Visualization Dashboards">
+  <div id="dashboards" class="card">
+    <img src="data_visualization_dashboards.png" alt="Dashboards">
     <div class="card-content">
       <h3>Data Visualization Dashboards</h3>
       <p>Interactive dashboards built with Tableau, Power BI, and Streamlit for executive-level analytics and reporting.</p>
     </div>
   </div>
 
-  <div id="articles" class="card" data-link="https://github.com/atsuvovor/Articles">
-    <img src="articles_publication.png" alt="Articles & Publications">
+  <div id="articles" class="card">
+    <img src="articles_publication.png" alt="Articles">
     <div class="card-content">
       <h3>Articles & Publications</h3>
       <p>Thought leadership articles and technical publications on data analytics, AI, and cybersecurity topics.</p>
@@ -257,43 +257,47 @@ body {
 </div>
 
 <script>
-// Get all cards
 const allCards = document.querySelectorAll('.card');
+const gistContainer = document.getElementById('gist-container');
+const navLinks = document.querySelectorAll('.sidebar nav a');
+
+function clearActiveLinks() {
+  navLinks.forEach(link => link.classList.remove('active'));
+}
 
 function showAllProjects() {
   allCards.forEach(card => card.style.display = 'flex');
-  document.getElementById('portfolio-cards').scrollIntoView({behavior:'smooth'});
-  document.getElementById('gist-container').innerHTML = '';
+  gistContainer.innerHTML = '';
+  clearActiveLinks();
+  navLinks[0].classList.add('active');
 }
 
 function showSingleProject(id) {
   allCards.forEach(card => {
-    if(card.id === id){
+    if (card.id === id) {
       card.style.display = 'flex';
-      card.scrollIntoView({behavior:'smooth'});
-
-      if(id === 'stock-portfolio'){
-        loadGist();
-      } else {
-        // Open link in new tab
-        const link = card.getAttribute('data-link');
-        window.open(link,'_blank');
-      }
+      card.scrollIntoView({behavior: 'smooth'});
     } else {
       card.style.display = 'none';
     }
   });
+
+  gistContainer.innerHTML = '';
+  clearActiveLinks();
+  document.querySelector(`.sidebar nav a[onclick="showSingleProject('${id}')"]`).classList.add('active');
+
+  if (id === 'stock-portfolio') {
+    loadGist();
+  }
 }
 
-// Load GitHub Gist for Stock Portfolio
-function loadGist(){
-  document.getElementById('gist-container').innerHTML = '';
+function loadGist() {
+  gistContainer.innerHTML = '';
   const script = document.createElement('script');
   script.src = "https://gist.github.com/atsuvovor/763a4743caf1a48026d98892185cf7e4.js";
-  document.getElementById('gist-container').appendChild(script);
+  gistContainer.appendChild(script);
 }
 </script>
 
 </body>
 </html>
-
