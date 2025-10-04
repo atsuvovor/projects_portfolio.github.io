@@ -169,7 +169,7 @@ body {
         <a href="#" data-page="business-continuity">Business Continuity</a>
         <a href="#" data-page="dashboards">Executive Dashboards</a>
         <a href="#" data-page="process-engineering">Process Engineering</a>
-        <a href="#" onclick="loadProject('articles')">Articles & Publications</a>
+        <a href="#" data-page="articles">Articles & Publications</a>
       </div>
     </div>
     <div id="sidebar-footer">
@@ -230,13 +230,11 @@ body {
         <h3>Process Engineering (DMAIC)</h3>
         <p>Optimizing business processes through analytics and workflow design for improved efficiency and outcomes.</p>
       </div>
-
-      <div class="project-card" data-project="articles">
+      <div class="project-card" data-page="articles">
         <img src="articles_publication.png" alt="Articles & Publications">
         <h3>Articles & Publications</h3>
         <p>Thought leadership articles and technical publications on data analytics, AI, and cybersecurity topics.</p>
       </div>
-      
     </div>
 
     <!-- Iframe -->
@@ -253,7 +251,8 @@ const projectPages = {
   'market-intelligence': 'market-intelligence.html',
   'business-continuity': 'business-continuity-plan.html',
   'dashboards': 'dashboard.html',
-  'process-engineering': 'interactive_DMAIC_case_studySPA.html'
+  'process-engineering': 'interactive_DMAIC_case_studySPA.html',
+  'articles': 'articles_publication.html'
 };
 
 const homeToggle = document.getElementById('homeToggle');
@@ -303,6 +302,3 @@ homeGallery.querySelectorAll('.project-card').forEach(card => {
 </script>
 </body>
 </html>
-
-
-
