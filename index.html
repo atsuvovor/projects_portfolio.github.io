@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Atsu Vovor | Data & Analytics Portfolio</title>
 <style>
-/* Basic Reset */
 * { box-sizing: border-box; margin:0; padding:0; }
 body { font-family: Arial, sans-serif; display:flex; min-height:100vh; background:#f5f5f7; }
 
@@ -211,7 +210,66 @@ body { font-family: Arial, sans-serif; display:flex; min-height:100vh; backgroun
 </div>
 
 <script>
-// Card click handler
-document.querySelector
+// Show all projects (home)
+function showAllProjects(){
+  document.getElementById('homeView').style.display='grid';
+  document.getElementById('projectFrame').style.display='none';
+  document.getElementById('projectContent').style.display='none';
+}
 
+// Load a project
+function loadProject(project){
+  const home = document.getElementById('homeView');
+  const frame = document.getElementById('projectFrame');
+  const content = document.getElementById('projectContent');
+  home.style.display='none';
+  frame.style.display='none';
+  content.style.display='none';
 
+  if(project==='stock-portfolio'){
+    content.innerHTML='';
+    content.style.display='block';
+    const script = document.createElement('script');
+    script.src='https://gist.github.com/atsuvovor/763a4743caf1a48026d98892185cf7e4.js';
+    content.appendChild(script);
+  } else if(project==='cybersecurity'){
+    frame.src='cybersecurity.html';
+    frame.style.display='block';
+  } else if(project==='data-governance'){
+    frame.src='data-governance.html';
+    frame.style.display='block';
+  } else if(project==='fraud-detection'){
+    frame.src='fraud-detection.html';
+    frame.style.display='block';
+  } else if(project==='healthcare'){
+    frame.src='healthcare-intelligence.html';
+    frame.style.display='block';
+  } else if(project==='market-intelligence'){
+    frame.src='market-intelligence.html';
+    frame.style.display='block';
+  } else if(project==='process-engineering'){
+    frame.src='https://raw.githubusercontent.com/atsuvovor/projects_portfolio.github.io/refs/heads/main/interactive_DMAIC_case_studySPA.html';
+    frame.style.display='block';
+  } else if(project==='business-continuity'){
+    frame.src='business-continuity-plan.html';
+    frame.style.display='block';
+  } else if(project==='dashboards'){
+    frame.src='dashboard.html';
+    frame.style.display='block';
+  } else if(project==='articles'){
+    frame.src='https://github.com/atsuvovor/Articles';
+    frame.style.display='block';
+  }
+}
+
+// Add card click events
+document.querySelectorAll('.card').forEach(card=>{
+  card.addEventListener('click',()=>loadProject(card.dataset.project));
+});
+
+// Initialize to show all projects
+showAllProjects();
+</script>
+
+</body>
+</html>
