@@ -313,9 +313,7 @@ function loadProject(project) {
     iframe.style.border = 'none';
     content.appendChild(iframe);
 
-  } else if (project === 'process-engineering') {
-    frame.src = 'https://raw.githubusercontent.com/atsuvovor/projects_portfolio.github.io/main/interactive_DMAIC_case_studySPA.html';
-    frame.style.display = 'block';
+  }
 
   } else {
     const urlMap = {
@@ -327,6 +325,7 @@ function loadProject(project) {
       'market-intelligence': 'market-intelligence.html',
       'business-continuity': 'business-continuity-plan.html',
       'dashboards': 'dashboard.html'
+      'process-engineering':'interactive_DMAIC_case_studySPA.html'
     };
 
     const url = urlMap[project];
@@ -367,5 +366,6 @@ showAllProjects();
 
 </body>
 </html>
+
 
 
