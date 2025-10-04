@@ -173,7 +173,7 @@ body {
 <!-- Main Content -->
 <div class="main" id="portfolio-cards">
 
-  <div id="cybersecurity" class="card" onclick="window.open('https://github.com/atsuvovor/CyberThreat_Insight', '_blank')">
+  <div id="cybersecurity" class="card" data-link="https://github.com/atsuvovor/CyberThreat_Insight">
     <img src="cyberSecurityHeaderImage.png" alt="Cybersecurity Analytics">
     <div class="card-content">
       <h3>Cybersecurity Analytics</h3>
@@ -181,7 +181,7 @@ body {
     </div>
   </div>
 
-  <div id="data-governance" class="card" onclick="window.open('data-governance.html', '_blank')">
+  <div id="data-governance" class="card" data-link="data-governance.html">
     <img src="Data-governance.png" alt="Data Governance">
     <div class="card-content">
       <h3>Data Governance</h3>
@@ -189,7 +189,7 @@ body {
     </div>
   </div>
 
-  <div id="fraud-detection" class="card" onclick="window.open('fraud-detection.html', '_blank')">
+  <div id="fraud-detection" class="card" data-link="fraud-detection.html">
     <img src="fraud_detection.png" alt="Fraud Detection">
     <div class="card-content">
       <h3>Fraud Detection</h3>
@@ -197,7 +197,7 @@ body {
     </div>
   </div>
 
-  <div id="healthcare" class="card" onclick="window.open('healthcare-intelligence.html', '_blank')">
+  <div id="healthcare" class="card" data-link="healthcare-intelligence.html">
     <img src="healthcare_intelligence.png" alt="Healthcare Intelligence">
     <div class="card-content">
       <h3>Healthcare Intelligence</h3>
@@ -205,7 +205,7 @@ body {
     </div>
   </div>
 
-  <div id="market-intelligence" class="card" onclick="window.open('market-intelligence.html', '_blank')">
+  <div id="market-intelligence" class="card" data-link="market-intelligence.html">
     <img src="marcket_intelligence.jpg" alt="Market Intelligence">
     <div class="card-content">
       <h3>Market Intelligence</h3>
@@ -213,7 +213,7 @@ body {
     </div>
   </div>
 
-  <div id="stock-portfolio" class="card" onclick="loadGist()">
+  <div id="stock-portfolio" class="card">
     <img src="stock_portfolio_analytics.png" alt="Stock Portfolio Analytics">
     <div class="card-content">
       <h3>Stock Portfolio Analytics</h3>
@@ -222,7 +222,7 @@ body {
   </div>
   <div id="gist-container" style="margin-top:30px;"></div>
 
-  <div id="business-continuity" class="card" onclick="window.open('business-continuity-plan.html', '_blank')">
+  <div id="business-continuity" class="card" data-link="business-continuity-plan.html">
     <img src="business_continuity_plan.png" alt="Business Continuity Plan">
     <div class="card-content">
       <h3>Business Continuity Plan</h3>
@@ -230,10 +230,70 @@ body {
     </div>
   </div>
 
-  <div id="process-engineering" class="card" onclick="window.open('Interactive DMAIC Case StudySPA.html', '_blank')">
+  <div id="process-engineering" class="card" data-link="Interactive DMAIC Case StudySPA.html">
     <img src="process_engineering.png" alt="Process Engineering">
     <div class="card-content">
       <h3>Process Engineering</h3>
       <p>Optimizing business processes through analytics and workflow design for improved efficiency and outcomes.</p>
     </div>
-  </
+  </div>
+
+  <div id="dashboards" class="card" data-link="dashboard.html">
+    <img src="data_visualization_dashboards.png" alt="Data Visualization Dashboards">
+    <div class="card-content">
+      <h3>Data Visualization Dashboards</h3>
+      <p>Interactive dashboards built with Tableau, Power BI, and Streamlit for executive-level analytics and reporting.</p>
+    </div>
+  </div>
+
+  <div id="articles" class="card" data-link="https://github.com/atsuvovor/Articles">
+    <img src="articles_publication.png" alt="Articles & Publications">
+    <div class="card-content">
+      <h3>Articles & Publications</h3>
+      <p>Thought leadership articles and technical publications on data analytics, AI, and cybersecurity topics.</p>
+    </div>
+  </div>
+
+</div>
+
+<script>
+// Get all cards
+const allCards = document.querySelectorAll('.card');
+
+function showAllProjects() {
+  allCards.forEach(card => card.style.display = 'flex');
+  document.getElementById('portfolio-cards').scrollIntoView({behavior:'smooth'});
+  document.getElementById('gist-container').innerHTML = '';
+}
+
+function showSingleProject(id) {
+  allCards.forEach(card => {
+    if(card.id === id){
+      card.style.display = 'flex';
+      card.scrollIntoView({behavior:'smooth'});
+
+      if(id === 'stock-portfolio'){
+        loadGist();
+      } else {
+        // Open link in new tab
+        const link = card.getAttribute('data-link');
+        window.open(link,'_blank');
+      }
+    } else {
+      card.style.display = 'none';
+    }
+  });
+}
+
+// Load GitHub Gist for Stock Portfolio
+function loadGist(){
+  document.getElementById('gist-container').innerHTML = '';
+  const script = document.createElement('script');
+  script.src = "https://gist.github.com/atsuvovor/763a4743caf1a48026d98892185cf7e4.js";
+  document.getElementById('gist-container').appendChild(script);
+}
+</script>
+
+</body>
+</html>
+
