@@ -5,92 +5,90 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Atsu Vovor | Data & Analytics Portfolio</title>
 <style>
-/* Reset and layout */
+/* --- Basic reset --- */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 body {
-  font-family: 'Segoe UI', Arial, sans-serif;
-  background-color: #f4f4f9;
+  font-family: 'Arial', sans-serif;
+  background-color: #f5f5f7;
   color: #333;
   display: flex;
   min-height: 100vh;
-  scroll-behavior: smooth;
+  overflow: hidden;
 }
 
-/* Sidebar */
+/* --- Sidebar --- */
 .sidebar {
   width: 260px;
   background: linear-gradient(180deg, #4e54c8, #8f94fb);
   color: white;
+  flex-shrink: 0;
   display: flex;
   flex-direction: column;
   padding: 20px;
-  position: sticky;
+  position: fixed;
   top: 0;
-  height: 100vh;
+  bottom: 0;
+  left: 0;
   overflow-y: auto;
 }
-
-/* Sidebar Header */
-.sidebar .header {
+.header {
   text-align: center;
-  margin-bottom: 25px;
+  margin-bottom: 30px;
 }
-.sidebar .header img {
-  width: 110px;
-  height: 110px;
+.header img {
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
-  border: 3px solid white;
   object-fit: cover;
   margin-bottom: 10px;
+  border: 3px solid white;
 }
-.sidebar .header h1 {
+.header-text h1 {
   font-size: 22px;
-  margin-bottom: 4px;
 }
-.sidebar .header h2 {
+.header-text h2 {
   font-size: 14px;
-  font-weight: 300;
+  font-weight: normal;
   color: #e0e0ff;
+  margin-top: 5px;
 }
-
-/* Sidebar Links */
 .sidebar nav a {
   text-decoration: none;
   color: white;
-  padding: 10px 12px;
+  padding: 12px 15px;
   border-radius: 8px;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
   transition: background 0.3s;
   display: block;
-  cursor: pointer;
 }
-.sidebar nav a:hover,
-.sidebar nav a.active {
+.sidebar nav a:hover, .sidebar nav a.active {
   background-color: rgba(255,255,255,0.2);
 }
 
-/* Main */
-.main {
+/* --- Content area --- */
+.content {
+  margin-left: 260px;
   flex: 1;
-  padding: 30px;
+  padding: 25px;
+  overflow-y: auto;
+}
+
+/* --- Portfolio cards --- */
+#portfolio-cards {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 25px;
 }
-
-/* Cards */
 .card {
   background: white;
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 4px 15px rgba(0,0,0,0.1);
   transition: transform 0.3s, box-shadow 0.3s;
-  display: flex;
-  flex-direction: column;
   cursor: pointer;
 }
 .card:hover {
@@ -113,44 +111,46 @@ body {
 .card-content p {
   font-size: 14px;
   color: #555;
-  line-height: 1.5;
+  line-height: 1.4;
 }
 
-/* Embedded iframe box */
-.iframe-box {
-  grid-column: 1 / -1;
-  background: white;
-  border-radius: 10px;
-  padding: 10px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.15);
-  height: 600px;
-  overflow: hidden;
-}
-.iframe-box iframe {
+/* --- iframe viewer --- */
+#iframe-viewer {
   width: 100%;
-  height: 100%;
+  height: 85vh;
   border: none;
+  display: none;
+}
+.back-button {
+  display: none;
+  margin-bottom: 15px;
+  background: #4e54c8;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.back-button:hover {
+  background: #3b3fa8;
 }
 
-/* Responsive */
-@media (max-width: 900px) {
+/* Responsive adjustments */
+@media screen and (max-width: 900px) {
   body {
     flex-direction: column;
   }
   .sidebar {
     width: 100%;
+    position: relative;
     flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
     overflow-x: auto;
-    height: auto;
-    padding: 10px;
   }
-  .sidebar nav {
-    display: flex;
-    gap: 10px;
-  }
-  .main {
-    padding: 20px 10px;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  .content {
+    margin-left: 0;
+    padding: 15px;
   }
 }
 </style>
@@ -161,164 +161,133 @@ body {
 <div class="sidebar">
   <div class="header">
     <img src="Atsu-Vovor.jpg" alt="Atsu Vovor">
-    <h1>Atsu Vovor</h1>
-    <h2>Data & Analytics Portfolio</h2>
+    <div class="header-text">
+      <h1>Atsu Vovor</h1>
+      <h2>Data & Analytics Portfolio</h2>
+    </div>
   </div>
   <nav>
-    <a onclick="showAllProjects()" class="active">All Projects</a>
-    <a onclick="showSingleProject('cybersecurity')">Cybersecurity</a>
-    <a onclick="showSingleProject('data-governance')">Data Governance</a>
-    <a onclick="showSingleProject('fraud-detection')">Fraud Detection</a>
-    <a onclick="showSingleProject('healthcare')">Healthcare Intelligence</a>
-    <a onclick="showSingleProject('market-intelligence')">Market Intelligence</a>
-    <a onclick="showSingleProject('stock-portfolio')">Stock Portfolio</a>
-    <a onclick="showSingleProject('business-continuity')">Business Continuity</a>
-    <a onclick="showSingleProject('process-engineering')">Process Engineering</a>
-    <a onclick="showSingleProject('dashboards')">Dashboards</a>
-    <a onclick="showSingleProject('articles')">Articles</a>
+    <a href="#" class="active" onclick="showAllProjects()">All Projects</a>
+    <a href="#" onclick="showProject('https://github.com/atsuvovor/CyberThreat_Insight')">Cybersecurity</a>
+    <a href="#" onclick="showProject('data-governance.html')">Data Governance</a>
+    <a href="#" onclick="showProject('fraud-detection.html')">Fraud Detection</a>
+    <a href="#" onclick="showProject('healthcare-intelligence.html')">Healthcare Intelligence</a>
+    <a href="#" onclick="showProject('market-intelligence.html')">Market Intelligence</a>
+    <a href="#" onclick="showProject('https://github.com/atsuvovor/Projects/blob/main/Stock_Portfolio_Analytics_v1_1.pdf')">Stock Portfolio</a>
+    <a href="#" onclick="showProject('business-continuity-plan.html')">Business Continuity</a>
+    <a href="#" onclick="showProject('Interactive DMAIC Case StudySPA.html')">Process Engineering</a>
+    <a href="#" onclick="showProject('dashboard.html')">Dashboards</a>
+    <a href="#" onclick="showProject('https://github.com/atsuvovor/Articles')">Articles & Publications</a>
   </nav>
 </div>
 
 <!-- Main Content -->
-<div class="main" id="portfolio-cards">
+<div class="content">
+  <button class="back-button" onclick="showAllProjects()">← Back to All Projects</button>
+  <iframe id="iframe-viewer"></iframe>
 
-  <div id="cybersecurity" class="card" data-url="https://github.com/atsuvovor/CyberThreat_Insight">
-    <img src="cyberSecurityHeaderImage.png" alt="Cybersecurity Analytics">
-    <div class="card-content">
-      <h3>Cybersecurity Analytics</h3>
-      <p>Advanced threat detection and attack simulation dashboards for monitoring and mitigating cyber risks.</p>
+  <div id="portfolio-cards">
+
+    <div class="card" onclick="showProject('https://github.com/atsuvovor/CyberThreat_Insight')">
+      <img src="cyberSecurityHeaderImage.png" alt="Cybersecurity Analytics">
+      <div class="card-content">
+        <h3>Cybersecurity Analytics</h3>
+        <p>Advanced threat detection and attack simulation dashboards for monitoring and mitigating cyber risks.</p>
+      </div>
     </div>
-  </div>
 
-  <div id="data-governance" class="card" data-url="data-governance.html">
-    <img src="Data-governance.png" alt="Data Governance">
-    <div class="card-content">
-      <h3>Data Governance</h3>
-      <p>Frameworks and tools for ensuring data quality, compliance, and integrity across enterprise systems.</p>
+    <div class="card" onclick="showProject('data-governance.html')">
+      <img src="Data-governance.png" alt="Data Governance">
+      <div class="card-content">
+        <h3>Data Governance</h3>
+        <p>Frameworks and tools for ensuring data quality, compliance, and integrity across enterprise systems.</p>
+      </div>
     </div>
-  </div>
 
-  <div id="fraud-detection" class="card" data-url="fraud-detection.html">
-    <img src="fraud_detection.png" alt="Fraud Detection">
-    <div class="card-content">
-      <h3>Fraud Detection</h3>
-      <p>Machine learning models to identify suspicious activities and prevent financial fraud in real time.</p>
+    <div class="card" onclick="showProject('fraud-detection.html')">
+      <img src="fraud_detection.png" alt="Fraud Detection">
+      <div class="card-content">
+        <h3>Fraud Detection</h3>
+        <p>Machine learning models to identify suspicious activities and prevent financial fraud in real time.</p>
+      </div>
     </div>
-  </div>
 
-  <div id="healthcare" class="card" data-url="healthcare-intelligence.html">
-    <img src="healthcare_intelligence.png" alt="Healthcare Intelligence">
-    <div class="card-content">
-      <h3>Healthcare Intelligence</h3>
-      <p>AI-powered insights to improve patient outcomes, optimize resources, and support healthcare decisions.</p>
+    <div class="card" onclick="showProject('healthcare-intelligence.html')">
+      <img src="healthcare_intelligence.png" alt="Healthcare Intelligence">
+      <div class="card-content">
+        <h3>Healthcare Intelligence</h3>
+        <p>AI-powered insights to improve patient outcomes, optimize resources, and support healthcare decisions.</p>
+      </div>
     </div>
-  </div>
 
-  <div id="market-intelligence" class="card" data-url="market-intelligence.html">
-    <img src="marcket_intelligence.jpg" alt="Market Intelligence">
-    <div class="card-content">
-      <h3>Market Intelligence</h3>
-      <p>Data-driven analytics for tracking trends, competitor performance, and emerging business opportunities.</p>
+    <div class="card" onclick="showProject('market-intelligence.html')">
+      <img src="marcket_intelligence.jpg" alt="Market Intelligence">
+      <div class="card-content">
+        <h3>Market Intelligence</h3>
+        <p>Data-driven analytics for tracking trends, competitor performance, and emerging business opportunities.</p>
+      </div>
     </div>
-  </div>
 
-  <div id="stock-portfolio" class="card" data-url="https://gist.github.com/atsuvovor/763a4743caf1a48026d98892185cf7e4.js">
-    <img src="stock_portfolio_analytics.png" alt="Stock Portfolio Analytics">
-    <div class="card-content">
-      <h3>Stock Portfolio Analytics</h3>
-      <p>Interactive dashboards and predictive models for portfolio optimization and investment risk analysis.</p>
+    <div class="card" onclick="showProject('https://github.com/atsuvovor/Projects/blob/main/Stock_Portfolio_Analytics_v1_1.pdf')">
+      <img src="stock_portfolio_analytics.png" alt="Stock Portfolio Analytics">
+      <div class="card-content">
+        <h3>Stock Portfolio Analytics</h3>
+        <p>Interactive dashboards and predictive models for portfolio optimization and investment risk analysis.</p>
+      </div>
     </div>
-  </div>
-  <div id="iframe-container" class="iframe-box" style="display:none;"></div>
 
-  <div id="business-continuity" class="card" data-url="business-continuity-plan.html">
-    <img src="business_continuity_plan.png" alt="Business Continuity Plan">
-    <div class="card-content">
-      <h3>Business Continuity Plan</h3>
-      <p>Strategic frameworks to ensure organizational resilience and operational continuity during disruptions.</p>
+    <div class="card" onclick="showProject('business-continuity-plan.html')">
+      <img src="business_continuity_plan.png" alt="Business Continuity Plan">
+      <div class="card-content">
+        <h3>Business Continuity Plan</h3>
+        <p>Strategic frameworks to ensure organizational resilience and operational continuity during disruptions.</p>
+      </div>
     </div>
-  </div>
 
-  <div id="process-engineering" class="card" data-url="Interactive DMAIC Case StudySPA.html">
-    <img src="process_engineering.png" alt="Process Engineering">
-    <div class="card-content">
-      <h3>Process Engineering</h3>
-      <p>Optimizing business processes through analytics and workflow design for improved efficiency and outcomes.</p>
+    <div class="card" onclick="showProject('Interactive DMAIC Case StudySPA.html')">
+      <img src="process_engineering.png" alt="Process Engineering">
+      <div class="card-content">
+        <h3>Process Engineering</h3>
+        <p>Optimizing business processes through analytics and workflow design for improved efficiency and outcomes.</p>
+      </div>
     </div>
-  </div>
 
-  <div id="dashboards" class="card" data-url="dashboard.html">
-    <img src="data_visualization_dashboards.png" alt="Dashboards">
-    <div class="card-content">
-      <h3>Data Visualization Dashboards</h3>
-      <p>Interactive dashboards built with Tableau, Power BI, and Streamlit for executive-level analytics and reporting.</p>
+    <div class="card" onclick="showProject('dashboard.html')">
+      <img src="data_visualization_dashboards.png" alt="Data Visualization Dashboards">
+      <div class="card-content">
+        <h3>Data Visualization Dashboards</h3>
+        <p>Interactive dashboards built with Tableau, Power BI, and Streamlit for executive-level analytics and reporting.</p>
+      </div>
     </div>
-  </div>
 
-  <div id="articles" class="card" data-url="https://github.com/atsuvovor/Articles">
-    <img src="articles_publication.png" alt="Articles">
-    <div class="card-content">
-      <h3>Articles & Publications</h3>
-      <p>Thought leadership articles and technical publications on data analytics, AI, and cybersecurity topics.</p>
+    <div class="card" onclick="showProject('https://github.com/atsuvovor/Articles')">
+      <img src="articles_publication.png" alt="Articles & Publications">
+      <div class="card-content">
+        <h3>Articles & Publications</h3>
+        <p>Thought leadership articles and technical publications on data analytics, AI, and cybersecurity topics.</p>
+      </div>
     </div>
-  </div>
 
+  </div>
 </div>
 
 <script>
-const allCards = document.querySelectorAll('.card');
-const iframeContainer = document.getElementById('iframe-container');
-const navLinks = document.querySelectorAll('.sidebar nav a');
+function showProject(url) {
+  document.getElementById('portfolio-cards').style.display = 'none';
+  document.getElementById('iframe-viewer').style.display = 'block';
+  document.querySelector('.back-button').style.display = 'inline-block';
+  document.getElementById('iframe-viewer').src = url;
 
-function clearActiveLinks() {
-  navLinks.forEach(link => link.classList.remove('active'));
+  document.querySelectorAll('.sidebar nav a').forEach(a => a.classList.remove('active'));
 }
 
-/* Show all projects */
 function showAllProjects() {
-  allCards.forEach(card => card.style.display = 'flex');
-  iframeContainer.style.display = 'none';
-  iframeContainer.innerHTML = '';
-  clearActiveLinks();
-  navLinks[0].classList.add('active');
+  document.getElementById('portfolio-cards').style.display = 'grid';
+  document.getElementById('iframe-viewer').style.display = 'none';
+  document.querySelector('.back-button').style.display = 'none';
+  document.querySelectorAll('.sidebar nav a').forEach(a => a.classList.remove('active'));
+  document.querySelector('.sidebar nav a:first-child').classList.add('active');
 }
-
-/* Show single project */
-function showSingleProject(id) {
-  allCards.forEach(card => {
-    if (card.id === id) card.style.display = 'flex';
-    else card.style.display = 'none';
-  });
-  clearActiveLinks();
-  document.querySelector(`.sidebar nav a[onclick="showSingleProject('${id}')"]`).classList.add('active');
-  const card = document.getElementById(id);
-  openProject(card);
-}
-
-/* Open project inline */
-function openProject(card) {
-  const url = card.getAttribute('data-url');
-  iframeContainer.style.display = 'block';
-  iframeContainer.innerHTML = '';
-
-  // If it’s a GitHub Gist
-  if (url.includes('gist.github.com')) {
-    const iframe = document.createElement('iframe');
-    iframe.srcdoc = `<script src="${url}"></script>`;
-    iframeContainer.appendChild(iframe);
-  } else {
-    const iframe = document.createElement('iframe');
-    iframe.src = url;
-    iframeContainer.appendChild(iframe);
-  }
-}
-
-/* Allow clicking directly on cards */
-allCards.forEach(card => {
-  card.addEventListener('click', () => {
-    showSingleProject(card.id);
-  });
-});
 </script>
 
 </body>
