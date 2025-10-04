@@ -5,9 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Atsu Vovor | Data & Analytics Portfolio</title>
 <style>
-/* Basic Reset */
+/* Reset and basic */
 * { box-sizing: border-box; margin:0; padding:0; }
-body { font-family: Arial, sans-serif; background-color: #f5f5f7; color:#333; display:flex; min-height:100vh; }
+body { font-family: Arial, sans-serif; background-color: #f5f5f7; display:flex; min-height:100vh; }
 
 /* Sidebar */
 .sidebar {
@@ -21,16 +21,13 @@ body { font-family: Arial, sans-serif; background-color: #f5f5f7; color:#333; di
   position:sticky;
   top:0;
 }
-.sidebar img {
-  width:120px; height:120px; border-radius:50%; margin:auto; margin-bottom:10px; object-fit:cover;
-  border:3px solid white;
-}
+.sidebar img { width:120px; height:120px; border-radius:50%; margin:auto; margin-bottom:10px; object-fit:cover; border:3px solid white; }
 .sidebar h1 { font-size:24px; text-align:center; margin-bottom:5px; }
 .sidebar h2 { font-size:14px; text-align:center; margin-bottom:20px; font-weight:normal; color:#e0e0ff; }
 .sidebar nav a {
   text-decoration:none;
   color:white;
-  padding:12px 15px;
+  padding:10px 12px;
   border-radius:8px;
   margin-bottom:8px;
   display:block;
@@ -75,22 +72,10 @@ body { font-family: Arial, sans-serif; background-color: #f5f5f7; color:#333; di
   border:none;
 }
 
-/* Toggle switch */
-.toggle-container {
-  margin:10px 0;
-  text-align:center;
-}
-.toggle-container button {
-  padding:6px 12px;
-  border:none;
-  border-radius:6px;
-  background:#4e54c8;
-  color:white;
-  cursor:pointer;
-  margin:0 5px;
-}
-.toggle-container button.active { background:#8f94fb; }
+/* Gist container */
+#projectContent { width:100%; }
 
+/* Responsive adjustments */
 @media screen and (max-width:900px){
   body { flex-direction:column; }
   .sidebar { width:100%; flex-direction:row; overflow-x:auto; padding:10px;}
@@ -120,10 +105,6 @@ body { font-family: Arial, sans-serif; background-color: #f5f5f7; color:#333; di
     <a href="#" onclick="loadProject('dashboards')">Dashboards</a>
     <a href="#" onclick="loadProject('articles')">Articles & Publications</a>
   </nav>
-  <div class="toggle-container">
-    <button id="githubBtn" class="active" onclick="setMode('github')">GitHub Preview</button>
-    <button id="localBtn" onclick="setMode('local')">Local Mirror</button>
-  </div>
 </div>
 
 <!-- Main content -->
@@ -132,7 +113,6 @@ body { font-family: Arial, sans-serif; background-color: #f5f5f7; color:#333; di
   <!-- Home cards view -->
   <div id="homeView" class="cards-grid">
 
-    <!-- Stock Portfolio -->
     <a href="#" onclick="loadProject('stock-portfolio')" class="card">
       <img src="stock_portfolio_analytics.png" alt="Stock Portfolio Analytics">
       <div class="card-content">
@@ -141,7 +121,6 @@ body { font-family: Arial, sans-serif; background-color: #f5f5f7; color:#333; di
       </div>
     </a>
 
-    <!-- Cybersecurity Analytics -->
     <a href="#" onclick="loadProject('cybersecurity')" class="card">
       <img src="cyberSecurityHeaderImage.png" alt="Cybersecurity Analytics">
       <div class="card-content">
@@ -150,7 +129,6 @@ body { font-family: Arial, sans-serif; background-color: #f5f5f7; color:#333; di
       </div>
     </a>
 
-    <!-- Data Governance -->
     <a href="#" onclick="loadProject('data-governance')" class="card">
       <img src="Data-governance.png" alt="Data Governance">
       <div class="card-content">
@@ -159,7 +137,6 @@ body { font-family: Arial, sans-serif; background-color: #f5f5f7; color:#333; di
       </div>
     </a>
 
-    <!-- Fraud Detection -->
     <a href="#" onclick="loadProject('fraud-detection')" class="card">
       <img src="fraud_detection.png" alt="Fraud Detection">
       <div class="card-content">
@@ -168,7 +145,6 @@ body { font-family: Arial, sans-serif; background-color: #f5f5f7; color:#333; di
       </div>
     </a>
 
-    <!-- Healthcare Intelligence -->
     <a href="#" onclick="loadProject('healthcare')" class="card">
       <img src="healthcare_intelligence.png" alt="Healthcare Intelligence">
       <div class="card-content">
@@ -177,7 +153,6 @@ body { font-family: Arial, sans-serif; background-color: #f5f5f7; color:#333; di
       </div>
     </a>
 
-    <!-- Market Intelligence -->
     <a href="#" onclick="loadProject('market-intelligence')" class="card">
       <img src="marcket_intelligence.jpg" alt="Market Intelligence">
       <div class="card-content">
@@ -186,7 +161,6 @@ body { font-family: Arial, sans-serif; background-color: #f5f5f7; color:#333; di
       </div>
     </a>
 
-    <!-- Process Engineering -->
     <a href="#" onclick="loadProject('process-engineering')" class="card">
       <img src="process_engineering.png" alt="Process Engineering">
       <div class="card-content">
@@ -195,7 +169,6 @@ body { font-family: Arial, sans-serif; background-color: #f5f5f7; color:#333; di
       </div>
     </a>
 
-    <!-- Business Continuity -->
     <a href="#" onclick="loadProject('business-continuity')" class="card">
       <img src="business_continuity_plan.png" alt="Business Continuity Plan">
       <div class="card-content">
@@ -204,7 +177,6 @@ body { font-family: Arial, sans-serif; background-color: #f5f5f7; color:#333; di
       </div>
     </a>
 
-    <!-- Dashboards -->
     <a href="#" onclick="loadProject('dashboards')" class="card">
       <img src="data_visualization_dashboards.png" alt="Data Visualization Dashboards">
       <div class="card-content">
@@ -213,7 +185,6 @@ body { font-family: Arial, sans-serif; background-color: #f5f5f7; color:#333; di
       </div>
     </a>
 
-    <!-- Articles -->
     <a href="#" onclick="loadProject('articles')" class="card">
       <img src="articles_publication.png" alt="Articles & Publications">
       <div class="card-content">
@@ -227,52 +198,12 @@ body { font-family: Arial, sans-serif; background-color: #f5f5f7; color:#333; di
   <!-- Project iframe -->
   <iframe id="projectFrame" style="display:none;"></iframe>
 
+  <!-- Gist / dynamic project content -->
+  <div id="projectContent"></div>
+
 </div>
 
 <script>
-let mode = 'github'; // github preview by default
-
-function setMode(selectedMode){
-  mode = selectedMode;
-  document.getElementById('githubBtn').classList.toggle('active', mode==='github');
-  document.getElementById('localBtn').classList.toggle('active', mode==='local');
-}
-
-// Show all projects (home view)
 function showAllProjects(){
   document.getElementById('homeView').style.display='grid';
-  document.getElementById('projectFrame').style.display='none';
-}
-
-// Load a project in iframe
-function loadProject(project){
-  document.getElementById('homeView').style.display='none';
-  let frame = document.getElementById('projectFrame');
-  frame.style.display='block';
-  
-  let url = '';
-  
-  if(project==='stock-portfolio'){
-    if(mode==='github'){
-      // Embed Gist dynamically
-      frame.style.height='400px';
-      frame.srcdoc=`<script src="https://gist.github.com/atsuvovor/763a4743caf1a48026d98892185cf7e4.js"></script>`;
-      return;
-    } else { url='stock_portfolio.html'; }
-  }
-  else if(project==='cybersecurity'){ url = (mode==='github') ? 'https://github.com/atsuvovor/CyberThreat_Insight' : 'cybersecurity.html'; }
-  else if(project==='data-governance'){ url = (mode==='github') ? 'data-governance.html' : 'data-governance.html'; }
-  else if(project==='fraud-detection'){ url = 'fraud-detection.html'; }
-  else if(project==='healthcare'){ url = 'healthcare-intelligence.html'; }
-  else if(project==='market-intelligence'){ url = 'market-intelligence.html'; }
-  else if(project==='process-engineering'){ url = (mode==='github') ? 'https://raw.githubusercontent.com/atsuvovor/projects_portfolio.github.io/refs/heads/main/interactive_DMAIC_case_studySPA.html' : 'process_engineering.html'; }
-  else if(project==='business-continuity'){ url = 'business-continuity-plan.html'; }
-  else if(project==='dashboards'){ url = 'dashboard.html'; }
-  else if(project==='articles'){ url = (mode==='github') ? 'https://github.com/atsuvovor/Articles' : 'articles.html'; }
-
-  frame.src = url;
-}
-</script>
-
-</body>
-</html>
+  document.getElement
