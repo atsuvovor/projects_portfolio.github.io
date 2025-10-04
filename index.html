@@ -17,13 +17,27 @@ body { font-family: Arial, sans-serif; display:flex; min-height:100vh; backgroun
   flex-shrink:0;
   display:flex;
   flex-direction:column;
+  align-items:center;
   padding:20px;
   position:sticky;
   top:0;
 }
-.sidebar img { width:120px; height:120px; border-radius:50%; margin:auto 0 15px; object-fit:cover; border:3px solid white; }
-.sidebar h1 { font-size:24px; text-align:center; margin-bottom:5px; }
-.sidebar h2 { font-size:14px; text-align:center; margin-bottom:20px; font-weight:normal; color:#e0e0ff; }
+.sidebar-header {
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  margin-bottom:20px;
+}
+.sidebar-header img {
+  width:100px; height:100px;
+  border-radius:50%;
+  border:3px solid white;
+  object-fit:cover;
+  margin-bottom:10px;
+}
+.sidebar-header h1 { font-size:20px; margin-bottom:3px; }
+.sidebar-header h2 { font-size:14px; color:#e0e0ff; margin-bottom:15px; }
+.sidebar nav { width:100%; }
 .sidebar nav a {
   text-decoration:none;
   color:white;
@@ -31,8 +45,9 @@ body { font-family: Arial, sans-serif; display:flex; min-height:100vh; backgroun
   border-radius:8px;
   margin-bottom:8px;
   display:block;
-  transition: background 0.3s;
+  text-align:center;
   cursor:pointer;
+  transition: background 0.3s;
 }
 .sidebar nav a:hover { background: rgba(255,255,255,0.2); }
 
@@ -53,8 +68,7 @@ body { font-family: Arial, sans-serif; display:flex; min-height:100vh; backgroun
   transition: transform 0.3s, box-shadow 0.3s;
   display:flex;
   flex-direction:column;
-  text-decoration:none;
-  color:inherit;
+  cursor:pointer;
 }
 .card:hover { transform:translateY(-5px); box-shadow:0 10px 25px rgba(0,0,0,0.2); }
 .card img { width:100%; height:200px; object-fit:cover; }
@@ -64,8 +78,7 @@ body { font-family: Arial, sans-serif; display:flex; min-height:100vh; backgroun
 
 /* iframe for local HTML projects */
 #projectFrame { width:100%; height:80vh; border:none; display:none; }
-
-/* Gist container */
+/* container for Gists */
 #projectContent { width:100%; display:none; }
 
 /* Responsive */
@@ -82,21 +95,23 @@ body { font-family: Arial, sans-serif; display:flex; min-height:100vh; backgroun
 
 <!-- Sidebar -->
 <div class="sidebar">
-  <img src="Atsu-Vovor.jpg" alt="Atsu Vovor">
-  <h1>Atsu Vovor</h1>
-  <h2>Data & Analytics Portfolio</h2>
+  <div class="sidebar-header">
+    <img src="Atsu-Vovor.jpg" alt="Atsu Vovor">
+    <h1>Atsu Vovor</h1>
+    <h2>Data & Analytics Portfolio</h2>
+  </div>
   <nav>
-    <a onclick="showAllProjects()">All Projects</a>
-    <a onclick="loadProject('stock-portfolio')">Stock Portfolio</a>
-    <a onclick="loadProject('cybersecurity')">Cybersecurity</a>
-    <a onclick="loadProject('data-governance')">Data Governance</a>
-    <a onclick="loadProject('fraud-detection')">Fraud Detection</a>
-    <a onclick="loadProject('healthcare')">Healthcare Intelligence</a>
-    <a onclick="loadProject('market-intelligence')">Market Intelligence</a>
-    <a onclick="loadProject('process-engineering')">Process Engineering</a>
-    <a onclick="loadProject('business-continuity')">Business Continuity</a>
-    <a onclick="loadProject('dashboards')">Dashboards</a>
-    <a onclick="loadProject('articles')">Articles & Publications</a>
+    <a href="#" onclick="showAllProjects()">All Projects</a>
+    <a href="#" onclick="loadProject('stock-portfolio')">Stock Portfolio</a>
+    <a href="#" onclick="loadProject('cybersecurity')">Cybersecurity</a>
+    <a href="#" onclick="loadProject('data-governance')">Data Governance</a>
+    <a href="#" onclick="loadProject('fraud-detection')">Fraud Detection</a>
+    <a href="#" onclick="loadProject('healthcare')">Healthcare Intelligence</a>
+    <a href="#" onclick="loadProject('market-intelligence')">Market Intelligence</a>
+    <a href="#" onclick="loadProject('process-engineering')">Process Engineering</a>
+    <a href="#" onclick="loadProject('business-continuity')">Business Continuity</a>
+    <a href="#" onclick="loadProject('dashboards')">Dashboards</a>
+    <a href="#" onclick="loadProject('articles')">Articles & Publications</a>
   </nav>
 </div>
 
@@ -105,7 +120,7 @@ body { font-family: Arial, sans-serif; display:flex; min-height:100vh; backgroun
   <!-- Home cards grid -->
   <div id="homeView" class="cards-grid">
 
-    <div class="card" onclick="loadProject('stock-portfolio')">
+    <div class="card" data-project="stock-portfolio">
       <img src="stock_portfolio_analytics.png" alt="Stock Portfolio Analytics">
       <div class="card-content">
         <h3>Stock Portfolio Analytics</h3>
@@ -113,7 +128,7 @@ body { font-family: Arial, sans-serif; display:flex; min-height:100vh; backgroun
       </div>
     </div>
 
-    <div class="card" onclick="loadProject('cybersecurity')">
+    <div class="card" data-project="cybersecurity">
       <img src="cyberSecurityHeaderImage.png" alt="Cybersecurity Analytics">
       <div class="card-content">
         <h3>Cybersecurity Analytics</h3>
@@ -121,7 +136,7 @@ body { font-family: Arial, sans-serif; display:flex; min-height:100vh; backgroun
       </div>
     </div>
 
-    <div class="card" onclick="loadProject('data-governance')">
+    <div class="card" data-project="data-governance">
       <img src="Data-governance.png" alt="Data Governance">
       <div class="card-content">
         <h3>Data Governance</h3>
@@ -129,7 +144,7 @@ body { font-family: Arial, sans-serif; display:flex; min-height:100vh; backgroun
       </div>
     </div>
 
-    <div class="card" onclick="loadProject('fraud-detection')">
+    <div class="card" data-project="fraud-detection">
       <img src="fraud_detection.png" alt="Fraud Detection">
       <div class="card-content">
         <h3>Fraud Detection</h3>
@@ -137,7 +152,7 @@ body { font-family: Arial, sans-serif; display:flex; min-height:100vh; backgroun
       </div>
     </div>
 
-    <div class="card" onclick="loadProject('healthcare')">
+    <div class="card" data-project="healthcare">
       <img src="healthcare_intelligence.png" alt="Healthcare Intelligence">
       <div class="card-content">
         <h3>Healthcare Intelligence</h3>
@@ -145,7 +160,7 @@ body { font-family: Arial, sans-serif; display:flex; min-height:100vh; backgroun
       </div>
     </div>
 
-    <div class="card" onclick="loadProject('market-intelligence')">
+    <div class="card" data-project="market-intelligence">
       <img src="marcket_intelligence.jpg" alt="Market Intelligence">
       <div class="card-content">
         <h3>Market Intelligence</h3>
@@ -153,7 +168,7 @@ body { font-family: Arial, sans-serif; display:flex; min-height:100vh; backgroun
       </div>
     </div>
 
-    <div class="card" onclick="loadProject('process-engineering')">
+    <div class="card" data-project="process-engineering">
       <img src="process_engineering.png" alt="Process Engineering">
       <div class="card-content">
         <h3>Process Engineering</h3>
@@ -161,7 +176,7 @@ body { font-family: Arial, sans-serif; display:flex; min-height:100vh; backgroun
       </div>
     </div>
 
-    <div class="card" onclick="loadProject('business-continuity')">
+    <div class="card" data-project="business-continuity">
       <img src="business_continuity_plan.png" alt="Business Continuity Plan">
       <div class="card-content">
         <h3>Business Continuity Plan</h3>
@@ -169,7 +184,7 @@ body { font-family: Arial, sans-serif; display:flex; min-height:100vh; backgroun
       </div>
     </div>
 
-    <div class="card" onclick="loadProject('dashboards')">
+    <div class="card" data-project="dashboards">
       <img src="data_visualization_dashboards.png" alt="Data Visualization Dashboards">
       <div class="card-content">
         <h3>Data Visualization Dashboards</h3>
@@ -177,7 +192,7 @@ body { font-family: Arial, sans-serif; display:flex; min-height:100vh; backgroun
       </div>
     </div>
 
-    <div class="card" onclick="loadProject('articles')">
+    <div class="card" data-project="articles">
       <img src="articles_publication.png" alt="Articles & Publications">
       <div class="card-content">
         <h3>Articles & Publications</h3>
@@ -187,7 +202,7 @@ body { font-family: Arial, sans-serif; display:flex; min-height:100vh; backgroun
 
   </div>
 
-  <!-- iframe for local HTML -->
+  <!-- iframe for local HTML projects -->
   <iframe id="projectFrame"></iframe>
 
   <!-- container for Gists -->
@@ -196,67 +211,7 @@ body { font-family: Arial, sans-serif; display:flex; min-height:100vh; backgroun
 </div>
 
 <script>
-function showAllProjects(){
-  document.getElementById('homeView').style.display='grid';
-  document.getElementById('projectFrame').style.display='none';
-  document.getElementById('projectContent').style.display='none';
-  document.getElementById('projectContent').innerHTML='';
-}
+// Card click handler
+document.querySelector
 
-function loadProject(project){
-  const home = document.getElementById('homeView');
-  const frame = document.getElementById('projectFrame');
-  const content = document.getElementById('projectContent');
 
-  home.style.display='none';
-  frame.style.display='none';
-  content.style.display='none';
-  content.innerHTML='';
-
-  if(project==='stock-portfolio'){
-    // Load Gist dynamically
-    const script = document.createElement('script');
-    script.src='https://gist.github.com/atsuvovor/763a4743caf1a48026d98892185cf7e4.js';
-    content.appendChild(script);
-    content.style.display='block';
-  }
-  else if(project==='process-engineering'){
-    frame.src='https://raw.githubusercontent.com/atsuvovor/projects_portfolio.github.io/refs/heads/main/interactive_DMAIC_case_studySPA.html';
-    frame.style.display='block';
-  }
-  else if(project==='cybersecurity'){
-    frame.src='cybersecurity.html'; // local copy
-    frame.style.display='block';
-  }
-  else if(project==='data-governance'){
-    frame.src='data-governance.html';
-    frame.style.display='block';
-  }
-  else if(project==='fraud-detection'){
-    frame.src='fraud-detection.html';
-    frame.style.display='block';
-  }
-  else if(project==='healthcare'){
-    frame.src='healthcare-intelligence.html';
-    frame.style.display='block';
-  }
-  else if(project==='market-intelligence'){
-    frame.src='market-intelligence.html';
-    frame.style.display='block';
-  }
-  else if(project==='business-continuity'){
-    frame.src='business-continuity-plan.html';
-    frame.style.display='block';
-  }
-  else if(project==='dashboards'){
-    frame.src='dashboard.html';
-    frame.style.display='block';
-  }
-  else if(project==='articles'){
-    window.open('https://github.com/atsuvovor/Articles','_blank'); // external repo
-  }
-}
-</script>
-
-</body>
-</html>
