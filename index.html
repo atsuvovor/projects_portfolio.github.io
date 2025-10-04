@@ -3,104 +3,122 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Atsu Vovor | Data & Analytics Portfolio</title>
-
-<!-- Include marked.js for Markdown rendering -->
+<title>Atsu Vovor | Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 
 <style>
-* { box-sizing: border-box; margin:0; padding:0; }
-body { font-family: Arial, sans-serif; display:flex; min-height:100vh; background:#f5f5f7; }
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  background: #f8f9fc;
+  display: flex;
+  min-height: 100vh;
+}
 
 /* Sidebar */
 .sidebar {
   width: 250px;
-  background: linear-gradient(180deg,#4e54c8,#8f94fb);
-  color:white;
-  flex-shrink:0;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  padding:20px;
-  position:sticky;
-  top:0;
+  background: linear-gradient(180deg, #4e54c8, #8f94fb);
+  color: white;
+  padding: 30px 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 2px 0 8px rgba(0,0,0,0.1);
 }
-.sidebar-header {
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  margin-bottom:20px;
+.sidebar img {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  margin-bottom: 15px;
+  border: 3px solid white;
 }
-.sidebar-header img {
-  width:100px; height:100px;
-  border-radius:50%;
-  border:3px solid white;
-  object-fit:cover;
-  margin-bottom:10px;
+.sidebar h2 {
+  font-size: 1.4em;
+  margin-bottom: 5px;
 }
-.sidebar-header h1 { font-size:20px; margin-bottom:3px; }
-.sidebar-header h2 { font-size:14px; color:#e0e0ff; margin-bottom:15px; }
-.sidebar nav { width:100%; }
-.sidebar nav a {
-  text-decoration:none;
-  color:white;
-  padding:10px 12px;
-  border-radius:8px;
-  margin-bottom:8px;
-  display:block;
-  text-align:center;
-  cursor:pointer;
-  transition: background 0.3s;
+.sidebar p {
+  font-size: 0.9em;
+  opacity: 0.85;
+  margin-bottom: 25px;
+  text-align: center;
 }
-.sidebar nav a:hover { background: rgba(255,255,255,0.2); }
+.sidebar a {
+  color: white;
+  text-decoration: none;
+  margin: 6px 0;
+  font-weight: 500;
+  transition: opacity 0.3s;
+}
+.sidebar a:hover { opacity: 0.7; }
 
-/* Main content area */
-.main { flex:1; padding:20px; overflow:auto; }
+/* Main area */
+.main {
+  flex: 1;
+  padding: 30px;
+  overflow-y: auto;
+}
 
-/* Home cards */
-.cards-grid {
-  display:grid;
-  grid-template-columns: repeat(auto-fill,minmax(300px,1fr));
-  gap:20px;
+/* Cards grid */
+#homeView {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
 }
 .card {
-  background:white;
-  border-radius:12px;
-  overflow:hidden;
-  box-shadow:0 4px 15px rgba(0,0,0,0.1);
-  transition: transform 0.3s, box-shadow 0.3s;
-  display:flex;
-  flex-direction:column;
-  cursor:pointer;
+  background: white;
+  border-radius: 14px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  cursor: pointer;
+  overflow: hidden;
 }
-.card:hover { transform:translateY(-5px); box-shadow:0 10px 25px rgba(0,0,0,0.2); }
-.card img { width:100%; height:200px; object-fit:cover; }
-.card-content { padding:15px 20px; }
-.card-content h3 { margin-bottom:10px; color:#4e54c8; }
-.card-content p { font-size:14px; color:#555; line-height:1.4; }
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+}
+.card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+}
+.card h3 {
+  padding: 15px;
+  font-size: 1.1em;
+  color: #333;
+  margin: 0;
+}
 
-/* iframe for projects */
-#projectFrame { width:100%; height:80vh; border:none; display:none; }
-/* container for Gists or Markdown */
-#projectContent { width:100%; display:none; overflow-y:auto; }
+/* Iframe */
+#projectFrame {
+  width: 100%;
+  height: 80vh;
+  border: none;
+  display: none;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
 
 /* Markdown content styling */
 #projectContent {
+  display: none;
   padding: 20px;
   background: #fff;
   border-radius: 12px;
   box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  overflow-y: auto;
   line-height: 1.6;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 /* Headings */
-#projectContent h1 { font-size: 2em; margin-bottom: 0.5em; color: #4e54c8; }
-#projectContent h2 { font-size: 1.75em; margin-bottom: 0.5em; color: #4e54c8; }
-#projectContent h3 { font-size: 1.5em; margin-bottom: 0.5em; color: #4e54c8; }
-#projectContent h4 { font-size: 1.25em; margin-bottom: 0.5em; color: #4e54c8; }
+#projectContent h1, #projectContent h2, #projectContent h3, #projectContent h4 {
+  color: #4e54c8;
+  margin-top: 1em;
+}
 
-/* Paragraphs and links */
+/* Paragraphs, links */
 #projectContent p { margin-bottom: 1em; color: #333; }
 #projectContent a { color: #4e54c8; text-decoration: none; }
 #projectContent a:hover { text-decoration: underline; }
@@ -133,7 +151,6 @@ body { font-family: Arial, sans-serif; display:flex; min-height:100vh; backgroun
   padding: 2px 5px;
   border-radius: 4px;
   font-family: monospace;
-  font-size: 0.95em;
 }
 
 /* Tables */
@@ -152,138 +169,49 @@ body { font-family: Arial, sans-serif; display:flex; min-height:100vh; backgroun
   text-align: left;
 }
 #projectContent tr:nth-child(even) { background: #f9f9f9; }
-
-/* Responsive */
-@media screen and (max-width:900px){
-  body { flex-direction:column; }
-  .sidebar { width:100%; flex-direction:row; overflow-x:auto; padding:10px; }
-  .sidebar nav { display:flex; gap:10px; }
-  .sidebar nav a { flex-shrink:0; }
-  .cards-grid { grid-template-columns: repeat(auto-fill,minmax(250px,1fr)); }
-}
 </style>
 </head>
+
 <body>
 
 <!-- Sidebar -->
 <div class="sidebar">
-  <div class="sidebar-header">
-    <img src="Atsu-Vovor.jpg" alt="Atsu Vovor">
-    <h1>Atsu Vovor</h1>
-    <h2>Data & Analytics Portfolio</h2>
-  </div>
-  <nav>
-    <a href="#" onclick="showAllProjects()">All Projects</a>
-    <a href="#" onclick="loadProject('stock-portfolio')">Stock Portfolio</a>
-    <a href="#" onclick="loadProject('cybersecurity')">Cybersecurity</a>
-    <a href="#" onclick="loadProject('data-governance')">Data Governance</a>
-    <a href="#" onclick="loadProject('fraud-detection')">Fraud Detection</a>
-    <a href="#" onclick="loadProject('healthcare')">Healthcare Intelligence</a>
-    <a href="#" onclick="loadProject('market-intelligence')">Market Intelligence</a>
-    <a href="#" onclick="loadProject('process-engineering')">Process Engineering</a>
-    <a href="#" onclick="loadProject('business-continuity')">Business Continuity</a>
-    <a href="#" onclick="loadProject('dashboards')">Dashboards</a>
-    <a href="#" onclick="loadProject('articles')">Articles & Publications</a>
-  </nav>
+  <img src="https://github.com/atsuvovor.png" alt="Atsu Vovor">
+  <h2>Atsu Vovor</h2>
+  <p>Data & Analytics Consultant | AI | Cybersecurity</p>
+  <a href="#" onclick="showAllProjects()">🏠 Home</a>
+  <a href="https://github.com/atsuvovor" target="_blank">💻 GitHub</a>
+  <a href="https://www.linkedin.com/in/atsu-vovor-mmai-9188326/" target="_blank">🔗 LinkedIn</a>
+  <a href="https://public.tableau.com/app/profile/atsu.vovor8645/vizzes" target="_blank">📊 Tableau</a>
 </div>
 
 <!-- Main content -->
 <div class="main">
-  <!-- Home cards grid -->
-  <div id="homeView" class="cards-grid">
-
+  <div id="homeView">
     <div class="card" data-project="stock-portfolio">
-      <img src="stock_portfolio_analytics.png" alt="Stock Portfolio Analytics">
-      <div class="card-content">
-        <h3>Stock Portfolio Analytics</h3>
-        <p>Interactive dashboards and predictive models for portfolio optimization and investment risk analysis.</p>
-      </div>
+      <img src="https://github.com/atsuvovor/projects_portfolio.github.io/blob/main/assets/stock.jpg?raw=true" alt="Stock Portfolio Analytics">
+      <h3>Stock Portfolio Analytics</h3>
     </div>
-
     <div class="card" data-project="cybersecurity">
-      <img src="cyberSecurityHeaderImage.png" alt="Cybersecurity Analytics">
-      <div class="card-content">
-        <h3>Cybersecurity Analytics</h3>
-        <p>Advanced threat detection and attack simulation dashboards for monitoring and mitigating cyber risks.</p>
-      </div>
+      <img src="https://github.com/atsuvovor/projects_portfolio.github.io/blob/main/assets/cybersecurity.jpg?raw=true" alt="Cybersecurity Analytics">
+      <h3>Cybersecurity Analytics</h3>
     </div>
-
-    <div class="card" data-project="data-governance">
-      <img src="Data-governance.png" alt="Data Governance">
-      <div class="card-content">
-        <h3>Data Governance</h3>
-        <p>Frameworks and tools for ensuring data quality, compliance, and integrity across enterprise systems.</p>
-      </div>
-    </div>
-
-    <div class="card" data-project="fraud-detection">
-      <img src="fraud_detection.png" alt="Fraud Detection">
-      <div class="card-content">
-        <h3>Fraud Detection</h3>
-        <p>Machine learning models to identify suspicious activities and prevent financial fraud in real time.</p>
-      </div>
-    </div>
-
-    <div class="card" data-project="healthcare">
-      <img src="healthcare_intelligence.png" alt="Healthcare Intelligence">
-      <div class="card-content">
-        <h3>Healthcare Intelligence</h3>
-        <p>AI-powered insights to improve patient outcomes, optimize resources, and support healthcare decisions.</p>
-      </div>
-    </div>
-
-    <div class="card" data-project="market-intelligence">
-      <img src="marcket_intelligence.jpg" alt="Market Intelligence">
-      <div class="card-content">
-        <h3>Market Intelligence</h3>
-        <p>Data-driven analytics for tracking trends, competitor performance, and emerging business opportunities.</p>
-      </div>
-    </div>
-
     <div class="card" data-project="process-engineering">
-      <img src="process_engineering.png" alt="Process Engineering">
-      <div class="card-content">
-        <h3>Process Engineering</h3>
-        <p>Optimizing business processes through analytics and workflow design for improved efficiency and outcomes.</p>
-      </div>
+      <img src="https://github.com/atsuvovor/projects_portfolio.github.io/blob/main/assets/process.jpg?raw=true" alt="Process Engineering">
+      <h3>Process Engineering (DMAIC)</h3>
     </div>
-
-    <div class="card" data-project="business-continuity">
-      <img src="business_continuity_plan.png" alt="Business Continuity Plan">
-      <div class="card-content">
-        <h3>Business Continuity Plan</h3>
-        <p>Strategic frameworks to ensure organizational resilience and operational continuity during disruptions.</p>
-      </div>
-    </div>
-
-    <div class="card" data-project="dashboards">
-      <img src="data_visualization_dashboards.png" alt="Data Visualization Dashboards">
-      <div class="card-content">
-        <h3>Data Visualization Dashboards</h3>
-        <p>Interactive dashboards built with Tableau, Power BI, and Streamlit for executive-level analytics and reporting.</p>
-      </div>
-    </div>
-
     <div class="card" data-project="articles">
-      <img src="articles_publication.png" alt="Articles & Publications">
-      <div class="card-content">
-        <h3>Articles & Publications</h3>
-        <p>Thought leadership articles and technical publications on data analytics, AI, and cybersecurity topics.</p>
-      </div>
+      <img src="https://github.com/atsuvovor/projects_portfolio.github.io/blob/main/assets/articles.jpg?raw=true" alt="Articles">
+      <h3>Articles & Publications</h3>
     </div>
-
   </div>
 
-  <!-- iframe for raw HTML projects -->
   <iframe id="projectFrame"></iframe>
-
-  <!-- container for embedded Gists / Markdown -->
   <div id="projectContent"></div>
-
 </div>
 
 <script>
-// Show all projects (home view)
+// Show all projects
 function showAllProjects() {
   document.getElementById('homeView').style.display = 'grid';
   document.getElementById('projectFrame').style.display = 'none';
@@ -291,19 +219,17 @@ function showAllProjects() {
   document.getElementById('projectContent').innerHTML = '';
 }
 
-// Load project dynamically
+// Load selected project
 function loadProject(project) {
   const home = document.getElementById('homeView');
   const frame = document.getElementById('projectFrame');
   const content = document.getElementById('projectContent');
 
-  // Hide everything first
   home.style.display = 'none';
   frame.style.display = 'none';
   content.style.display = 'none';
   content.innerHTML = '';
 
-  // Special projects
   if (project === 'articles') {
     content.style.display = 'block';
     const iframe = document.createElement('iframe');
@@ -313,33 +239,26 @@ function loadProject(project) {
     iframe.style.border = 'none';
     content.appendChild(iframe);
 
-  }
+  } else if (project === 'process-engineering') {
+    frame.src = 'https://atsuvovor.github.io/projects_portfolio.github.io/interactive_DMAIC_case_studySPA.html';
+    frame.style.display = 'block';
 
   } else {
     const urlMap = {
-      'stock-portfolio': 'Stock_Portfolio_Analytics_v1.html',
-      'cybersecurity': 'CyberThreat_Insight_V31.html',
-      'data-governance': 'data-governance.html',
-      'fraud-detection': 'fraud-detection.html',
-      'healthcare': 'healthcare-intelligence.html',
-      'market-intelligence': 'market-intelligence.html',
-      'business-continuity': 'business-continuity-plan.html',
-      'dashboards': 'dashboard.html'
-      'process-engineering':'interactive_DMAIC_case_studySPA.html'
+      'stock-portfolio': 'stock_portfolio_analytics.md',
+      'cybersecurity': 'https://github.com/atsuvovor/CyberThreat_Insight'
     };
-
     const url = urlMap[project];
     if (!url) { alert('Project not found!'); showAllProjects(); return; }
 
     if (url.endsWith('.md')) {
-      // Fetch and render Markdown
       fetch(url)
         .then(res => res.text())
         .then(md => {
           content.style.display = 'block';
           content.innerHTML = marked.parse(md);
         })
-        .catch(err => {
+        .catch(() => {
           alert('Failed to load Markdown file.');
           showAllProjects();
         });
@@ -347,25 +266,16 @@ function loadProject(project) {
     } else if (url.startsWith('http')) {
       frame.src = url;
       frame.style.display = 'block';
-
-    } else {
-      frame.src = url;
-      frame.style.display = 'block';
     }
   }
 }
 
-// Card click events
 document.querySelectorAll('.card').forEach(card => {
   card.addEventListener('click', () => loadProject(card.dataset.project));
 });
 
-// Initialize
 showAllProjects();
 </script>
 
 </body>
 </html>
-
-
-
