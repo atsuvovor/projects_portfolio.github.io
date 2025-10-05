@@ -114,12 +114,12 @@ body {
 }
 
 /* ===== FOOTER ICONS ===== */
-#sidebar-footer {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  padding: 15px;
-  border-top: 1px solid rgba(255,255,255,0.3);
+#sidebar-footer a img {
+  width: 28px;
+  height: 28px;
+  filter: invert(1) drop-shadow(0 0 2px rgba(0,0,0,0.3));
+  opacity: 0.95;
+  transition: transform 0.3s, opacity 0.3s;
 }
 
 #sidebar-footer a img {
@@ -131,8 +131,9 @@ body {
 
 #sidebar-footer a:hover img {
   transform: scale(1.15);
-  opacity: 0.9;
+  opacity: 1;
 }
+
 
 /* ===== MAIN AREA ===== */
 #main {
@@ -348,4 +349,5 @@ function toggleSubmenu() {
 </script>
 </body>
 </html>
+
 
