@@ -6,18 +6,6 @@
     <title>Process Engineering Case Study - DMAIC Analysis</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <!-- Chosen Palette: Calm Analytics (Background: stone-50, Text: slate-800, Header: sky-700, Primary Accent: sky-500/sky-700, Secondary Accent: teal-700, Card Accents: rose, amber, sky, violet, slate for root causes; emerald for solutions) -->
-    <!-- Application Structure Plan: The SPA is structured around the five phases of the DMAIC methodology (Define, Measure, Analyze, Improve, Control), plus an Overview. Navigation is facilitated by a sticky top tab bar. This structure was chosen because it directly mirrors the Lean Six Sigma methodology central to the source report, offering a logical, sequential, and intuitive user flow for understanding the case study. Each phase is presented as a distinct content section, dynamically displayed upon tab selection. This approach ensures clarity and focuses user attention on one phase at a time, enhancing comprehension of the structured problem-solving process. Interactions include tab-based navigation and tooltips on charts for detailed data insights. -->
-    <!-- Visualization & Content Choices:
-        - Overview: Text summary from Executive Summary. Goal: Provide high-level context and introduction to the case study. Method: HTML text. Interaction: None beyond navigation. Justification: Standard and effective for an initial summary.
-        - Define: Problem statement, project goals, key metrics. Goal: Clearly state the project's scope and objectives. Method: HTML text lists, styled metric cards for visual emphasis of targets. Interaction: None beyond navigation. Justification: Foundational information best presented textually with visual cues for metrics.
-        - Measure: Line charts for Adoption Rate & Sales Volume; Bar charts for Client Satisfaction & Process Cycle Time (showing averages). NEW: Process Flowchart (Before Improvement). Goal: Visually represent the baseline performance ("before improvements") and the current process steps. Method: Chart.js, HTML/CSS for flowchart. Interaction: Tooltips on charts. Justification: Charts for quantitative data, flowchart for process visualization.
-        - Analyze: Horizontal Bar chart for Financial Advisor Feedback (average ratings); Styled list for Identified Root Causes. Goal: Highlight key findings from the analysis, particularly advisor pain points and the core reasons for process failure. Method: Chart.js for feedback, HTML list with distinct styling for root causes. Interaction: Tooltips on feedback chart. Justification: Horizontal bar chart is good for comparing categories with longer labels (feedback items). Visually distinct list items make root causes easily scannable.
-        - Improve: Collapsible sections (HTML details/summary) for Proposed Solutions; Line and Bar charts for Projected Performance after improvements. NEW: Process Flowchart (After Improvement). Goal: Detail the improvement strategies, visualize their expected positive impact, and show the optimized process steps. Method: HTML for solutions, Chart.js, HTML/CSS for flowchart. Interaction: Tooltips, expand/collapse solution details. Justification: Collapsible sections manage information density. Charts provide a clear "before vs. after" visual for projected success, and the flowchart illustrates the new process.
-        - Control: Text lists for Control Plan Highlights and Success Criteria. Goal: Outline how improvements will be sustained and how ultimate success will be measured. Method: HTML text lists. Interaction: None beyond navigation. Justification: Clear, itemized lists are suitable for presenting plans and criteria.
-        CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. All charts utilize Chart.js and are rendered on HTML Canvas elements. Flowcharts are built with pure HTML/CSS.
-    -->
-    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
     <style>
         body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
         .chart-container {
@@ -231,10 +219,10 @@
 
     <nav class="bg-white shadow-lg sticky top-0 z-50">
         <div class="container mx-auto px-2 sm:px-4 lg:px-6">
-            <div class="flex flex-wrap justify-center items-center -mb-px"> <!-- -mb-px to align border with container -->
-                <button data-target="overview" class="nav-button active flex-grow sm:flex-grow-0 px-3 py-3 sm:px-6 sm:py-4 text-sm font-medium">OVERVIEW</button>
+            <div class="flex flex-wrap justify-center items-center -mb-px"> <button data-target="frontpage" class="nav-button active flex-grow sm:flex-grow-0 px-3 py-3 sm:px-6 sm:py-4 text-sm font-medium">FRONT PAGE</button>
+                <button data-target="overview" class="nav-button flex-grow sm:flex-grow-0 px-3 py-3 sm:px-6 sm:py-4 text-sm font-medium">OVERVIEW</button>
                 <button data-target="define" class="nav-button flex-grow sm:flex-grow-0 px-3 py-3 sm:px-6 sm:py-4 text-sm font-medium">DEFINE</button>
-                <button data-target="measure" class="nav-button flex-grow sm:flex-grow-0 px-3 py-3 sm:px-6 sm:py-4 text-sm font-medium">MEASURE</button>
+                <button data-target="measure" class="nav-button flex-grow sm:flex-grow-0 px-3 py-3 sm:px-6 sm:py-4 text-sm font-medium">ANALYZE</button>
                 <button data-target="analyze" class="nav-button flex-grow sm:flex-grow-0 px-3 py-3 sm:px-6 sm:py-4 text-sm font-medium">ANALYZE</button>
                 <button data-target="improve" class="nav-button flex-grow sm:flex-grow-0 px-3 py-3 sm:px-6 sm:py-4 text-sm font-medium">IMPROVE</button>
                 <button data-target="control" class="nav-button flex-grow sm:flex-grow-0 px-3 py-3 sm:px-6 sm:py-4 text-sm font-medium">CONTROL</button>
@@ -244,14 +232,39 @@
 
     <main class="container mx-auto p-4 sm:p-6 lg:p-8 mt-6">
         <div class="prose bg-white p-6 sm:p-10 rounded-xl shadow-2xl">
-        <!-- Overview Section -->
-        <section id="overview" class="content-section active">
+            <section id="frontpage" class="content-section active">
+                <div class="flex flex-col items-center justify-center text-center p-4 sm:p-8 lg:p-12">
+                    <h2 class="text-4xl sm:text-5xl font-extrabold text-sky-800 tracking-tight border-b-4 border-sky-500 pb-4 mb-6">
+                        Process Engineering Case Study
+                    </h2>
+                    <h3 class="text-3xl font-semibold text-teal-700 mb-4">
+                        Credit Card Sales Process
+                    </h3>
+                    <p class="text-xl text-slate-700 mb-8">
+                        Utilizing the <strong>Lean Six Sigma DMAIC Approach</strong>
+                    </p>
+                    <div class="my-6 w-full max-w-lg mx-auto">
+                        <div class="bg-slate-200 border border-slate-400 p-8 rounded-lg shadow-xl text-slate-600 font-semibold italic">
+                            <img src="ChatGPT Image Skycraper.png" alt="SIMALGO FINANCIAL">
+                        </div>
+                    </div>
+                    <div class="mt-8 pt-4 border-t-2 border-slate-200">
+                        <p class="text-lg text-slate-600">
+                            Prepared By: <strong>Atsu Vovor</strong> | Consultant, Data & Analytics
+                        </p>
+                        <p class="text-sm text-slate-500 mt-2">
+                            Date: 2025-05-26
+                        </p>
+                    </div>
+                </div>
+            </section>
+        
+        <section id="overview" class="content-section">
             <h2>Project Overview & Executive Summary</h2>
             <p class="mb-4 text-lg leading-relaxed">This interactive report details the analysis and improvement plan for critical issues identified within a new credit card sales process at a major financial institution. Implemented six months prior with objectives to enhance speed, ease, and client satisfaction, the process unfortunately led to declining Financial Advisor (FA) adoption, reduced credit card sales, and decreased client satisfaction. This application walks through the DMAIC (Define, Measure, Analyze, Improve, Control) methodology employed to address these challenges.</p>
             <p class="text-lg leading-relaxed">The goal is to provide a clear understanding of the problem, the data-driven analysis, the proposed solutions, and the expected outcomes, fostering a more efficient, user-friendly, and client-centric sales process. Navigate through the DMAIC phases using the tabs above to explore the case study details. Each section provides insights into how the project progressed, from identifying issues to implementing sustainable solutions.</p>
         </section>
 
-        <!-- Define Section -->
         <section id="define" class="content-section">
             <h2>1. Define the Problem</h2>
             <p class="mb-6 text-lg leading-relaxed">The Define phase is foundational, establishing the precise problems to be addressed, the overarching project goals, and the key metrics that will be used to track progress and success. For the credit card sales process, it became clear that initial performance post-launch was significantly below expectations, impacting both internal operations and the client experience.</p>
@@ -274,7 +287,6 @@
             </div>
         </section>
 
-        <!-- Measure Section -->
         <section id="measure" class="content-section">
             <h2>2. Measure Current Performance (Before Improvements)</h2>
             <p class="mb-8 text-lg leading-relaxed">The Measure phase involves collecting and analyzing data to understand the current state of the process and establish a baseline. The following visualizations illustrate the performance of the key metrics *before* any corrective actions were implemented, clearly highlighting the extent of the issues identified in the Define phase.</p>
@@ -300,7 +312,6 @@
                     <div class="chart-container"><canvas id="cycleTimeChart"></canvas></div>
                 </div>
             </div>
-
             <h3 class="mt-12">Current Credit Card Sales Process Flow (Before Improvement)</h3>
             <p class="text-md text-slate-600 mb-4">This flowchart visualizes the existing credit card sales process, highlighting the steps and potential points of friction or inefficiency that contributed to the observed performance issues.</p>
             <div class="flowchart-container">
@@ -314,420 +325,390 @@
                 <div class="flowchart-arrow"></div>
                 <div class="flowchart-step" id="measure-client-info">Client Information Submission (Often Requires Re-entry)</div>
                 <div class="flowchart-arrow"></div>
-
                 <div class="flowchart-decision-branching-container">
-                    <div class="flowchart-decision"><span class="flowchart-decision-text">Is Data Complete & Valid?</span></div>
-                    <div class="flowchart-branch-paths">
-                        <!-- YES Path -->
-                        <div class="flowchart-branch-path">
-                            <span class="flowchart-label-text text-green-600">YES</span>
-                            <div class="flowchart-vertical-line"></div>
-                        </div>
-                        <!-- NO Path -->
-                        <div class="flowchart-branch-path">
-                            <span class="flowchart-label-text text-red-600">NO</span>
-                            <div class="flowchart-vertical-line"></div>
-                        </div>
+                    <div class="flowchart-decision">
+                        <div class="flowchart-decision-text">Is the application instantly approved?</div>
                     </div>
-                </div>
-
-                <!-- This arrow connects the YES path to the next step in the main flow -->
-                <div class="flowchart-arrow"></div>
-                <div class="flowchart-step">Approval Process (Delays, Manual Overrides)</div>
-                <div class="flowchart-arrow"></div>
-                <div class="flowchart-step">Client Notification (Delayed)</div>
-                <div class="flowchart-arrow"></div>
-                <div class="flowchart-step">Card Issuance (Delayed)</div>
-                <div class="flowchart-arrow"></div>
-                <div class="flowchart-end">Process End</div>
-
-                <!-- Separate NO path flow -->
-                <div class="flowchart-no-path-section">
-                    <h4 class="text-lg font-semibold text-red-700 mb-2">If Data is NOT Complete & Valid:</h4>
-                    <div class="flowchart-step bg-red-50 border-red-500 text-red-800">Review & Correct Data</div>
-                    <div class="text-sm text-slate-600 text-center mt-2">
-                        <span class="text-xl font-bold text-slate-500">&#8634;</span> Return to "Client Information Submission" for re-entry.
+                    <div class="flowchart-branch-paths">
+                        <div class="flowchart-branch-path items-start">
+                            <div class="flowchart-label-text" style="color: #15803d;">YES</div>
+                            <div class="flowchart-vertical-line"></div>
+                            <div class="flowchart-step" style="border-color: #16a34a; color: #15803d; max-width: 150px;">Final Review & E-Sign</div>
+                            <div class="flowchart-arrow"></div>
+                            <div class="flowchart-end">Process Complete</div>
+                        </div>
+                        <div class="flowchart-branch-path items-end">
+                            <div class="flowchart-label-text" style="color: #c2410c;">NO</div>
+                            <div class="flowchart-vertical-line"></div>
+                            <div class="flowchart-step" style="border-color: #f97316; color: #c2410c; max-width: 250px;">Client Wait Time (2-3 Days) for Underwriter Review</div>
+                            <div class="flowchart-arrow"></div>
+                            <div class="flowchart-step" style="border-color: #f97316; color: #c2410c; max-width: 250px;">Underwriter Request for Additional Documents (Email/Fax)</div>
+                            <div class="flowchart-arrow"></div>
+                            <div class="flowchart-step" style="border-color: #f97316; color: #c2410c; max-width: 250px;">FA Manually Follows Up, Uploads Documents to System</div>
+                            <div class="flowchart-arrow"></div>
+                            <div class="flowchart-decision-branching-container" style="margin-top: 0rem;">
+                                <div class="flowchart-decision" style="margin-bottom: -1.5rem;">
+                                    <div class="flowchart-decision-text">Is final decision Approval?</div>
+                                </div>
+                                <div class="flowchart-branch-paths">
+                                    <div class="flowchart-branch-path items-start">
+                                        <div class="flowchart-label-text" style="color: #15803d;">YES</div>
+                                        <div class="flowchart-vertical-line"></div>
+                                        <div class="flowchart-step" style="border-color: #16a34a; color: #15803d; max-width: 150px;">Final Review & E-Sign</div>
+                                        <div class="flowchart-arrow"></div>
+                                        <div class="flowchart-end">Process Complete</div>
+                                    </div>
+                                    <div class="flowchart-branch-path items-end">
+                                        <div class="flowchart-label-text" style="color: #c2410c;">NO (Declined)</div>
+                                        <div class="flowchart-vertical-line"></div>
+                                        <div class="flowchart-no-path-section">
+                                            <strong>Termination Point:</strong> Process Ends (Lost Sale)
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Analyze Section -->
         <section id="analyze" class="content-section">
             <h2>3. Analyze Root Causes</h2>
-            <p class="mb-8 text-lg leading-relaxed">The Analyze phase focuses on dissecting the collected data to identify the underlying reasons—the root causes—for the process deficiencies. Data from Financial Advisor surveys, process cycle time measurements, and sales figures were key to this analysis, helping to pinpoint specific areas of concern that led to the observed negative trends.</p>
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-10 gap-y-12">
-                <div>
-                    <h3>Financial Advisor Feedback (Average Ratings)</h3>
-                    <p class="text-md text-slate-600 mb-4">This horizontal bar chart displays the average ratings (on a 1-5 scale, where 1 is strongly disagree and 5 is strongly agree) from Financial Advisors on various aspects of the new process. Lower scores indicate areas of significant dissatisfaction.</p>
-                    <div class="chart-container" style="height: 450px; max-height: 500px;"><canvas id="advisorFeedbackChart"></canvas></div>
+            <p class="mb-8 text-lg leading-relaxed">The Analyze phase involved in-depth investigation of the data collected in the Measure phase, specifically focusing on Financial Advisor interviews, client survey comments, and system logs to determine the true causes of the performance decline. The goal was to move beyond the symptoms and identify the fundamental issues.</p>
+            
+            <h3>Financial Advisor Feedback Analysis (Average Ratings: 1 - Poor to 5 - Excellent)</h3>
+            <p class="text-md text-slate-600 mb-4">Ratings from the FAs indicated significant pain points across usability, speed, and support, which directly correlate to the decline in adoption and sales volume.</p>
+            <div class="chart-container" style="height: 300px;"><canvas id="feedbackChart"></canvas></div>
+
+            <h3 class="mt-12">Identified Root Causes (Based on Data & Analysis)</h3>
+            <div class="space-y-4">
+                <div class="p-4 rounded-lg bg-rose-50 border-l-4 border-rose-500 shadow-md">
+                    <p class="font-semibold text-rose-800">Cause 1: Process Complexity & Redundancy</p>
+                    <p class="text-sm text-rose-700 mt-1">The new system requires FAs to enter the same client information multiple times across different screens (e.g., demographic, employment, financial), increasing cycle time and the risk of manual error. This makes the process less efficient than the old, simpler system.</p>
                 </div>
-                <div>
-                    <h3>Identified Root Causes:</h3>
-                    <p class="text-md text-slate-600 mb-4">Based on the quantitative data and qualitative feedback, the following primary root causes for the process's underperformance were identified:</p>
-                    <ul class="space-y-4 text-md">
-                        <li class="p-4 bg-rose-50 border-l-4 border-rose-500 rounded-r-md shadow-sm">
-                            <strong class="block text-rose-700 text-lg mb-1">C1: Process Complexity/Inefficiency</strong>
-                            Despite intentions to simplify, the new process was perceived as not easier (avg. rating 2.5) and, critically, had a higher actual average cycle time (approx. 40 mins) compared to the old process (approx. 35 mins). This suggests new steps or system interactions introduced friction.
-                        </li>
-                        <li class="p-4 bg-amber-50 border-l-4 border-amber-500 rounded-r-md shadow-sm">
-                            <strong class="block text-amber-700 text-lg mb-1">C2: Inadequate Training & Support</strong>
-                            A very low average rating for "Adequate Training Provided" (1.8) strongly indicated that FAs were not sufficiently prepared or supported to use the new process effectively, leading to errors and frustration.
-                        </li>
-                        <li class="p-4 bg-sky-50 border-l-4 border-sky-500 rounded-r-md shadow-sm">
-                            <strong class="block text-sky-700 text-lg mb-1">C3: Lack of Perceived Benefit</strong>
-                            FAs did not strongly believe the new process was faster (avg. rating 3.2) or that it improved client satisfaction (avg. rating 3.0). Without a clear perceived advantage, motivation to adopt waned.
-                        </li>
-                        <li class="p-4 bg-violet-50 border-l-4 border-violet-500 rounded-r-md shadow-sm">
-                            <strong class="block text-violet-700 text-lg mb-1">C4: Technical Issues/System Usability</strong>
-                            The average rating for "Technical Issues Experienced" (2.8) pointed to system bugs, slow performance, or a non-intuitive user interface, further hindering adoption and overall efficiency.
-                        </li>
-                         <li class="p-4 bg-slate-100 border-l-4 border-slate-500 rounded-r-md shadow-sm">
-                            <strong class="block text-slate-700 text-lg mb-1">C5: Resistance to Change / Preference for Old Process</strong>
-                            A high average rating for "Prefer Old Process" (4.1) signaled natural resistance, likely amplified by the practical difficulties encountered with the new system.
-                        </li>
-                    </ul>
+                <div class="p-4 rounded-lg bg-amber-50 border-l-4 border-amber-500 shadow-md">
+                    <p class="font-semibold text-amber-800">Cause 2: Underwriter Delay for Exceptions</p>
+                    <p class="text-sm text-amber-700 mt-1">Applications that require underwriter review are subject to a long and inconsistent queue (avg. 2-3 days). This delay significantly harms client experience and disrupts the FA-client meeting flow, leading FAs to bypass the system to preserve client satisfaction.</p>
+                </div>
+                <div class="p-4 rounded-lg bg-sky-50 border-l-4 border-sky-500 shadow-md">
+                    <p class="font-semibold text-sky-800">Cause 3: System Performance and Glitches</p>
+                    <p class="text-sm text-sky-700 mt-1">The new system experiences frequent, intermittent slowdowns and minor data-saving glitches, forcing FAs to restart applications or re-enter data. This leads to advisor frustration and a perception of the system as unreliable.</p>
+                </div>
+                <div class="p-4 rounded-lg bg-violet-50 border-l-4 border-violet-500 shadow-md">
+                    <p class="font-semibold text-violet-800">Cause 4: Lack of Integrated Document Upload</p>
+                    <p class="text-sm text-violet-700 mt-1">When additional documents are requested, FAs must use a separate, clunky portal for submission, which is not directly linked to the application itself. This broken process contributes directly to the increased cycle time and manual rework.</p>
                 </div>
             </div>
         </section>
 
         <section id="improve" class="content-section">
             <h2>4. Improve the Process</h2>
-            <p class="mb-6 text-lg leading-relaxed">The Improve phase focuses on developing, piloting, and implementing solutions to address the root causes identified in the Analyze phase. The goal is to create a significantly better process that meets the original objectives of efficiency, ease of use, and client satisfaction. The proposed solutions are multi-faceted, targeting process design, user support, technology, and change management.</p>
+            <p class="mb-8 text-lg leading-relaxed">The Improve phase involved brainstorming, selecting, and implementing solutions to address the identified root causes. The primary focus was on simplifying the user interface, automating manual steps, and reducing process variation.</p>
 
-            <h3>Proposed Solutions:</h3>
-            <div class="space-y-5 mb-8">
-                <details class="bg-emerald-50 p-4 rounded-lg border border-emerald-200 shadow-sm hover:shadow-md transition-shadow">
-                    <summary class="font-semibold text-emerald-800 text-lg">1. Process Simplification & Redesign (Addressing C1)</summary>
-                    <ul class="mt-3 text-md text-slate-600 list-disc list-inside space-y-1 pl-4">
-                        <li>Conduct Value Stream Mapping (VSM) workshops with FAs to identify and eliminate non-value-added steps, bottlenecks, and rework loops.</li>
-                        <li>Apply Lean principles (e.g., 5S, waste elimination) to streamline workflows, focusing on reducing clicks, minimizing data entry, and simplifying decision points.</li>
-                        <li>Develop clear, concise, and visually-aided Standard Operating Procedures (SOPs) for the optimized process.</li>
-                    </ul>
+            <h3>Proposed and Implemented Solutions:</h3>
+            <div class="space-y-4 mb-10">
+                <details class="border border-emerald-300 rounded-lg p-3 bg-emerald-50 text-emerald-800">
+                    <summary class="text-lg font-bold text-emerald-900">Solution 1: Smart Form Integration (Addressing Cause 1)</summary>
+                    <div class="pt-2 text-emerald-700">
+                        <p class="mb-2"><strong>Action:</strong> Implemented a single-page smart form interface with auto-population logic. When data is entered once, it is automatically mapped to all subsequent required fields in the system.</p>
+                        <ul class="list-disc list-inside ml-4 mt-2 text-sm space-y-1">
+                            <li>Eliminates redundant data entry for FAs.</li>
+                            <li>Reduces the risk of manual data entry errors.</li>
+                            <li>Expected to reduce the average Cycle Time by 8-10 minutes.</li>
+                        </ul>
+                    </div>
                 </details>
-                <details class="bg-emerald-50 p-4 rounded-lg border border-emerald-200 shadow-sm hover:shadow-md transition-shadow">
-                    <summary class="font-semibold text-emerald-800 text-lg">2. Enhanced Training & Ongoing Support (Addressing C2)</summary>
-                    <ul class="mt-3 text-md text-slate-600 list-disc list-inside space-y-1 pl-4">
-                        <li>Implement a blended learning approach: interactive online modules, hands-on workshops, and one-on-one coaching.</li>
-                        <li>Training to clearly articulate the "why" (benefits of improved process) and "how" (practical, scenario-based guidance).</li>
-                        <li>Establish a dedicated, quick-response support channel (e.g., help desk, internal chat group) for immediate queries.</li>
-                        <li>Launch a "Super User" program, training experienced FAs as peer-to-peer support and champions.</li>
-                    </ul>
+                <details class="border border-emerald-300 rounded-lg p-3 bg-emerald-50 text-emerald-800">
+                    <summary class="text-lg font-bold text-emerald-900">Solution 2: Automated Document Request & Upload (Addressing Cause 4)</summary>
+                    <div class="pt-2 text-emerald-700">
+                        <p class="mb-2"><strong>Action:</strong> Integrated the application system with a secure client portal. The system now automatically emails the client a direct link to upload necessary documents when requested by an underwriter, eliminating FA manual follow-up and the separate portal.</p>
+                        <ul class="list-disc list-inside ml-4 mt-2 text-sm space-y-1">
+                            <li>Reduces FA rework and client chase-up time.</li>
+                            <li>Documents are instantly tagged to the application file, improving underwriter efficiency.</li>
+                        </ul>
+                    </div>
                 </details>
-                <details class="bg-emerald-50 p-4 rounded-lg border border-emerald-200 shadow-sm hover:shadow-md transition-shadow">
-                    <summary class="font-semibold text-emerald-800 text-lg">3. Technology Optimization & Automation (Addressing C1, C4)</summary>
-                    <ul class="mt-3 text-md text-slate-600 list-disc list-inside space-y-1 pl-4">
-                        <li>Conduct a thorough UX/UI review based on FA feedback, prioritizing quick wins for interface improvements.</li>
-                        <li>Identify and implement automation for manual steps (e.g., pre-filling client data, automated document generation/routing).</li>
-                        <li>Perform a system performance audit to address technical glitches and slow loading times.</li>
-                    </ul>
-                </details>
-                 <details class="bg-emerald-50 p-4 rounded-lg border border-emerald-200 shadow-sm hover:shadow-md transition-shadow">
-                    <summary class="font-semibold text-emerald-800 text-lg">4. Communication & Change Management (Addressing C3, C5)</summary>
-                    <ul class="mt-3 text-md text-slate-600 list-disc list-inside space-y-1 pl-4">
-                        <li>Clearly communicate improvements and how they directly address FA pain points and client feedback, emphasizing tangible benefits (e.g., "now 20% faster," "reduced data entry by 3 steps").</li>
-                        <li>Ensure strong, visible support and endorsement from senior leadership.</li>
-                        <li>Share internal success stories and testimonials from FAs effectively using the improved process.</li>
-                         <li>Implement a phased rollout for significant changes, gathering feedback at each stage.</li>
-                    </ul>
+                <details class="border border-emerald-300 rounded-lg p-3 bg-emerald-50 text-emerald-800">
+                    <summary class="text-lg font-bold text-emerald-900">Solution 3: Underwriter Triage Automation (Addressing Cause 2)</summary>
+                    <div class="pt-2 text-emerald-700">
+                        <p class="mb-2"><strong>Action:</strong> Developed an automated triage system that prioritizes applications based on complexity and potential financial value, ensuring simple exceptions are reviewed within 4 hours. Dedicated "fast-track" reviewers were assigned to these simple cases.</p>
+                        <ul class="list-disc list-inside ml-4 mt-2 text-sm space-y-1">
+                            <li>Reduces the average Underwriter Wait Time for 60% of cases by 80%.</li>
+                            <li>Improves client satisfaction by providing a quicker outcome for most non-instant approvals.</li>
+                        </ul>
+                    </div>
                 </details>
             </div>
 
-            <h3>Projected Performance After Improvements:</h3>
-            <p class="mb-8 text-lg leading-relaxed">The following charts illustrate the anticipated positive trends in key performance metrics after the successful implementation of the proposed solutions. These projections are based on effectively addressing the identified root causes and represent the targets for the improved process.</p>
+            <h3 class="mt-12">Projected Performance (After Improvement)</h3>
+            <p class="text-md text-slate-600 mb-4">These charts illustrate the expected performance improvement for the next six months based on the implemented solutions. Targets for all key metrics are projected to be met or exceeded.</p>
+            
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-10 gap-y-12">
                 <div>
-                    <h3>Projected FA Adoption Rate (Post-Improvement)</h3>
-                     <p class="text-md text-slate-600 mb-4">This chart illustrates the expected rebound in Financial Advisor usage, followed by sustained high adoption of the improved process.</p>
+                    <h3>Projected FA Adoption Rate</h3>
                     <div class="chart-container"><canvas id="adoptionChartImproved"></canvas></div>
                 </div>
                 <div>
-                    <h3>Projected Monthly Sales Volume (Post-Improvement)</h3>
-                    <p class="text-md text-slate-600 mb-4">This visual shows the anticipated recovery and subsequent growth in monthly credit card sales volume, surpassing previous levels, following the process enhancements.</p>
+                    <h3>Projected Monthly Sales Volume</h3>
                     <div class="chart-container"><canvas id="salesChartImproved"></canvas></div>
                 </div>
                 <div>
-                    <h3>Projected Client Satisfaction (Post-Improvement)</h3>
-                    <p class="text-md text-slate-600 mb-4">Displays the expected significant increase in average client satisfaction scores as a result of a smoother, faster, and more efficient application experience.</p>
+                    <h3>Projected Client Satisfaction (Before vs. After)</h3>
                     <div class="chart-container"><canvas id="satisfactionChartImproved"></canvas></div>
                 </div>
                 <div>
-                    <h3>Projected Process Cycle Time (Post-Improvement)</h3>
-                    <p class="text-md text-slate-600 mb-4">This chart demonstrates the targeted reduction in the average time taken to complete a credit card sale, making the process notably quicker with the optimized system.</p>
+                    <h3>Projected Process Cycle Time (Old vs. New vs. Improved)</h3>
                     <div class="chart-container"><canvas id="cycleTimeChartImproved"></canvas></div>
                 </div>
             </div>
 
-            <h3 class="mt-12">Improved Credit Card Sales Process Flow (After Improvement)</h3>
-            <p class="text-md text-slate-600 mb-4">This flowchart visualizes the streamlined and optimized credit card sales process after the implementation of the proposed improvements, highlighting increased efficiency and automation.</p>
-            <div class="flowchart-container">
-                <div class="flowchart-step bg-emerald-100 border-emerald-500 text-emerald-800">FA Initiates Application (Streamlined System)</div>
+            <h3 class="mt-12">Optimized Credit Card Sales Process Flow (After Improvement)</h3>
+            <p class="text-md text-slate-600 mb-4">The revised flowchart demonstrates a significantly streamlined process, with fewer manual steps and reduced client interaction points, minimizing variation and improving efficiency.</p>
+            <div class="flowchart-container" style="gap: 1.25rem;">
+                <div class="flowchart-step" style="border-color: #16a34a; color: #15803d;">FA Initiates Application (Smart Form)</div>
                 <div class="flowchart-arrow"></div>
-                <div class="flowchart-step bg-emerald-100 border-emerald-500 text-emerald-800">Automated Data Pre-fill & Validation</div>
+                <div class="flowchart-step" style="border-color: #16a34a; color: #15803d;">Automated Data Population & Single-Click Submission</div>
                 <div class="flowchart-arrow"></div>
-                <div class="flowchart-step bg-emerald-100 border-emerald-500 text-emerald-800" id="improve-simplified-entry">Simplified Data Entry (Single Screen)</div>
-                <div class="flowchart-arrow"></div>
-
-                <div class="flowchart-decision-branching-container">
-                    <div class="flowchart-decision bg-emerald-100 border-emerald-500 text-emerald-800"><span class="flowchart-decision-text">Automated Approval?</span></div>
-                    <div class="flowchart-branch-paths">
-                        <!-- YES Path -->
-                        <div class="flowchart-branch-path">
-                            <span class="flowchart-label-text text-green-600">YES</span>
-                            <div class="flowchart-vertical-line"></div>
-                        </div>
-                        <!-- NO Path -->
-                        <div class="flowchart-branch-path">
-                            <span class="flowchart-label-text text-red-600">NO</span>
-                            <div class="flowchart-vertical-line"></div>
-                        </div>
+                <div class="flowchart-decision-branching-container" style="margin-top: 0rem;">
+                    <div class="flowchart-decision">
+                        <div class="flowchart-decision-text">Is the application instantly approved?</div>
                     </div>
-                </div>
-
-                <!-- This arrow connects the YES path to the next step in the main flow -->
-                <div class="flowchart-arrow"></div>
-                <div class="flowchart-step bg-emerald-100 border-emerald-500 text-emerald-800">Real-time Client Notification</div>
-                <div class="flowchart-arrow"></div>
-                <div class="flowchart-step bg-emerald-100 border-emerald-500 text-emerald-800">Expedited Card Issuance</div>
-                <div class="flowchart-arrow"></div>
-                <div class="flowchart-end bg-emerald-700">Process End</div>
-
-                <!-- Separate NO path flow for improved process -->
-                <div class="flowchart-no-path-section">
-                    <h4 class="text-lg font-semibold text-red-700 mb-2">If NOT Automated Approval:</h4>
-                    <div class="flowchart-step bg-red-50 border-red-500 text-red-800">Manual Review & Approval</div>
-                    <div class="text-sm text-slate-600 text-center mt-2">
-                        <span class="text-xl font-bold text-slate-500">&#8634;</span> Return to "Simplified Data Entry" for further action.
+                    <div class="flowchart-branch-paths">
+                        <div class="flowchart-branch-path items-start" style="padding: 0 1rem 0 0;">
+                            <div class="flowchart-label-text" style="color: #15803d;">YES</div>
+                            <div class="flowchart-vertical-line"></div>
+                            <div class="flowchart-step" style="border-color: #16a34a; color: #15803d; max-width: 150px;">E-Sign & Confirmation</div>
+                            <div class="flowchart-arrow" style="height: 1.5rem;"></div>
+                            <div class="flowchart-end">Process Complete</div>
+                        </div>
+                        <div class="flowchart-branch-path items-end" style="padding: 0 0 0 1rem;">
+                            <div class="flowchart-label-text" style="color: #c2410c;">NO (Exception)</div>
+                            <div class="flowchart-vertical-line"></div>
+                            <div class="flowchart-step" style="border-color: #f97316; color: #c2410c; max-width: 250px;">Automated Triage: Fast-Track Underwriter Review (Target &lt;4 Hrs)</div>
+                            <div class="flowchart-arrow"></div>
+                            <div class="flowchart-step" style="border-color: #f97316; color: #c2410c; max-width: 250px;">Automated Client Email for Document Upload (Integrated Link)</div>
+                            <div class="flowchart-arrow"></div>
+                            <div class="flowchart-decision-branching-container" style="margin-top: 0rem;">
+                                <div class="flowchart-decision" style="margin-bottom: -1.5rem;">
+                                    <div class="flowchart-decision-text">Is final decision Approval?</div>
+                                </div>
+                                <div class="flowchart-branch-paths">
+                                    <div class="flowchart-branch-path items-start">
+                                        <div class="flowchart-label-text" style="color: #15803d;">YES</div>
+                                        <div class="flowchart-vertical-line"></div>
+                                        <div class="flowchart-step" style="border-color: #16a34a; color: #15803d; max-width: 150px;">E-Sign & Confirmation</div>
+                                        <div class="flowchart-arrow" style="height: 1.5rem;"></div>
+                                        <div class="flowchart-end">Process Complete</div>
+                                    </div>
+                                    <div class="flowchart-branch-path items-end">
+                                        <div class="flowchart-label-text" style="color: #c2410c;">NO (Declined)</div>
+                                        <div class="flowchart-vertical-line"></div>
+                                        <div class="flowchart-no-path-section">
+                                            <strong>Termination Point:</strong> Process Ends (Lost Sale)
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
         <section id="control" class="content-section">
-            <h2>5. Control and Monitor</h2>
-            <p class="mb-6 text-lg leading-relaxed">The Control phase is critical for ensuring that the improvements made to the credit card sales process are sustained over the long term and that the process remains stable and effective. This involves establishing ongoing monitoring mechanisms, standardizing procedures, and creating continuous feedback loops to prevent regression and foster a culture of ongoing improvement.</p>
+            <h2>5. Control and Sustain the Gains</h2>
+            <p class="mb-8 text-lg leading-relaxed">The final phase of DMAIC focuses on standardizing the improved process, establishing control measures to prevent regression, and creating a monitoring plan to ensure the long-term success of the project's gains.</p>
+
             <h3>Control Plan Highlights:</h3>
             <ul class="list-disc list-inside mb-6 text-md space-y-3 pl-5">
-                <li><strong>Standard Operating Procedures (SOPs):</strong> Formalize and maintain clear, accessible, and up-to-date SOPs for the redesigned process. Ensure all Financial Advisors are trained on and adhere to these.</li>
-                <li><strong>Performance Monitoring Dashboard:</strong> Maintain and regularly update the dashboards (similar to those in this application) for key metrics (Adoption Rate, Sales Volume, Client Satisfaction, Process Cycle Time). These will be reviewed weekly/monthly by management and relevant teams.</li>
-                <li><strong>Control Charts:</strong> Implement Statistical Process Control (SPC) charts (e.g., X-bar and R charts for cycle time, p-charts for adoption rate) to monitor process stability and detect any out-of-control conditions or significant deviations early, allowing for prompt corrective action.</li>
-                <li><strong>Regular Training Refreshers:</strong> Schedule periodic refresher training sessions for FAs, especially for new hires or when minor process updates occur, to reinforce best practices and address any evolving needs.</li>
-                <li><strong>Advisor & Client Feedback Loops:</strong> Maintain active and structured channels for FA feedback (e.g., quarterly surveys, dedicated suggestion box, regular team meetings) and client feedback (e.g., post-transaction surveys). Address concerns promptly and incorporate insights into process reviews.</li>
-                <li><strong>Periodic Audits:</strong> Conduct periodic internal audits of the credit card sales process to ensure compliance with SOPs, identify any deviations, and verify the effectiveness of implemented controls.</li>
-                <li><strong>Clear Process Ownership:</strong> Assign clear ownership for the process to a specific team or individual (e.g., the Process Engineering Manager or a dedicated Process Owner) responsible for its ongoing health, performance, and continuous improvement initiatives.</li>
+                <li><strong>Process Standardization:</strong> Update all internal training manuals, FA workflow guides, and system documentation to reflect the new Smart Form and Automated Triage processes. Mandate a one-week training session for all FAs and Underwriters on the new system features.</li>
+                <li><strong>Statistical Process Control (SPC):</strong> Implement automated system monitoring using a Control Chart for Process Cycle Time. Alert the Process Improvement team automatically if the average cycle time exceeds the upper control limit (UCL) of 35 minutes for three consecutive weeks.</li>
+                <li><strong>System Audits & Maintenance:</strong> Schedule quarterly system performance audits and security reviews to proactively address glitches and slowdowns before they impact the FA experience.</li>
+                <li><strong>Feedback Loop:</strong> Re-institute a monthly FA feedback survey (1-5 scale) and monitor results. Assign a dedicated IT support liaison to address FA pain points reported via the survey within 48 hours.</li>
             </ul>
-            <h3>How We Know We've Solved the Problem (Success Criteria):</h3>
-             <p class="text-md text-slate-700 mb-3">Definitive success of the project will be confirmed when the following criteria are consistently met and sustained over a significant period (e.g., 3-6 months post-full implementation of improvements):</p>
-             <ul class="list-disc list-inside text-md space-y-3 pl-5">
-                <li>Financial Advisor Adoption Rate consistently remains above **85-90%**.</li>
-                <li>Monthly Credit Card Sales Volume consistently returns to or exceeds **pre-new process implementation levels (e.g., >180 units/month)**.</li>
-                <li>Average Client Satisfaction Scores for the credit card application process consistently return to or exceed **pre-new process implementation levels (e.g., >8.0 on a 1-10 scale)**.</li>
-                <li>The average Process Cycle Time for credit card sales is consistently **reduced to or below the target (e.g., <30 minutes)**.</li>
-                <li>Consistent positive qualitative feedback from FAs regarding the ease of use, efficiency, and support for the process, and from clients regarding their smooth application experience.</li>
-                <li>Control charts for key metrics demonstrate that the process is in a state of statistical control, indicating stability and predictability with variations only due to common causes.</li>
+
+            <h3>Success Criteria and Hand-off:</h3>
+            <p class="mb-2 text-md">The project will be formally handed off to the Process Management team once the following criteria are sustained for three continuous months:</p>
+            <ul class="list-disc list-inside mb-6 text-md space-y-3 pl-5">
+                <li><strong>FA Adoption Rate:</strong> Consistently maintained above the target of 85%.</li>
+                <li><strong>Monthly Sales Volume:</strong> Consistently achieved at or above 180 units/month.</li>
+                <li><strong>Client Satisfaction:</strong> Consistently maintained above the target of 8.0/10.</li>
+                <li><strong>Process Cycle Time:</strong> Consistently maintained below the target of 30 minutes, with the majority of exceptions (non-instant approvals) resolved within 48 hours.</li>
+                <li><strong>FA Perceptions:</strong> Average satisfaction with the process (ease, speed) maintained above 4.0/5.</li>
             </ul>
+
+            <div class="mt-8 p-4 bg-sky-50 rounded-lg border-l-4 border-sky-500">
+                <p class="font-bold text-sky-800">Conclusion:</p>
+                <p class="text-sm text-sky-700 mt-1">The DMAIC project successfully identified and resolved critical root causes impacting the credit card sales process. The implemented solutions are projected to significantly improve efficiency, drive FA adoption, and enhance client satisfaction, ensuring the long-term success and competitiveness of the credit card sales channel.</p>
+            </div>
         </section>
+
+
         </div>
     </main>
 
-    <footer class="bg-slate-800 text-slate-300 text-center py-10 mt-16">
-        <p class="text-sm">&copy; 2025 Financial Institution Case Study. All Rights Reserved.</p>
-        <p class="text-xs mt-2">Interactive Report for Process Improvement DMAIC Analysis.</p>
-    </footer>
+    <script>
+        // Global Data Object
+        const dmaicData = {
+            // Data for Measure Phase Charts
+            adoption: {
+                months: ['Month 1', 'Month 2', 'Month 3', 'Month 4', 'Month 5', 'Month 6'],
+                adoptionRates: [85, 78, 70, 65, 62, 60] // %
+            },
+            sales: {
+                labels: ['Before New Process', 'After New Process'],
+                avgSales: [180, 120] // Units/Month
+            },
+            satisfaction: {
+                labels: ['Before New Process', 'After New Process'],
+                avgScores: [8.0, 6.5] // 1-10 Scale
+            },
+            cycleTime: {
+                labels: ['Old Process (Target)', 'New Process (Actual)'],
+                avgTimes: [25, 45] // Minutes
+            },
+            feedback: {
+                labels: ['Ease of Data Entry', 'System Speed/Reliability', 'Underwriter Response Time', 'Document Upload Process', 'Overall System Usability'],
+                avgRatings: [2.1, 2.5, 1.8, 2.0, 2.3] // 1-5 Scale
+            },
 
-<script>
-    // --- Data (Derived from dmaic_report immersive artifact) ---
-    const dmaicData = {
-        adoption: {
-            months: ['Month 1', 'Month 2', 'Month 3', 'Month 4', 'Month 5', 'Month 6'],
-            rate: [0.85, 0.80, 0.75, 0.70, 0.65, 0.60]
-        },
-        sales: {
-            monthsBefore: ['M-6', 'M-5', 'M-4', 'M-3', 'M-2', 'M-1'],
-            salesBefore: [182, 175, 188, 170, 190, 178],
-            monthsAfterInitial: ['Month 1', 'Month 2', 'Month 3', 'Month 4', 'Month 5', 'Month 6'],
-            salesAfterNewProcess: [130, 125, 120, 115, 110, 118]
-        },
-        satisfaction: {
-            labels: ['Before New Process', 'After New Process (Initial)'],
-            avgScores: [8.0, 6.5]
-        },
-        cycleTime: {
-            labels: ['Old Process', 'New Process (Actual)'],
-            avgTimes: [35, 40]
-        },
-        advisorFeedback: {
-            labels: ['Prefer Old Process', 'Process Faster', 'Improves Client Sat.', 'Tech Issues Exp.', 'Process Easier', 'Adequate Training'],
-            meanRatings: [4.1, 3.2, 3.0, 2.8, 2.5, 1.8]
-        },
-        adoptionImproved: {
-            months: ['M1', 'M2', 'M3', 'M4', 'M5', 'M6', 'M7-PI', 'M8-PI', 'M9-PI', 'M10-PI', 'M11-PI', 'M12-PI'],
-            rate: [0.85, 0.80, 0.75, 0.70, 0.65, 0.60, 0.70, 0.78, 0.82, 0.86, 0.88, 0.90]
-        },
-        // salesImproved.datasets will be populated after dmaicData.sales is fully defined.
-        salesImproved: {
-            monthsAll: ['M-6', 'M-5', 'M-4', 'M-3', 'M-2', 'M-1', 'M1', 'M2', 'M3', 'M4', 'M5', 'M6', 'M7-PI', 'M8-PI', 'M9-PI', 'M10-PI', 'M11-PI', 'M12-PI'],
-            datasets: [] // Initialize as empty array
-        },
-        satisfactionImproved: {
-            labels: ['Before NP', 'After NP (Initial)', 'After Improvements (Proj.)'],
-            avgScores: [8.0, 6.5, 8.5]
-        },
-        cycleTimeImproved: {
-            labels: ['Old Process', 'New Process (Actual)', 'New Process (Improved Proj.)'],
-            avgTimes: [35, 40, 28]
-        }
-    };
-
-    // Populate salesImproved.datasets after dmaicData.sales is fully defined
-    dmaicData.salesImproved.datasets = [
-        { label: 'Sales Before NP', data: dmaicData.sales.salesBefore.concat(new Array(dmaicData.sales.monthsAfterInitial.length).fill(null)), borderColor: '#64748b', tension: 0.1, pointRadius: 3 },
-        { label: 'Sales After NP (Initial)', data: new Array(dmaicData.sales.monthsBefore.length).fill(null).concat(dmaicData.sales.salesAfterNewProcess), borderColor: '#ef4444', tension: 0.1, pointRadius: 3 },
-        { label: 'Sales After Improvements (Proj.)', data: new Array(dmaicData.sales.monthsBefore.length + dmaicData.sales.monthsAfterInitial.length).fill(null).concat([150, 165, 180, 190, 195, 185]), borderColor: '#22c55e', tension: 0.1, borderDash: [5,5], pointRadius: 3 }
-    ];
-
-    // --- Chart.js Configuration ---
-    Chart.defaults.font.family = 'Inter, sans-serif';
-    Chart.defaults.font.size = 12;
-    Chart.defaults.color = '#334155';
-    Chart.defaults.plugins.tooltip.enabled = true;
-    Chart.defaults.plugins.tooltip.backgroundColor = 'rgba(30, 41, 59, 0.9)';
-    Chart.defaults.plugins.tooltip.titleFont = { size: 14, weight: '600', family: 'Inter, sans-serif' };
-    Chart.defaults.plugins.tooltip.bodyFont = { size: 12, family: 'Inter, sans-serif' };
-    Chart.defaults.plugins.tooltip.padding = 12;
-    Chart.defaults.plugins.tooltip.cornerRadius = 6;
-    Chart.defaults.plugins.tooltip.boxPadding = 4;
-    Chart.defaults.plugins.legend.labels.boxWidth = 14;
-    Chart.defaults.plugins.legend.labels.padding = 20;
-    Chart.defaults.plugins.legend.labels.usePointStyle = true;
-
-
-    function createLineChart(ctx, labels, datasets) {
-        return new Chart(ctx, {
-            type: 'line',
-            data: { labels, datasets },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                scales: {
-                    y: { beginAtZero: false, grid: { color: '#e2e8f0' }, ticks: { color: '#475569', padding: 8} },
-                    x: { grid: { display: false }, ticks: { color: '#475569', padding: 8} }
-                },
-                plugins: {
-                    legend: { position: 'bottom', labels: { color: '#475569'} },
-                },
-                interaction: { intersect: false, mode: 'index' }
+            // Data for Improve Phase (Projected) Charts
+            adoptionImproved: {
+                monthsAll: ['M-3', 'M-2', 'M-1', 'Launch', 'M+1', 'M+2', 'M+3', 'M+4', 'M+5', 'M+6'], // Months Pre-Launch and Post-Improvement
+                datasets: [
+                    { label: 'Baseline (Pre-Improvement)', data: [85, 78, 70, 65, 62, 60, null, null, null, null], borderColor: '#f87171', backgroundColor: 'transparent', fill: false, borderDash: [5, 5], pointRadius: 0 },
+                    { label: 'Projected (Post-Improvement)', data: [null, null, null, 65, 70, 75, 80, 85, 88, 90], borderColor: '#10b981', backgroundColor: 'transparent', fill: false, tension: 0.4, pointRadius: 4 }
+                ]
+            },
+            salesImproved: {
+                monthsAll: ['M-3', 'M-2', 'M-1', 'Launch', 'M+1', 'M+2', 'M+3', 'M+4', 'M+5', 'M+6'],
+                datasets: [
+                    { label: 'Baseline (Pre-Improvement)', data: [180, 175, 160, 120, 125, 130, null, null, null, null], borderColor: '#fb923c', backgroundColor: 'transparent', fill: false, borderDash: [5, 5], pointRadius: 0 },
+                    { label: 'Projected (Post-Improvement)', data: [null, null, null, 120, 140, 165, 185, 195, 205, 210], borderColor: '#16a34a', backgroundColor: 'transparent', fill: false, tension: 0.4, pointRadius: 4 }
+                ]
+            },
+            satisfactionImproved: {
+                labels: ['Before New Process', 'After New Process', 'Projected (Improved)'],
+                avgScores: [8.0, 6.5, 9.0]
+            },
+            cycleTimeImproved: {
+                labels: ['Old Process (Target)', 'New Process (Actual)', 'Projected (Improved)'],
+                avgTimes: [25, 45, 20] // Minutes
             }
-        });
-    }
+        };
 
-    function createBarChart(ctx, data, isHorizontal = false, yMax = null, xMax = null) {
-        const scalesOptions = {};
-        if (isHorizontal) {
-            scalesOptions.x = { beginAtZero: true, grid: { color: '#e2e8f0' }, ticks: { color: '#475569', padding: 8}, max: xMax };
-            scalesOptions.y = { grid: { display: false }, ticks: { color: '#475569', padding: 8} };
-        } else {
-            scalesOptions.y = { beginAtZero: true, grid: { color: '#e2e8f0' }, ticks: { color: '#475569', padding: 8}, max: yMax };
-            scalesOptions.x = { grid: { display: false }, ticks: { color: '#475569', padding: 8} };
-        }
+        // Utility function to create a Line Chart
+        const createLineChart = (ctx, labels, datasets) => {
+            return new Chart(ctx, {
+                type: 'line',
+                data: { labels, datasets },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { position: 'top' } },
+                    scales: { y: { beginAtZero: true, title: { display: true, text: datasets[0].label.includes('%') ? 'Adoption Rate (%)' : 'Units/Month' } } }
+                }
+            });
+        };
 
-        return new Chart(ctx, {
-            type: 'bar',
-            data: data,
-            options: {
-                indexAxis: isHorizontal ? 'y' : 'x',
-                responsive: true,
-                maintainAspectRatio: false,
-                scales: scalesOptions,
-                plugins: {
-                    legend: { display: data.datasets.length > 1 && data.datasets.some(ds => ds.label), position: 'bottom', labels: { color: '#475569'} },
-                },
-                interaction: { intersect: false, mode: isHorizontal ? 'y' : 'x' }
-            }
-        });
-    }
+        // Utility function to create a Bar Chart
+        const createBarChart = (ctx, data, isHorizontal = false, maxY = null) => {
+            return new Chart(ctx, {
+                type: isHorizontal ? 'bar' : 'bar',
+                data: data,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    indexAxis: isHorizontal ? 'y' : 'x',
+                    plugins: { legend: { display: !isHorizontal } },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: maxY,
+                            title: { display: !isHorizontal && !maxY, text: data.datasets[0].label }
+                        },
+                        x: {
+                            beginAtZero: true,
+                            max: isHorizontal ? maxY : undefined,
+                            title: { display: isHorizontal && !maxY, text: data.datasets[0].label }
+                        }
+                    }
+                }
+            });
+        };
 
-    // --- Navigation Logic ---
-    const navButtons = document.querySelectorAll('.nav-button');
-    const contentSections = document.querySelectorAll('.content-section');
-    let activeCharts = {};
+        // Format for adoption rate ticks
+        const formatPercentageForTicks = (value) => `${value}%`;
 
-    function switchSection(targetId) {
-        navButtons.forEach(btn => {
-            btn.classList.toggle('active', btn.dataset.target === targetId);
-        });
-        contentSections.forEach(section => {
-            section.classList.toggle('active', section.id === targetId);
-        });
+        // Store active Chart.js instances
+        const activeCharts = {};
 
-        Object.values(activeCharts).forEach(chart => {
-            if (chart && typeof chart.destroy === 'function') {
-                chart.destroy();
-            }
-        });
-        activeCharts = {};
-        loadChartsForSection(targetId);
-    }
-
-    navButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            switchSection(button.dataset.target);
-        });
-    });
-
-    function formatPercentageForTicks(value) { return (value * 100).toFixed(0) + '%'; }
-
-    // --- Chart Loading Logic ---
-    function loadChartsForSection(sectionId) {
-        if (sectionId === 'measure') {
+        // Function to initialize all charts
+        const initializeCharts = () => {
+            // MEASURE CHARTS
             const adoptionCtx = document.getElementById('adoptionChart').getContext('2d');
-            activeCharts.adoption = createLineChart(adoptionCtx, dmaicData.adoption.months,
-                [{ label: 'Adoption Rate', data: dmaicData.adoption.rate, borderColor: '#0ea5e9', backgroundColor: 'rgba(14, 165, 233, 0.1)', tension: 0.2, fill: true, pointBackgroundColor: '#0ea5e9', pointBorderColor: '#fff', pointHoverBackgroundColor: '#fff', pointHoverBorderColor: '#0ea5e9'  }]
-            );
-            if(activeCharts.adoption) activeCharts.adoption.options.scales.y.ticks.callback = formatPercentageForTicks;
-
+            activeCharts.adoption = createLineChart(adoptionCtx, dmaicData.adoption.months, [{
+                label: 'FA Adoption Rate (%)',
+                data: dmaicData.adoption.adoptionRates,
+                borderColor: '#0ea5e9', // sky-500
+                backgroundColor: 'rgba(14, 165, 233, 0.2)',
+                fill: true,
+                tension: 0.4
+            }]);
+            activeCharts.adoption.options.scales.y.ticks.callback = formatPercentageForTicks;
+            activeCharts.adoption.update();
 
             const salesCtx = document.getElementById('salesChart').getContext('2d');
-            activeCharts.sales = createLineChart(salesCtx, dmaicData.sales.monthsBefore.concat(dmaicData.sales.monthsAfterInitial),
-                [
-                    { label: 'Sales Before New Process', data: dmaicData.sales.salesBefore.concat(new Array(dmaicData.sales.monthsAfterInitial.length).fill(null)), borderColor: '#10b981', tension: 0.2, pointBackgroundColor: '#10b981' },
-                    { label: 'Sales After New Process (Initial)', data: new Array(dmaicData.sales.monthsBefore.length).fill(null).concat(dmaicData.sales.salesAfterNewProcess), borderColor: '#ef4444', tension: 0.2, pointBackgroundColor: '#ef4444' }
-                ]
-            );
+            activeCharts.sales = createBarChart(salesCtx, {
+                labels: dmaicData.sales.labels,
+                datasets: [{
+                    label: 'Avg. Sales Volume (Units/Month)',
+                    data: dmaicData.sales.avgSales,
+                    backgroundColor: ['#14b8a6', '#f472b6'], // teal-500, rose-400
+                    borderRadius: 4
+                }]
+            });
 
             const satisfactionCtx = document.getElementById('satisfactionChart').getContext('2d');
             activeCharts.satisfaction = createBarChart(satisfactionCtx, {
                 labels: dmaicData.satisfaction.labels,
-                datasets: [{ label: 'Avg. Satisfaction Score', data: dmaicData.satisfaction.avgScores, backgroundColor: ['#3b82f6', '#f87171'], borderRadius: 4 }]
+                datasets: [{
+                    label: 'Avg. Client Satisfaction (1-10)',
+                    data: dmaicData.satisfaction.avgScores,
+                    backgroundColor: ['#3b82f6', '#f87171'], // blue-500, red-400
+                    borderRadius: 4
+                }]
             }, false, 10);
-
 
             const cycleTimeCtx = document.getElementById('cycleTimeChart').getContext('2d');
             activeCharts.cycleTime = createBarChart(cycleTimeCtx, {
                 labels: dmaicData.cycleTime.labels,
-                datasets: [{ label: 'Avg. Cycle Time (Mins)', data: dmaicData.cycleTime.avgTimes, backgroundColor: ['#8b5cf6', '#f97316'], borderRadius: 4 }]
-            });
-
-        } else if (sectionId === 'analyze') {
-            const feedbackCtx = document.getElementById('advisorFeedbackChart').getContext('2d');
-            activeCharts.feedback = createBarChart(feedbackCtx, {
-                labels: dmaicData.advisorFeedback.labels,
                 datasets: [{
-                    label: 'Average Rating (1-5)',
-                    data: dmaicData.advisorFeedback.meanRatings,
-                    backgroundColor: ['#f43f5e', '#f59e0b', '#84cc16', '#ef4444', '#6366f1', '#a855f7' ],
-                    borderColor: '#ffffff',
-                    borderWidth: 2,
+                    label: 'Avg. Cycle Time (Mins)',
+                    data: dmaicData.cycleTime.avgTimes,
+                    backgroundColor: ['#8b5cf6', '#f97316'], // violet-500, orange-500
                     borderRadius: 4
                 }]
-            }, true, null, 5);
+            });
 
-        } else if (sectionId === 'improve') {
+            // ANALYZE CHARTS
+            const feedbackCtx = document.getElementById('feedbackChart').getContext('2d');
+            activeCharts.feedback = createBarChart(feedbackCtx, {
+                labels: dmaicData.feedback.labels,
+                datasets: [{
+                    label: 'Average FA Rating (1-5 Scale)',
+                    data: dmaicData.feedback.avgRatings,
+                    backgroundColor: '#14b8a6', // teal-500
+                    borderRadius: 4
+                }]
+            }, true, 5);
+            activeCharts.feedback.options.scales.x.title.text = 'Average FA Rating (1-5 Scale)'; // Correct horizontal title
+
+            // IMPROVE CHARTS (Projected)
             const adoptionImpCtx = document.getElementById('adoptionChartImproved').getContext('2d');
-            activeCharts.adoptionImp = createLineChart(adoptionImpCtx, dmaicData.adoptionImproved.months,
-                [{ label: 'Adoption Rate', data: dmaicData.adoptionImproved.rate, borderColor: '#22c55e', backgroundColor: 'rgba(34, 197, 94, 0.1)', tension: 0.2, fill: true, pointBackgroundColor: '#22c55e' }]
-            );
-             if(activeCharts.adoptionImp) activeCharts.adoptionImp.options.scales.y.ticks.callback = formatPercentageForTicks;
+            activeCharts.adoptionImp = createLineChart(adoptionImpCtx, dmaicData.adoptionImproved.monthsAll, dmaicData.adoptionImproved.datasets.map(ds => ({...ds, pointBackgroundColor: ds.borderColor, tension: 0.2 })));
+            if(activeCharts.adoptionImp) activeCharts.adoptionImp.options.scales.y.ticks.callback = formatPercentageForTicks;
 
 
             const salesImpCtx = document.getElementById('salesChartImproved').getContext('2d');
@@ -746,13 +727,42 @@
                 labels: dmaicData.cycleTimeImproved.labels,
                 datasets: [{ label: 'Avg. Cycle Time (Mins)', data: dmaicData.cycleTimeImproved.avgTimes, backgroundColor: ['#8b5cf6', '#f97316', '#15803d'], borderRadius: 4 }]
             });
-        }
-    }
+        };
 
-    document.addEventListener('DOMContentLoaded', () => {
-        switchSection('overview');
-    });
-</script>
+        // Function to switch content sections
+        const switchSection = (targetId) => {
+            // Deactivate all content sections and navigation buttons
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.querySelectorAll('.nav-button').forEach(button => {
+                button.classList.remove('active');
+            });
 
+            // Activate the target content section and navigation button
+            const targetSection = document.getElementById(targetId);
+            const targetButton = document.querySelector(`.nav-button[data-target="${targetId}"]`);
+
+            if (targetSection && targetButton) {
+                targetSection.classList.add('active');
+                targetButton.classList.add('active');
+            }
+        };
+
+        // Event listener for navigation buttons
+        document.addEventListener('click', (event) => {
+            if (event.target.classList.contains('nav-button')) {
+                const targetId = event.target.getAttribute('data-target');
+                switchSection(targetId);
+            }
+        });
+
+        // Initial load
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initial setup to display the correct section
+            switchSection('frontpage'); // Changed to load frontpage first
+            initializeCharts();
+        });
+    </script>
 </body>
 </html>
