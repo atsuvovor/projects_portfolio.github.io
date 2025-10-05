@@ -63,9 +63,10 @@ body {
 #menu a {
   color: #fff;
   text-decoration: none;
-  padding: 10px 20px;
+  padding: 6px 20px;
   display: block;
   transition: background 0.3s;
+  font-size: 0.95em;
 }
 
 #menu a:hover {
@@ -156,6 +157,46 @@ body {
 }
 
 .hidden { display: none !important; }
+
+/* ===== Submenu Styling ===== */
+.submenu {
+  padding-left: 10px;
+}
+
+.submenu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #fff;
+  padding: 6px 20px;
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.3s;
+}
+
+.submenu-header:hover {
+  background: rgba(255,255,255,0.15);
+}
+
+.submenu-items a {
+  display: block;
+  padding: 4px 30px; /* indent submenu */
+  color: rgba(255,255,255,0.9);
+  font-size: 0.9em;
+}
+
+.submenu-items a:hover {
+  background: rgba(255,255,255,0.15);
+}
+
+.submenu .arrow {
+  transition: transform 0.3s;
+}
+
+.submenu.open .arrow {
+  transform: rotate(90deg);
+}
+
 </style>
 </head>
 
@@ -169,8 +210,15 @@ body {
         <h2>Data & Analytics Portfolio</h2>
       </div>
 
-      <div id="menu">
-        <a href="#" onclick="showAllProjects()">All Projects</a>
+  <div id="menu">
+    <a href="#" onclick="showAllProjects()">All Projects</a>
+
+    <div class="submenu">
+      <div class="submenu-header" onclick="toggleSubmenu()">
+        <span>Project Categories</span>
+        <span class="arrow">▶</span>
+      </div>
+      <div class="submenu-items hidden">
         <a href="#" onclick="loadProject('stock-portfolio')">Stock Portfolio</a>
         <a href="#" onclick="loadProject('cybersecurity')">Cybersecurity</a>
         <a href="#" onclick="loadProject('data-governance')">Data Governance</a>
@@ -183,6 +231,8 @@ body {
         <a href="#" onclick="loadProject('articles')">Articles & Publications</a>
       </div>
     </div>
+  </div>
+
 
     <div id="sidebar-footer">
       <a href="https://github.com/atsuvovor" target="_blank"><img src="icons/github.png" alt="GitHub"></a>
@@ -287,9 +337,19 @@ function showAllProjects() {
   contentFrame.src = '';
   homeGallery.style.display = 'grid';
 }
+
+/* Toggle submenu visibility */
+function toggleSubmenu() {
+  const submenu = document.querySelector('.submenu');
+  const items = submenu.querySelector('.submenu-items');
+  submenu.classList.toggle('open');
+  items.classList.toggle('hidden');
+}
+
 </script>
 </body>
 </html>
+
 
 
 
