@@ -114,16 +114,41 @@ body {
 }
 
 /* ===== FOOTER ICONS ===== */
+#sidebar-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+  padding: 18px 0;
+  border-top: 1px solid rgba(255,255,255,0.3);
+}
+
+#sidebar-footer a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.15);
+  transition: background 0.3s, transform 0.3s;
+}
+
+#sidebar-footer a:hover {
+  background: rgba(255,255,255,0.25);
+  transform: scale(1.1);
+}
+
 #sidebar-footer a img {
-  width: 28px;
-  height: 28px;
-  filter: invert(1) drop-shadow(0 0 2px rgba(0,0,0,0.3));
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  filter: brightness(1.2) contrast(1.1);
   opacity: 0.95;
-  transition: transform 0.3s, opacity 0.3s;
+  transition: opacity 0.3s;
 }
 
 #sidebar-footer a:hover img {
-  transform: scale(1.15);
   opacity: 1;
 }
 
@@ -342,3 +367,4 @@ function toggleSubmenu() {
 </script>
 </body>
 </html>
+
