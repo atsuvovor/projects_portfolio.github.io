@@ -57,19 +57,60 @@ body {
 #menu {
   display: flex;
   flex-direction: column;
-  padding: 10px 0;
+  padding: 5px 0;
 }
 
 #menu a {
   color: #fff;
   text-decoration: none;
-  padding: 10px 20px;
+  padding: 6px 20px;  /* Reduced vertical padding */
   display: block;
   transition: background 0.3s;
+  font-size: 0.95em;
 }
 
 #menu a:hover {
   background: rgba(255,255,255,0.15);
+}
+
+/* ===== SUBMENU ===== */
+.submenu {
+  padding-left: 10px;
+}
+
+.submenu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #fff;
+  padding: 6px 20px;
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.3s;
+  font-size: 0.95em;
+}
+
+.submenu-header:hover {
+  background: rgba(255,255,255,0.15);
+}
+
+.submenu-items a {
+  display: block;
+  padding: 4px 30px; /* Indent submenu items */
+  color: rgba(255,255,255,0.9);
+  font-size: 0.9em;
+}
+
+.submenu-items a:hover {
+  background: rgba(255,255,255,0.15);
+}
+
+.submenu .arrow {
+  transition: transform 0.3s;
+}
+
+.submenu.open .arrow {
+  transform: rotate(90deg);
 }
 
 /* ===== FOOTER ICONS ===== */
@@ -171,16 +212,25 @@ body {
 
       <div id="menu">
         <a href="#" onclick="showAllProjects()">All Projects</a>
-        <a href="#" onclick="loadProject('stock-portfolio')">Stock Portfolio</a>
-        <a href="#" onclick="loadProject('cybersecurity')">Cybersecurity</a>
-        <a href="#" onclick="loadProject('data-governance')">Data Governance</a>
-        <a href="#" onclick="loadProject('fraud-detection')">Fraud Detection</a>
-        <a href="#" onclick="loadProject('healthcare')">Healthcare Intelligence</a>
-        <a href="#" onclick="loadProject('market-intelligence')">Market Intelligence</a>
-        <a href="#" onclick="loadProject('process-engineering')">Process Engineering</a>
-        <a href="#" onclick="loadProject('business-continuity')">Business Continuity</a>
-        <a href="#" onclick="loadProject('dashboards')">Dashboards</a>
-        <a href="#" onclick="loadProject('articles')">Articles & Publications</a>
+
+        <div class="submenu">
+          <div class="submenu-header" onclick="toggleSubmenu()">
+            <span>Project Categories</span>
+            <span class="arrow">▶</span>
+          </div>
+          <div class="submenu-items hidden">
+            <a href="#" onclick="loadProject('stock-portfolio')">Stock Portfolio</a>
+            <a href="#" onclick="loadProject('cybersecurity')">Cybersecurity</a>
+            <a href="#" onclick="loadProject('data-governance')">Data Governance</a>
+            <a href="#" onclick="loadProject('fraud-detection')">Fraud Detection</a>
+            <a href="#" onclick="loadProject('healthcare')">Healthcare Intelligence</a>
+            <a href="#" onclick="loadProject('market-intelligence')">Market Intelligence</a>
+            <a href="#" onclick="loadProject('process-engineering')">Process Engineering</a>
+            <a href="#" onclick="loadProject('business-continuity')">Business Continuity</a>
+            <a href="#" onclick="loadProject('dashboards')">Dashboards</a>
+            <a href="#" onclick="loadProject('articles')">Articles & Publications</a>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -286,6 +336,14 @@ function showAllProjects() {
   contentFrame.style.display = 'none';
   contentFrame.src = '';
   homeGallery.style.display = 'grid';
+}
+
+/* Toggle submenu visibility */
+function toggleSubmenu() {
+  const submenu = document.querySelector('.submenu');
+  const items = submenu.querySelector('.submenu-items');
+  submenu.classList.toggle('open');
+  items.classList.toggle('hidden');
 }
 </script>
 </body>
