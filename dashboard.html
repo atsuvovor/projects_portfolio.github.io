@@ -3,106 +3,193 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Custom Designs</title>
+    <title>Professional Design Portfolio</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
             margin: 0;
-            padding: 20px;
+            padding: 0;
+            color: #333;
             text-align: center;
         }
 
         .container {
-            max-width: 900px;
-            margin: auto;
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            max-width: 1000px;
+            margin: 40px auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
-        
-        .dashboards {
+
+        h1, h2, h3 {
+            color: #007acc;
+            margin-bottom: 15px;
+        }
+
+        p {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+        /* Cards container */
+        .cards-container {
             display: flex;
-            justify-content: space-around;
             flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
             margin-top: 30px;
         }
 
-        .dashboard-box {
-            width: 30%;
-            aspect-ratio: 1 / 1;
-            padding: 10px;
-            background: white;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            margin: 10px;
+        /* UI/UX Card styling */
+        .card {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            width: 280px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
             cursor: pointer;
-            transition: 0.3s;
             text-align: center;
-            box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+            border: 2px solid transparent; /* hover border effect */
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            border: 2px solid #007acc;
+        }
+
+        .card img {
+            width: 100%;
+            height: auto;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover img {
+            transform: scale(1.03); /* subtle image zoom */
+        }
+
+        .card-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            padding: 15px 10px 5px 10px;
+            color: #007acc;
+        }
+
+        .card-description {
+            font-size: 0.95rem;
+            padding: 0 10px 15px 10px;
+            color: #555;
+        }
+
+        /* Dashboard boxes */
+        .dashboard-box {
+            width: 280px;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            overflow: hidden;
+            text-align: center;
         }
 
         .dashboard-box:hover {
-            transform: scale(1.05);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
         }
 
         .dashboard-box img {
             width: 100%;
             height: auto;
-            border-radius: 5px;
         }
 
         .dashboard-title {
-            font-size: 16px;
-            font-weight: bold;
-            margin: 10px 0;
+            font-weight: 600;
+            font-size: 1.1rem;
+            padding: 10px;
             color: #007acc;
         }
-       
-        
+
+        footer {
+            margin-top: 40px;
+            padding: 20px;
+            font-size: 0.9rem;
+            color: #777;
+        }
+
+        /* Responsive for small devices */
+        @media (max-width: 768px) {
+            .card, .dashboard-box {
+                width: 45%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .card, .dashboard-box {
+                width: 90%;
+            }
+        }
+
     </style>
 </head>
 <body>
+
     <header class="container">
-        <h1>Custom Design Solutions</h1>
+        <h1>Professional Design Portfolio</h1>
+        <p>Showcasing my expertise in UI/UX, data storytelling, and interactive dashboards.</p>
     </header>
-    
+
+    <!-- UI/UX Cards Section -->
     <section class="container">
-        <h2>UI/UX Enhancements</h2>
-        <p>Our dashboards are designed with cutting-edge UI/UX principles to ensure seamless navigation, aesthetic appeal, and user engagement. We craft interactive experiences that bring data to life.</p>
-    
-    <section class="ui-ux-section">
-            <h2>Cutting-Edge UI/UX Principles</h2>
-            <p>We craft interactive experiences that bring data to life using the latest UI/UX methodologies.</p>
-            
-            <h3>Minimalist and Intuitive Navigation</h3>
-            <p>A structured, easy-to-navigate interface ensures seamless user interactions.</p>
-            <img src="https://miro.medium.com/max/1400/1*PgYcmKPNz1lg8wG_nKiA7g.jpeg" alt="Minimalist UI Navigation">
-            
-            <h3>Data-Driven Storytelling</h3>
-            <p>We use dynamic visualizations and color psychology to transform data into compelling narratives.</p>
-            <img src="https://venngage-wordpress.s3.amazonaws.com/uploads/2022/06/Storytelling_Infographic_5.png" alt="Data Storytelling">
-            
-            <h3>Responsive and Adaptive Design</h3>
-            <p>Our dashboards adjust seamlessly across devices for optimal viewing and usability.</p>
-            <img src="https://i.pinimg.com/originals/99/3e/3c/993e3c52a92b1e3d351d4f68c5b94678.png" alt="Responsive UI Design">
-            
-            <h3>Microinteractions for Engagement</h3>
-            <p>Subtle animations and hover effects enhance engagement and provide interactive feedback.</p>
-            <img src="https://i.pinimg.com/originals/b3/17/9c/b3179c91ab68fcfd16fa2bfb119e3ae5.gif" alt="Microinteractions">
-            
-            <h3>Accessibility and Inclusivity</h3>
-            <p>Our designs follow WCAG guidelines to ensure clarity, readability, and usability for all users.</p>
-            <img src="https://webaim.org/articles/contrast/images/contrast-comparison2.jpg" alt="Accessibility in UI">
-        </section>
+        <h2>UI/UX Highlights</h2>
+        <div class="cards-container">
+            <div class="card">
+                <div class="card-title">UI/UX Enhancements</div>
+                <div class="card-description">Crafting dashboards with advanced UI/UX for seamless, engaging experiences.</div>
+            </div>
+            <div class="card">
+                <div class="card-title">Cutting-Edge Principles</div>
+                <div class="card-description">Transforming data into intuitive, interactive visuals using modern design methods.</div>
+            </div>
+            <div class="card">
+                <div class="card-title">Minimalist Navigation</div>
+                <div class="card-description">Structured, clean interfaces make exploring insights effortless.</div>
+                <img src="https://miro.medium.com/max/1400/1*PgYcmKPNz1lg8wG_nKiA7g.jpeg" alt="Minimalist UI Navigation">
+            </div>
+            <div class="card">
+                <div class="card-title">Data Storytelling</div>
+                <div class="card-description">Dynamic visualizations convey clear, actionable data narratives.</div>
+                <img src="https://venngage-wordpress.s3.amazonaws.com/uploads/2022/06/Storytelling_Infographic_5.png" alt="Data Storytelling">
+            </div>
+            <div class="card">
+                <div class="card-title">Responsive Design</div>
+                <div class="card-description">Dashboards adapt smoothly across devices for optimal viewing.</div>
+                <img src="https://i.pinimg.com/originals/99/3e/3c/993e3c52a92b1e3d351d4f68c5b94678.png" alt="Responsive UI Design">
+            </div>
+            <div class="card">
+                <div class="card-title">Microinteractions</div>
+                <div class="card-description">Subtle animations enhance engagement and guide user interaction.</div>
+                <img src="https://i.pinimg.com/originals/b3/17/9c/b3179c91ab68fcfd16fa2bfb119e3ae5.gif" alt="Microinteractions">
+            </div>
+            <div class="card">
+                <div class="card-title">Accessibility</div>
+                <div class="card-description">Inclusive design ensures clarity, readability, and usability for all.</div>
+                <img src="https://webaim.org/articles/contrast/images/contrast-comparison2.jpg" alt="Accessibility in UI">
+            </div>
+        </div>
     </section>
-    
+
+    <!-- Interactive Dashboards Section -->
     <main class="container">
         <section>
-            <h2>Data Visualization Dashboards</h2>
-            <p>Click on any dashboard below to explore our interactive data insights.</p>
-            <div class="dashboards">
+            <h2>Interactive Dashboards</h2>
+            <p>Click on any dashboard below to explore interactive data insights.</p>
+            <div class="cards-container">
                 <div class="dashboard-box" onclick="window.location.href='CybersecurityKeyTerms.html'">
                     <div class="dashboard-title">Cybersecurity Key Terms</div>
                     <img src="https://public.tableau.com/static/images/Cy/CybersecurityKeyTerms/CybersecurityKeyTerms/1.png" alt="Cybersecurity Key Terms">
@@ -122,9 +209,10 @@
             </div>
         </section>
     </main>
+
     <footer class="container">
-        <p>&copy; 2025 Your Company</p>
+        <p>&copy; 2025 Atsu Vovor | Personal Portfolio</p>
     </footer>
+
 </body>
 </html>
-
