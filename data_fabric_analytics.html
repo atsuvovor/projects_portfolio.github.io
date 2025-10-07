@@ -142,15 +142,28 @@
     text-align: center;
     font-weight: 500;
     margin-bottom: 25px;
+    position: relative;
+  }
+  .close-btn {
+    position: absolute;
+    right: 12px;
+    top: 8px;
+    background: none;
+    border: none;
+    color: #856404;
+    font-size: 18px;
+    cursor: pointer;
   }
 
   </style>
 </head>
 <body>
-  <div class="status-banner">
-     🚧 <strong>Project Under Implementation</strong> — The Data Fabric Analytics system is currently being developed.  
+
+  <div class="status-banner" id="banner">
+    🚧 <strong>Project Under Implementation</strong> — The Data Fabric Analytics system is currently being developed.  
     Updates and new features will be released soon.
-   </div>
+    <button class="close-btn" onclick="document.getElementById('banner').style.display='none';">&times;</button>
+  </div>
 
   <header>
     <h1>Data Fabric Analytics</h1>
