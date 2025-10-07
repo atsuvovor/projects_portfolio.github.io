@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Data Fabric Analytics | Atsu Vovor Portfolio</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Roboto, Arial, sans-serif;
+      background: #f9fafc;
+      color: #222;
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(135deg, #004aad, #0078d4);
+      color: white;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+    }
+
+    header p {
+      margin-top: 0.4rem;
+      font-size: 1rem;
+      opacity: 0.9;
+    }
+
+    .container {
+      display: flex;
+      min-height: 100vh;
+    }
+
+    nav {
+      width: 240px;
+      background: #fff;
+      border-right: 1px solid #e0e0e0;
+      padding: 2rem 1rem;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      box-shadow: 2px 0 6px rgba(0,0,0,0.05);
+    }
+
+    nav h3 {
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      color: #004aad;
+      letter-spacing: 0.05rem;
+    }
+
+    nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    nav li {
+      margin: 0.7rem 0;
+    }
+
+    nav a {
+      color: #333;
+      text-decoration: none;
+      font-weight: 500;
+      display: block;
+      padding: 6px 8px;
+      border-radius: 6px;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    nav a:hover {
+      background: #eef4ff;
+      color: #004aad;
+    }
+
+    main {
+      flex: 1;
+      padding: 2rem 3rem;
+      background: #fff;
+      border-left: 1px solid #e0e0e0;
+      overflow-y: auto;
+    }
+
+    section {
+      margin-bottom: 3rem;
+    }
+
+    h2 {
+      color: #004aad;
+      border-bottom: 2px solid #004aad;
+      padding-bottom: 0.4rem;
+    }
+
+    .highlight {
+      background: #eef6ff;
+      padding: 0.8rem 1rem;
+      border-left: 4px solid #0078d4;
+      border-radius: 6px;
+      margin: 1rem 0;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+      color: #666;
+      border-top: 1px solid #e0e0e0;
+      background: #fafafa;
+    }
+
+    @media (max-width: 900px) {
+      .container {
+        flex-direction: column;
+      }
+
+      nav {
+        width: 100%;
+        height: auto;
+        box-shadow: none;
+        border-right: none;
+        border-bottom: 1px solid #ddd;
+      }
+
+      main {
+        padding: 1.5rem;
+      }
+    }
+
+.status-banner {
+    background-color: #fff3cd;
+    color: #856404;
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid #ffeeba;
+    text-align: center;
+    font-weight: 500;
+    margin-bottom: 25px;
+  }
+
+  </style>
+</head>
+<body>
+  <div class="status-banner">
+     🚧 <strong>Project Under Implementation</strong> — The Data Fabric Analytics system is currently being developed.  
+    Updates and new features will be released soon.
+   </div>
+
+  <header>
+    <h1>Data Fabric Analytics</h1>
+    <p>Integrating data, governance, and AI-driven analytics for intelligent enterprise decision-making.</p>
+  </header>
+
+  <div class="container">
+    <nav>
+      <h3>Contents</h3>
+      <ul>
+        <li><a href="#abstract">Abstract</a></li>
+        <li><a href="#introduction">Introduction</a></li>
+        <li><a href="#description">Project Description</a></li>
+        <li><a href="#scope">Scope</a></li>
+        <li><a href="#specifications">System Specifications</a></li>
+        <li><a href="#next-steps">Next Steps</a></li>
+        <li><a href="#conclusion">Conclusion</a></li>
+      </ul>
+    </nav>
+
+    <main>
+      <section id="abstract">
+        <h2>Abstract</h2>
+        <p>
+          The <strong>Data Fabric Analytics</strong> project introduces a unified data architecture that integrates
+          governance, lineage, and real-time analytics across multiple enterprise data sources. It leverages
+          AI-assisted automation and metadata management to enhance data quality, improve accessibility, and accelerate
+          data-driven decisions across business domains.
+        </p>
+      </section>
+
+      <section id="introduction">
+        <h2>Introduction</h2>
+        <p>
+          As organizations increasingly adopt hybrid and multi-cloud data systems, maintaining consistent governance,
+          access control, and analytical capabilities becomes a major challenge. This project demonstrates how a
+          <em>data fabric</em> architecture can bridge that complexity—by connecting distributed data with intelligent
+          automation, enabling consistent insights while enforcing governance.
+        </p>
+        <div class="highlight">
+          <strong>Key Goal:</strong> Create a scalable, governed, and AI-enabled data ecosystem that provides
+          end-to-end visibility and faster insights for executives and analysts.
+        </div>
+      </section>
+
+      <section id="description">
+        <h2>Project Description</h2>
+        <p>
+          The solution combines cloud-native technologies, federated query engines, and metadata-driven workflows to
+          unify data ingestion, cataloging, lineage tracking, and analytics delivery. The data fabric includes:
+        </p>
+        <ul>
+          <li><strong>Data Integration:</strong> Using Trino and Airbyte for federated data access across SQL, APIs, and cloud storage.</li>
+          <li><strong>Metadata & Governance:</strong> Implementing OpenMetadata for lineage visualization, quality rules, and glossary terms.</li>
+          <li><strong>AI Automation:</strong> Utilizing machine learning models and RAG-based agents for data quality validation and anomaly detection.</li>
+          <li><strong>Visualization:</strong> Streamlit and Power BI dashboards deliver real-time operational insights and automated PDF reports.</li>
+        </ul>
+      </section>
+
+      <section id="scope">
+        <h2>Scope</h2>
+        <p>
+          The Data Fabric Analytics framework is adaptable across multiple business units including:
+        </p>
+        <ul>
+          <li>Enterprise Data Warehousing</li>
+          <li>Cybersecurity and Access Governance</li>
+          <li>Operational Risk and Compliance Reporting</li>
+          <li>Business Intelligence and Executive Dashboards</li>
+        </ul>
+        <p>
+          Its modular architecture allows organizations to scale data pipelines and analytical use cases without
+          reengineering their data infrastructure.
+        </p>
+      </section>
+
+      <section id="specifications">
+        <h2>System Specifications</h2>
+        <ul>
+          <li><strong>Backend:</strong> Dockerized Trino clusters, PostgreSQL metadata store, and Airbyte for data sync.</li>
+          <li><strong>Metadata Layer:</strong> OpenMetadata with lineage, glossary, and data quality rules.</li>
+          <li><strong>AI Layer:</strong> RAG-enabled insights engine (LangChain + FAISS) for context-aware analysis.</li>
+          <li><strong>Visualization Layer:</strong> Streamlit dashboards and Power BI integration for executives.</li>
+          <li><strong>Deployment:</strong> Containerized (Docker/Compose) and cloud-ready for AWS/GCP.</li>
+        </ul>
+      </section>
+
+      <section id="next-steps">
+        <h2>Next Steps</h2>
+        <ul>
+          <li>Integrate predictive analytics for proactive anomaly detection.</li>
+          <li>Enhance metadata-driven automation for governance policies.</li>
+          <li>Expand data lineage coverage across all data sources.</li>
+          <li>Publish API endpoints for enterprise-wide data-as-a-service (DaaS).</li>
+        </ul>
+      </section>
+
+      <section id="conclusion">
+        <h2>Conclusion</h2>
+        <p>
+          The <strong>Data Fabric Analytics</strong> project establishes a modern foundation for data governance,
+          automation, and decision intelligence. By connecting structured and unstructured data sources through a
+          unified, AI-augmented architecture, it reduces silos, enhances data trust, and accelerates innovation across
+          the enterprise.
+        </p>
+        <p>
+          This framework can be extended to support self-service analytics, compliance reporting, and machine-learning
+          governance in enterprise-scale environments.
+        </p>
+      </section>
+    </main>
+  </div>
+
+  <footer>
+    © 2025 Atsu Vovor | 
+    <a href="https://www.linkedin.com/in/atsu-vovor-mmai-9188326/" target="_blank">LinkedIn</a> |
+    <a href="https://github.com/atsuvovor/projects_portfolio.github.io" target="_blank">GitHub</a> |
+    <a href="https://public.tableau.com/app/profile/atsu.vovor8645/vizzes" target="_blank">Tableau</a>
+  </footer>
+</body>
+</html>
