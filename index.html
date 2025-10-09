@@ -25,32 +25,51 @@ body {
   justify-content: space-between;
   box-shadow: 2px 0 10px rgba(0,0,0,0.1);
   overflow-y: auto;
+  transition: width 0.3s ease;
+}
+
+#sidebar.collapsed {
+  width: 60px;
 }
 
 .sidebar-header {
   text-align: center;
   padding: 20px 10px;
+  transition: opacity 0.3s;
 }
 
-.sidebar-header img {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  object-fit: cover;
+#sidebar.collapsed .sidebar-header h1,
+#sidebar.collapsed .sidebar-header h2 {
+  display: none;
+}
+
+#sidebar.collapsed .sidebar-header img {
+  width: 45px;
+  height: 45px;
+}
+
+/* ===== TOGGLE BUTTON ===== */
+#toggleSidebar {
+  position: absolute;
+  top: 15px;
+  left: 250px;
+  background: #4e54c8;
+  color: #fff;
   border: 2px solid #fff;
-  margin-bottom: 10px;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.3s, left 0.3s;
+  z-index: 999;
 }
 
-.sidebar-header h1 {
-  font-size: 1.4em;
-  margin: 0;
-}
-
-.sidebar-header h2 {
-  font-size: 0.9em;
-  font-weight: normal;
-  color: rgba(255,255,255,0.85);
-  margin: 5px 0 0;
+#sidebar.collapsed + #toggleSidebar {
+  left: 50px;
+  transform: rotate(180deg);
 }
 
 /* ===== SIDEBAR MENU ===== */
@@ -63,7 +82,7 @@ body {
 #menu a {
   color: #fff;
   text-decoration: none;
-  padding: 6px 20px;  /* Reduced vertical padding */
+  padding: 6px 20px;
   display: block;
   transition: background 0.3s;
   font-size: 0.95em;
@@ -96,7 +115,7 @@ body {
 
 .submenu-items a {
   display: block;
-  padding: 4px 30px; /* Indent submenu items */
+  padding: 4px 30px;
   color: rgba(255,255,255,0.9);
   font-size: 0.9em;
 }
@@ -139,12 +158,11 @@ body {
   transform: scale(1.1);
 }
 
-/* Preserve original icon colors */
 #sidebar-footer a img {
   width: 22px;
   height: 22px;
   object-fit: contain;
-  filter: none !important; /* prevent darkening */
+  filter: none !important;
   opacity: 1 !important;
   transition: transform 0.3s;
 }
@@ -152,8 +170,6 @@ body {
 #sidebar-footer a:hover img {
   transform: scale(1.08);
 }
-
-
 
 /* ===== MAIN AREA ===== */
 #main {
@@ -209,12 +225,11 @@ body {
 }
 
 .project-card p {
-  margin: 0 15px 15px 15px; 
+  margin: 0 15px 15px 15px;
   color: #444;
   font-size: 0.95em;
   line-height: 1.5;
 }
-
 
 /* Iframe */
 #contentFrame {
@@ -234,10 +249,9 @@ body {
 }
 
 .in-progress {
-  color: #e69500; /* professional amber tone */
+  color: #e69500;
   font-weight: 600;
 }
-
 </style>
 </head>
 
@@ -283,12 +297,15 @@ body {
     </div>
   </div>
 
+  <!-- TOGGLE BUTTON -->
+  <div id="toggleSidebar">⮜</div>
+
   <!-- MAIN -->
   <div id="main">
     <div id="header">Home</div>
 
     <div id="homeGallery">
-      <div class="project-card" onclick="loadProject('stock-portfolio')">
+	      <div class="project-card" onclick="loadProject('stock-portfolio')">
         <img src="stock_portfolio_analytics.png" alt="">
         <h3>Stock Portfolio Analytics</h3>
         <p>Interactive dashboards and predictive models for portfolio optimization and investment risk analysis.</p>
@@ -344,7 +361,7 @@ body {
         <p>Simulating a modern data fabric ecosystem integrating OpenMetadata, Trino, MySQL, and Streamlit AI dashboard for unified governance, lineage, and analytics.</p>
         <p class="project-status"><strong>Status:</strong> <span class="in-progress">Currently Under Implementation</span></p>
       </div>
-      
+
     </div>
 
     <iframe id="contentFrame"></iframe>
@@ -365,11 +382,17 @@ const projectPages = {
   'data-fabric-analytics': 'data_fabric_analytics.html'
 };
 
+const sidebar = document.getElementById('sidebar');
+const toggleSidebarBtn = document.getElementById('toggleSidebar');
+toggleSidebarBtn.addEventListener('click', () => {
+  sidebar.classList.toggle('collapsed');
+});
+
+/* Existing functions unchanged */
 const header = document.getElementById('header');
 const homeGallery = document.getElementById('homeGallery');
 const contentFrame = document.getElementById('contentFrame');
 
-/* Load selected project */
 function loadProject(key) {
   const page = projectPages[key];
   if (page) {
@@ -380,7 +403,6 @@ function loadProject(key) {
   }
 }
 
-/* Show all projects */
 function showAllProjects() {
   header.textContent = 'Home';
   contentFrame.style.display = 'none';
@@ -388,7 +410,6 @@ function showAllProjects() {
   homeGallery.style.display = 'grid';
 }
 
-/* Toggle submenu visibility */
 function toggleSubmenu() {
   const submenu = document.querySelector('.submenu');
   const items = submenu.querySelector('.submenu-items');
@@ -398,8 +419,3 @@ function toggleSubmenu() {
 </script>
 </body>
 </html>
-
-
-
-
-
