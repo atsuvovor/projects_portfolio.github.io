@@ -29,13 +29,26 @@ body {
 }
 
 #sidebar.collapsed {
-  width: 60px;
+  width: 0px;
 }
 
 .sidebar-header {
   text-align: center;
   padding: 20px 10px;
   transition: opacity 0.3s;
+}
+.sidebar-header img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #fff;
+  margin-bottom: 10px;
+}
+
+.sidebar-header h1 {
+  font-size: 1.4em;
+  margin: 0;
 }
 
 #sidebar.collapsed .sidebar-header h1,
@@ -44,8 +57,8 @@ body {
 }
 
 #sidebar.collapsed .sidebar-header img {
-  width: 45px;
-  height: 45px;
+  width: 0px;
+  height: 0px;
 }
 
 /* ===== TOGGLE BUTTON ===== */
@@ -419,3 +432,4 @@ function toggleSubmenu() {
 </script>
 </body>
 </html>
+
