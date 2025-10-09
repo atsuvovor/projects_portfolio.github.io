@@ -252,11 +252,47 @@ body {
   color: #e69500;
   font-weight: 600;
 }
+
+/* ===== SIDEBAR TOGGLE ARROW ===== */
+#sidebarToggle {
+  position: absolute;
+  top: 15px;
+  left: 275px;
+  background: #4e54c8;
+  color: #fff;
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  font-size: 1.1em;
+  line-height: 24px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 999;
+}
+
+#sidebar.collapsed {
+  width: 0;
+  overflow: hidden;
+}
+
+#sidebar.collapsed + #main {
+  margin-left: 0;
+}
+
+#sidebar.collapsed ~ #sidebarToggle {
+  left: 10px;
+  transform: rotate(180deg);
+}
+
 </style>
 </head>
 
 <body>
   <!-- SIDEBAR -->
+<!-- SIDEBAR TOGGLE BUTTON -->
+<div id="sidebarToggle">⮜</div>
+
   <div id="sidebar">
     <div>
       <div class="sidebar-header">
@@ -416,6 +452,17 @@ function toggleSubmenu() {
   submenu.classList.toggle('open');
   items.classList.toggle('hidden');
 }
+
+// Toggle sidebar open/close
+const sidebar = document.getElementById('sidebar');
+const toggleButton = document.getElementById('sidebarToggle');
+
+toggleButton.addEventListener('click', () => {
+  sidebar.classList.toggle('collapsed');
+  toggleButton.textContent = sidebar.classList.contains('collapsed') ? '⮞' : '⮜';
+});
+
 </script>
 </body>
 </html>
+
