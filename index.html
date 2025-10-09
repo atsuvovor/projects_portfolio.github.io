@@ -236,7 +236,7 @@ body {
 /* ===== SIDEBAR TOGGLE ARROW ===== */
 #sidebarToggle {
   position: fixed;
-  top: 15px;
+  top: 18px;
   left: 275px;
   background: #4e54c8;
   color: #fff;
@@ -248,7 +248,7 @@ body {
   text-align: center;
   cursor: pointer;
   transition: all 0.3s ease;
-  z-index: 999;
+  z-index: 1001;
 }
 
 #sidebar.collapsed {
@@ -261,9 +261,7 @@ body {
 }
 
 #sidebar.collapsed ~ #sidebarToggle {
-  position: fixed;
   left: 0.5px;
-  z-index: 999;
   transform: rotate(180deg);
 }
 </style>
@@ -435,7 +433,7 @@ toggleButton.addEventListener('click', () => {
   sidebar.classList.toggle('collapsed');
   if(sidebar.classList.contains('collapsed')) {
     toggleButton.textContent = '⮞';
-    toggleButton.style.left = '10px'; // far left
+    toggleButton.style.left = '7px'; // far left
   } else {
     toggleButton.textContent = '⮜';
     toggleButton.style.left = '275px'; // original position
@@ -445,6 +443,7 @@ toggleButton.addEventListener('click', () => {
 </script>
 </body>
 </html>
+
 
 
 
