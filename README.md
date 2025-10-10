@@ -16,8 +16,8 @@ Interactive Demos: Experience live web applications, data visualizations, and si
 ## Project Domains  
 This portfolio currently features work primarily in these areas:
 
-1. Cybersecurity & Risk Analysis
-Focus: Simulating attacks, analyzing threat data, and implementing risk mitigation strategies.
+1. Cybersecurity & Risk Analysis  
+*  Focus: Simulating attacks, analyzing threat data, and implementing risk mitigation strategies.
 
 Example Project: Cyber Attack Simulation Dashboard (Power BI) - Demonstrates transforming raw data into actionable security intelligence using Power Query and DAX, as discussed in our previous conversation.
 
