@@ -14,22 +14,21 @@ Interactive Demos: Experience live web applications, data visualizations, and si
 **Responsive Design:** Optimized for viewing on desktop, tablet, and mobile devices.
 
 ## Project Domains  
-This portfolio currently features work primarily in these areas:
+This portfolio currently features work primarily in these areas:  
 
 1. Cybersecurity & Risk Analysis  
-*  Focus: Simulating attacks, analyzing threat data, and implementing risk mitigation strategies.
+    Focus: Simulating attacks, analyzing threat data, and implementing risk mitigation strategies.
 
-Example Project: Cyber Attack Simulation Dashboard (Power BI) - Demonstrates transforming raw data into actionable security intelligence using Power Query and DAX, as discussed in our previous conversation.
+    Example Project: Cyber Attack Simulation Dashboard (Power BI) - Demonstrates transforming raw data into actionable security intelligence using Power Query and DAX, as discussed in our previous conversation.  
 
-2. Data Science & Machine Learning
-Focus: Building predictive models, performing exploratory data analysis (EDA), and creating data pipelines.
+2. Data Science & Machine Learning  
+    Focus: Building predictive models, performing exploratory data analysis (EDA), and creating data pipelines.  
+    Technologies: Python (Pandas, NumPy, Scikit-learn), Jupyter Notebooks.  
 
-Technologies: Python (Pandas, NumPy, Scikit-learn), Jupyter Notebooks.
+3. Web Development & Visualization  
+    Focus: Creating responsive front-end applications and interactive dashboards.  
 
-3. Web Development & Visualization
-Focus: Creating responsive front-end applications and interactive dashboards.
-
-Technologies: HTML, CSS (Tailwind CSS), JavaScript, React, Angular.
+    Technologies: HTML, CSS (Tailwind CSS), JavaScript, React, Angular.
 
 # 🛠️ Technology Stack
 The projects within this portfolio leverage a diverse set of modern tools and frameworks:
@@ -44,19 +43,19 @@ The projects within this portfolio leverage a diverse set of modern tools and fr
 
 2.   Business Intelligence
 
-*     Power BI (Power Query, Power Pivot/DAX), Tableau
+  *     Power BI (Power Query, Power Pivot/DAX), Tableau
 
 3.   Front-End
 
-*     React, Angular, JavaScript (ES6+), HTML5, Tailwind CSS
+  *     React, Angular, JavaScript (ES6+), HTML5, Tailwind CSS
 
 4.   Backend/Cloud
 
-*     Firebase (Firestore, Authentication), Node.js, REST APIs
+  *     Firebase (Firestore, Authentication), Node.js, REST APIs
 
 5.   Version Control
 
-*     Git, GitHub
+  *     Git, GitHub
 
 
 
