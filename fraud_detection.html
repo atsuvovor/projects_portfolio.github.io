@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fraud Detection | Atsu Vovor Portfolio</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Roboto, Arial, sans-serif;
+      background: #f9fafc;
+      color: #222;
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(135deg, #9b1c31, #e63946);
+      color: white;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+    }
+
+    header p {
+      margin-top: 0.4rem;
+      font-size: 1rem;
+      opacity: 0.9;
+    }
+
+    .container {
+      display: flex;
+      min-height: 100vh;
+    }
+
+    nav {
+      width: 240px;
+      background: #fff;
+      border-right: 1px solid #e0e0e0;
+      padding: 2rem 1rem;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      box-shadow: 2px 0 6px rgba(0,0,0,0.05);
+    }
+
+    nav h3 {
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      color: #9b1c31;
+      letter-spacing: 0.05rem;
+    }
+
+    nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    nav li {
+      margin: 0.7rem 0;
+    }
+
+    nav a {
+      color: #333;
+      text-decoration: none;
+      font-weight: 500;
+      display: block;
+      padding: 6px 8px;
+      border-radius: 6px;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    nav a:hover {
+      background: #ffeef0;
+      color: #9b1c31;
+    }
+
+    main {
+      flex: 1;
+      padding: 2rem 3rem;
+      background: #fff;
+      border-left: 1px solid #e0e0e0;
+      overflow-y: auto;
+    }
+
+    section {
+      margin-bottom: 3rem;
+    }
+
+    h2 {
+      color: #9b1c31;
+      border-bottom: 2px solid #9b1c31;
+      padding-bottom: 0.4rem;
+    }
+
+    .highlight {
+      background: #fff5f5;
+      padding: 0.8rem 1rem;
+      border-left: 4px solid #e63946;
+      border-radius: 6px;
+      margin: 1rem 0;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+      color: #666;
+      border-top: 1px solid #e0e0e0;
+      background: #fafafa;
+    }
+
+    @media (max-width: 900px) {
+      .container {
+        flex-direction: column;
+      }
+
+      nav {
+        width: 100%;
+        height: auto;
+        box-shadow: none;
+        border-right: none;
+        border-bottom: 1px solid #ddd;
+      }
+
+      main {
+        padding: 1.5rem;
+      }
+    }
+
+  .status-banner {
+    background-color: #fff3cd;
+    color: #856404;
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid #ffeeba;
+    text-align: center;
+    font-weight: 500;
+    margin-bottom: 25px;
+    position: relative;
+  }
+  .close-btn {
+    position: absolute;
+    right: 12px;
+    top: 8px;
+    background: none;
+    border: none;
+    color: #856404;
+    font-size: 18px;
+    cursor: pointer;
+  }
+  </style>
+</head>
+<body>
+
+  <div class="status-banner" id="banner">
+    🚧 <strong>Project Under Implementation</strong> — The Fraud Detection system will be released soon.
+    <button class="close-btn" onclick="document.getElementById('banner').style.display='none';">&times;</button>
+  </div>
+
+  <header>
+    <h1>Fraud Detection</h1>
+    <p>Machine learning models designed to detect suspicious activities and prevent financial fraud in real time.</p>
+  </header>
+
+  <div class="container">
+    <nav>
+      <h3>Contents</h3>
+      <ul>
+        <li><a href="#abstract">Abstract</a></li>
+        <li><a href="#introduction">Introduction</a></li>
+        <li><a href="#description">Project Description</a></li>
+        <li><a href="#scope">Scope</a></li>
+        <li><a href="#specifications">System Specifications</a></li>
+        <li><a href="#next-steps">Next Steps</a></li>
+        <li><a href="#conclusion">Conclusion</a></li>
+      </ul>
+    </nav>
+
+    <main>
+      <section id="abstract">
+        <h2>Abstract</h2>
+        <p>
+          The <strong>Fraud Detection</strong> project focuses on applying machine learning and advanced analytics
+          to identify, predict, and prevent fraudulent activities in real time. Using transaction pattern analysis,
+          anomaly detection, and behavioral modeling, the system aims to minimize financial losses and enhance security
+          across banking and insurance ecosystems.
+        </p>
+      </section>
+
+      <section id="introduction">
+        <h2>Introduction</h2>
+        <p>
+          As digital transactions and online banking grow, the risk of fraud has become more sophisticated and harder to detect.
+          Traditional rule-based systems are insufficient for evolving attack vectors. This project leverages supervised
+          and unsupervised learning techniques to detect anomalies in user behavior, transaction velocity, and network activity.
+        </p>
+        <div class="highlight">
+          <strong>Key Goal:</strong> Build an adaptive fraud detection framework powered by explainable AI models and real-time monitoring pipelines.
+        </div>
+      </section>
+
+      <section id="description">
+        <h2>Project Description</h2>
+        <p>
+          The system integrates data ingestion, feature engineering, model training, and visualization components that
+          work together to detect potential fraud events dynamically. It includes:
+        </p>
+        <ul>
+          <li><strong>Data Collection:</strong> Streaming ingestion from transactional and behavioral data sources.</li>
+          <li><strong>Feature Engineering:</strong> Time-series aggregation, risk profiling, and anomaly scoring.</li>
+          <li><strong>Machine Learning Models:</strong> Logistic Regression, XGBoost, Isolation Forest, and Autoencoders for hybrid detection.</li>
+          <li><strong>Visualization:</strong> Dashboards for fraud alerts, risk trends, and case review workflows.</li>
+        </ul>
+      </section>
+
+      <section id="scope">
+        <h2>Scope</h2>
+        <p>
+          The Fraud Detection framework supports multiple financial domains:
+        </p>
+        <ul>
+          <li>Credit Card and Payment Fraud</li>
+          <li>Insurance Claim Fraud</li>
+          <li>Identity Theft and Account Takeover</li>
+          <li>Cyber-Financial Threat Monitoring</li>
+        </ul>
+        <p>
+          The system can integrate with existing compliance, audit, and risk intelligence tools to streamline
+          investigation and response processes.
+        </p>
+      </section>
+
+      <section id="specifications">
+        <h2>System Specifications</h2>
+        <ul>
+          <li><strong>Backend:</strong> Python (Pandas, Scikit-learn, XGBoost, PyTorch Autoencoders).</li>
+          <li><strong>Data Pipeline:</strong> Kafka for streaming ingestion and Snowflake for data warehousing.</li>
+          <li><strong>AI Layer:</strong> Anomaly detection and fraud scoring APIs with explainable AI outputs.</li>
+          <li><strong>Visualization Layer:</strong> Streamlit dashboards and Power BI for fraud trend analytics.</li>
+          <li><strong>Deployment:</strong> Containerized microservices (Docker + FastAPI) and real-time alert APIs.</li>
+        </ul>
+      </section>
+
+      <section id="next-steps">
+        <h2>Next Steps</h2>
+        <ul>
+          <li>Integrate reinforcement learning for adaptive fraud model tuning.</li>
+          <li>Enable cross-channel data correlation (transactions, chat, and network telemetry).</li>
+          <li>Build real-time case review dashboards for fraud analysts.</li>
+          <li>Publish open APIs for integration with banking risk engines.</li>
+        </ul>
+      </section>
+
+      <section id="conclusion">
+        <h2>Conclusion</h2>
+        <p>
+          The <strong>Fraud Detection</strong> project establishes an intelligent, data-driven defense framework
+          against evolving financial threats. By unifying AI-driven analytics, behavioral monitoring, and real-time
+          alerting, it helps financial institutions minimize risk exposure while ensuring customer trust and compliance.
+        </p>
+        <p>
+          ⚡ Content coming soon: case studies, ML pipelines, and visual dashboards.
+        </p>
+      </section>
+    </main>
+  </div>
+
+  <footer>
+    © 2025 Atsu Vovor |
+    <a href="https://www.linkedin.com/in/atsu-vovor-mmai-9188326/" target="_blank">LinkedIn</a> |
+    <a href="https://github.com/atsuvovor/projects_portfolio.github.io" target="_blank">GitHub</a> |
+    <a href="https://public.tableau.com/app/profile/atsu.vovor8645/vizzes" target="_blank">Tableau</a>
+  </footer>
+</body>
+</html>

@@ -1,20 +1,266 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Market Intelligence | Atsu Vovor Portfolio</title>
+
   <style>
-    body { font-family: Arial, sans-serif; margin: 40px; background: #f9f9f9; }
-    .container { max-width: 800px; margin: auto; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-    h1 { color: #4e54c8; }
-    a { color: #4e54c8; text-decoration: none; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Roboto, Arial, sans-serif;
+      background: #f9fafc;
+      color: #222;
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(135deg, #1e6352, #2a7b68);
+      color: white;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+    }
+
+    header p {
+      margin-top: 0.4rem;
+      font-size: 1rem;
+      opacity: 0.9;
+    }
+
+    .container {
+      display: flex;
+      min-height: 100vh;
+    }
+
+    nav {
+      width: 240px;
+      background: #fff;
+      border-right: 1px solid #e0e0e0;
+      padding: 2rem 1rem;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      box-shadow: 2px 0 6px rgba(0,0,0,0.05);
+    }
+
+    nav h3 {
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      color: #1e6352;
+      letter-spacing: 0.05rem;
+    }
+
+    nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    nav li {
+      margin: 0.7rem 0;
+    }
+
+    nav a {
+      color: #333;
+      text-decoration: none;
+      font-weight: 500;
+      display: block;
+      padding: 6px 8px;
+      border-radius: 6px;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    nav a:hover {
+      background: #e0f2ef;
+      color: #1e6352;
+    }
+
+    main {
+      flex: 1;
+      padding: 2rem 3rem;
+      background: #fff;
+      border-left: 1px solid #e0e0e0;
+      overflow-y: auto;
+    }
+
+    section {
+      margin-bottom: 3rem;
+    }
+
+    h2 {
+      color: #1e6352;
+      border-bottom: 2px solid #1e6352;
+      padding-bottom: 0.4rem;
+    }
+
+    .highlight {
+      background: #e0f2ef;
+      padding: 0.8rem 1rem;
+      border-left: 4px solid #2a7b68;
+      border-radius: 6px;
+      margin: 1rem 0;
+    }
+
+    .status-banner {
+      background-color: #fff3cd;
+      color: #856404;
+      padding: 12px;
+      border-radius: 6px;
+      border: 1px solid #ffeeba;
+      text-align: center;
+      font-weight: 500;
+      margin-bottom: 25px;
+      position: relative;
+    }
+    .close-btn {
+      position: absolute;
+      right: 12px;
+      top: 8px;
+      background: none;
+      border: none;
+      color: #856404;
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+      color: #666;
+      border-top: 1px solid #e0e0e0;
+      background: #fafafa;
+    }
+
+    @media (max-width: 900px) {
+      .container {
+        flex-direction: column;
+      }
+
+      nav {
+        width: 100%;
+        height: auto;
+        box-shadow: none;
+        border-right: none;
+        border-bottom: 1px solid #ddd;
+      }
+
+      main {
+        padding: 1.5rem;
+      }
+    }
   </style>
 </head>
 <body>
-  <div class="container">
+
+  <div class="status-banner" id="banner">
+    🚧 <strong>Project Under Implementation</strong> — The Market Intelligence system will be released soon.
+    <button class="close-btn" onclick="document.getElementById('banner').style.display='none';">&times;</button>
+  </div>
+
+  <header>
     <h1>Market Intelligence</h1>
     <p>Analytics solutions for tracking trends, competitor performance, and emerging business opportunities.</p>
-    <p>⚡ Future content: Tableau/Power BI dashboards and case studies.</p>
+  </header>
+
+  <div class="container">
+    <nav>
+      <h3>Contents</h3>
+      <ul>
+        <li><a href="#abstract">Abstract</a></li>
+        <li><a href="#introduction">Introduction</a></li>
+        <li><a href="#description">Project Description</a></li>
+        <li><a href="#scope">Scope</a></li>
+        <li><a href="#specifications">System Specifications</a></li>
+        <li><a href="#next-steps">Next Steps</a></li>
+        <li><a href="#conclusion">Conclusion</a></li>
+      </ul>
+    </nav>
+
+    <main>
+      <section id="abstract">
+        <h2>Abstract</h2>
+        <p>
+          The <strong>Market Intelligence</strong> project builds a comprehensive analytics framework for organizations to monitor market dynamics, track competitor performance, and discover emerging opportunities. Leveraging AI-driven analytics, it enables faster, data-informed decisions.
+        </p>
+      </section>
+
+      <section id="introduction">
+        <h2>Introduction</h2>
+        <p>
+          In today's fast-moving markets, businesses must constantly adapt to trends and competitor strategies. The Market Intelligence project provides a centralized analytics system that empowers decision-makers with timely insights and predictive analytics.
+        </p>
+        <div class="highlight">
+          <strong>Key Goal:</strong> Enable organizations to make proactive, data-driven decisions by combining real-time market data, competitor benchmarks, and AI-enhanced predictive analytics.
+        </div>
+      </section>
+
+      <section id="description">
+        <h2>Project Description</h2>
+        <p>
+          This solution integrates multiple data sources including market feeds, competitor reports, social media trends, and internal sales data. Key components include:
+        </p>
+        <ul>
+          <li><strong>Data Integration:</strong> Real-time ingestion from APIs, web sources, and internal databases.</li>
+          <li><strong>Analytics Engine:</strong> AI models for forecasting, trend analysis, and anomaly detection.</li>
+          <li><strong>Visualization:</strong> Interactive dashboards built with Tableau and Power BI for executives and analysts.</li>
+          <li><strong>Decision Support:</strong> Automated reporting and alerts for emerging opportunities and threats.</li>
+        </ul>
+      </section>
+
+      <section id="scope">
+        <h2>Scope</h2>
+        <p>
+          The Market Intelligence system is designed for multiple business units including strategy, sales, and product management. Its modular design supports:
+        </p>
+        <ul>
+          <li>Competitive benchmarking and trend tracking.</li>
+          <li>Market opportunity discovery.</li>
+          <li>Predictive insights for proactive business decisions.</li>
+          <li>Customizable dashboards for executive reporting.</li>
+        </ul>
+      </section>
+
+      <section id="specifications">
+        <h2>System Specifications</h2>
+        <ul>
+          <li><strong>Backend:</strong> Cloud-based ETL pipelines, REST APIs, and SQL/NoSQL data stores.</li>
+          <li><strong>Analytics Layer:</strong> Python and R models for predictive and prescriptive analytics.</li>
+          <li><strong>Visualization Layer:</strong> Tableau and Power BI dashboards for real-time insights.</li>
+          <li><strong>Deployment:</strong> Containerized microservices, cloud-ready for AWS/GCP.</li>
+          <li><strong>Security:</strong> Role-based access, encrypted data storage, and audit logging.</li>
+        </ul>
+      </section>
+
+      <section id="next-steps">
+        <h2>Next Steps</h2>
+        <ul>
+          <li>Integrate additional market feeds and alternative data sources.</li>
+          <li>Enhance predictive AI models for competitor and market trend forecasting.</li>
+          <li>Expand dashboard functionality for scenario analysis and reporting automation.</li>
+          <li>Deploy notifications and alerts for emerging market opportunities.</li>
+        </ul>
+      </section>
+
+      <section id="conclusion">
+        <h2>Conclusion</h2>
+        <p>
+          The Market Intelligence project establishes a modern, AI-enabled framework for businesses to anticipate market changes, track competitors, and make informed strategic decisions. Its modular and scalable design ensures adaptability for future data sources and analytics needs.
+        </p>
+      </section>
+    </main>
   </div>
+
+  <footer>
+    © 2025 Atsu Vovor | 
+    <a href="https://www.linkedin.com/in/atsu-vovor-mmai-9188326/" target="_blank">LinkedIn</a> |
+    <a href="https://github.com/atsuvovor/projects_portfolio.github.io" target="_blank">GitHub</a> |
+    <a href="https://public.tableau.com/app/profile/atsu.vovor8645/vizzes" target="_blank">Tableau</a>
+  </footer>
 </body>
 </html>
