@@ -1,21 +1,238 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Business Continuity Plan | Atsu Vovor Portfolio</title>
-  <style>
-    body { font-family: Arial, sans-serif; margin: 40px; background: #f9f9f9; }
-    .container { max-width: 800px; margin: auto; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-    h1 { color: #4e54c8; }
-    a { color: #4e54c8; text-decoration: none; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Continuity Plan: Resilience Strategy Case Study</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        /* Apply Inter font family and a professional background color */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6; /* Light gray background */
+        }
+    </style>
 </head>
-<body>
-  <div class="container">
-    <h1>Business Continuity Plan</h1>
-    <p>Strategic frameworks to ensure organizational resilience and operational continuity during disruptions.</p>
-    <p>⚡ Future content: real-world case studies and resilience frameworks.</p>
-</button>
-  </div>
+<body class="min-h-screen flex flex-col">
+
+    <!-- Header Section -->
+    <header class="bg-indigo-700 text-white shadow-lg">
+        <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+            <h1 class="text-3xl font-extrabold tracking-tight sm:text-4xl">
+                Business Continuity Plan (BCP) Project Case Study
+            </h1>
+            <p class="mt-2 text-indigo-200 text-lg">
+                Strategic frameworks to ensure organizational resilience and operational continuity during disruptions.
+            </p>
+        </div>
+    </header>
+
+    <!-- Main Content Container with Sidebar Layout -->
+    <!-- Use a grid layout on large screens: 1 column for sidebar, 3 columns for content -->
+    <main class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-4 lg:gap-8 flex-grow">
+
+        <!-- Sidebar / Table of Contents (Hidden on mobile, sticky on large screens) -->
+        <aside class="hidden lg:block lg:col-span-1">
+            <div class="sticky top-10 bg-white p-6 rounded-xl shadow-xl">
+                <h3 class="text-lg font-bold text-indigo-700 mb-4 border-b pb-2">Table of Contents</h3>
+                <nav class="space-y-3 text-sm">
+                    <!-- Main Sections -->
+                    <a href="#introduction" class="block text-gray-700 hover:text-teal-500 transition duration-150 ease-in-out font-medium">
+                        The Imperative of Resilience
+                    </a>
+                    <a href="#frameworks" class="block text-gray-700 hover:text-teal-500 transition duration-150 ease-in-out font-medium mb-3 pb-3 border-b border-gray-100">
+                        Foundational Resilience Frameworks
+                    </a>
+                    
+                    <!-- Future Content Detail Links -->
+                    <a href="#future-content" class="block text-indigo-700 font-bold hover:text-teal-500">Future Case Study Detail:</a>
+                    <a href="#abstract" class="block text-gray-600 hover:text-teal-500 transition duration-150 ease-in-out pl-3">
+                        &bull; Abstract
+                    </a>
+                    <a href="#project-intro" class="block text-gray-600 hover:text-teal-500 transition duration-150 ease-in-out pl-3">
+                        &bull; Introduction
+                    </a>
+                    <a href="#project-description" class="block text-gray-600 hover:text-teal-500 transition duration-150 ease-in-out pl-3">
+                        &bull; Project Description
+                    </a>
+                    <a href="#scope" class="block text-gray-600 hover:text-teal-500 transition duration-150 ease-in-out pl-3">
+                        &bull; Scope
+                    </a>
+                    <a href="#systems" class="block text-gray-600 hover:text-teal-500 transition duration-150 ease-in-out pl-3">
+                        &bull; System Specifications
+                    </a>
+                    <a href="#next-steps" class="block text-gray-600 hover:text-teal-500 transition duration-150 ease-in-out pl-3">
+                        &bull; Next Steps
+                    </a>
+                    <a href="#conclusion-detail" class="block text-gray-600 hover:text-teal-500 transition duration-150 ease-in-out pl-3">
+                        &bull; Conclusion
+                    </a>
+                </nav>
+            </div>
+        </aside>
+
+        <!-- Main Content Area (Takes full width on mobile, 3/4 on large screens) -->
+        <div class="lg:col-span-3">
+
+            <!-- Introduction Section -->
+            <section class="mb-12" id="introduction">
+                <div class="bg-white p-8 rounded-xl shadow-xl border-t-4 border-teal-500">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-4 border-b pb-2">The Imperative of Resilience</h2>
+                    <p class="text-gray-600 leading-relaxed">
+                        In today's dynamic global landscape, business disruptions—ranging from natural disasters and cyber attacks to supply chain failures—are inevitable. A robust Business Continuity Plan (BCP) moves beyond simple disaster recovery; it is a strategic management function focused on organizational resilience. This framework ensures that critical business functions remain operational or are rapidly restored to a pre-defined acceptable level following any incident. Our study outlines the foundational components necessary to build, implement, and maintain an effective BCP.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Core Strategic Pillars Section -->
+            <section class="mb-12" id="frameworks">
+                <h2 class="text-2xl font-bold text-indigo-700 mb-6">Foundational Resilience Frameworks</h2>
+                
+                <div class="grid md:grid-cols-3 gap-6">
+                    
+                    <!-- Pillar 1: Risk Assessment & BIA -->
+                    <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition duration-300">
+                        <div class="flex items-center space-x-4 mb-3">
+                            <span class="text-3xl text-teal-500 font-bold">1</span>
+                            <h3 class="text-xl font-semibold text-gray-800">Impact Analysis (BIA)</h3>
+                        </div>
+                        <p class="text-gray-600 text-sm">
+                            Systematic identification of critical business processes, determining their maximum tolerable downtime (MTD) and recovery time objectives (RTOs). This quantitative assessment prioritizes recovery efforts.
+                        </p>
+                    </div>
+
+                    <!-- Pillar 2: Strategy Development & Response -->
+                    <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition duration-300">
+                        <div class="flex items-center space-x-4 mb-3">
+                            <span class="text-3xl text-teal-500 font-bold">2</span>
+                            <h3 class="text-xl font-semibold text-gray-800">Recovery Strategies</h3>
+                        </div>
+                        <p class="text-gray-600 text-sm">
+                            Defining detailed, approved procedures for activating backup facilities, restoring IT systems (DRP), and managing communication with stakeholders, employees, and the public during a crisis.
+                        </p>
+                    </div>
+
+                    <!-- Pillar 3: Testing, Training, & Review -->
+                    <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition duration-300">
+                        <div class="flex items-center space-x-4 mb-3">
+                            <span class="text-3xl text-teal-500 font-bold">3</span>
+                            <h3 class="text-xl font-semibold text-gray-800">Validation & Audit</h3>
+                        </div>
+                        <p class="text-gray-600 text-sm">
+                            Regular, comprehensive testing (e.g., tabletop exercises, full simulations) of the BCP to identify gaps. Continuous improvement cycles ensure the plan remains relevant and effective against evolving threats.
+                        </p>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- Future Content: Deep Dive into Real-World Resilience Section -->
+            <section class="mb-12" id="future-content">
+                <h2 class="text-2xl font-bold text-indigo-700 mb-6 border-b pb-2">⚡ Future Content: Deep Dive into Real-World Resilience</h2>
+                <p class="text-gray-600 leading-relaxed mb-8">
+                    The next phase of this project will incorporate detailed **real-world case studies** exploring how organizations across different sectors successfully navigated major disruptions. This section outlines the structure of the forthcoming analysis, focusing on specific resilience frameworks (e.g., ISO 22301, NIST) and their practical application.
+                </p>
+
+                <!-- Sub-Section: Abstract -->
+                <div id="abstract" class="bg-white p-6 rounded-xl shadow-lg mb-6 border-l-4 border-teal-400">
+                    <h3 class="text-xl font-semibold text-teal-600 mb-2">Abstract</h3>
+                    <p class="text-gray-600 text-sm">A concise summary of the case study's objectives, methodologies, and key findings regarding organizational resilience against a specific disruption (e.g., major cloud outage or pandemic). It will focus on demonstrating the BCP's success in meeting RTO/RPO metrics.</p>
+                </div>
+
+                <!-- Sub-Section: Introduction (Project Context) -->
+                <div id="project-intro" class="bg-white p-6 rounded-xl shadow-lg mb-6 border-l-4 border-teal-400">
+                    <h3 class="text-xl font-semibold text-teal-600 mb-2">Introduction</h3>
+                    <p class="text-gray-600 text-sm">Contextual background on the organization, the nature of the disruption faced, and the strategic importance of the BCP initiative within the company's overall risk management portfolio.</p>
+                </div>
+
+                <!-- Sub-Section: Project Description (The Solution) -->
+                <div id="project-description" class="bg-white p-6 rounded-xl shadow-lg mb-6 border-l-4 border-teal-400">
+                    <h3 class="text-xl font-semibold text-teal-600 mb-2">Project Description</h3>
+                    <p class="text-gray-600 text-sm">Detailed overview of the BCP solution implemented, including the governance structure, team roles, and the timeline of the recovery effort. This section highlights the application of chosen resilience frameworks (e.g., ISO 22301 principles).</p>
+                </div>
+
+                <!-- Sub-Section: Scope -->
+                <div id="scope" class="bg-white p-6 rounded-xl shadow-lg mb-6 border-l-4 border-teal-400">
+                    <h3 class="text-xl font-semibold text-teal-600 mb-2">Scope</h3>
+                    <p class="text-gray-600 text-sm">Defines the boundaries of the case study's analysis—which business units, critical processes, systems, and geographical locations were covered by the BCP and the subsequent analysis.</p>
+                </div>
+
+                <!-- Sub-Section: System Specifications -->
+                <div id="systems" class="bg-white p-6 rounded-xl shadow-lg mb-6 border-l-4 border-teal-400">
+                    <h3 class="text-xl font-semibold text-teal-600 mb-2">System Specifications</h3>
+                    <p class="text-gray-600 text-sm">Technical details of the recovery architecture, including redundancy mechanisms (hot/cold sites), cloud failover configurations, data backup and replication strategies, and security protocols used during the incident response.</p>
+                </div>
+
+                <!-- Sub-Section: Next Steps -->
+                <div id="next-steps" class="bg-white p-6 rounded-xl shadow-lg mb-6 border-l-4 border-teal-400">
+                    <h3 class="text-xl font-semibold text-teal-600 mb-2">Next Steps</h3>
+                    <p class="text-gray-600 text-sm">Post-incident review actions and continuous improvement plans based on lessons learned from the case study, focusing on mitigating identified gaps and enhancing preventative measures for future disruptions.</p>
+                </div>
+
+                <!-- Sub-Section: Conclusion (Detail) -->
+                <div id="conclusion-detail" class="bg-white p-6 rounded-xl shadow-lg mb-6 border-l-4 border-teal-400">
+                    <h3 class="text-xl font-semibold text-teal-600 mb-2">Conclusion</h3>
+                    <p class="text-gray-600 text-sm">Summary of the primary takeaways, validating the effectiveness of the BCP against the disruption, and providing general strategic recommendations for BCP leadership.</p>
+                </div>
+                
+                <!-- Modified button -->
+                <div class="text-center mt-8">
+                    <button onclick="showNotification('🚧 Project Under Implementation — Business Continuity plan case study Implementation - Real-World Resilience will be released soon.');" 
+                        class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded-full shadow-lg transition duration-300 transform hover:scale-105">
+                        Continue Reading
+                    </button>
+                </div>
+
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="bg-gray-800 text-white mt-8">
+        <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 text-center">
+            <p class="text-sm text-gray-400">
+                Business Continuity Project Case Study | Driving Strategic Organizational Resilience
+            </p>
+            <p class="text-xs mt-1 text-gray-500">
+                &copy; 2024 Project Documentation. All Rights Reserved.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Notification Container (Initially Hidden) -->
+    <div id="notification-box" 
+         class="fixed bottom-4 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white p-4 rounded-xl shadow-2xl opacity-0 transition-opacity duration-500 ease-out z-50 pointer-events-none">
+        <!-- Content inserted by JavaScript -->
+    </div>
+
+    <!-- JavaScript for Notification -->
+    <script>
+        /**
+         * Displays a temporary notification box at the bottom center of the screen.
+         * @param {string} message The message to display.
+         */
+        function showNotification(message) {
+            const box = document.getElementById('notification-box');
+            
+            // Set content
+            box.innerHTML = `<p class="flex items-center space-x-2"><span class="text-xl">${message}</span></p>`;
+            
+            // Show notification
+            box.classList.remove('opacity-0', 'pointer-events-none');
+            box.classList.add('opacity-100');
+
+            // Hide notification after 4 seconds
+            setTimeout(() => {
+                box.classList.remove('opacity-100');
+                // Use a slight delay before adding pointer-events-none to allow transition
+                setTimeout(() => {
+                    box.classList.add('opacity-0', 'pointer-events-none');
+                }, 500); 
+            }, 4000);
+        }
+    </script>
 </body>
 </html>
