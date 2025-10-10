@@ -70,13 +70,10 @@ View Source Code: For any specific project, look for the 'View Code' or 'GitHub'
 🤝 Connect With Me
 I am always open to collaboration and discussion about new projects or technical roles.
 
-GitHub: $$
-Your GitHub Profile Link
-
-LinkedIn: $$
-Your LinkedIn Profile Link
-
-Email: $$
-Your Email Address
+Atsu Vovor
+Consultant, Data & Analytics 
+Ph: 416-795-8246 | ✉️ atsu.vovor@bell.net
+🔗 LinkedIn | GitHub | Tableau Portfolio
+📍 Mississauga ON 
 
 Thank you for visiting!
