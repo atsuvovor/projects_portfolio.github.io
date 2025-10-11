@@ -1,0 +1,285 @@
+<!-- Save as notebook_viewer_full.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Notebook Viewer — Full</title>
+<style>
+  :root{
+    --sidebar-bg:#0f1724; --accent:#06b6d4; --muted:#94a3b8; --card:#ffffff;
+  }
+  html,body{height:100%;margin:0;font-family:Inter, "Segoe UI", Roboto, Arial; background:#f8fafc;color:#0f1724;}
+  /* Layout */
+  .app{display:flex;height:100vh;overflow:hidden}
+  .sidebar{width:320px;background:var(--sidebar-bg);color:#f1f5f9;padding:18px;box-sizing:border-box;overflow:auto}
+  .toggle-btn{position:fixed;left:320px;top:12px;background:var(--sidebar-bg);color:#fff;padding:8px;border-radius:6px;cursor:pointer;z-index:40}
+  .sidebar.hidden{transform:translateX(-340px)}
+  .toggle-btn.hidden{left:12px}
+  .main{flex:1;padding:22px;overflow:auto}
+  .header{display:flex;gap:12px;align-items:center;margin-bottom:12px}
+  .input{flex:1;display:flex;gap:8px}
+  input[type="text"]{flex:1;padding:10px;border-radius:8px;border:1px solid #cbd5e1}
+  button{padding:10px 12px;border-radius:8px;border:none;background:var(--accent);color:white;cursor:pointer}
+  .file-row{margin-top:8px;display:flex;gap:8px;align-items:center}
+  .search{margin:12px 0}
+  .search input{width:100%;padding:8px;border-radius:8px;border:1px solid #cbd5e1}
+  /* Outline list */
+  .outline{list-style:none;padding:0;margin:0}
+  .outline li{padding:8px;border-radius:6px;cursor:pointer;color:var(--muted);display:flex;justify-content:space-between;align-items:center}
+  .outline li:hover{background:#11182733;color:#fff}
+  .outline .type{text-transform:uppercase;font-size:11px;color:#9ca3af}
+  .count{font-size:12px;color:#94a3b8}
+  /* Display area */
+  .viewer-card{background:var(--card);padding:18px;border-radius:10px;box-shadow:0 6px 20px rgba(2,6,23,0.06);max-width:1200px}
+  .md h1,.md h2,.md h3{color:#0f1724}
+  pre{background:#0f172422;padding:12px;border-radius:8px;overflow:auto;font-family:Menlo,monospace}
+  .output-img{max-width:100%;height:auto;border-radius:6px;margin:8px 0}
+  .output-block{background:#ecfeff;padding:10px;border-radius:8px;margin:8px 0}
+  .meta{font-size:13px;color:#475569}
+  footer{margin-top:18px;color:#64748b;font-size:13px}
+  @media (max-width:900px){
+    .sidebar{width:100%;position:fixed;z-index:50;height:60vh}
+    .toggle-btn{left:12px}
+    .main{margin-top:66vh}
+  }
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar" id="sidebar">
+    <h3 style="margin:0 0 8px 0;color:var(--accent)">Notebook Outline</h3>
+
+    <div style="margin-bottom:8px" class="header">
+      <div class="input">
+        <input id="urlInput" type="text" placeholder="Paste .ipynb, .md, or .html URL (raw)...">
+        <button id="loadBtn">Load</button>
+      </div>
+    </div>
+
+    <div class="file-row">
+      <label style="font-size:13px;color:#cbd5e1">Or upload a file:</label>
+      <input id="fileInput" type="file" accept=".ipynb,.md,.html">
+    </div>
+
+    <div class="search">
+      <input id="searchInput" placeholder="Search outline (title, code, outputs)...">
+    </div>
+
+    <div style="display:flex;gap:8px;align-items:center;margin-bottom:8px">
+      <div class="meta">Sections: <span id="counts">0</span></div>
+      <div class="meta" style="margin-left:auto">Format: <span id="formatLabel">—</span></div>
+    </div>
+
+    <ul class="outline" id="outline"></ul>
+    <footer style="margin-top:14px">Tip: click an item to jump to it in the viewer.</footer>
+  </aside>
+
+  <button class="toggle-btn" id="toggleBtn">⮜</button>
+
+  <main class="main">
+    <div class="viewer-card" id="viewer">
+      <div id="renderArea"><em>Load a notebook to begin — supported: <strong>.ipynb</strong>, <strong>.md</strong>, <strong>.html</strong></em></div>
+    </div>
+    <footer>© 2025 Atsu Vovor · Notebook Viewer</footer>
+  </main>
+</div>
+
+<script>
+/* Full single-file viewer with: ipynb/md/html load, parse, search, inline images, sidebar navigation */
+const urlInput = document.getElementById('urlInput');
+const loadBtn = document.getElementById('loadBtn');
+const fileInput = document.getElementById('fileInput');
+const outline = document.getElementById('outline');
+const renderArea = document.getElementById('renderArea');
+const toggleBtn = document.getElementById('toggleBtn');
+const sidebar = document.getElementById('sidebar');
+const searchInput = document.getElementById('searchInput');
+const counts = document.getElementById('counts');
+const formatLabel = document.getElementById('formatLabel');
+
+toggleBtn.onclick = ()=>{ sidebar.classList.toggle('hidden'); toggleBtn.classList.toggle('hidden'); toggleBtn.textContent = sidebar.classList.contains('hidden') ? '⮞' : '⮜' }
+
+let flatIndex = []; // {id,type,title,html,anchor}
+
+loadBtn.onclick = async ()=>{
+  const url = urlInput.value.trim();
+  if(!url){ alert('Enter a URL or upload a file'); return; }
+  const ext = url.split('.').pop().toLowerCase();
+  try{
+    const res = await fetch(url);
+    if(!res.ok) throw new Error('Fetch failed: '+res.status);
+    if(ext==='ipynb'){
+      const nb = await res.json();
+      formatLabel.textContent = '.ipynb';
+      renderNotebook(nb);
+    } else if(ext==='md'){
+      const txt = await res.text();
+      formatLabel.textContent = '.md';
+      renderMarkdown(txt);
+    } else {
+      // treat as html: show in viewer, but parse headings from HTML
+      const html = await res.text();
+      formatLabel.textContent = '.html';
+      renderHTMLPreview(html);
+    }
+  }catch(e){ alert('Could not load: '+e.message) }
+}
+
+fileInput.onchange = (e)=>{
+  const f = e.target.files[0];
+  if(!f) return;
+  const name = f.name.toLowerCase();
+  const reader = new FileReader();
+  reader.onload = (ev)=>{
+    const txt = ev.target.result;
+    if(name.endsWith('.ipynb')){ formatLabel.textContent='.ipynb'; const nb = JSON.parse(txt); renderNotebook(nb); }
+    else if(name.endsWith('.md')){ formatLabel.textContent='.md'; renderMarkdown(txt); }
+    else { formatLabel.textContent='.html'; renderHTMLPreview(txt); }
+  }
+  reader.readAsText(f);
+}
+
+/* SEARCH */
+searchInput.oninput = ()=> {
+  const q = searchInput.value.trim().toLowerCase();
+  const items = outline.querySelectorAll('li[data-id]');
+  items.forEach(li=>{
+    const t = li.dataset.title.toLowerCase();
+    if(!q || t.includes(q) || li.dataset.type.includes(q)) li.style.display='flex';
+    else li.style.display='none';
+  });
+}
+
+/* RENDER IPYNB */
+function renderNotebook(nb){
+  flatIndex = [];
+  renderArea.innerHTML = '';
+  const docFrag = document.createDocumentFragment();
+  nb.cells.forEach((cell, idx)=>{
+    if(cell.cell_type==='markdown'){
+      const md = cell.source.join('');
+      const html = markdownToHTML(md);
+      const title = extractFirstLine(md) || 'Markdown';
+      const anchor = `md-${idx}`;
+      const el = document.createElement('div');
+      el.id = anchor; el.className='md'; el.innerHTML = `<div style="margin:10px 0">${html}</div>`;
+      docFrag.appendChild(el);
+      flatIndex.push({id:anchor,type:'markdown',title,html,idx});
+    } else if(cell.cell_type==='code'){
+      const code = cell.source.join('');
+      const anchor = `code-${idx}`;
+      const codeEl = document.createElement('div');
+      codeEl.id = anchor;
+      codeEl.innerHTML = `<div class="meta">Code Cell ${idx+1}</div><pre><code>${escapeHTML(code)}</code></pre>`;
+      docFrag.appendChild(codeEl);
+      flatIndex.push({id:anchor,type:'code',title:`Code ${idx+1}`,html:escapeHTML(code),idx});
+      // outputs
+      if(cell.outputs && cell.outputs.length){
+        cell.outputs.forEach((out,i)=>{
+          const outAnchor = `out-${idx}-${i}`;
+          const outEl = document.createElement('div');
+          outEl.id = outAnchor;
+          outEl.className='output-block';
+          const outHtml = formatOutput(out);
+          outEl.innerHTML = `<div class="meta">Output</div>${outHtml}`;
+          docFrag.appendChild(outEl);
+          flatIndex.push({id:outAnchor,type:'output',title:`Output ${idx+1}.${i+1}`,html:outHtml,idx});
+        })
+      }
+    }
+  });
+  renderArea.appendChild(docFrag);
+  buildOutline();
+}
+
+/* RENDER MARKDOWN */
+function renderMarkdown(txt){
+  flatIndex = [];
+  renderArea.innerHTML = '';
+  const html = markdownToHTML(txt);
+  renderArea.innerHTML = html;
+  // build outline by headings
+  const parser = new DOMParser();
+  const doc = parser.parseFromString(html,'text/html');
+  const headings = doc.querySelectorAll('h1,h2,h3');
+  headings.forEach((h,i)=>{
+    const anchor = `mdh-${i}`;
+    h.id = anchor;
+    flatIndex.push({id:anchor,type:'markdown',title:h.textContent,html:h.outerHTML});
+  });
+  // re-set content with anchors
+  renderArea.innerHTML = doc.body.innerHTML;
+  buildOutline();
+}
+
+/* RENDER HTML PREVIEW (simple) */
+function renderHTMLPreview(html){
+  flatIndex = [];
+  renderArea.innerHTML = '';
+  // inject content into a safe container
+  const container = document.createElement('div');
+  container.innerHTML = html;
+  // extract headings for outline
+  const hs = container.querySelectorAll('h1,h2,h3');
+  hs.forEach((h,i)=>{ const anchor = 'h-'+i; h.id = anchor; flatIndex.push({id:anchor,type:'markdown',title:h.textContent,html:h.outerHTML}) });
+  renderArea.appendChild(container);
+  buildOutline();
+}
+
+/* BUILD SIDEBAR OUTLINE */
+function buildOutline(){
+  outline.innerHTML = '';
+  flatIndex.forEach(item=>{
+    const li = document.createElement('li');
+    li.dataset.id = item.id; li.dataset.title = item.title || ''; li.dataset.type = item.type;
+    li.innerHTML = `<span>${iconFor(item.type)} ${escapeHTML(item.title)}</span><span class="count">${item.type}</span>`;
+    li.onclick = ()=>{ document.getElementById(item.id).scrollIntoView({behavior:'smooth',block:'start'}) };
+    outline.appendChild(li);
+  });
+  counts.textContent = flatIndex.length;
+}
+
+/* UTIL: icons */
+function iconFor(t){ if(t==='markdown') return '📝'; if(t==='code') return '💻'; if(t==='output') return '📊'; return '•' }
+
+/* FORMAT OUTPUT (support images/text/html) */
+function formatOutput(out){
+  if(out.data){
+    if(out.data['image/png']){
+      const b64 = out.data['image/png'].join('');
+      return `<img class="output-img" src="data:image/png;base64,${b64}" />`;
+    }
+    if(out.data['image/jpeg']){
+      const b64 = out.data['image/jpeg'].join('');
+      return `<img class="output-img" src="data:image/jpeg;base64,${b64}" />`;
+    }
+    if(out.data['text/html']) return out.data['text/html'].join('');
+    if(out.data['text/plain']) return `<pre>${escapeHTML(out.data['text/plain'].join(''))}</pre>`;
+  }
+  if(out.text) return `<pre>${escapeHTML(out.text.join(''))}</pre>`;
+  return `<em>(No renderable output)</em>`;
+}
+
+/* Simple markdown -> HTML function (lightweight) */
+function markdownToHTML(md){
+  // convert code fences
+  let s = md.replace(/```([\s\S]*?)```/g, (m,p)=>`<pre><code>${escapeHTML(p)}</code></pre>`);
+  // headings
+  s = s.replace(/^### (.*$)/gim,'<h3>$1</h3>').replace(/^## (.*$)/gim,'<h2>$1</h2>').replace(/^# (.*$)/gim,'<h1>$1</h1>');
+  // bold, italic, inline code
+  s = s.replace(/\*\*(.*?)\*\*/gim,'<b>$1</b>').replace(/\*(.*?)\*/gim,'<i>$1</i>').replace(/`(.*?)`/gim,'<code>$1</code>');
+  // links
+  s = s.replace(/\[([^\]]+)\]\(([^)]+)\)/gim,'<a href="$2" target="_blank">$1</a>');
+  // paragraphs
+  s = s.replace(/\n{2,}/gim,'</p><p>').replace(/\n/g,'<br>');
+  return '<p>'+s+'</p>';
+}
+
+/* small helpers */
+function extractFirstLine(s){ const ln = s.split('\n').find(l=>l.trim()); return ln ? ln.replace(/^#+\s*/,'').trim() : ''; }
+function escapeHTML(s){ return s.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c])); }
+
+</script>
+</body>
+</html>
