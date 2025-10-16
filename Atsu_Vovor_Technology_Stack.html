@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technology Stack</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+            color: #333;
+            /* Flexbox setup for full page content-container + footer */
+            display: flex;
+            flex-direction: column;
+            min-height: 95vh;
+        }
+        .content-container {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 30px;
+            border: 1px solid #ddd;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            background-color: #fff;
+            flex-grow: 1; /* Allows content to push footer down */
+        }
+        h2 {
+            color: #1a1a1a;
+            font-size: 24px;
+            border-bottom: 3px solid #007bff;
+            padding-bottom: 10px;
+            margin-top: 0;
+            margin-bottom: 25px;
+        }
+        .tech-stack-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .tech-stack-list li {
+            margin-bottom: 15px;
+            padding-left: 20px;
+            position: relative;
+        }
+        .tech-stack-list li::before {
+            content: "•";
+            color: #007bff;
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+        .tech-stack-list li strong {
+            display: inline-block;
+            min-width: 180px;
+            color: #1a1a1a;
+        }
+        .footer {
+            max-width: 700px;
+            margin: 20px auto 0 auto;
+            padding: 10px 0;
+            text-align: center;
+            font-size: 12px;
+            color: #777;
+            border-top: 1px solid #eee;
+            width: 100%; /* Ensures it spans the width of the container area */
+        }
+    </style>
+</head>
+<body>
+
+<div class="content-container">
+    <h2>My Technology Stack</h2>
+    
+    <ul class="tech-stack-list">
+        <li>
+            <strong>Frameworks:</strong> FastAPI, PyTorch, TensorFlow, HuggingFace
+        </li>
+        <li>
+            <strong>Databases:</strong> PostgreSQL (PGVector), ElasticSearch, OpenSearch
+        </li>
+        <li>
+            <strong>Vector Search:</strong> Faiss, HNSW, BM25, Weaviate, Pinecone, Milvus
+        </li>
+        <li>
+            <strong>Fraud & Cybersecurity Tools:</strong> AWS Security Hub, Splunk, CyberArk
+        </li>
+        <li>
+            <strong>Deployment:</strong> Docker, Kubeflow
+        </li>
+        <li>
+            <strong>Data Processing:</strong> Dask, Ray, Airflow, Prefect
+        </li>
+        <li>
+            <strong>Interactive Dashboards & Reporting:</strong>MS Excel(VBA, Power Query, Power Pivot), Power BI,  Tableau, Power BI, Looker, Streamlit
+        </li>
+    </ul>
+
+</div>
+
+<div class="footer">
+      © 2025 Atsu Vovor | Data & Analytics Consultant
+</div>
+
+</body>
+</html>
