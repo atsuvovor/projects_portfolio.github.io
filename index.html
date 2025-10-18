@@ -25,22 +25,21 @@ body {
   justify-content: space-between;
   box-shadow: 2px 0 10px rgba(0,0,0,0.1);
   overflow-y: auto;
-
-  /* --- ADDED --- */
   position: fixed;
   top: 0;
   left: 0;
   height: 100%;
-  z-index: 1000;  /* ensure it overlays everything */
+  z-index: 1000;
   transform: translateX(-100%);
   transition: transform 0.3s ease;
 }
 
-/* When visible */
+/* visible state */
 #sidebar.show {
   transform: translateX(0);
 }
 
+/* Sidebar header */
 .sidebar-header {
   text-align: center;
   padding: 20px 10px;
@@ -89,7 +88,7 @@ body {
 
 /* ===== SUBMENU ===== */
 .submenu {
-  padding-left: 10px;
+  padding-left: 0;
 }
 
 .submenu-header {
@@ -108,9 +107,14 @@ body {
   background: rgba(255,255,255,0.15);
 }
 
+/* Submenu items indentation */
+.submenu-items {
+  padding-left: 20px;  /* indent the block */
+}
+
 .submenu-items a {
   display: block;
-  padding: 4px 30px;
+  padding: 4px 35px;  /* extra indent for links */
   color: rgba(255,255,255,0.9);
   font-size: 0.9em;
 }
@@ -261,53 +265,7 @@ body {
   font-weight: 600;
 }
 
-/* ===== SIDEBAR (overlay-style) ===== */
-#sidebar {
-  width: 270px;
-  background: linear-gradient(180deg, #4e54c8, #8f94fb);
-  color: #fff;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  box-shadow: 2px 0 10px rgba(0,0,0,0.1);
-  overflow-y: auto;
-
-  /* overlay behavior */
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100%;
-  z-index: 1000;
-  transform: translateX(-100%);
-  transition: transform 0.3s ease;
-}
-
-/* visible state */
-#sidebar.show {
-  transform: translateX(0);
-}
-
-/* dim background overlay */
-#overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.08);
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.3s ease;
-  z-index: 999;
-}
-
-/* show overlay when sidebar visible */
-#overlay.active {
-  opacity: 1;
-  visibility: visible;
-}
-
-/* keep toggle button above all */
+/* ===== SIDEBAR TOGGLE ===== */
 #sidebarToggle {
   position: fixed;
   top: 18px;
@@ -325,7 +283,27 @@ body {
   z-index: 1100;
 }
 
+/* Overlay */
+#overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.08);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
+  z-index: 999;
+}
+
+#overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
 </style>
+
+
 </head>
 
 <body>
@@ -344,7 +322,7 @@ body {
       </div>
 
       <div id="menu">
-        <a href="#" onclick="showAllProjects()">All Projects</a>
+        <a href="#" onclick="showAllProjects()">🏠︎ All Projects</a>
 
         <div class="submenu">
           <div class="submenu-header" onclick="toggleSubmenu()">
