@@ -368,6 +368,7 @@ body {
 
         <!-- Links AFTER submenu -->
         <a href="#" onclick="loadProject('resume')">My Resume</a>
+	<a href="#" onclick="loadProject('what-I-do')">What I Do</a>
         <a href="#" onclick="loadProject('tech-stack')">Technology Stack</a>
       </div>
     </div>
@@ -465,7 +466,9 @@ const projectPages = {
   'data-fabric-analytics': 'data_fabric_analytics.html',
 
   'resume': 'Atsu_Vovor_resume.html',
+  'what-I-do':  'my_executive_intelligence_hub.html',
   'tech-stack': 'Atsu_Vovor_Technology_Stack.html'
+  
 };
 
 const header = document.getElementById('header');
@@ -478,6 +481,7 @@ function loadProject(key) {
   if (page) {
     const titles = {
       'resume': 'My Resume',
+      'what-I-do': 'What I Do',
       'tech-stack': 'Technology Stack'
     };
     header.textContent = titles[key] || key.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
@@ -524,4 +528,3 @@ overlay.addEventListener('click', () => {
 </script>
 </body>
 </html>
-
