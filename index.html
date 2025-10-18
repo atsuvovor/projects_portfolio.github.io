@@ -39,11 +39,24 @@ body {
   transform: translateX(0);
 }
 
-/* Sidebar header */
 .sidebar-header {
   text-align: center;
   padding: 20px 10px;
+  margin-bottom: 15px; /* space between header and menu */
+  position: relative;  /* for pseudo-element */
 }
+
+/* Gradient line under header */
+.sidebar-header::after {
+  content: "";
+  display: block;
+  height: 2px; /* thickness of the line */
+  width: 80%;  /* line length relative to sidebar */
+  margin: 10px auto 0 auto; /* spacing from header text */
+  background: linear-gradient(to right, rgba(255,255,255,0), rgba(255,255,255,0.6), rgba(255,255,255,0));
+  border-radius: 1px;
+}
+
 
 .sidebar-header img {
   width: 100px;
