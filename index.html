@@ -25,6 +25,20 @@ body {
   justify-content: space-between;
   box-shadow: 2px 0 10px rgba(0,0,0,0.1);
   overflow-y: auto;
+
+  /* --- ADDED --- */
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  z-index: 1000;  /* ensure it overlays everything */
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+}
+
+/* When visible */
+#sidebar.show {
+  transform: translateX(0);
 }
 
 .sidebar-header {
@@ -247,9 +261,55 @@ body {
   font-weight: 600;
 }
 
-/* ===== SIDEBAR TOGGLE ARROW ===== */
+/* ===== SIDEBAR (overlay-style) ===== */
+#sidebar {
+  width: 270px;
+  background: linear-gradient(180deg, #4e54c8, #8f94fb);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+  overflow-y: auto;
+
+  /* overlay behavior */
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  z-index: 1000;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+}
+
+/* visible state */
+#sidebar.show {
+  transform: translateX(0);
+}
+
+/* dim background overlay */
+#overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.08);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
+  z-index: 999;
+}
+
+/* show overlay when sidebar visible */
+#overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* keep toggle button above all */
 #sidebarToggle {
-  position: absolute;
+  position: fixed;
   top: 18px;
   left: 7px;
   background: #091E3A;
@@ -262,28 +322,17 @@ body {
   text-align: center;
   cursor: pointer;
   transition: all 0.3s ease;
-  z-index: 1001;
+  z-index: 1100;
 }
 
-#sidebar.collapsed {
-  width: 0;
-  overflow: hidden;
-}
-
-#sidebar.collapsed + #main {
-  margin-left: 0;
-}
-
-#sidebar.collapsed ~ #sidebarToggle {
-  left: 0.5px;
-  transform: rotate(180deg);
-}
 </style>
 </head>
 
 <body>
   <!-- SIDEBAR TOGGLE BUTTON -->
   <div id="sidebarToggle">☰</div>
+  <div id="overlay"></div>
+
 
   <!-- SIDEBAR -->
   <div id="sidebar">
@@ -457,21 +506,21 @@ function toggleSubmenu() {
 /* === SIDEBAR TOGGLE FUNCTION === */
 const sidebar = document.getElementById('sidebar');
 const toggleButton = document.getElementById('sidebarToggle');
+const overlay = document.getElementById('overlay');
 
 toggleButton.addEventListener('click', () => {
-  sidebar.classList.toggle('collapsed');
-  if(sidebar.classList.contains('collapsed')) {
-    toggleButton.textContent = '☰';
-    toggleButton.style.left = '7px';
-  } else {
-    toggleButton.textContent = '☰';
-    toggleButton.style.left = '7px';
-  }
+  const isVisible = sidebar.classList.toggle('show');
+  overlay.classList.toggle('active', isVisible);
 });
+
+// Hide sidebar when clicking outside
+overlay.addEventListener('click', () => {
+  sidebar.classList.remove('show');
+  overlay.classList.remove('active');
+});
+
+
+
 </script>
 </body>
 </html>
-
-
-
-
