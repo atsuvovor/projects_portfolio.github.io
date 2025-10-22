@@ -29,7 +29,7 @@ body {
   top: 0;
   left: 0;
   height: 100%;
-  z-index: 1000;
+  z-index: 1200;
   transform: translateX(-100%);
   transition: transform 0.3s ease;
 }
@@ -37,6 +37,7 @@ body {
 /* visible state */
 #sidebar.show {
   transform: translateX(0);
+  top: -10px; /* move 10px above top to cover small avatar */
 }
 
 .sidebar-header {
@@ -151,7 +152,7 @@ body {
   align-items: center;
   gap: 18px;
   padding: 18px 0;
-  border-top: 1px solid rgba(255,255,255,0.3);
+  border-top: 1px solid rgba(255,255,255,1);
 }
 
 #sidebar-footer a {
@@ -162,6 +163,7 @@ body {
   height: 36px;
   border-radius: 50%;
   background: rgba(255,255,255,0.1);
+  border-top: 1px solid rgba(255,255,255,0.3);
   transition: background 0.3s, transform 0.3s;
 }
 
@@ -207,11 +209,12 @@ body {
   color: #4e54c8;
   text-align: center;
   font-weight: 600;
-  padding: 10px;
+  padding: 12px;
+  height: 10px
   font-size: 1rem;
   letter-spacing: 0.4px;
-  z-index: 999;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  z-index: 1120;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.13);
 }
 
 #homeGallery {
@@ -293,7 +296,7 @@ body {
   text-align: center;
   cursor: pointer;
   transition: all 0.3s ease;
-  z-index: 1100;
+  z-index: 1250;
 }
 
 /* Overlay */
@@ -313,16 +316,130 @@ body {
 #overlay.active {
   opacity: 1;
   visibility: visible;
+  
 }
+
+/* ===== TOP BAR SMALL AVATAR + PROJECT TITLE ===== */
+#top-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 10%;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* center everything horizontally */
+  justify-content: center;
+  gap: 4px;
+  padding: 10px 15px 15px 15px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  z-index: 1100; 
+}
+
+#top-bar h1 {
+  margin: 0;
+  color: #4e54c8;
+  font-size: 1.2rem;
+}
+
+/* Dynamic project title */
+#top-bar .title-wrapper h2 {
+  margin: 4px 0 0 0;
+  font-size: 0.95rem;
+  color: #555;
+  text-align: center;
+}
+
+#top-bar .mini-profile {
+  position: fixed;
+  top: 8px;
+  left: 35px;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #4e54c8;
+  transition: opacity 0.3s ease;
+}
+
+/* Hide mini avatar when sidebar opens */
+#sidebar.show ~ #top-bar .mini-profile {
+  display: none; /* cover the avatar */
+}
+
+/* dynamic project title below main title */
+#top-bar .title-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* center titles horizontally */
+}
+
+#project-title {
+  margin: 4px 0 0 0;
+  font-size: 0.9rem;
+  color: #555;
+  text-align: left;
+}
+
+
+/* When sidebar is open, mini avatar fades (covered visually) */
+#sidebar.show ~ #top-bar .mini-profile {
+  opacity: 0;
+}
+
+
+/* Ensure sidebar toggle stays on top */
+#sidebarToggle {
+  position: fixed;
+  top: 18px;
+  left: 3px;
+  background: #091E3A;
+  color: #fff;
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  font-size: 1.1em;
+  line-height: 24px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 1220;
+}
+
+#sloganHome {
+  left: 35px;
+  z-index: 1122;
+}
+
+/* Always keep the sidebar toggle button visible above everything */
+#sidebarToggle {
+  position: fixed;
+  z-index: 3000 !important; /* higher than sidebar (1200) and overlay (999) */
+}
+
+#sidebar.show ~ #top-bar #sidebarToggle {
+  z-index: 3000 !important;
+}
+
 </style>
 
 
 </head>
 
 <body>
+
   <!-- SIDEBAR TOGGLE BUTTON -->
   <div id="sidebarToggle">☰</div>
   <div id="overlay"></div>
+  <!-- TOP BAR -->
+  <div id="top-bar">
+  	<img src="Atsu-Vovor.jpg" alt="Atsu Vovor" class="mini-profile">
+    <div class="title-wrapper">
+    	<h1>Atsu Vovor – Data & Analytics Portfolio</h1>
+    	<h2 id="project-title"></h2>
+    </div>
+  </div>
 
 
   <!-- SIDEBAR -->
@@ -374,6 +491,9 @@ body {
   <!-- MAIN -->
   <div id="main">
     <div id="header">Home</div>
+      <div id="sloganHome">
+     	<a href="#" onclick="showAllProjects()">🏠︎ All Projects</a>
+      </div>
     <div id="slogan-bar">
       Turning data into decisions. Powering your success with insight.
     </div>
@@ -506,6 +626,7 @@ const overlay = document.getElementById('overlay');
 toggleButton.addEventListener('click', () => {
   const isVisible = sidebar.classList.toggle('show');
   overlay.classList.toggle('active', isVisible);
+  
 });
 
 // Hide sidebar when clicking outside
@@ -513,6 +634,48 @@ overlay.addEventListener('click', () => {
   sidebar.classList.remove('show');
   overlay.classList.remove('active');
 });
+
+// === Update dynamic project title under top bar ===
+function updateTopProjectTitle(titleText) {
+  const projectTitleEl = document.getElementById('project-title');
+  projectTitleEl.textContent = titleText || '';
+}
+
+// Modify loadProject() to also update top title
+const oldLoadProject = loadProject;
+loadProject = function (key) {
+  const page = projectPages[key];
+  if (page) {
+    const titles = {
+      'resume': 'My Resume',
+      'what-I-do': 'What I Do',
+      'tech-stack': 'Technology Stack'
+    };
+    const titleText = titles[key] || key.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+    header.textContent = titleText;
+    updateTopProjectTitle(titleText);
+    homeGallery.style.display = 'none';
+    contentFrame.src = page;
+    contentFrame.style.display = 'block';
+    sidebar.classList.remove('show');
+    overlay.classList.remove('active');
+  }
+};
+
+// When showing all projects → clear title
+const oldShowAll = showAllProjects;
+showAllProjects = function() {
+  oldShowAll();
+  updateTopProjectTitle('Home');
+};
+
+// Ensure submenu toggles arrow correctly
+function toggleSubmenu() {
+  const submenu = document.querySelector('.submenu');
+  const items = submenu.querySelector('.submenu-items');
+  submenu.classList.toggle('open');
+  items.classList.toggle('hidden');
+}
 
 
 
