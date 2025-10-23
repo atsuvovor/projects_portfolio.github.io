@@ -17,13 +17,13 @@ body {
 
 /* ===== SIDEBAR ===== */
 #sidebar {
-  width: 270px;
+  width: 260px;
   background: linear-gradient(180deg, #4e54c8, #8f94fb);
-  color: #fff;
+  color: #FFFFFF;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+  box-shadow: 4px 0 12px rgba(0,0,0,0.35);
   overflow-y: auto;
   position: fixed;
   top: 0;
@@ -76,7 +76,7 @@ body {
 .sidebar-header h2 {
   font-size: 0.9em;
   font-weight: normal;
-  color: rgba(255,255,255,0.85);
+  color: #FFFFFF;
   margin: 5px 0 0;
 }
 
@@ -88,7 +88,7 @@ body {
 }
 
 #menu a {
-  color: #fff;
+  color: #FFFFFF;
   text-decoration: none;
   padding: 6px 20px;
   display: block;
@@ -124,6 +124,7 @@ body {
 /* Submenu items indentation */
 .submenu-items {
   padding-left: 20px;  /* indent the block */
+  border-left: 1px solid rgba(255,255,255,0.15);
 }
 
 .submenu-items a {
@@ -134,7 +135,9 @@ body {
 }
 
 .submenu-items a:hover {
+  color: #1e90ff; 
   background: rgba(255,255,255,0.15);
+  
 }
 
 .submenu .arrow {
@@ -153,6 +156,7 @@ body {
   gap: 18px;
   padding: 18px 0;
   border-top: 1px solid rgba(255,255,255,1);
+  background: rgba(0,0,0,0.15);
 }
 
 #sidebar-footer a {
@@ -204,26 +208,47 @@ body {
 
 #slogan-bar {
   position: sticky;
-  top: 0;
+  top: 70px;
   background: #ffffff;
   color: #4e54c8;
-  text-align: center;
-  font-weight: 600;
-  padding: 12px;
-  height: 10px
-  font-size: 1rem;
-  letter-spacing: 0.4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 10px;
   z-index: 1120;
   box-shadow: 0 2px 6px rgba(0,0,0,0.13);
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 0.4px;
 }
 
+/* left section: home link */
+#slogan-bar #sloganHome {
+  position: absolute;
+  left: 35px; /* aligns below mini avatar */
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+#slogan-bar #sloganHome a {
+  color: #4e54c8;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+#slogan-bar #sloganHome a:hover {
+  color: #1e90ff;
+}
+
+
 #homeGallery {
-  display: grid;
+  display: flex;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 20px;
+  gap: 15px;
   padding: 20px;
   overflow-y: auto;
-  flex: 1;
+  justify-content: center;  flex-wrap: wrap;
+  animation: fadeIn 0.6s ease;
 }
 
 .project-card {
@@ -233,7 +258,8 @@ body {
   box-shadow: 0 2px 10px rgba(0,0,0,0.1);
   transition: transform 0.3s, box-shadow 0.3s;
   cursor: pointer;
-  min-height: 380px;
+  
+  width: 250px;
 }
 
 .project-card:hover {
@@ -248,15 +274,15 @@ body {
 }
 
 .project-card h3 {
-  margin: 15px;
+  margin: 8px 10px;
   color: #4e54c8;
-  font-size: 1.1em;
+  font-size: 1rem;
 }
 
 .project-card p {
-  margin: 0 15px 15px 15px; 
+  margin: 0 5px 10px 15px;
   color: #444;
-  font-size: 0.95em;
+  font-size: 0.85rem;
   line-height: 1.5;
 }
 
@@ -282,21 +308,23 @@ body {
 }
 
 /* ===== SIDEBAR TOGGLE ===== */
+
 #sidebarToggle {
   position: fixed;
   top: 18px;
   left: 3px;
-  background: #091E3A;
-  color: #fff;
-  width: 20px;
-  height: 20px;
-  border-radius: 4px;
-  font-size: 1.1em;
+  color: #cccee8;
+  transition: transform 0.3s, color 0.3s;
+  font-size: 1.8rem;
   line-height: 24px;
   text-align: center;
   cursor: pointer;
-  transition: all 0.3s ease;
-  z-index: 1250;
+  z-index: 1220;
+}
+
+#sidebarToggle:hover {
+  transform: scale(1.15);
+  color: #1e90ff;
 }
 
 /* Overlay */
@@ -389,28 +417,6 @@ body {
 }
 
 
-/* Ensure sidebar toggle stays on top */
-#sidebarToggle {
-  position: fixed;
-  top: 18px;
-  left: 3px;
-  background: #091E3A;
-  color: #fff;
-  width: 20px;
-  height: 20px;
-  border-radius: 4px;
-  font-size: 1.1em;
-  line-height: 24px;
-  text-align: center;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  z-index: 1220;
-}
-
-#sloganHome {
-  left: 35px;
-  z-index: 1122;
-}
 
 /* Always keep the sidebar toggle button visible above everything */
 #sidebarToggle {
@@ -421,6 +427,18 @@ body {
 #sidebar.show ~ #top-bar #sidebarToggle {
   z-index: 3000 !important;
 }
+
+/* ===== SIDEBAR COPYRIGHT TEXT ===== */
+.sidebar-copyright {
+  text-align: center;
+  font-size: 0.75em;
+  color: rgba(255,255,255,0.85);
+  padding: 10px 15px 18px;
+  border-top: 1px solid rgba(255,255,255,0.2);
+  background: rgba(0,0,0,0.12);
+  line-height: 1.4;
+}
+
 
 </style>
 
@@ -485,21 +503,29 @@ body {
       <a href="https://github.com/atsuvovor" target="_blank"><img src="github.png" alt="GitHub"></a>
       <a href="https://www.linkedin.com/in/atsu-vovor-mmai-9188326/" target="_blank"><img src="linkedIn.png" alt="LinkedIn"></a>
       <a href="https://public.tableau.com/app/profile/atsu.vovor8645/vizzes" target="_blank"><img src="tableau.png" alt="Tableau"></a>
+      
+	
     </div>
+    <!-- COPYRIGHT SECTION -->
+    <div class="sidebar-copyright">
+     © 2025 Atsu Vovor | Data & Analytics Consultant
+   </div>	 
   </div>
 
   <!-- MAIN -->
   <div id="main">
-    <div id="header">Home</div>
-      <div id="sloganHome">
-     	<a href="#" onclick="showAllProjects()">🏠︎ All Projects</a>
-      </div>
+    <div id="header"></div>
+     
     <div id="slogan-bar">
-      Turning data into decisions. Powering your success with insight.
-    </div>
+     <div id="sloganHome">
+       <a href="#" onclick="showAllProjects()">🏠︎ All Projects</a>
+     </div>
+       Turning data into decisions. Powering your success with insight.
+     </div>
+
 
     <div id="homeGallery">
-      <!-- (Your existing project cards remain unchanged) -->
+      
       <div class="project-card" onclick="loadProject('stock-portfolio')">
         <img src="stock_portfolio_analytics.png" alt="">
         <h3>Stock Portfolio Analytics</h3>
@@ -560,6 +586,7 @@ body {
     </div>
 
     <iframe id="contentFrame"></iframe>
+
   </div>
 
 <script>
@@ -604,10 +631,12 @@ function loadProject(key) {
 
 /* Show all projects */
 function showAllProjects() {
-  header.textContent = 'Home';
+  header.textContent = '';
   contentFrame.style.display = 'none';
   contentFrame.src = '';
-  homeGallery.style.display = 'grid';
+  homeGallery.style.display = 'flex';
+
+
 }
 
 /* Toggle submenu visibility */
@@ -653,7 +682,7 @@ loadProject = function (key) {
     };
     const titleText = titles[key] || key.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
     header.textContent = titleText;
-    updateTopProjectTitle(titleText);
+    <!--updateTopProjectTitle(titleText);-->
     homeGallery.style.display = 'none';
     contentFrame.src = page;
     contentFrame.style.display = 'block';
@@ -666,7 +695,7 @@ loadProject = function (key) {
 const oldShowAll = showAllProjects;
 showAllProjects = function() {
   oldShowAll();
-  updateTopProjectTitle('Home');
+  <!-- updateTopProjectTitle('Home');-->
 };
 
 // Ensure submenu toggles arrow correctly
@@ -676,8 +705,6 @@ function toggleSubmenu() {
   submenu.classList.toggle('open');
   items.classList.toggle('hidden');
 }
-
-
 
 </script>
 </body>
