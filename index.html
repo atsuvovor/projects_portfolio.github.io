@@ -439,6 +439,58 @@ body {
   line-height: 1.4;
 }
 
+/* ===== RESPONSIVE FIX FOR MOBILE ===== */
+@media (max-width: 480px) {
+
+  /* Make top bar elements smaller */
+  #top-bar {
+    flex-direction: column;
+    gap: 2px;
+    height: auto;
+    padding: 8px 10px;
+  }
+
+  #top-bar h1 {
+    font-size: 0.9rem; /* smaller title */
+    text-align: center;
+    line-height: 1.2;
+  }
+
+  #top-bar .mini-profile {
+    top: 6px;
+    left: 10px;
+    width: 34px;
+    height: 34px;
+  }
+
+  /* Adjust slogan bar layout */
+  #slogan-bar {
+    flex-direction: column;
+    align-items: center;
+    padding: 6px 8px;
+    text-align: center;
+    font-size: 0.8rem;
+  }
+
+  /* Move home button above the slogan text */
+  #slogan-bar #sloganHome {
+    position: static;
+    margin-bottom: 5px;
+    font-size: 0.9rem;
+  }
+
+  #slogan-bar #sloganHome a {
+    display: inline-block;
+    font-weight: 600;
+  }
+
+  /* Prevent wrapping/overlapping */
+  #slogan-bar span, 
+  #slogan-bar a {
+    white-space: nowrap;
+  }
+}
+
 
 </style>
 
@@ -709,4 +761,3 @@ function toggleSubmenu() {
 </script>
 </body>
 </html>
-
