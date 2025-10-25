@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Fraud Detection | Atsu Vovor Portfolio</title>
 
   <style>
@@ -20,6 +20,8 @@
       padding: 2rem;
       text-align: center;
       width: 100%;
+      height: 5%;
+      
     }
 
     header h1 {
@@ -34,7 +36,6 @@
 
     nav {
       width: 240px;
-      max-width: 80vw;
       background: #fff;
       border-right: 1px solid #e0e0e0;
       padding: 2rem 1rem;
@@ -44,7 +45,6 @@
       height: 100%;
       box-shadow: 2px 0 6px rgba(0,0,0,0.05);
       transition: transform 0.3s ease-in-out;
-      box-sizing: border-box;
     }
 
     nav h3 {
@@ -83,11 +83,9 @@
       flex: 1;
       padding: 2rem 3rem;
       background: #fff;
-      margin-left: 240px;
-      max-width: calc(100% - 240px);
+      margin-left: 260px;
       overflow-y: auto;
       transition: margin-left 0.3s;
-      box-sizing: border-box;
     }
 
     section {
@@ -96,7 +94,8 @@
 
     h2 {
       color: #9b1c31;
-      padding-bottom: 0;
+ 
+      padding-bottom:0;
     }
 
     .highlight {
@@ -116,7 +115,7 @@
       background: #fafafa;
     }
 
-    /* Mobile & landscape fixes */
+    /* Mobile */
     @media (max-width: 900px) {
       nav {
         transform: translateX(-100%);
@@ -130,12 +129,7 @@
 
       main {
         margin-left: 0;
-        padding: 1rem 1.5rem;
-        font-size: 0.95rem;
-      }
-
-      header h1 {
-        font-size: 1.5rem;
+        padding: 1.5rem;
       }
 
       .menu-toggle {
@@ -168,12 +162,7 @@
       }
     }
 
-    @media (max-width: 900px) and (orientation: landscape) {
-      nav {
-        transform: translateX(-100%);
-      }
-    }
-
+    /* Bottom button & message */
     .footer-action {
       text-align: center;
       margin-top: 3rem;
@@ -217,20 +206,6 @@
 
   <div class="container">
     <nav id="sidebar">
-      <h3>Contents</h3>
-      <ul>
-        <li><a href="#abstract">Abstract</a></li>
-        <li><a href="#introduction">Introduction</a></li>
-        <li><a href="#description">Project Description</a></li>
-        <li><a href="#scope">Scope</a></li>
-        <li><a href="#specifications">System Specifications</a></li>
-        <li><a href="#next-steps">Next Steps</a></li>
-        <li><a href="#conclusion">Conclusion</a></li>
-      </ul>
-    </nav>
-
-    <main id="mainContent">
-          <nav id="sidebar">
       <h3>Contents</h3>
       <ul>
         <li><a href="#abstract">Abstract</a></li>
@@ -333,7 +308,6 @@
           🚧 <strong>Project Under Implementation</strong> — The Fraud Detection system will be released soon.
         </div>
       </div>
-
     </main>
   </div>
 
