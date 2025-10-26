@@ -1,272 +1,300 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Healthcare Intelligence | Atsu Vovor Portfolio</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>Healthcare Intelligence | Atsu Vovor Portfolio</title>
 
-  <style>
-    body {
-      margin: 0;
-      font-family: "Segoe UI", Roboto, Arial, sans-serif;
-      background: #f8fbf9;
-      color: #1b2b1b;
-      line-height: 1.6;
-    }
+<style>
+body {
+  margin: 0;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  background: #f9fafc;
+  color: #222;
+  line-height: 1.6;
+  scroll-behavior: smooth;
+}
 
-    header {
-      background: linear-gradient(135deg, #009879, #3cb371);
-      color: white;
-      padding: 2rem;
-      text-align: center;
-    }
+/* Header */
+header {
+  background: linear-gradient(135deg, #0077b6, #00b4d8);
+  color: white;
+  padding: 2rem;
+  text-align: center;
+}
+header h1 { margin: 0; font-size: 2rem; }
 
-    header h1 {
-      margin: 0;
-      font-size: 2rem;
-    }
+/* Layout */
+.container {
+  display: flex;
+  min-height: 100vh;
+}
 
-    header p {
-      margin-top: 0.4rem;
-      font-size: 1rem;
-      opacity: 0.95;
-    }
+/* Sidebar */
+nav {
+  width: 240px;
+  background: #fff;
+  border-right: 1px solid #e0e0e0;
+  padding: 2rem 1rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  box-shadow: 2px 0 6px rgba(0,0,0,0.05);
+  transform: translateX(0);
+  transition: transform 0.4s ease-in-out;
+  z-index: 1001;
+}
+nav.hidden { transform: translateX(-100%); }
 
-    .container {
-      display: flex;
-      min-height: 100vh;
-    }
+nav h3 { font-size: 1rem; margin-bottom: 1rem; color: #0077b6; letter-spacing: 0.05rem; }
+nav ul { list-style: none; padding: 0; margin: 0; }
+nav li { margin: 0.7rem 0; }
 
-    nav {
-      width: 240px;
-      background: #ffffff;
-      border-right: 1px solid #d6e8d8;
-      padding: 2rem 1rem;
-      position: sticky;
-      top: 0;
-      height: 100vh;
-      box-shadow: 2px 0 6px rgba(0, 0, 0, 0.05);
-    }
+nav a {
+  color: #333;
+  text-decoration: none;
+  font-weight: 500;
+  display: block;
+  padding: 6px 8px;
+  border-radius: 6px;
+  transition: background 0.2s, color 0.2s;
+}
+nav a:hover { background: #e0f7ff; color: #0077b6; }
 
-    nav h3 {
-      font-size: 1rem;
-      margin-bottom: 1rem;
-      color: #009879;
-      letter-spacing: 0.05rem;
-    }
+/* Main */
+main {
+  flex: 1;
+  padding: 2rem 3rem;
+  background: #fff;
+  margin-left: 260px;
+  overflow-y: auto;
+  transition: margin-left 0.4s ease-in-out;
+}
+main.fullwidth { margin-left: 0; }
 
-    nav ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
+section { margin-bottom: 3rem; }
+h2 { color: #0077b6; padding-bottom: 0; }
 
-    nav li {
-      margin: 0.7rem 0;
-    }
+.highlight {
+  background: #e6faff;
+  padding: 0.8rem 1rem;
+  border-left: 4px solid #00b4d8;
+  border-radius: 6px;
+  margin: 1rem 0;
+}
 
-    nav a {
-      color: #1b2b1b;
-      text-decoration: none;
-      font-weight: 500;
-      display: block;
-      padding: 6px 8px;
-      border-radius: 6px;
-      transition: background 0.2s, color 0.2s;
-    }
+/* Footer */
+footer {
+  text-align: center;
+  padding: 2rem;
+  font-size: 0.9rem;
+  color: #666;
+  border-top: 1px solid #e0e0e0;
+  background: #fafafa;
+}
 
-    nav a:hover {
-      background: #e9f7ef;
-      color: #009879;
-    }
+/* Toggle Button */
+.menu-toggle {
+  position: fixed;
+  top: 0.65rem;
+  left: 1rem;
+  background: #0077b6;
+  color: white;
+  border: none;
+  padding: 0.3rem 0.7rem;
+  border-radius: 6px;
+  font-size: 1rem;
+  z-index: 1002;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+.menu-toggle:hover {
+  background: #00b4d8;
+}
 
-    main {
-      flex: 1;
-      padding: 2rem 3rem;
-      background: #fff;
-      border-left: 1px solid #d6e8d8;
-      overflow-y: auto;
-    }
+/* Overlay (mobile) */
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.4);
+  z-index: 1000;
+}
+.overlay.active { display: block; }
 
-    section {
-      margin-bottom: 3rem;
-    }
+/* Mobile */
+@media (max-width: 900px) {
+  nav { transform: translateX(-100%); }
+  nav.active { transform: translateX(0); }
 
-    h2 {
-      color: #009879;
-      border-bottom: 2px solid #009879;
-      padding-bottom: 0.4rem;
-    }
+  main { margin-left: 0; padding: 1.5rem; }
+}
 
-    .highlight {
-      background: #e9f7ef;
-      padding: 0.8rem 1rem;
-      border-left: 4px solid #3cb371;
-      border-radius: 6px;
-      margin: 1rem 0;
-    }
+/* Bottom button & message */
+.footer-action { text-align: center; margin-top: 3rem; }
+.show-message-btn {
+  background: #0077b6; color: #fff; border: none;
+  padding: 0.9rem 1.8rem; font-size: 1rem; border-radius: 8px;
+  cursor: pointer; transition: background 0.3s ease;
+}
+.show-message-btn:hover { background: #00b4d8; }
 
-    footer {
-      text-align: center;
-      padding: 2rem;
-      font-size: 0.9rem;
-      color: #4a604a;
-      border-top: 1px solid #d6e8d8;
-      background: #f9fdfb;
-    }
-
-    @media (max-width: 900px) {
-      .container {
-        flex-direction: column;
-      }
-
-      nav {
-        width: 100%;
-        height: auto;
-        box-shadow: none;
-        border-right: none;
-        border-bottom: 1px solid #d6e8d8;
-      }
-
-      main {
-        padding: 1.5rem;
-      }
-    }
-
-    .status-banner {
-      background-color: #fefae0;
-      color: #7f6000;
-      padding: 12px;
-      border-radius: 6px;
-      border: 1px solid #ffe9a9;
-      text-align: center;
-      font-weight: 500;
-      margin-bottom: 25px;
-      position: relative;
-    }
-
-    .close-btn {
-      position: absolute;
-      right: 12px;
-      top: 8px;
-      background: none;
-      border: none;
-      color: #7f6000;
-      font-size: 18px;
-      cursor: pointer;
-    }
-  </style>
+.implementation-message {
+  display: none; margin-top: 1rem;
+  padding: 1rem; background: #fff3cd;
+  border: 1px solid #ffeeba; border-radius: 8px;
+  color: #856404; font-weight: 500;
+}
+</style>
 </head>
 
 <body>
+<button class="menu-toggle">☰ Menu</button>
+<div class="overlay"></div>
 
-  <div class="status-banner" id="banner">
-    🚧 <strong>Project Under Implementation</strong> — The Healthcare Intelligence platform will be released soon.
-    <button class="close-btn" onclick="document.getElementById('banner').style.display='none';">&times;</button>
-  </div>
+<header>
+  <h1>Healthcare Intelligence</h1>
+</header>
 
-  <header>
-    <h1>Healthcare Intelligence</h1>
-    <p>AI-powered insights to improve patient outcomes, optimize resources, and support healthcare decisions.</p>
-  </header>
+<div class="container">
+  <nav id="sidebar">
+    <h3>Contents</h3>
+    <ul>
+      <li><a href="#abstract">Abstract</a></li>
+      <li><a href="#introduction">Introduction</a></li>
+      <li><a href="#description">Project Description</a></li>
+      <li><a href="#scope">Scope</a></li>
+      <li><a href="#specifications">System Specifications</a></li>
+      <li><a href="#next-steps">Next Steps</a></li>
+      <li><a href="#conclusion">Conclusion</a></li>
+    </ul>
+  </nav>
 
-  <div class="container">
-    <nav>
-      <h3>Contents</h3>
+  <main id="mainContent">
+    <section id="abstract">
+      <h2>Abstract</h2>
+      <p>The <strong>Healthcare Intelligence</strong> project leverages data analytics and artificial intelligence
+      to improve patient outcomes, optimize clinical workflows, and enhance healthcare decision-making.
+      Through predictive modeling, operational dashboards, and real-time monitoring, it empowers healthcare
+      providers to deliver proactive and efficient care.</p>
+    </section>
+
+    <section id="introduction">
+      <h2>Introduction</h2>
+      <p>Healthcare organizations face challenges in managing large, complex datasets spanning patient records,
+      diagnostics, and operations. Traditional systems often fail to provide actionable insights. This project applies
+      machine learning and data engineering to uncover patterns that drive efficiency and quality improvements.</p>
+      <div class="highlight">
+        <strong>Key Goal:</strong> Deliver an AI-powered healthcare intelligence platform that supports evidence-based decision-making and predictive care analytics.
+      </div>
+    </section>
+
+    <section id="description">
+      <h2>Project Description</h2>
+      <p>The system integrates data ingestion, feature extraction, AI modeling, and visualization layers. It enables clinical, operational, and financial intelligence through:</p>
       <ul>
-        <li><a href="#abstract">Abstract</a></li>
-        <li><a href="#introduction">Introduction</a></li>
-        <li><a href="#description">Project Description</a></li>
-        <li><a href="#scope">Scope</a></li>
-        <li><a href="#specifications">System Specifications</a></li>
-        <li><a href="#next-steps">Next Steps</a></li>
-        <li><a href="#conclusion">Conclusion</a></li>
+        <li><strong>Data Integration:</strong> Combining EHR, IoT, and operational data.</li>
+        <li><strong>Predictive Analytics:</strong> Patient risk scoring, disease progression prediction.</li>
+        <li><strong>Operational Insights:</strong> Capacity optimization, staff allocation, and cost efficiency.</li>
+        <li><strong>Visualization:</strong> Dashboards for clinical KPIs and hospital performance tracking.</li>
       </ul>
-    </nav>
+    </section>
 
-    <main>
-      <section id="abstract">
-        <h2>Abstract</h2>
-        <p>
-          The <strong>Healthcare Intelligence</strong> project leverages artificial intelligence and predictive analytics to enhance healthcare operations and clinical outcomes. It integrates patient data, hospital metrics, and AI-driven forecasting models to improve decision-making, optimize resource utilization, and personalize patient care.
-        </p>
-      </section>
+    <section id="scope">
+      <h2>Scope</h2>
+      <ul>
+        <li>Predictive Health Analytics</li>
+        <li>Hospital Resource Optimization</li>
+        <li>Clinical Risk Prediction</li>
+        <li>Population Health Management</li>
+      </ul>
+      <p>The system integrates seamlessly with existing health information systems and analytics platforms.</p>
+    </section>
 
-      <section id="introduction">
-        <h2>Introduction</h2>
-        <p>
-          Modern healthcare systems generate massive volumes of data—from electronic health records to diagnostic devices. However, much of this data remains underutilized. This project introduces an AI-driven framework that transforms raw healthcare data into actionable intelligence, improving patient safety, quality of care, and operational efficiency.
-        </p>
-        <div class="highlight">
-          <strong>Key Goal:</strong> Use machine learning and analytics to enable proactive healthcare management, predictive diagnosis, and efficient care delivery.
-        </div>
-      </section>
+    <section id="specifications">
+      <h2>System Specifications</h2>
+      <ul>
+        <li><strong>Backend:</strong> Python (Pandas, Scikit-learn, TensorFlow).</li>
+        <li><strong>Data Pipeline:</strong> Apache Airflow for orchestration and Snowflake for warehousing.</li>
+        <li><strong>AI Layer:</strong> Predictive models and clinical risk scoring APIs.</li>
+        <li><strong>Visualization Layer:</strong> Streamlit dashboards and Tableau for analytics.</li>
+        <li><strong>Deployment:</strong> Dockerized services on Azure with API-based model integration.</li>
+      </ul>
+    </section>
 
-      <section id="description">
-        <h2>Project Description</h2>
-        <p>
-          The Healthcare Intelligence platform connects data from clinical, financial, and operational systems to generate predictive insights. Core modules include:
-        </p>
-        <ul>
-          <li><strong>Predictive Analytics:</strong> Forecasting patient readmissions, disease risks, and emergency trends.</li>
-          <li><strong>Operational Optimization:</strong> AI models for bed management, resource allocation, and staff scheduling.</li>
-          <li><strong>Patient Insights:</strong> ML algorithms for treatment personalization and care quality improvement.</li>
-          <li><strong>Dashboards & Visualization:</strong> Interactive analytics built with Streamlit and Power BI for healthcare leaders.</li>
-        </ul>
-      </section>
+    <section id="next-steps">
+      <h2>Next Steps</h2>
+      <ul>
+        <li>Integrate federated learning for cross-hospital data collaboration.</li>
+        <li>Enhance explainability in clinical AI predictions.</li>
+        <li>Develop mobile-friendly dashboards for practitioners.</li>
+        <li>Enable real-time patient monitoring analytics.</li>
+      </ul>
+    </section>
 
-      <section id="scope">
-        <h2>Scope</h2>
-        <p>
-          This project focuses on applying data science and AI across multiple healthcare domains:
-        </p>
-        <ul>
-          <li>Clinical decision support systems</li>
-          <li>Hospital operations and workflow efficiency</li>
-          <li>Predictive health risk assessment</li>
-          <li>Patient engagement and satisfaction analytics</li>
-        </ul>
-      </section>
+    <section id="conclusion">
+      <h2>Conclusion</h2>
+      <p>The <strong>Healthcare Intelligence</strong> platform builds the foundation for smarter, data-driven healthcare systems.
+      By uniting predictive analytics, interoperability, and visualization, it improves outcomes, reduces costs,
+      and strengthens healthcare delivery.</p>
+      <p>⚡ Content coming soon: clinical AI case studies, data pipelines, and live dashboards.</p>
+    </section>
 
-      <section id="specifications">
-        <h2>System Specifications</h2>
-        <ul>
-          <li><strong>Backend:</strong> Python (FastAPI), PostgreSQL, and TensorFlow/Keras models.</li>
-          <li><strong>AI Layer:</strong> Predictive modeling, clustering, and anomaly detection for patient data.</li>
-          <li><strong>Visualization:</strong> Streamlit and Power BI for real-time reporting.</li>
-          <li><strong>Integration:</strong> FHIR and HL7 standards for clinical data exchange.</li>
-          <li><strong>Deployment:</strong> Dockerized microservices architecture for scalability and compliance.</li>
-        </ul>
-      </section>
+    <div class="footer-action">
+      <button class="show-message-btn" onclick="toggleMessage()">Check Project Status</button>
+      <div class="implementation-message" id="implementationMessage">
+        🚧 <strong>Project Under Implementation</strong> — The Healthcare Intelligence system will be released soon.
+      </div>
+    </div>
+  </main>
+</div>
 
-      <section id="next-steps">
-        <h2>Next Steps</h2>
-        <ul>
-          <li>Integrate live predictive dashboards for hospital operations.</li>
-          <li>Develop AI modules for chronic disease monitoring.</li>
-          <li>Expand interoperability with EHR systems.</li>
-          <li>Publish case studies demonstrating real-world impact.</li>
-        </ul>
-      </section>
+<footer>
+  © 2025 Atsu Vovor |
+  <a href="https://www.linkedin.com/in/atsu-vovor-mmai-9188326/" target="_blank">LinkedIn</a> |
+  <a href="https://github.com/atsuvovor/projects_portfolio.github.io" target="_blank">GitHub</a> |
+  <a href="https://public.tableau.com/app/profile/atsu.vovor8645/vizzes" target="_blank">Tableau</a>
+</footer>
 
-      <section id="conclusion">
-        <h2>Conclusion</h2>
-        <p>
-          The <strong>Healthcare Intelligence</strong> project represents a major step toward data-driven healthcare transformation. By applying AI to real-time patient and operational data, it helps organizations deliver better outcomes, improve efficiency, and drive sustainable innovation.
-        </p>
-        <p>
-          ⚡ Future content: predictive analytics in healthcare and case studies.
-        </p>
-      </section>
-    </main>
-  </div>
+<script>
+const menuToggle = document.querySelector(".menu-toggle");
+const sidebar = document.getElementById("sidebar");
+const overlay = document.querySelector(".overlay");
+const mainContent = document.getElementById("mainContent");
 
-  <footer>
-    © 2025 Atsu Vovor | 
-    <a href="https://www.linkedin.com/in/atsu-vovor-mmai-9188326/" target="_blank">LinkedIn</a> |
-    <a href="https://github.com/atsuvovor/projects_portfolio.github.io" target="_blank">GitHub</a> |
-    <a href="https://public.tableau.com/app/profile/atsu.vovor8645/vizzes" target="_blank">Tableau</a>
-  </footer>
+// Toggle sidebar visibility
+menuToggle.addEventListener("click", () => {
+  const isMobile = window.innerWidth <= 900;
+  if (isMobile) {
+    sidebar.classList.toggle("active");
+    overlay.classList.toggle("active");
+  } else {
+    sidebar.classList.toggle("hidden");
+    mainContent.classList.toggle("fullwidth");
+  }
+});
 
+// Close sidebar when clicking overlay (mobile)
+overlay.addEventListener("click", () => {
+  sidebar.classList.remove("active");
+  overlay.classList.remove("active");
+});
+
+// Close sidebar when clicking any link (mobile)
+document.querySelectorAll("#sidebar a").forEach(link => {
+  link.addEventListener("click", () => {
+    sidebar.classList.remove("active");
+    overlay.classList.remove("active");
+  });
+});
+
+// Show/hide project implementation message
+function toggleMessage() {
+  const msg = document.getElementById("implementationMessage");
+  msg.style.display = msg.style.display === "block" ? "none" : "block";
+}
+</script>
 </body>
 </html>
