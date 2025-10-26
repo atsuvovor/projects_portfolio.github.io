@@ -1,266 +1,293 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Market Intelligence | Atsu Vovor Portfolio</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>Market Intelligence | Atsu Vovor Portfolio</title>
 
-  <style>
-    body {
-      margin: 0;
-      font-family: "Segoe UI", Roboto, Arial, sans-serif;
-      background: #f9fafc;
-      color: #222;
-      line-height: 1.6;
-    }
+<style>
+body {
+  margin: 0;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  background: #f9fafc;
+  color: #222;
+  line-height: 1.6;
+  scroll-behavior: smooth;
+}
 
-    header {
-      background: linear-gradient(135deg, #1e6352, #2a7b68);
-      color: white;
-      padding: 2rem;
-      text-align: center;
-    }
+/* Header */
+header {
+  background: linear-gradient(135deg, #1e6352, #2a7b68);
+  color: white;
+  padding: 2rem;
+  text-align: center;
+}
+header h1 { margin: 0; font-size: 2rem; }
 
-    header h1 {
-      margin: 0;
-      font-size: 2rem;
-    }
+/* Layout */
+.container {
+  display: flex;
+  min-height: 100vh;
+}
 
-    header p {
-      margin-top: 0.4rem;
-      font-size: 1rem;
-      opacity: 0.9;
-    }
+/* Sidebar */
+nav {
+  width: 240px;
+  background: #fff;
+  border-right: 1px solid #e0e0e0;
+  padding: 2rem 1rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  box-shadow: 2px 0 6px rgba(0,0,0,0.05);
+  transform: translateX(0);
+  transition: transform 0.4s ease-in-out;
+  z-index: 1001;
+}
+nav.hidden { transform: translateX(-100%); }
 
-    .container {
-      display: flex;
-      min-height: 100vh;
-    }
+nav h3 { font-size: 1rem; margin-bottom: 1rem; color: #1e6352; letter-spacing: 0.05rem; }
+nav ul { list-style: none; padding: 0; margin: 0; }
+nav li { margin: 0.7rem 0; }
 
-    nav {
-      width: 240px;
-      background: #fff;
-      border-right: 1px solid #e0e0e0;
-      padding: 2rem 1rem;
-      position: sticky;
-      top: 0;
-      height: 100vh;
-      box-shadow: 2px 0 6px rgba(0,0,0,0.05);
-    }
+nav a {
+  color: #333;
+  text-decoration: none;
+  font-weight: 500;
+  display: block;
+  padding: 6px 8px;
+  border-radius: 6px;
+  transition: background 0.2s, color 0.2s;
+}
+nav a:hover { background: #e0f2ef; color: #1e6352; }
 
-    nav h3 {
-      font-size: 1rem;
-      margin-bottom: 1rem;
-      color: #1e6352;
-      letter-spacing: 0.05rem;
-    }
+/* Main */
+main {
+  flex: 1;
+  padding: 2rem 3rem;
+  background: #fff;
+  margin-left: 260px;
+  overflow-y: auto;
+  transition: margin-left 0.4s ease-in-out;
+}
+main.fullwidth { margin-left: 0; }
 
-    nav ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
+section { margin-bottom: 3rem; }
+h2 { color: #1e6352; padding-bottom: 0; }
 
-    nav li {
-      margin: 0.7rem 0;
-    }
+.highlight {
+  background: #e0f2ef;
+  padding: 0.8rem 1rem;
+  border-left: 4px solid #2a7b68;
+  border-radius: 6px;
+  margin: 1rem 0;
+}
 
-    nav a {
-      color: #333;
-      text-decoration: none;
-      font-weight: 500;
-      display: block;
-      padding: 6px 8px;
-      border-radius: 6px;
-      transition: background 0.2s, color 0.2s;
-    }
+/* Footer */
+footer {
+  text-align: center;
+  padding: 2rem;
+  font-size: 0.9rem;
+  color: #666;
+  border-top: 1px solid #e0e0e0;
+  background: #fafafa;
+}
 
-    nav a:hover {
-      background: #e0f2ef;
-      color: #1e6352;
-    }
+/* Toggle Button */
+.menu-toggle {
+  position: fixed;
+  top: 0.65rem;
+  left: 1rem;
+  background: #1e6352;
+  color: white;
+  border: none;
+  padding: 0.3rem 0.7rem;
+  border-radius: 6px;
+  font-size: 1rem;
+  z-index: 1002;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+.menu-toggle:hover {
+  background: #2a7b68;
+}
 
-    main {
-      flex: 1;
-      padding: 2rem 3rem;
-      background: #fff;
-      border-left: 1px solid #e0e0e0;
-      overflow-y: auto;
-    }
+/* Overlay (mobile) */
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.4);
+  z-index: 1000;
+}
+.overlay.active { display: block; }
 
-    section {
-      margin-bottom: 3rem;
-    }
+/* Mobile */
+@media (max-width: 900px) {
+  nav { transform: translateX(-100%); }
+  nav.active { transform: translateX(0); }
 
-    h2 {
-      color: #1e6352;
-      border-bottom: 2px solid #1e6352;
-      padding-bottom: 0.4rem;
-    }
+  main { margin-left: 0; padding: 1.5rem; }
+}
 
-    .highlight {
-      background: #e0f2ef;
-      padding: 0.8rem 1rem;
-      border-left: 4px solid #2a7b68;
-      border-radius: 6px;
-      margin: 1rem 0;
-    }
+/* Bottom button & message */
+.footer-action { text-align: center; margin-top: 3rem; }
+.show-message-btn {
+  background: #1e6352; color: #fff; border: none;
+  padding: 0.9rem 1.8rem; font-size: 1rem; border-radius: 8px;
+  cursor: pointer; transition: background 0.3s ease;
+}
+.show-message-btn:hover { background: #2a7b68; }
 
-    .status-banner {
-      background-color: #fff3cd;
-      color: #856404;
-      padding: 12px;
-      border-radius: 6px;
-      border: 1px solid #ffeeba;
-      text-align: center;
-      font-weight: 500;
-      margin-bottom: 25px;
-      position: relative;
-    }
-    .close-btn {
-      position: absolute;
-      right: 12px;
-      top: 8px;
-      background: none;
-      border: none;
-      color: #856404;
-      font-size: 18px;
-      cursor: pointer;
-    }
-
-    footer {
-      text-align: center;
-      padding: 2rem;
-      font-size: 0.9rem;
-      color: #666;
-      border-top: 1px solid #e0e0e0;
-      background: #fafafa;
-    }
-
-    @media (max-width: 900px) {
-      .container {
-        flex-direction: column;
-      }
-
-      nav {
-        width: 100%;
-        height: auto;
-        box-shadow: none;
-        border-right: none;
-        border-bottom: 1px solid #ddd;
-      }
-
-      main {
-        padding: 1.5rem;
-      }
-    }
-  </style>
+.implementation-message {
+  display: none; margin-top: 1rem;
+  padding: 1rem; background: #fff3cd;
+  border: 1px solid #ffeeba; border-radius: 8px;
+  color: #856404; font-weight: 500;
+}
+</style>
 </head>
+
 <body>
+<button class="menu-toggle">☰ Menu</button>
+<div class="overlay"></div>
 
-  <div class="status-banner" id="banner">
-    🚧 <strong>Project Under Implementation</strong> — The Market Intelligence system will be released soon.
-    <button class="close-btn" onclick="document.getElementById('banner').style.display='none';">&times;</button>
-  </div>
+<header>
+  <h1>Market Intelligence</h1>
+</header>
 
-  <header>
-    <h1>Market Intelligence</h1>
-    <p>Analytics solutions for tracking trends, competitor performance, and emerging business opportunities.</p>
-  </header>
+<div class="container">
+  <nav id="sidebar">
+    <h3>Contents</h3>
+    <ul>
+      <li><a href="#abstract">Abstract</a></li>
+      <li><a href="#introduction">Introduction</a></li>
+      <li><a href="#description">Project Description</a></li>
+      <li><a href="#scope">Scope</a></li>
+      <li><a href="#specifications">System Specifications</a></li>
+      <li><a href="#next-steps">Next Steps</a></li>
+      <li><a href="#conclusion">Conclusion</a></li>
+    </ul>
+  </nav>
 
-  <div class="container">
-    <nav>
-      <h3>Contents</h3>
+  <main id="mainContent">
+    <section id="abstract">
+      <h2>Abstract</h2>
+      <p>The <strong>Market Intelligence</strong> project provides a comprehensive analytics framework to monitor market dynamics, analyze competitor performance, and identify emerging opportunities through AI-driven insights.</p>
+    </section>
+
+    <section id="introduction">
+      <h2>Introduction</h2>
+      <p>In today’s competitive environment, organizations require advanced analytics to detect shifts in consumer behavior, evaluate competitors, and anticipate market trends. This project enables businesses to make proactive and informed strategic decisions.</p>
+      <div class="highlight">
+        <strong>Key Goal:</strong> Empower organizations to anticipate market changes and act on predictive insights using AI-enhanced intelligence.
+      </div>
+    </section>
+
+    <section id="description">
+      <h2>Project Description</h2>
+      <p>The system integrates data from multiple internal and external sources, applying advanced analytics to uncover business opportunities. Core components include:</p>
       <ul>
-        <li><a href="#abstract">Abstract</a></li>
-        <li><a href="#introduction">Introduction</a></li>
-        <li><a href="#description">Project Description</a></li>
-        <li><a href="#scope">Scope</a></li>
-        <li><a href="#specifications">System Specifications</a></li>
-        <li><a href="#next-steps">Next Steps</a></li>
-        <li><a href="#conclusion">Conclusion</a></li>
+        <li><strong>Data Integration:</strong> APIs, financial feeds, and internal sales data.</li>
+        <li><strong>Analytics Engine:</strong> AI models for forecasting and trend analysis.</li>
+        <li><strong>Visualization:</strong> Interactive dashboards for leadership insights.</li>
+        <li><strong>Decision Support:</strong> Automated alerts for competitive activity and opportunity detection.</li>
       </ul>
-    </nav>
+    </section>
 
-    <main>
-      <section id="abstract">
-        <h2>Abstract</h2>
-        <p>
-          The <strong>Market Intelligence</strong> project builds a comprehensive analytics framework for organizations to monitor market dynamics, track competitor performance, and discover emerging opportunities. Leveraging AI-driven analytics, it enables faster, data-informed decisions.
-        </p>
-      </section>
+    <section id="scope">
+      <h2>Scope</h2>
+      <ul>
+        <li>Competitive benchmarking and opportunity discovery.</li>
+        <li>Predictive insights for strategic planning.</li>
+        <li>Custom dashboards for executive reporting.</li>
+        <li>Cross-industry market analysis capabilities.</li>
+      </ul>
+      <p>This modular architecture scales with organizational needs and data maturity.</p>
+    </section>
 
-      <section id="introduction">
-        <h2>Introduction</h2>
-        <p>
-          In today's fast-moving markets, businesses must constantly adapt to trends and competitor strategies. The Market Intelligence project provides a centralized analytics system that empowers decision-makers with timely insights and predictive analytics.
-        </p>
-        <div class="highlight">
-          <strong>Key Goal:</strong> Enable organizations to make proactive, data-driven decisions by combining real-time market data, competitor benchmarks, and AI-enhanced predictive analytics.
-        </div>
-      </section>
+    <section id="specifications">
+      <h2>System Specifications</h2>
+      <ul>
+        <li><strong>Backend:</strong> Cloud-based ETL pipelines and SQL/NoSQL databases.</li>
+        <li><strong>Analytics Layer:</strong> Python, R, and TensorFlow for AI analytics.</li>
+        <li><strong>Visualization:</strong> Tableau and Power BI dashboards.</li>
+        <li><strong>Deployment:</strong> Dockerized services for AWS/GCP environments.</li>
+        <li><strong>Security:</strong> Role-based access control and data encryption.</li>
+      </ul>
+    </section>
 
-      <section id="description">
-        <h2>Project Description</h2>
-        <p>
-          This solution integrates multiple data sources including market feeds, competitor reports, social media trends, and internal sales data. Key components include:
-        </p>
-        <ul>
-          <li><strong>Data Integration:</strong> Real-time ingestion from APIs, web sources, and internal databases.</li>
-          <li><strong>Analytics Engine:</strong> AI models for forecasting, trend analysis, and anomaly detection.</li>
-          <li><strong>Visualization:</strong> Interactive dashboards built with Tableau and Power BI for executives and analysts.</li>
-          <li><strong>Decision Support:</strong> Automated reporting and alerts for emerging opportunities and threats.</li>
-        </ul>
-      </section>
+    <section id="next-steps">
+      <h2>Next Steps</h2>
+      <ul>
+        <li>Expand predictive models for market forecasting.</li>
+        <li>Integrate additional data sources and social media analytics.</li>
+        <li>Automate competitive alerting and market signal detection.</li>
+        <li>Enhance dashboard interactivity and drill-down capabilities.</li>
+      </ul>
+    </section>
 
-      <section id="scope">
-        <h2>Scope</h2>
-        <p>
-          The Market Intelligence system is designed for multiple business units including strategy, sales, and product management. Its modular design supports:
-        </p>
-        <ul>
-          <li>Competitive benchmarking and trend tracking.</li>
-          <li>Market opportunity discovery.</li>
-          <li>Predictive insights for proactive business decisions.</li>
-          <li>Customizable dashboards for executive reporting.</li>
-        </ul>
-      </section>
+    <section id="conclusion">
+      <h2>Conclusion</h2>
+      <p>The <strong>Market Intelligence</strong> project delivers an AI-powered platform for market analytics, empowering organizations to respond faster to competitive dynamics and uncover emerging business opportunities.</p>
+      <p>⚡ Content coming soon: predictive modeling demos, AI-based competitor tracking, and real-time analytics dashboards.</p>
+    </section>
 
-      <section id="specifications">
-        <h2>System Specifications</h2>
-        <ul>
-          <li><strong>Backend:</strong> Cloud-based ETL pipelines, REST APIs, and SQL/NoSQL data stores.</li>
-          <li><strong>Analytics Layer:</strong> Python and R models for predictive and prescriptive analytics.</li>
-          <li><strong>Visualization Layer:</strong> Tableau and Power BI dashboards for real-time insights.</li>
-          <li><strong>Deployment:</strong> Containerized microservices, cloud-ready for AWS/GCP.</li>
-          <li><strong>Security:</strong> Role-based access, encrypted data storage, and audit logging.</li>
-        </ul>
-      </section>
+    <div class="footer-action">
+      <button class="show-message-btn" onclick="toggleMessage()">Check Project Status</button>
+      <div class="implementation-message" id="implementationMessage">
+        🚧 <strong>Project Under Implementation</strong> — The Market Intelligence system will be released soon.
+      </div>
+    </div>
+  </main>
+</div>
 
-      <section id="next-steps">
-        <h2>Next Steps</h2>
-        <ul>
-          <li>Integrate additional market feeds and alternative data sources.</li>
-          <li>Enhance predictive AI models for competitor and market trend forecasting.</li>
-          <li>Expand dashboard functionality for scenario analysis and reporting automation.</li>
-          <li>Deploy notifications and alerts for emerging market opportunities.</li>
-        </ul>
-      </section>
+<footer>
+  © 2025 Atsu Vovor |
+  <a href="https://www.linkedin.com/in/atsu-vovor-mmai-9188326/" target="_blank">LinkedIn</a> |
+  <a href="https://github.com/atsuvovor/projects_portfolio.github.io" target="_blank">GitHub</a> |
+  <a href="https://public.tableau.com/app/profile/atsu.vovor8645/vizzes" target="_blank">Tableau</a>
+</footer>
 
-      <section id="conclusion">
-        <h2>Conclusion</h2>
-        <p>
-          The Market Intelligence project establishes a modern, AI-enabled framework for businesses to anticipate market changes, track competitors, and make informed strategic decisions. Its modular and scalable design ensures adaptability for future data sources and analytics needs.
-        </p>
-      </section>
-    </main>
-  </div>
+<script>
+const menuToggle = document.querySelector(".menu-toggle");
+const sidebar = document.getElementById("sidebar");
+const overlay = document.querySelector(".overlay");
+const mainContent = document.getElementById("mainContent");
 
-  <footer>
-    © 2025 Atsu Vovor | 
-    <a href="https://www.linkedin.com/in/atsu-vovor-mmai-9188326/" target="_blank">LinkedIn</a> |
-    <a href="https://github.com/atsuvovor/projects_portfolio.github.io" target="_blank">GitHub</a> |
-    <a href="https://public.tableau.com/app/profile/atsu.vovor8645/vizzes" target="_blank">Tableau</a>
-  </footer>
+// Toggle sidebar visibility
+menuToggle.addEventListener("click", () => {
+  const isMobile = window.innerWidth <= 900;
+  if (isMobile) {
+    sidebar.classList.toggle("active");
+    overlay.classList.toggle("active");
+  } else {
+    sidebar.classList.toggle("hidden");
+    mainContent.classList.toggle("fullwidth");
+  }
+});
+
+// Close sidebar when clicking overlay (mobile)
+overlay.addEventListener("click", () => {
+  sidebar.classList.remove("active");
+  overlay.classList.remove("active");
+});
+
+// Close sidebar when clicking any link (mobile)
+document.querySelectorAll("#sidebar a").forEach(link => {
+  link.addEventListener("click", () => {
+    sidebar.classList.remove("active");
+    overlay.classList.remove("active");
+  });
+});
+
+// Show/hide project implementation message
+function toggleMessage() {
+  const msg = document.getElementById("implementationMessage");
+  msg.style.display = msg.style.display === "block" ? "none" : "block";
+}
+</script>
 </body>
 </html>
