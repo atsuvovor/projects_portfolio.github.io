@@ -1,243 +1,358 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Fraud Detection System</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>Fraud Detection | Atsu Vovor Portfolio</title>
 
 <style>
-/* --- GLOBAL RESET --- */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
 body {
-  font-family: "Segoe UI", Arial, sans-serif;
-  display: flex;
-  background: #f7f8fa;
-  color: #333;
-  overflow-x: hidden;
+  margin: 0;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  background: #f9fafc;
+  color: #222;
+  line-height: 1.6;
+  scroll-behavior: smooth;
 }
 
-/* --- SIDEBAR --- */
-nav {
-  position: fixed;
-  left: 0;
-  top: 0;
-  height: 100%;
-  width: 240px;
-  background-color: #1f2937;
-  color: #fff;
-  padding: 1.5rem 1rem;
-  transform: translateX(0);
-  transition: transform 0.3s ease;
-  z-index: 1000;
-}
-nav h2 {
-  font-size: 1.2rem;
-  margin-bottom: 1.5rem;
-}
-nav ul {
-  list-style: none;
-}
-nav ul li {
-  margin-bottom: 1rem;
-}
-nav ul li a {
-  text-decoration: none;
-  color: #cbd5e1;
-  font-size: 0.95rem;
-  display: block;
-  padding: 0.4rem 0.6rem;
-  border-radius: 6px;
-  transition: background 0.2s;
-}
-nav ul li a:hover {
-  background: #374151;
-  color: #fff;
-}
-
-/* --- MAIN --- */
-main {
-  flex: 1;
-  margin-left: 240px;
-  padding: 2rem;
-  transition: margin-left 0.3s ease;
-}
-
-/* --- HEADER --- */
+/* ===== Header ===== */
 header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 2rem;
+  background: linear-gradient(135deg, #9b1c31, #e63946);
+  color: white;
+  padding: 2rem;
+  text-align: center;
 }
 header h1 {
+  margin: 0;
   font-size: 2rem;
-  color: #111827;
-}
-.menu-toggle {
-  display: none;
-  font-size: 1.3rem;
-  padding: 0.5rem 0.8rem;
-  background: #1f2937;
-  color: #fff;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
 }
 
-/* --- SECTIONS --- */
-section {
-  margin-bottom: 2rem;
+/* ===== Layout ===== */
+.container {
+  display: flex;
+  min-height: 100vh;
+}
+
+nav {
+  width: 240px;
   background: #fff;
-  padding: 1.5rem;
-  border-radius: 10px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-}
-section h2 {
-  font-size: 1.3rem;
-  margin-bottom: 1rem; /* no underline */
-  color: #111827;
-}
-section p {
-  line-height: 1.6;
+  border-right: 1px solid #e0e0e0;
+  padding: 2rem 1rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  box-shadow: 2px 0 6px rgba(0,0,0,0.05);
+  transform: translateX(0);
+  transition: transform 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+  z-index: 1001;
 }
 
-/* --- MESSAGE BUTTON --- */
-.show-message-btn {
-  display: block;
-  margin: 2rem auto 1rem auto;
-  padding: 0.8rem 1.6rem;
+nav.collapsed {
+  transform: translateX(-100%);
+}
+
+nav h3 {
   font-size: 1rem;
-  background-color: #2563eb;
+  margin-bottom: 1rem;
+  color: #9b1c31;
+  letter-spacing: 0.05rem;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+nav li { margin: 0.7rem 0; }
+
+nav a {
+  color: #333;
+  text-decoration: none;
+  font-weight: 500;
+  display: block;
+  padding: 6px 8px;
+  border-radius: 6px;
+  transition: background 0.2s, color 0.2s;
+}
+nav a:hover { background: #ffeef0; color: #9b1c31; }
+
+/* ===== Main ===== */
+main {
+  flex: 1;
+  padding: 2rem 3rem;
+  background: #fff;
+  margin-left: 260px;
+  overflow-y: auto;
+  transition: margin-left 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+main.expanded {
+  margin-left: 0;
+}
+
+section { margin-bottom: 3rem; }
+
+h2 { 
+  color: #9b1c31; 
+  padding-bottom: 0; 
+}
+
+.highlight {
+  background: #fff5f5;
+  padding: 0.8rem 1rem;
+  border-left: 4px solid #e63946;
+  border-radius: 6px;
+  margin: 1rem 0;
+}
+
+/* ===== Footer ===== */
+footer {
+  text-align: center;
+  padding: 2rem;
+  font-size: 0.9rem;
+  color: #666;
+  border-top: 1px solid #e0e0e0;
+  background: #fafafa;
+}
+
+/* ===== Button & Message ===== */
+.footer-action {
+  text-align: center;
+  margin-top: 3rem;
+}
+
+.show-message-btn {
+  background: #9b1c31;
   color: #fff;
   border: none;
+  padding: 0.9rem 1.8rem;
+  font-size: 1rem;
   border-radius: 8px;
   cursor: pointer;
-  transition: background 0.2s ease;
+  transition: background 0.3s ease;
 }
-.show-message-btn:hover {
-  background-color: #1d4ed8;
-}
+.show-message-btn:hover { background: #c72a3b; }
 
-/* --- MESSAGE BOX --- */
-.message-box {
+.implementation-message {
   display: none;
-  margin: 1rem auto;
+  margin-top: 1rem;
   padding: 1rem;
-  background: #fef3c7;
-  border: 1px solid #fcd34d;
-  color: #92400e;
-  border-radius: 10px;
-  text-align: center;
-  font-size: 1rem;
+  background: #fff3cd;
+  border: 1px solid #ffeeba;
+  border-radius: 8px;
+  color: #856404;
+  font-weight: 500;
 }
 
-/* --- MOBILE / RESPONSIVE --- */
+/* ===== Overlay & Toggle ===== */
+.menu-toggle {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  background: #9b1c31;
+  color: white;
+  border: none;
+  padding: 0.6rem 1rem;
+  border-radius: 6px;
+  font-size: 1rem;
+  z-index: 1100;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+.menu-toggle:hover {
+  background: #c72a3b;
+}
+
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.4);
+  z-index: 1000;
+  transition: opacity 0.3s ease;
+}
+.overlay.active {
+  display: block;
+  opacity: 1;
+}
+
+/* ===== Responsive Behavior ===== */
 @media (max-width: 900px) {
   nav {
     transform: translateX(-100%);
-    position: fixed;
   }
-
   nav.active {
     transform: translateX(0);
   }
-
   main {
     margin-left: 0;
-    padding: 1.2rem;
+    padding: 1.5rem;
   }
+}
 
-  .menu-toggle {
-    display: block;
+@media (max-width: 900px) and (orientation: landscape) {
+  nav {
+    transform: translateX(-100%);
   }
 }
 </style>
 </head>
+
 <body>
+<button class="menu-toggle">☰ Menu</button>
+<div class="overlay"></div>
 
-<!-- SIDEBAR -->
-<nav id="sidebar">
-  <h2>Fraud Detection</h2>
-  <ul>
-    <li><a href="#overview">Overview</a></li>
-    <li><a href="#model">Model Design</a></li>
-    <li><a href="#data">Data Sources</a></li>
-    <li><a href="#monitoring">Monitoring</a></li>
-  </ul>
-</nav>
+<header>
+  <h1>Fraud Detection</h1>
+</header>
 
-<!-- MAIN -->
-<main id="main-content">
-  <header>
-    <h1>Fraud Detection System</h1>
-    <button class="menu-toggle" id="menu-toggle">☰ Menu</button>
-  </header>
+<div class="container">
+  <nav id="sidebar">
+    <h3>Contents</h3>
+    <ul>
+      <li><a href="#abstract">Abstract</a></li>
+      <li><a href="#introduction">Introduction</a></li>
+      <li><a href="#description">Project Description</a></li>
+      <li><a href="#scope">Scope</a></li>
+      <li><a href="#specifications">System Specifications</a></li>
+      <li><a href="#next-steps">Next Steps</a></li>
+      <li><a href="#conclusion">Conclusion</a></li>
+    </ul>
+  </nav>
 
-  <section id="overview">
-    <h2>Overview</h2>
-    <p>The Fraud Detection System uses data-driven methods to identify and mitigate suspicious transactions in real time.</p>
-  </section>
+  <main id="mainContent">
+    <!-- keep your existing sections -->
+    <section id="abstract">
+      <h2>Abstract</h2>
+      <p>The <strong>Fraud Detection</strong> project focuses on applying machine learning and advanced analytics
+      to identify, predict, and prevent fraudulent activities in real time. Using transaction pattern analysis,
+      anomaly detection, and behavioral modeling, the system aims to minimize financial losses and enhance security
+      across banking and insurance ecosystems.</p>
+    </section>
 
-  <section id="model">
-    <h2>Model Design</h2>
-    <p>Machine learning models are trained on large transactional datasets to identify abnormal spending behaviors and potential fraud attempts.</p>
-  </section>
+    <section id="introduction">
+      <h2>Introduction</h2>
+      <p>As digital transactions and online banking grow, the risk of fraud has become more sophisticated and harder to detect.
+      Traditional rule-based systems are insufficient for evolving attack vectors. This project leverages supervised
+      and unsupervised learning techniques to detect anomalies in user behavior, transaction velocity, and network activity.</p>
+      <div class="highlight">
+        <strong>Key Goal:</strong> Build an adaptive fraud detection framework powered by explainable AI models and real-time monitoring pipelines.
+      </div>
+    </section>
 
-  <section id="data">
-    <h2>Data Sources</h2>
-    <p>The system aggregates and analyzes transaction data, customer behavior, and risk indicators from various internal and external sources.</p>
-  </section>
+    <section id="description">
+      <h2>Project Description</h2>
+      <p>The system integrates data ingestion, feature engineering, model training, and visualization components that work together to detect potential fraud events dynamically. It includes:</p>
+      <ul>
+        <li><strong>Data Collection:</strong> Streaming ingestion from transactional and behavioral data sources.</li>
+        <li><strong>Feature Engineering:</strong> Time-series aggregation, risk profiling, and anomaly scoring.</li>
+        <li><strong>Machine Learning Models:</strong> Logistic Regression, XGBoost, Isolation Forest, and Autoencoders for hybrid detection.</li>
+        <li><strong>Visualization:</strong> Dashboards for fraud alerts, risk trends, and case review workflows.</li>
+      </ul>
+    </section>
 
-  <section id="monitoring">
-    <h2>Monitoring & Reporting</h2>
-    <p>Continuous model performance tracking ensures the fraud detection framework remains accurate and adaptable to new threat patterns.</p>
-  </section>
+    <section id="scope">
+      <h2>Scope</h2>
+      <ul>
+        <li>Credit Card and Payment Fraud</li>
+        <li>Insurance Claim Fraud</li>
+        <li>Identity Theft and Account Takeover</li>
+        <li>Cyber-Financial Threat Monitoring</li>
+      </ul>
+      <p>The system can integrate with existing compliance, audit, and risk intelligence tools to streamline investigation and response processes.</p>
+    </section>
 
-  <button class="show-message-btn" id="show-message-btn">Learn More</button>
-  <div class="message-box" id="message-box">
-    🚧 <strong>Project Under Implementation</strong> — The Fraud Detection system will be released soon.
-  </div>
-</main>
+    <section id="specifications">
+      <h2>System Specifications</h2>
+      <ul>
+        <li><strong>Backend:</strong> Python (Pandas, Scikit-learn, XGBoost, PyTorch Autoencoders).</li>
+        <li><strong>Data Pipeline:</strong> Kafka for streaming ingestion and Snowflake for data warehousing.</li>
+        <li><strong>AI Layer:</strong> Anomaly detection and fraud scoring APIs with explainable AI outputs.</li>
+        <li><strong>Visualization Layer:</strong> Streamlit dashboards and Power BI for fraud trend analytics.</li>
+        <li><strong>Deployment:</strong> Containerized microservices (Docker + FastAPI) and real-time alert APIs.</li>
+      </ul>
+    </section>
+
+    <section id="next-steps">
+      <h2>Next Steps</h2>
+      <ul>
+        <li>Integrate reinforcement learning for adaptive fraud model tuning.</li>
+        <li>Enable cross-channel data correlation (transactions, chat, and network telemetry).</li>
+        <li>Build real-time case review dashboards for fraud analysts.</li>
+        <li>Publish open APIs for integration with banking risk engines.</li>
+      </ul>
+    </section>
+
+    <section id="conclusion">
+      <h2>Conclusion</h2>
+      <p>The <strong>Fraud Detection</strong> project establishes an intelligent, data-driven defense framework against evolving financial threats. By unifying AI-driven analytics, behavioral monitoring, and real-time alerting, it helps financial institutions minimize risk exposure while ensuring customer trust and compliance.</p>
+      <p>⚡ Content coming soon: case studies, ML pipelines, and visual dashboards.</p>
+    </section>
+
+    <div class="footer-action">
+      <button class="show-message-btn" onclick="toggleMessage()">Check Project Status</button>
+      <div class="implementation-message" id="implementationMessage">
+        🚧 <strong>Project Under Implementation</strong> — The Fraud Detection system will be released soon.
+      </div>
+    </div>
+  </main>
+</div>
+
+<footer>
+  © 2025 Atsu Vovor |
+  <a href="https://www.linkedin.com/in/atsu-vovor-mmai-9188326/" target="_blank">LinkedIn</a> |
+  <a href="https://github.com/atsuvovor/projects_portfolio.github.io" target="_blank">GitHub</a> |
+  <a href="https://public.tableau.com/app/profile/atsu.vovor8645/vizzes" target="_blank">Tableau</a>
+</footer>
 
 <script>
-// --- Sidebar toggle ---
-const sidebar = document.getElementById('sidebar');
-const menuToggle = document.getElementById('menu-toggle');
-const mainContent = document.getElementById('main-content');
+const menuToggle = document.querySelector(".menu-toggle");
+const sidebar = document.getElementById("sidebar");
+const overlay = document.querySelector(".overlay");
+const main = document.querySelector("main");
 
-// Open/close sidebar when clicking menu button
-menuToggle.addEventListener('click', (e) => {
-  e.stopPropagation();
-  sidebar.classList.toggle('active');
+/* Toggle sidebar visibility */
+menuToggle.addEventListener("click", () => {
+  sidebar.classList.toggle("active");
+  overlay.classList.toggle("active");
+  main.classList.toggle("expanded");
 });
 
-// Close sidebar when clicking outside of it
-document.addEventListener('click', (event) => {
-  const isClickInside = sidebar.contains(event.target) || menuToggle.contains(event.target);
-  if (!isClickInside && sidebar.classList.contains('active')) {
-    sidebar.classList.remove('active');
-  }
+/* Close sidebar when overlay clicked */
+overlay.addEventListener("click", () => {
+  sidebar.classList.remove("active");
+  overlay.classList.remove("active");
+  main.classList.remove("expanded");
 });
 
-// Close sidebar when clicking any link inside it
-sidebar.querySelectorAll('a').forEach(link => {
-  link.addEventListener('click', () => {
-    sidebar.classList.remove('active');
+/* Close sidebar when link clicked */
+document.querySelectorAll("#sidebar a").forEach(link => {
+  link.addEventListener("click", () => {
+    sidebar.classList.remove("active");
+    overlay.classList.remove("active");
+    main.classList.remove("expanded");
   });
 });
 
-// --- Message button ---
-const showMessageBtn = document.getElementById('show-message-btn');
-const messageBox = document.getElementById('message-box');
-
-showMessageBtn.addEventListener('click', () => {
-  messageBox.style.display = messageBox.style.display === 'block' ? 'none' : 'block';
+/* Smooth sidebar collapse animation on desktop resize */
+let lastWidth = window.innerWidth;
+window.addEventListener("resize", () => {
+  if (window.innerWidth > 900 && lastWidth <= 900) {
+    sidebar.classList.remove("active");
+    overlay.classList.remove("active");
+    main.classList.remove("expanded");
+  }
+  lastWidth = window.innerWidth;
 });
+
+/* Toggle implementation message */
+function toggleMessage() {
+  const msg = document.getElementById("implementationMessage");
+  msg.style.display = msg.style.display === "block" ? "none" : "block";
+}
 </script>
 </body>
 </html>
