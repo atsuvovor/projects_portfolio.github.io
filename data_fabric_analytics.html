@@ -1,287 +1,292 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Data Fabric Analytics | Atsu Vovor Portfolio</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>Data Fabric Analytics | Atsu Vovor Portfolio</title>
 
-  <style>
-    body {
-      margin: 0;
-      font-family: "Segoe UI", Roboto, Arial, sans-serif;
-      background: #f9fafc;
-      color: #222;
-      line-height: 1.6;
-    }
+<style>
+body {
+  margin: 0;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  background: #f9fafc;
+  color: #222;
+  line-height: 1.6;
+  scroll-behavior: smooth;
+}
 
-    header {
-      background: linear-gradient(135deg, #004aad, #0078d4);
-      color: white;
-      padding: 2rem;
-      text-align: center;
-    }
+/* Header */
+header {
+  background: linear-gradient(135deg, #004aad, #0078d4);
+  color: white;
+  padding: 1rem;
+  text-align: center;
+}
+header h1 { margin: 0; font-size: 2rem; }
 
-    header h1 {
-      margin: 0;
-      font-size: 2rem;
-    }
+/* Layout */
+.container {
+  display: flex;
+  min-height: 100vh;
+}
 
-    header p {
-      margin-top: 0.4rem;
-      font-size: 1rem;
-      opacity: 0.9;
-    }
+/* Sidebar */
+nav {
+  width: 200px;
+  background: #fff;
+  border-right: 1px solid #e0e0e0;
+  padding: 2rem 1rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  box-shadow: 2px 0 6px rgba(0,0,0,0.05);
+  transform: translateX(0);
+  transition: transform 0.4s ease-in-out;
+  z-index: 1001;
+}
+nav.hidden { transform: translateX(-100%); }
 
-    .container {
-      display: flex;
-      min-height: 100vh;
-    }
+nav h3 { font-size: 1rem; margin-bottom: 1rem; color: #004aad; letter-spacing: 0.05rem; }
+nav ul { list-style: none; padding: 0; margin: 0; }
+nav li { margin: 0.7rem 0; }
 
-    nav {
-      width: 240px;
-      background: #fff;
-      border-right: 1px solid #e0e0e0;
-      padding: 2rem 1rem;
-      position: sticky;
-      top: 0;
-      height: 100vh;
-      box-shadow: 2px 0 6px rgba(0,0,0,0.05);
-    }
+nav a {
+  color: #333;
+  text-decoration: none;
+  font-weight: 500;
+  display: block;
+  padding: 6px 8px;
+  border-radius: 6px;
+  transition: background 0.2s, color 0.2s;
+}
+nav a:hover { background: #eef4ff; color: #004aad; }
 
-    nav h3 {
-      font-size: 1rem;
-      margin-bottom: 1rem;
-      color: #004aad;
-      letter-spacing: 0.05rem;
-    }
+/* Main */
+main {
+  flex: 1;
+  padding: 2rem 3rem;
+  background: #fff;
+  margin-left: 260px;
+  overflow-y: auto;
+  transition: margin-left 0.4s ease-in-out;
+}
+main.fullwidth { margin-left: 0; }
 
-    nav ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
+section { margin-bottom: 3rem; }
+h2 { color: #004aad; padding-bottom: 0; }
 
-    nav li {
-      margin: 0.7rem 0;
-    }
+.highlight {
+  background: #eef6ff;
+  padding: 0.8rem 1rem;
+  border-left: 4px solid #0078d4;
+  border-radius: 6px;
+  margin: 1rem 0;
+}
 
-    nav a {
-      color: #333;
-      text-decoration: none;
-      font-weight: 500;
-      display: block;
-      padding: 6px 8px;
-      border-radius: 6px;
-      transition: background 0.2s, color 0.2s;
-    }
+/* Footer */
+footer {
+  text-align: center;
+  padding: 2rem;
+  font-size: 0.9rem;
+  color: #666;
+  border-top: 1px solid #e0e0e0;
+  background: #fafafa;
+}
 
-    nav a:hover {
-      background: #eef4ff;
-      color: #004aad;
-    }
+/* Toggle Button */
+.menu-toggle {
+  position: fixed;
+  top: 0.65rem;
+  left: 1rem;
+  background: #004aad;
+  color: white;
+  border: none;
+  padding: 0.3rem 0.7rem;
+  border-radius: 6px;
+  font-size: 1rem;
+  z-index: 1002;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+.menu-toggle:hover { background: #0078d4; }
 
-    main {
-      flex: 1;
-      padding: 2rem 3rem;
-      background: #fff;
-      border-left: 1px solid #e0e0e0;
-      overflow-y: auto;
-    }
+/* Overlay (mobile) */
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.4);
+  z-index: 1000;
+}
+.overlay.active { display: block; }
 
-    section {
-      margin-bottom: 3rem;
-    }
+/* Mobile */
+@media (max-width: 900px) {
+  nav { transform: translateX(-100%); }
+  nav.active { transform: translateX(0); }
 
-    h2 {
-      color: #004aad;
-      border-bottom: 2px solid #004aad;
-      padding-bottom: 0.4rem;
-    }
+  main { margin-left: 0; padding: 1.5rem; }
+}
 
-    .highlight {
-      background: #eef6ff;
-      padding: 0.8rem 1rem;
-      border-left: 4px solid #0078d4;
-      border-radius: 6px;
-      margin: 1rem 0;
-    }
+/* Bottom button & message */
+.footer-action { text-align: center; margin-top: 3rem; }
+.show-message-btn {
+  background: #004aad; color: #fff; border: none;
+  padding: 0.9rem 1.8rem; font-size: 1rem; border-radius: 8px;
+  cursor: pointer; transition: background 0.3s ease;
+}
+.show-message-btn:hover { background: #0078d4; }
 
-    footer {
-      text-align: center;
-      padding: 2rem;
-      font-size: 0.9rem;
-      color: #666;
-      border-top: 1px solid #e0e0e0;
-      background: #fafafa;
-    }
-
-    @media (max-width: 900px) {
-      .container {
-        flex-direction: column;
-      }
-
-      nav {
-        width: 100%;
-        height: auto;
-        box-shadow: none;
-        border-right: none;
-        border-bottom: 1px solid #ddd;
-      }
-
-      main {
-        padding: 1.5rem;
-      }
-    }
-
-.status-banner {
-    background-color: #fff3cd;
-    color: #856404;
-    padding: 12px;
-    border-radius: 6px;
-    border: 1px solid #ffeeba;
-    text-align: center;
-    font-weight: 500;
-    margin-bottom: 25px;
-    position: relative;
-  }
-  .close-btn {
-    position: absolute;
-    right: 12px;
-    top: 8px;
-    background: none;
-    border: none;
-    color: #856404;
-    font-size: 18px;
-    cursor: pointer;
-  }
-
-  </style>
+.implementation-message {
+  display: none; margin-top: 1rem;
+  padding: 1rem; background: #fff3cd;
+  border: 1px solid #ffeeba; border-radius: 8px;
+  color: #856404; font-weight: 500;
+}
+</style>
 </head>
+
 <body>
+<button class="menu-toggle">☰ Menu</button>
+<div class="overlay"></div>
 
-  <div class="status-banner" id="banner">
-    🚧 <strong>Project Under Implementation</strong> — The Data Fabric Analytics system will be released soon.
-    <button class="close-btn" onclick="document.getElementById('banner').style.display='none';">&times;</button>
-  </div>
+<header>
+  <h1>Data Fabric Analytics</h1>
+</header>
 
-  <header>
-    <h1>Data Fabric Analytics</h1>
-    <p>Integrating data, governance, and AI-driven analytics for intelligent enterprise decision-making.</p>
-  </header>
+<div class="container">
+  <nav id="sidebar">
+    <h3>Contents</h3>
+    <ul>
+      <li><a href="#abstract">Abstract</a></li>
+      <li><a href="#introduction">Introduction</a></li>
+      <li><a href="#description">Project Description</a></li>
+      <li><a href="#scope">Scope</a></li>
+      <li><a href="#specifications">System Specifications</a></li>
+      <li><a href="#next-steps">Next Steps</a></li>
+      <li><a href="#conclusion">Conclusion</a></li>
+    </ul>
+  </nav>
 
-  <div class="container">
-    <nav>
-      <h3>Contents</h3>
+  <main id="mainContent">
+    <section id="abstract">
+      <h2>Abstract</h2>
+      <p>The <strong>Data Fabric Analytics</strong> project introduces a unified data architecture that integrates governance, lineage, and real-time analytics across multiple enterprise data sources. It leverages AI-assisted automation and metadata management to enhance data quality, improve accessibility, and accelerate data-driven decisions across business domains.</p>
+    </section>
+
+    <section id="introduction">
+      <h2>Introduction</h2>
+      <p>As organizations increasingly adopt hybrid and multi-cloud data systems, maintaining consistent governance, access control, and analytical capabilities becomes a major challenge. This project demonstrates how a <em>data fabric</em> architecture can bridge that complexity — by connecting distributed data with intelligent automation, enabling consistent insights while enforcing governance.</p>
+      <div class="highlight">
+        <strong>Key Goal:</strong> Create a scalable, governed, and AI-enabled data ecosystem that provides end-to-end visibility and faster insights for executives and analysts.
+      </div>
+    </section>
+
+    <section id="description">
+      <h2>Project Description</h2>
+      <p>The solution combines cloud-native technologies, federated query engines, and metadata-driven workflows to unify data ingestion, cataloging, lineage tracking, and analytics delivery. The data fabric includes:</p>
       <ul>
-        <li><a href="#abstract">Abstract</a></li>
-        <li><a href="#introduction">Introduction</a></li>
-        <li><a href="#description">Project Description</a></li>
-        <li><a href="#scope">Scope</a></li>
-        <li><a href="#specifications">System Specifications</a></li>
-        <li><a href="#next-steps">Next Steps</a></li>
-        <li><a href="#conclusion">Conclusion</a></li>
+        <li><strong>Data Integration:</strong> Using Trino and Airbyte for federated data access across SQL, APIs, and cloud storage.</li>
+        <li><strong>Metadata & Governance:</strong> Implementing OpenMetadata for lineage visualization, quality rules, and glossary terms.</li>
+        <li><strong>AI Automation:</strong> Utilizing machine learning models and RAG-based agents for data quality validation and anomaly detection.</li>
+        <li><strong>Visualization:</strong> Streamlit and Power BI dashboards deliver real-time operational insights and automated PDF reports.</li>
       </ul>
-    </nav>
+    </section>
 
-    <main>
-      <section id="abstract">
-        <h2>Abstract</h2>
-        <p>
-          The <strong>Data Fabric Analytics</strong> project introduces a unified data architecture that integrates
-          governance, lineage, and real-time analytics across multiple enterprise data sources. It leverages
-          AI-assisted automation and metadata management to enhance data quality, improve accessibility, and accelerate
-          data-driven decisions across business domains.
-        </p>
-      </section>
+    <section id="scope">
+      <h2>Scope</h2>
+      <p>The Data Fabric Analytics framework is adaptable across multiple business units including:</p>
+      <ul>
+        <li>Enterprise Data Warehousing</li>
+        <li>Cybersecurity and Access Governance</li>
+        <li>Operational Risk and Compliance Reporting</li>
+        <li>Business Intelligence and Executive Dashboards</li>
+      </ul>
+      <p>Its modular architecture allows organizations to scale data pipelines and analytical use cases without reengineering their data infrastructure.</p>
+    </section>
 
-      <section id="introduction">
-        <h2>Introduction</h2>
-        <p>
-          As organizations increasingly adopt hybrid and multi-cloud data systems, maintaining consistent governance,
-          access control, and analytical capabilities becomes a major challenge. This project demonstrates how a
-          <em>data fabric</em> architecture can bridge that complexity—by connecting distributed data with intelligent
-          automation, enabling consistent insights while enforcing governance.
-        </p>
-        <div class="highlight">
-          <strong>Key Goal:</strong> Create a scalable, governed, and AI-enabled data ecosystem that provides
-          end-to-end visibility and faster insights for executives and analysts.
-        </div>
-      </section>
+    <section id="specifications">
+      <h2>System Specifications</h2>
+      <ul>
+        <li><strong>Backend:</strong> Dockerized Trino clusters, PostgreSQL metadata store, and Airbyte for data sync.</li>
+        <li><strong>Metadata Layer:</strong> OpenMetadata with lineage, glossary, and data quality rules.</li>
+        <li><strong>AI Layer:</strong> RAG-enabled insights engine (LangChain + FAISS) for context-aware analysis.</li>
+        <li><strong>Visualization Layer:</strong> Streamlit dashboards and Power BI integration for executives.</li>
+        <li><strong>Deployment:</strong> Containerized (Docker/Compose) and cloud-ready for AWS/GCP.</li>
+      </ul>
+    </section>
 
-      <section id="description">
-        <h2>Project Description</h2>
-        <p>
-          The solution combines cloud-native technologies, federated query engines, and metadata-driven workflows to
-          unify data ingestion, cataloging, lineage tracking, and analytics delivery. The data fabric includes:
-        </p>
-        <ul>
-          <li><strong>Data Integration:</strong> Using Trino and Airbyte for federated data access across SQL, APIs, and cloud storage.</li>
-          <li><strong>Metadata & Governance:</strong> Implementing OpenMetadata for lineage visualization, quality rules, and glossary terms.</li>
-          <li><strong>AI Automation:</strong> Utilizing machine learning models and RAG-based agents for data quality validation and anomaly detection.</li>
-          <li><strong>Visualization:</strong> Streamlit and Power BI dashboards deliver real-time operational insights and automated PDF reports.</li>
-        </ul>
-      </section>
+    <section id="next-steps">
+      <h2>Next Steps</h2>
+      <ul>
+        <li>Integrate predictive analytics for proactive anomaly detection.</li>
+        <li>Enhance metadata-driven automation for governance policies.</li>
+        <li>Expand data lineage coverage across all data sources.</li>
+        <li>Publish API endpoints for enterprise-wide data-as-a-service (DaaS).</li>
+      </ul>
+    </section>
 
-      <section id="scope">
-        <h2>Scope</h2>
-        <p>
-          The Data Fabric Analytics framework is adaptable across multiple business units including:
-        </p>
-        <ul>
-          <li>Enterprise Data Warehousing</li>
-          <li>Cybersecurity and Access Governance</li>
-          <li>Operational Risk and Compliance Reporting</li>
-          <li>Business Intelligence and Executive Dashboards</li>
-        </ul>
-        <p>
-          Its modular architecture allows organizations to scale data pipelines and analytical use cases without
-          reengineering their data infrastructure.
-        </p>
-      </section>
+    <section id="conclusion">
+      <h2>Conclusion</h2>
+      <p>The <strong>Data Fabric Analytics</strong> project establishes a modern foundation for data governance, automation, and decision intelligence. By connecting structured and unstructured data sources through a unified, AI-augmented architecture, it reduces silos, enhances data trust, and accelerates innovation across the enterprise.</p>
+      <p>This framework can be extended to support self-service analytics, compliance reporting, and machine-learning governance in enterprise-scale environments.</p>
+    </section>
 
-      <section id="specifications">
-        <h2>System Specifications</h2>
-        <ul>
-          <li><strong>Backend:</strong> Dockerized Trino clusters, PostgreSQL metadata store, and Airbyte for data sync.</li>
-          <li><strong>Metadata Layer:</strong> OpenMetadata with lineage, glossary, and data quality rules.</li>
-          <li><strong>AI Layer:</strong> RAG-enabled insights engine (LangChain + FAISS) for context-aware analysis.</li>
-          <li><strong>Visualization Layer:</strong> Streamlit dashboards and Power BI integration for executives.</li>
-          <li><strong>Deployment:</strong> Containerized (Docker/Compose) and cloud-ready for AWS/GCP.</li>
-        </ul>
-      </section>
+    <div class="footer-action">
+      <button class="show-message-btn" onclick="toggleMessage()">Check Project Status</button>
+      <div class="implementation-message" id="implementationMessage">
+        🚧 <strong>Project Under Implementation</strong> — The Data Fabric Analytics system will be released soon.
+      </div>
+    </div>
+  </main>
+</div>
 
-      <section id="next-steps">
-        <h2>Next Steps</h2>
-        <ul>
-          <li>Integrate predictive analytics for proactive anomaly detection.</li>
-          <li>Enhance metadata-driven automation for governance policies.</li>
-          <li>Expand data lineage coverage across all data sources.</li>
-          <li>Publish API endpoints for enterprise-wide data-as-a-service (DaaS).</li>
-        </ul>
-      </section>
+<footer>
+  © 2025 Atsu Vovor |
+  <a href="https://www.linkedin.com/in/atsu-vovor-mmai-9188326/" target="_blank">LinkedIn</a> |
+  <a href="https://github.com/atsuvovor/projects_portfolio.github.io" target="_blank">GitHub</a> |
+  <a href="https://public.tableau.com/app/profile/atsu.vovor8645/vizzes" target="_blank">Tableau</a>
+</footer>
 
-      <section id="conclusion">
-        <h2>Conclusion</h2>
-        <p>
-          The <strong>Data Fabric Analytics</strong> project establishes a modern foundation for data governance,
-          automation, and decision intelligence. By connecting structured and unstructured data sources through a
-          unified, AI-augmented architecture, it reduces silos, enhances data trust, and accelerates innovation across
-          the enterprise.
-        </p>
-        <p>
-          This framework can be extended to support self-service analytics, compliance reporting, and machine-learning
-          governance in enterprise-scale environments.
-        </p>
-      </section>
-    </main>
-  </div>
+<script>
+const menuToggle = document.querySelector(".menu-toggle");
+const sidebar = document.getElementById("sidebar");
+const overlay = document.querySelector(".overlay");
+const mainContent = document.getElementById("mainContent");
 
-  <footer>
-    © 2025 Atsu Vovor | 
-    <a href="https://www.linkedin.com/in/atsu-vovor-mmai-9188326/" target="_blank">LinkedIn</a> |
-    <a href="https://github.com/atsuvovor/projects_portfolio.github.io" target="_blank">GitHub</a> |
-    <a href="https://public.tableau.com/app/profile/atsu.vovor8645/vizzes" target="_blank">Tableau</a>
-  </footer>
+// Toggle sidebar
+menuToggle.addEventListener("click", () => {
+  const isMobile = window.innerWidth <= 900;
+  if (isMobile) {
+    sidebar.classList.toggle("active");
+    overlay.classList.toggle("active");
+  } else {
+    sidebar.classList.toggle("hidden");
+    mainContent.classList.toggle("fullwidth");
+  }
+});
+
+// Close sidebar on overlay click
+overlay.addEventListener("click", () => {
+  sidebar.classList.remove("active");
+  overlay.classList.remove("active");
+});
+
+// Close sidebar on link click
+document.querySelectorAll("#sidebar a").forEach(link => {
+  link.addEventListener("click", () => {
+    sidebar.classList.remove("active");
+    overlay.classList.remove("active");
+  });
+});
+
+// Toggle project message
+function toggleMessage() {
+  const msg = document.getElementById("implementationMessage");
+  msg.style.display = msg.style.display === "block" ? "none" : "block";
+}
+</script>
 </body>
 </html>
-
