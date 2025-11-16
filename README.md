@@ -1,16 +1,14 @@
-# **💻 Technical Project Portfolio**  
+# **Atsu Vovor - Project Portfolio**  
 # Overview
 Welcome to my technical project portfolio! This repository serves as a centralized showcase of my skills, expertise, and completed projects across various domains including data analysis, machine learning, web development, and cybersecurity.
 
 This portfolio is hosted directly on GitHub Pages and is designed to provide interactive demonstrations, detailed case studies, and code access for each project. Whether you are a recruiter, a fellow developer, or just curious, this page offers a deep dive into my practical capabilities.  
 
-Here is a concise, academically aligned, industry-ready rephrasing that removes redundancies while strengthening clarity and rigor:
+I specialize in advancing the technical foundations of AI and data science through the **Unified Data Integration & AI-Augmented Insights Framework (UDI-AIIF)**.
 
-My interest lies in advancing the technical foundations of AI and data science, with a particular focus on Generative AI and statistical–mathematical modeling for producing realistic synthetic data to support analytical simulations. Emphasizing robust data and code practices directly aligns with my commitment to methodological rigor and reproducibility in AI-driven research.
+My core focus is the synergistic application of **Generative AI and statistical–mathematical modeling** to produce **high-fidelity synthetic data**. This capability is instrumental in supporting complex analytical simulations and bridging the critical gap between conceptual models and real-world intelligence.
 
-I’m especially interested in connecting with professionals and researchers engaged in the practical, implementation-focused aspects of data science. In my current work, I leverage Generative AI in combination with advanced statistical modeling to simulate datasets that closely reflect real-world behaviors, and I look forward to exchanging ideas with others addressing similar technical and methodological challenges.
-
-I’m excited to learn, share insights, and collaborate with those dedicated to building practical, reproducible, and innovation-driven AI systems.
+My commitment to **methodological rigor and reproducibility** is central to UDI-AIIF's mandate, emphasizing robust data governance and code practices. I am keenly interested in collaborating with industry professionals and researchers dedicated to the practical implementation of innovation-driven, reproducible AI systems.
 
 ---
 
