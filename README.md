@@ -1,5 +1,6 @@
 # **Atsu Vovor - Project Portfolio**  
-![     ](UDI_AIIF_logo3.png)
+![](UDI_AIIF_logo3.png)   
+
 *This complex visual identity combines the 'Nexus of Data' and 'Bridge Builder' motifs to represent the **centralization of data inputs** and the **AI-augmented synthesis** used to bridge the gap between simulation and real-world insight.*
 ---
 # Overview
