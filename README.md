@@ -1,9 +1,8 @@
-<h1 align="center">Atsu Vovor – Project Portfolio</h1>
-
-<hr>
+<h1 align="center">Atsu Vovor - Project Portfolio</h1>
+  
 
 <p align="center">
-  <img src="UDI_AIIF_logo3.png" alt="Project Portfolio Logo" width="350">
+  <img src="UDI_AIIF_logo3.png" alt="Centered Image">
 </p>
 
 #### *This complex visual identity combines the 'Nexus of Data' and 'Bridge Builder' motifs to represent the **centralization of data inputs** and the **AI-augmented synthesis** used to bridge the gap between simulation and real-world insight.*
