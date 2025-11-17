@@ -4,7 +4,7 @@
   <img src="UDI_AIIF_logo3.png" alt="Centered Image">
 </p>
 
-*This complex visual identity combines the 'Nexus of Data' and 'Bridge Builder' motifs to represent the **centralization of data inputs** and the **AI-augmented synthesis** used to bridge the gap between simulation and real-world insight.*
+### *This complex visual identity combines the 'Nexus of Data' and 'Bridge Builder' motifs to represent the **centralization of data inputs** and the **AI-augmented synthesis** used to bridge the gap between simulation and real-world insight.*
 ---
 # Overview
 Welcome to my technical project portfolio! This repository serves as a centralized showcase of my skills, expertise, and completed projects across various domains including data analysis, machine learning, web development, and cybersecurity.
