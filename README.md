@@ -1,4 +1,5 @@
-# **Atsu Vovor - Project Portfolio**    
+<h1 align="center">Atsu Vovor - Project Portfolio</h1>
+---   
 
 <p align="center">
   <img src="UDI_AIIF_logo3.png" alt="Centered Image">
