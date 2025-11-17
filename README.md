@@ -1,4 +1,5 @@
 # **Atsu Vovor - Project Portfolio**  
+![](UDI_AIIF_logo3.png)
 # Overview
 Welcome to my technical project portfolio! This repository serves as a centralized showcase of my skills, expertise, and completed projects across various domains including data analysis, machine learning, web development, and cybersecurity.
 
