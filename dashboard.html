@@ -3,235 +3,180 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Professional Design Portfolio</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-            color: #333;
-            text-align: center;
-        }
+    <title>Custom Designs</title>
 
-        .container {
-            max-width: 1000px;
-            margin: 40px auto;
-            background: #fff;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    <style>
+        /* ---------- Global Styles ---------- */
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: #f3f6f9;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+            line-height: 1.6;
         }
 
         h1, h2, h3 {
-            color: #007acc;
-            margin-bottom: 15px;
+            color: #0077b6;
+            margin-bottom: 12px;
         }
 
         p {
-            font-size: 1rem;
-            line-height: 1.6;
             color: #555;
-            margin-bottom: 10px;
+            font-size: 1rem;
         }
 
-        /* Cards container */
-        .cards-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
+        img {
+            max-width: 100%;
+            border-radius: 8px;
+        }
+
+        /* ---------- Containers ---------- */
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            background: white;
+            padding: 30px 25px;
+            border-radius: 12px;
+            box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.08);
+            margin-bottom: 40px;
+        }
+
+        header.container {
+            text-align: center;
+        }
+
+        /* ---------- Dashboard Grid ---------- */
+        .dashboards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
             margin-top: 30px;
         }
 
-        /* UI/UX Card styling */
-        .card {
-            background: #fff;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            width: 280px;
-            overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
-            cursor: pointer;
-            text-align: center;
-            border: 2px solid transparent; /* hover border effect */
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-            border: 2px solid #007acc;
-        }
-
-        .card img {
-            width: 100%;
-            height: auto;
-            transition: transform 0.3s ease;
-        }
-
-        .card:hover img {
-            transform: scale(1.03); /* subtle image zoom */
-        }
-
-        .card-title {
-            font-size: 1.2rem;
-            font-weight: 600;
-            padding: 15px 10px 5px 10px;
-            color: #007acc;
-        }
-
-        .card-description {
-            font-size: 0.95rem;
-            padding: 0 10px 15px 10px;
-            color: #555;
-        }
-
-        /* Dashboard boxes */
+        /* ---------- Dashboard Boxes ---------- */
         .dashboard-box {
-            width: 280px;
-            background: #fff;
+            background: #ffffff;
             border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            padding: 15px;
+            box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
             cursor: pointer;
-            transition: transform 0.3s, box-shadow 0.3s;
-            overflow: hidden;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
             text-align: center;
         }
 
         .dashboard-box:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-        }
-
-        .dashboard-box img {
-            width: 100%;
-            height: auto;
+            box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.15);
         }
 
         .dashboard-title {
-            font-weight: 600;
-            font-size: 1.1rem;
-            padding: 10px;
-            color: #007acc;
+            font-weight: 700;
+            color: #0077b6;
+            margin: 12px 0 10px;
+            font-size: 1.05rem;
         }
 
+        /* ---------- UI/UX Section ---------- */
+        .ui-ux-section img {
+            margin-top: 10px;
+            margin-bottom: 30px;
+            border-radius: 10px;
+        }
+
+        /* ---------- Footer ---------- */
         footer {
-            margin-top: 40px;
+            text-align: center;
             padding: 20px;
-            font-size: 0.9rem;
             color: #777;
+            font-size: 0.9rem;
         }
 
-        /* Responsive for small devices */
-        @media (max-width: 768px) {
-            .card, .dashboard-box {
-                width: 45%;
-            }
+        /* ---------- Responsive Adjustments ---------- */
+        @media (max-width: 600px) {
+            h1 { font-size: 1.6rem; }
+            h2 { font-size: 1.3rem; }
+            .container { padding: 20px; }
         }
-
-        @media (max-width: 480px) {
-            .card, .dashboard-box {
-                width: 90%;
-            }
-        }
-
     </style>
 </head>
+
 <body>
 
+    <!-- Header -->
     <header class="container">
-        <h1>Professional Design Portfolio</h1>
-        <p>Showcasing my expertise in UI/UX, data storytelling, and interactive dashboards.</p>
+        <h1>Custom Design Solutions</h1>
+        <p>Professional UI/UX, dashboards, and modern reporting experiences.</p>
     </header>
-
-    <!-- UI/UX Cards Section -->
+    
+    <!-- UI/UX Overview -->
     <section class="container">
-        <h2>UI/UX Highlights</h2>
-        <div class="cards-container">
-            <div class="card">
-                <div class="card-title">UI/UX Enhancements</div>
-                <div class="card-description">Crafting dashboards with advanced UI/UX for seamless, engaging experiences.</div>
-            </div>
-            <div class="card">
-                <div class="card-title">Cutting-Edge Principles</div>
-                <div class="card-description">Transforming data into intuitive, interactive visuals using modern design methods.</div>
-            </div>
-            <div class="card">
-                <div class="card-title">Minimalist Navigation</div>
-                <div class="card-description">Structured, clean interfaces make exploring insights effortless.</div>
-                <img src="minimalist_navigation2.png" alt="Minimalist UI Navigation">
-            </div>
-            <div class="card">
-                <div class="card-title">Data Storytelling</div>
-                <div class="card-description">Dynamic visualizations convey clear, actionable data narratives.</div>
-                <img src="Story_telling.png" alt="Data Storytelling">
-            </div>
-            <div class="card">
-                <div class="card-title">Responsive Design</div>
-                <div class="card-description">Dashboards adapt smoothly across devices for optimal viewing.</div>
-                <img src="responsive_design.png" alt="Responsive UI Design">
-            </div>
-            <div class="card">
-                <div class="card-title">Microinteractions</div>
-                <div class="card-description">Subtle animations enhance engagement and guide user interaction.</div>
-                <img src="microinteraction.png" alt="Microinteractions">
-            </div>
-            <div class="card">
-                <div class="card-title">Accessibility</div>
-                <div class="card-description">Inclusive design ensures clarity, readability, and usability for all.</div>
-                <img src="accessibility.png" alt="Accessibility in UI">
-            </div>
-        </div>
+        <h2>UI/UX Enhancements</h2>
+        <p>Our dashboards apply cutting-edge UI/UX practices to ensure seamless navigation, visual appeal, and high user engagement.</p>
+    
+        <section class="ui-ux-section">
+            <h2>Cutting-Edge UI/UX Principles</h2>
+            <p>We design modern interfaces that transform data into meaningful stories through clear, intuitive layouts.</p>
+            
+            <h3>Minimalist and Intuitive Navigation</h3>
+            <p>Clean layouts ensure that users can easily find what they need.</p>
+            <img src="https://miro.medium.com/max/1400/1*PgYcmKPNz1lg8wG_nKiA7g.jpeg">
+
+            <h3>Data-Driven Storytelling</h3>
+            <p>Dynamic visualizations emphasize clarity and narrative flow.</p>
+            <img src="https://venngage-wordpress.s3.amazonaws.com/uploads/2022/06/Storytelling_Infographic_5.png">
+
+            <h3>Responsive and Adaptive Design</h3>
+            <p>Dashboards scale seamlessly across desktops, tablets, and mobile devices.</p>
+            <img src="https://i.pinimg.com/originals/99/3e/3c/993e3c52a92b1e3d351d4f68c5b94678.png">
+
+            <h3>Microinteractions for Engagement</h3>
+            <p>Subtle interactions create intuitive guidance and user satisfaction.</p>
+            <img src="https://i.pinimg.com/originals/b3/17/9c/b3179c91ab68fcfd16fa2bfb119e3ae5.gif">
+
+            <h3>Accessibility and Inclusivity</h3>
+            <p>WCAG-compliant visuals ensure readability and usability for all users.</p>
+            <img src="https://webaim.org/articles/contrast/images/contrast-comparison2.jpg">
+        </section>
     </section>
 
-    <!-- Interactive Dashboards Section -->
+    <!-- Dashboards -->
     <main class="container">
         <section>
-            <h2>Interactive Dashboards</h2>
-            <p>Click on any dashboard below to explore interactive data insights.</p>
-            <div class="cards-container">
+            <h2>Data Visualization Dashboards</h2>
+            <p>Click a dashboard to explore interactive insights.</p>
+
+            <div class="dashboards">
                 <div class="dashboard-box" onclick="window.location.href='CybersecurityKeyTerms.html'">
                     <div class="dashboard-title">Cybersecurity Key Terms</div>
-                    <img src="https://public.tableau.com/static/images/Cy/CybersecurityKeyTerms/CybersecurityKeyTerms/1.png" alt="Cybersecurity Key Terms">
-                </div>
-                <div class="dashboard-box" onclick="window.location.href='NumberofFileAccessedTracker.html'">
-                    <div class="dashboard-title">Number of File Accessed Tracker</div>
-                    <img src="https://public.tableau.com/static/images/Cy/CyberThreatInsight-NumberoffileAccessDashboard/NumberofFileAccessedTracker/1.png" alt="Number of File Accessed Tracker">
-                </div>
-                <div class="dashboard-box" onclick="window.location.href='LoginAttemptsAnalytics.html'">
-                    <div class="dashboard-title">Login Attempts Analytics</div>
-                    <img src="https://public.tableau.com/static/images/M3/M3B4J9MKB/1.png" alt="Login Attempts Analytics">
-                </div>
-                <div class="dashboard-box" onclick="window.location.href='ThreatInsightReporting.html'">
-                    <div class="dashboard-title">Threat Insight Reporting</div>
-                    <img src="https://public.tableau.com/static/images/Cy/CyberThreatInsightDashboard/IncidentSummaryandTrends/1.png" alt="Threat Insight Reporting">
-                </div>
-                <!-- NEW OFAC SDN RISK DASHBOARD CARD -->
-                <div class="dashboard-box" onclick="window.open('https://atsu-vovor-ofac-sdn-risk-dashboard.streamlit.app/', '_blank')">
-                    <div class="dashboard-title">OFAC SDN Risk Dashboard</div>
-                    <img src="ofac-sdn-thumbnail.png" alt="OFAC SDN Risk Dashboard">
+                    <img src="https://public.tableau.com/static/images/Cy/CybersecurityKeyTerms/CybersecurityKeyTerms/1.png">
                 </div>
 
-				<!-- POWER BI DASHBOARD -->
-				<div class="dashboard-box" onclick="window.location.href='cyber_attack_insight_dashboard.html'">
-                    <div class="dashboard-title">Power BI - Cyber Attack Insight Dashboard</div>
-                    <img src="screenshot_Power_BI.png" alt="Number of File Accessed Tracker">
+                <div class="dashboard-box" onclick="window.location.href='NumberofFileAccessedTracker.html'">
+                    <div class="dashboard-title">Number of File Accessed Tracker</div>
+                    <img src="https://public.tableau.com/static/images/Cy/CyberThreatInsight-NumberoffileAccessDashboard/NumberofFileAccessedTracker/1.png">
                 </div>
-				<!-- EXCEL DASHBOARD -->
-                <div class="dashboard-box" onclick="window.location.href='ofac_sdn_sanctions_dashboard.html'">
-                    <div class="dashboard-title">Exce - OFAC SDN Global Risk_Monitor Dashboard</div>
-                    <img src="Excel_screen_shot.png" alt="OFAC SDN Global Risk_Monitor Dashboard">
+
+                <div class="dashboard-box" onclick="window.location.href='LoginAttemptsAnalytics.html'">
+                    <div class="dashboard-title">Login Attempts Analytics</div>
+                    <img src="https://public.tableau.com/static/images/M3/M3B4J9MKB/1.png">
                 </div>
-                
+
+                <div class="dashboard-box" onclick="window.location.href='ThreatInsightReporting.html'">
+                    <div class="dashboard-title">Threat Insight Reporting</div>
+                    <img src="https://public.tableau.com/static/images/Cy/CyberThreatInsightDashboard/IncidentSummaryandTrends/1.png">
+                </div>
             </div>
         </section>
     </main>
 
     <footer class="container">
-        <p>&copy; 2025 Atsu Vovor | Personal Portfolio</p>
+        <p>&copy; 2025 Your Company</p>
     </footer>
 
 </body>
 </html>
+
+
 
 
