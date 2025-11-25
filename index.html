@@ -208,15 +208,16 @@ body {
 }
 
 #slogan-bar {
-  position: sticky;
-  top: 70px;
+  position: fixed;
+  top: 80px;
+  width: 100%;
   background: #ffffff;
   color: #4e54c8;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 8px 10px;
-  z-index: 1120;
+  z-index: 1099;
   box-shadow: 0 2px 6px rgba(0,0,0,0.13);
   font-weight: 600;
   font-size: 1rem;
@@ -363,7 +364,7 @@ body {
   align-items: center; /* center everything horizontally */
   justify-content: center;
   gap: 4px;
-  padding: 10px 15px 15px 15px;
+  padding: 10px 15px 14px 15px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
   z-index: 1100; 
 }
@@ -466,14 +467,15 @@ body {
     height: 35px;
   }
 
-  /* Adjust slogan bar layout */
-  #slogan-bar {
+  /* Adjust slogan bar layout*/
+ #slogan-bar {
     flex-direction: column;
     align-items: center;
     padding: 6px 8px;
     text-align: center;
     font-size: 0.8rem;
   }
+ 
 
   /* Move home button above the slogan text */
   #slogan-bar #sloganHome {
@@ -495,6 +497,37 @@ body {
 }
 
 
+/* BLUE NAV BAR */
+#blue-nav-bar {
+  position: fixed;
+  top: 115px; /* sits under slogan */
+  width: 100%;
+  background: linear-gradient(180deg, #4e54c8, #8f94fb);
+  padding: 10px 0;
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  z-index: 1099;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+#blue-nav-bar a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: opacity 0.3s;
+}
+
+#blue-nav-bar a:hover {
+  opacity: 0.7;
+}
+
+/* Push main content below all three bars */
+#main {
+  padding-top: 125px;
+}
+
 </style>
 
 
@@ -513,6 +546,17 @@ body {
     	<h2 id="project-title"></h2>
     </div>
   </div>
+  
+   <!-- FIXED SLOGAN BAR --> 
+   <div id="slogan-bar">
+      Turning data into decisions. Powering your success with insight.
+    </div>
+     
+    <!-- NEW BLUE NAV BAR UNDER SLOGAN -->
+    <div id="blue-nav-bar">
+       <a href="#" onclick="showAllProjects()">🏠︎ All Projects</a>
+       <a href="#" onclick="loadProject('dashboards')">📊 Dashboards</a>
+    </div>
 
 
   <!-- SIDEBAR -->
@@ -570,15 +614,6 @@ body {
   <!-- MAIN -->
   <div id="main">
     <div id="header"></div>
-     
-    <div id="slogan-bar">
-     <div id="sloganHome">
-       <a href="#" onclick="showAllProjects()">🏠︎ All Projects</a>
-	   <a href="#" onclick="loadProject('dashboards')"> 📊 Dashboards</a>
-     </div>
-       Turning data into decisions. Powering your success with insight.
-     </div>
-
 
     <div id="homeGallery">
       
@@ -737,7 +772,8 @@ loadProject = function (key) {
       'tech-stack': 'Technology Stack'
     };
     const titleText = titles[key] || key.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
-    header.textContent = titleText;
+    header.textContent = "";
+    <!--header.textContent = titleText;-->
     <!--updateTopProjectTitle(titleText);-->
     homeGallery.style.display = 'none';
     contentFrame.src = page;
