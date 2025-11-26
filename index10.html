@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Atsu Vovor | Analytics Portfolio</title>
+<link rel="icon" type="image/png" href="logo.png">
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  display: flex;
+  height: 100vh;
+  background: #f7f8fc;
+  overflow: hidden;
+}
+
+/* ===== SIDEBAR ===== */
+#sidebar {
+  width: 260px;
+  background: linear-gradient(180deg, #4e54c8, #8f94fb);
+  color: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 4px 0 12px rgba(0,0,0,0.35);
+  overflow-y: auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  z-index: 1200;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+}
+
+/* visible state */
+#sidebar.show {
+  transform: translateX(0);
+  top: -10px; /* move 10px above top to cover small avatar */
+}
+
+.sidebar-header {
+  text-align: center;
+  padding: 20px 10px;
+  margin-bottom: 15px; /* space between header and menu */
+  position: relative;  /* for pseudo-element */
+}
+
+/* Gradient line under header */
+.sidebar-header::after {
+  content: "";
+  display: block;
+  height: 2px; /* thickness of the line */
+  width: 80%;  /* line length relative to sidebar */
+  margin: 10px auto 0 auto; /* spacing from header text */
+  background: linear-gradient(to right, rgba(255,255,255,0), rgba(255,255,255,0.6), rgba(255,255,255,0));
+  border-radius: 1px;
+}
+
+
+.sidebar-header img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #fff;
+  margin-bottom: 10px;
+}
+
+.sidebar-header h1 {
+  font-size: 1.4em;
+  margin: 0;
+}
+
+.sidebar-header h2 {
+  font-size: 0.9em;
+  font-weight: normal;
+  color: #FFFFFF;
+  margin: 5px 0 0;
+}
+
+/* ===== SIDEBAR MENU ===== */
+#menu {
+  display: flex;
+  flex-direction: column;
+  padding: 5px 0;
+}
+
+#menu a {
+  color: #FFFFFF;
+  text-decoration: none;
+  padding: 6px 20px;
+  display: block;
+  transition: background 0.3s;
+  font-size: 0.95em;
+}
+
+#menu a:hover {
+  background: rgba(255,255,255,0.15);
+}
+
+/* ===== SUBMENU ===== */
+.submenu {
+  padding-left: 0;
+}
+
+.submenu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #fff;
+  padding: 6px 20px;
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.3s;
+  font-size: 0.95em;
+}
+
+.submenu-header:hover {
+  background: rgba(255,255,255,0.15);
+}
+
+/* Submenu items indentation */
+.submenu-items {
+  padding-left: 20px;  /* indent the block */
+  border-left: 1px solid rgba(255,255,255,0.15);
+}
+
+.submenu-items a {
+  display: block;
+  padding: 4px 35px;  /* extra indent for links */
+  color: rgba(255,255,255,0.9);
+  font-size: 0.9em;
+}
+
+.submenu-items a:hover {
+  color: #1e90ff; 
+  background: rgba(255,255,255,0.15);
+  
+}
+
+.submenu .arrow {
+  transition: transform 0.3s;
+}
+
+.submenu.open .arrow {
+  transform: rotate(90deg);
+}
+
+/* ===== FOOTER ICONS ===== */
+#sidebar-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+  padding: 18px 0;
+  border-top: 1px solid rgba(255,255,255,1);
+  background: rgba(0,0,0,0.15);
+}
+
+#sidebar-footer a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.1);
+  border-top: 1px solid rgba(255,255,255,0.3);
+  transition: background 0.3s, transform 0.3s;
+}
+
+#sidebar-footer a:hover {
+  background: rgba(255,255,255,0.25);
+  transform: scale(1.1);
+}
+
+#sidebar-footer a img {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+  filter: none !important;
+  opacity: 1 !important;
+  transition: transform 0.3s;
+}
+
+#sidebar-footer a:hover img {
+  transform: scale(1.08);
+}
+
+/* ===== MAIN AREA ===== */
+#main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+}
+
+#header {
+  background: #fff;
+  padding: 15px 25px;
+  font-size: 2.3em;
+  border-bottom: 1px solid #ddd;
+  font-weight: bold;
+  color: #4e54c8;
+}
+
+#slogan-bar {
+  position: fixed;
+  top: 80px;
+  width: 100%;
+  left: 0;
+  background: #ffffff;
+  color: #4e54c8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 10px;
+  z-index: 1099;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.13);
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 0.4px;
+  margin-bottom: 35px;
+
+}
+
+/* left section: home link */
+#slogan-bar #sloganHome {
+  position: absolute;
+  left: 0px; /* aligns below sidebar toggle */
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+#slogan-bar #sloganHome a {
+  color: #4e54c8;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+#slogan-bar #sloganHome a:hover {
+  color: #1e90ff;
+}
+
+
+#homeGallery {
+  display: flex;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  overflow-y: auto;
+  justify-content: center;  flex-wrap: wrap;
+  animation: fadeIn 0.6s ease;
+}
+
+.project-card {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+  
+  width: 250px;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+}
+
+.project-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.project-card h3 {
+  margin: 8px 10px;
+  color: #4e54c8;
+  font-size: 1rem;
+}
+
+.project-card p {
+  margin: 0 5px 10px 15px;
+  color: #444;
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+#contentFrame {
+  flex: 1;
+  width: 100%;
+  border: none;
+  display: none;
+  background: #f8f9fc;
+}
+
+.hidden { display: none !important; }
+
+.project-status {
+  margin-top: 8px;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.in-progress {
+  color: #e69500;
+  font-weight: 600;
+}
+
+/* ===== SIDEBAR TOGGLE ===== */
+
+#sidebarToggle {
+  position: fixed;
+  top: 18px;
+  left: 3px;
+  color: #cccee8;
+  transition: transform 0.3s, color 0.3s;
+  font-size: 1.8rem;
+  line-height: 24px;
+  text-align: center;
+  cursor: pointer;
+  z-index: 1220;
+}
+
+#sidebarToggle:hover {
+  transform: scale(1.15);
+  color: #1e90ff;
+}
+
+/* Overlay */
+#overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.08);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
+  z-index: 999;
+}
+
+#overlay.active {
+  opacity: 1;
+  visibility: visible;
+  
+}
+
+/* ===== TOP BAR SMALL AVATAR + PROJECT TITLE ===== */
+#top-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 7%;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* center everything horizontally */
+  justify-content: center;
+  gap: 4px;
+  padding: 10px 15px 15px 15px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  z-index: 1100; 
+}
+
+#top-bar h1 {
+  margin: 0;
+  color: #4e54c8;
+  font-size: 1.2rem;
+}
+
+/* Dynamic project title */
+#top-bar .title-wrapper h2 {
+  margin: 4px 0 0 0;
+  font-size: 0.95rem;
+  color: #555;
+  text-align: center;
+}
+
+#top-bar .mini-profile {
+  position: fixed;
+  top: 8px;
+  left: 35px;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #4e54c8;
+  transition: opacity 0.3s ease;
+}
+
+/* Hide mini avatar when sidebar opens */
+#sidebar.show ~ #top-bar .mini-profile {
+  display: none; /* cover the avatar */
+}
+
+/* dynamic project title below main title */
+#top-bar .title-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* center titles horizontally */
+}
+
+#project-title {
+  margin: 4px 0 0 0;
+  font-size: 0.9rem;
+  color: #555;
+  text-align: left;
+}
+
+
+/* When sidebar is open, mini avatar fades (covered visually) */
+#sidebar.show ~ #top-bar .mini-profile {
+  opacity: 0;
+}
+
+
+
+/* Always keep the sidebar toggle button visible above everything */
+#sidebarToggle {
+  position: fixed;
+  z-index: 3000 !important; /* higher than sidebar (1200) and overlay (999) */
+}
+
+#sidebar.show ~ #top-bar #sidebarToggle {
+  z-index: 3000 !important;
+}
+
+/* ===== SIDEBAR COPYRIGHT TEXT ===== */
+.sidebar-copyright {
+  text-align: center;
+  font-size: 0.75em;
+  color: rgba(255,255,255,0.85);
+  padding: 10px 15px 18px;
+  border-top: 1px solid rgba(255,255,255,0.2);
+  background: rgba(0,0,0,0.12);
+  line-height: 1.4;
+}
+
+/* ===== RESPONSIVE FIX FOR MOBILE ===== */
+@media (max-width: 768px) {
+
+  /* Make top bar elements smaller */
+  #top-bar {
+    flex-direction: column;
+    gap: 2px;
+    height: auto;
+    padding: 20px 10px;
+  }
+
+  #top-bar h1 {
+    font-size: 0.9rem; /* smaller title */
+    text-align: center;
+    line-height: 1.2;
+  }
+
+  #top-bar .mini-profile {
+    top: 10px;
+    left: 35px;
+    width: 35px;
+    height: 35px;
+  }
+
+  /* Adjust slogan bar layout*/
+ #slogan-bar {
+    flex-direction: column;
+    align-items: center;
+    padding: 6px 8px;
+    text-align: center;
+    font-size: 0.8rem;
+  }
+ 
+
+  /* Move home button above the slogan text */
+  #slogan-bar #sloganHome {
+    position: static;
+    margin-bottom: 5px;
+    font-size: 0.9rem;
+  }
+
+  #slogan-bar #sloganHome a {
+    display: inline-block;
+    font-weight: 600;
+  }
+
+  /* Prevent wrapping/overlapping */
+  #slogan-bar span, 
+  #slogan-bar a {
+    white-space: nowrap;
+  }
+}
+
+
+/* BLUE NAV BAR */
+#blue-nav-bar {
+  position: fixed;
+  top: 115px; /* sits under slogan */
+  width: 100%;
+  left: 0px;
+  background: linear-gradient(180deg, #4e54c8, #8f94fb);
+  padding: 10px 0;
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  z-index: 1099;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+#blue-nav-bar a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: opacity 0.3s;
+}
+
+#blue-nav-bar a:hover {
+  opacity: 0.7;
+}
+
+/* Push main content below all three bars */
+#main {
+  padding-top: 125px;
+}
+
+</style>
+
+
+</head>
+
+<body>
+
+  <!-- SIDEBAR TOGGLE BUTTON -->
+  <div id="sidebarToggle">☰</div>
+  <div id="overlay"></div>
+  <!-- TOP BAR -->
+  <div id="top-bar">
+  	<img src="Atsu-Vovor.jpg" alt="Atsu Vovor" class="mini-profile">
+    <div class="title-wrapper">
+    	<h1>Atsu Vovor – Data & Analytics Portfolio</h1>
+    	<h2 id="project-title"></h2>
+    </div>
+  
+  
+   <!-- FIXED SLOGAN BAR --> 
+   <div id="slogan-bar">
+      Turning data into decisions. Powering your success with insight.
+    </div>
+     
+    <!-- NEW BLUE NAV BAR UNDER SLOGAN -->
+    <div id="blue-nav-bar">
+       <a href="#" onclick="showAllProjects()">🏠︎ All Projects</a>
+       <a href="#" onclick="loadProject('dashboards')">📊 Dashboards</a>
+	<a href="#" onclick="loadProject('my-services')">💼 My Services</a>
+    </div>
+   </div>
+
+  <!-- SIDEBAR -->
+  <div id="sidebar">
+    <div>
+      <div class="sidebar-header">
+        <img src="Atsu-Vovor.jpg" alt="Atsu Vovor">
+        <h1>Atsu Vovor</h1>
+        <h2>Consultant, Data & Analytics</h2>
+      </div>
+
+      <div id="menu">
+        <a href="#" onclick="showAllProjects()">🏠︎ All Projects</a>
+
+        <div class="submenu">
+          <div class="submenu-header" onclick="toggleSubmenu()">
+            <span>Project Categories</span>
+            <span class="arrow">▶</span>
+          </div>
+          <div class="submenu-items hidden">
+            <a href="#" onclick="loadProject('stock-portfolio')">Stock Portfolio</a>
+            <a href="#" onclick="loadProject('cybersecurity')">Cybersecurity</a>
+            <a href="#" onclick="loadProject('data-governance')">Data Governance</a>
+            <a href="#" onclick="loadProject('fraud-detection')">Fraud Detection</a>
+            <a href="#" onclick="loadProject('healthcare')">Healthcare Intelligence</a>
+            <a href="#" onclick="loadProject('market-intelligence')">Market Intelligence</a>
+            <a href="#" onclick="loadProject('process-engineering')">Process Engineering</a>
+            <a href="#" onclick="loadProject('business-continuity')">Business Continuity</a>
+            <a href="#" onclick="loadProject('dashboards')">Dashboards</a>
+            <a href="#" onclick="loadProject('articles')">Articles & Publications</a>
+            <a href="#" onclick="loadProject('data-fabric-analytics')">Data Fabric Analytics</a>
+          </div>
+        </div>
+
+        <!-- Links AFTER submenu -->
+        <a href="#" onclick="loadProject('resume')">My Resume</a>
+	<a href="#" onclick="loadProject('what-I-do')">What I Do</a>
+        <a href="#" onclick="loadProject('tech-stack')">Technology Stack</a>
+	<a href="#" onclick="loadProject('my-services')">My Services</a>
+      </div>
+    </div>
+
+    <div id="sidebar-footer">
+      <a href="https://github.com/atsuvovor" target="_blank"><img src="github.png" alt="GitHub"></a>
+      <a href="https://www.linkedin.com/in/atsu-vovor-mmai-9188326/" target="_blank"><img src="linkedIn.png" alt="LinkedIn"></a>
+      <a href="https://public.tableau.com/app/profile/atsu.vovor8645/vizzes" target="_blank"><img src="tableau.png" alt="Tableau"></a>
+      
+	
+    </div>
+    <!-- COPYRIGHT SECTION -->
+    <div class="sidebar-copyright">
+     © 2025 Atsu Vovor | Data & Analytics Consultant
+   </div>	 
+  </div>
+
+  <!-- MAIN -->
+  <div id="main">
+    <div id="header"></div>
+
+    <div id="homeGallery">
+      
+      <div class="project-card" onclick="loadProject('stock-portfolio')">
+        <img src="stock_portfolio_analytics.png" alt="">
+        <h3>Stock Portfolio Analytics</h3>
+        <p>Interactive dashboards and predictive models for portfolio optimization and investment risk analysis.</p>
+      </div>
+      <div class="project-card" onclick="loadProject('cybersecurity')">
+        <img src="cyberSecurityHeaderImage.png" alt="">
+        <h3>Cybersecurity Analytics</h3>
+        <p>Advanced threat detection and attack simulation dashboards for monitoring and mitigating cyber risks.</p>
+      </div>
+      <div class="project-card" onclick="loadProject('data-governance')">
+        <img src="Data-governance.png" alt="">
+        <h3>Data Governance</h3>
+        <p>Frameworks and tools for ensuring data quality, compliance, and integrity across enterprise systems.</p>
+      </div>
+      <div class="project-card" onclick="loadProject('fraud-detection')">
+        <img src="fraud_detection.png" alt="">
+        <h3>Fraud Detection</h3>
+        <p>Machine learning models to identify suspicious activities and prevent financial fraud in real time.</p>
+      </div>
+      <div class="project-card" onclick="loadProject('healthcare')">
+        <img src="healthcare_intelligence.png" alt="">
+        <h3>Healthcare Intelligence</h3>
+        <p>AI-powered insights to improve patient outcomes, optimize resources, and support healthcare decisions.</p>
+      </div>
+      <div class="project-card" onclick="loadProject('market-intelligence')">
+        <img src="marcket_intelligence.jpg" alt="">
+        <h3>Market Intelligence</h3>
+        <p>Data-driven analytics for tracking trends, competitor performance, and emerging business opportunities.</p>
+      </div>
+      <div class="project-card" onclick="loadProject('process-engineering')">
+        <img src="process_engineering.png" alt="">
+        <h3>Process Engineering</h3>
+        <p>Optimizing business processes through analytics and workflow design for improved efficiency and outcomes.</p>
+      </div>
+      <div class="project-card" onclick="loadProject('business-continuity')">
+        <img src="business_continuity_plan.png" alt="">
+        <h3>Business Continuity</h3>
+        <p>Strategic frameworks to ensure organizational resilience and operational continuity during disruptions.</p>
+      </div>
+      <div class="project-card" onclick="loadProject('dashboards')">
+        <img src="data_visualization_dashboards.png" alt="">
+        <h3>Dashboards</h3>
+        <p>Interactive dashboards built with Tableau, Power BI, and Streamlit for executive-level analytics and reporting.</p>
+      </div>
+      <div class="project-card" onclick="loadProject('articles')">
+        <img src="articles_publication.png" alt="">
+        <h3>Articles & Publications</h3>
+        <p>Thought leadership articles and technical publications on data analytics, AI, and cybersecurity topics.</p>
+      </div>
+      <div class="project-card" onclick="loadProject('data-fabric-analytics')">
+        <img src="data_fabric_analytics.png" alt="">
+        <h3>Data Fabric Analytics</h3>
+        <p>Simulating a modern data fabric ecosystem integrating OpenMetadata, Trino, MySQL, and Streamlit AI dashboard for unified governance, lineage, and analytics.</p>
+        <p class="project-status"><strong>Status:</strong> <span class="in-progress">Currently Under Implementation</span></p>
+      </div>
+
+    </div>
+
+    <iframe id="contentFrame"></iframe>
+
+  </div>
+
+<script>
+const projectPages = {
+  'stock-portfolio': 'Stock_Portfolio_Analytics_v1.html',
+  'cybersecurity': 'CyberThreat_Insight_V31.html',
+  'data-governance': 'data-governance.html',
+  'fraud-detection': 'fraud_detection.html',
+  'healthcare': 'healthcare-intelligence.html',
+  'market-intelligence': 'market-intelligence.html',
+  'business-continuity': 'business_continuity_plan.html',
+  'dashboards': 'dashboard.html',
+  'my-services': 'services_atsu_vovor_data_analytics.html',
+  'process-engineering': 'interactive_DMAIC_case_studySPA.html',
+  'articles': 'articles.html',
+  'data-fabric-analytics': 'data_fabric_analytics.html',
+  'resume': 'Atsu_Vovor_resume.html',
+  'what-I-do':  'my_executive_intelligence_hub.html',
+  'tech-stack': 'Atsu_Vovor_Technology_Stack.html'
+  
+};
+
+const header = document.getElementById('header');
+const homeGallery = document.getElementById('homeGallery');
+const contentFrame = document.getElementById('contentFrame');
+
+/* Load selected project */
+function loadProject(key) {
+  const page = projectPages[key];
+  if (page) {
+    const titles = {
+      'resume': 'My Resume',
+      'what-I-do': 'What I Do',
+      'my-services': 'My Services',
+      'tech-stack': 'Technology Stack'
+    };
+    header.textContent = titles[key] || key.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+    homeGallery.style.display = 'none';
+    contentFrame.src = page;
+    contentFrame.style.display = 'blockmy services
+  }
+}
+
+/* Show all projects */
+function showAllProjects() {
+  header.textContent = '';
+  contentFrame.style.display = 'none';
+  contentFrame.src = '';
+  homeGallery.style.display = 'flex';
+
+
+}
+
+/* Toggle submenu visibility */
+function toggleSubmenu() {
+  const submenu = document.querySelector('.submenu');
+  const items = submenu.querySelector('.submenu-items');
+  submenu.classList.toggle('open');
+  items.classList.toggle('hidden');
+}
+
+/* === SIDEBAR TOGGLE FUNCTION === */
+const sidebar = document.getElementById('sidebar');
+const toggleButton = document.getElementById('sidebarToggle');
+const overlay = document.getElementById('overlay');
+
+toggleButton.addEventListener('click', () => {
+  const isVisible = sidebar.classList.toggle('show');
+  overlay.classList.toggle('active', isVisible);
+  
+});
+
+// Hide sidebar when clicking outside
+overlay.addEventListener('click', () => {
+  sidebar.classList.remove('show');
+  overlay.classList.remove('active');
+});
+
+// === Update dynamic project title under top bar ===
+function updateTopProjectTitle(titleText) {
+  const projectTitleEl = document.getElementById('project-title');
+  projectTitleEl.textContent = titleText || '';
+}
+
+// Modify loadProject() to also update top title
+const oldLoadProject = loadProject;
+loadProject = function (key) {
+  const page = projectPages[key];
+  if (page) {
+    const titles = {
+      'resume': 'My Resume',
+      'what-I-do': 'What I Do',
+      'tech-stack': 'Technology Stack'
+      'my-services': 'My Services' 
+    };
+    const titleText = titles[key] || key.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+    header.textContent = "";
+    <!--header.textContent = titleText;-->
+    <!--updateTopProjectTitle(titleText);-->
+    homeGallery.style.display = 'none';
+    contentFrame.src = page;
+    contentFrame.style.display = 'block';
+    sidebar.classList.remove('show');
+    overlay.classList.remove('active');
+  }
+};
+
+// When showing all projects → clear title
+const oldShowAll = showAllProjects;
+showAllProjects = function() {
+  oldShowAll();
+  <!-- updateTopProjectTitle('Home');-->
+};
+
+// Ensure submenu toggles arrow correctly
+function toggleSubmenu() {
+  const submenu = document.querySelector('.submenu');
+  const items = submenu.querySelector('.submenu-items');
+  submenu.classList.toggle('open');
+  items.classList.toggle('hidden');
+}
+
+</script>
+</body>
+</html>
+
+
+
