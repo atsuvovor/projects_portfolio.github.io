@@ -599,7 +599,7 @@ body {
         <a href="#" onclick="loadProject('resume')">My Resume</a>
 		<a href="#" onclick="loadProject('what-I-do')">What I Do</a>
         <a href="#" onclick="loadProject('tech-stack')">Technology Stack</a>
-		<a href="#" onclick="loadProject('my_services')">My Services</a>
+		<a href="#" onclick="loadProject('my_services')">💼 My Services</a>
       </div>
     </div>
 
@@ -695,7 +695,7 @@ const projectPages = {
   'market-intelligence': 'market-intelligence.html',
   'business-continuity': 'business_continuity_plan.html',
   'dashboards': 'dashboard.html',
-  'my-servicds': 'services_atsu_vovor_data_analytics.html',
+  'my-services': 'services_atsu_vovor_data_analytics.html',
   'process-engineering': 'interactive_DMAIC_case_studySPA.html',
   'articles': 'articles.html',
   'data-fabric-analytics': 'data_fabric_analytics.html',
@@ -775,6 +775,7 @@ loadProject = function (key) {
       'resume': 'My Resume',
       'what-I-do': 'What I Do',
       'tech-stack': 'Technology Stack'
+	  'my-services': 'My Services' 
     };
     const titleText = titles[key] || key.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
     header.textContent = "";
@@ -806,35 +807,4 @@ function toggleSubmenu() {
 </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
