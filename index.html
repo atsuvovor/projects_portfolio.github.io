@@ -715,12 +715,13 @@ function loadProject(key) {
     const titles = {
       'resume': 'My Resume',
       'what-I-do': 'What I Do',
+	  'my-services': 'My Services',
       'tech-stack': 'Technology Stack'
     };
     header.textContent = titles[key] || key.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
     homeGallery.style.display = 'none';
     contentFrame.src = page;
-    contentFrame.style.display = 'block';
+    contentFrame.style.display = 'blockmy services
   }
 }
 
@@ -806,5 +807,6 @@ function toggleSubmenu() {
 </script>
 </body>
 </html>
+
 
 
