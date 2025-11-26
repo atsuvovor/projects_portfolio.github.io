@@ -1,0 +1,573 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Atsu Vovor | Data & Analytics Consultant</title>
+  <meta name="description" content="Turn data into decisions. Senior Analytics Consultant specializing in Dashboards, Automation, Data Engineering, and Governance." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      /* PALETTE */
+      --bg-body: #ffffff;
+      --bg-surface: #ffffff;
+      --bg-accent: #eff6ff;
+
+      --text-main: #0f172a;
+      --text-body: #334155;
+      --text-muted: #64748b;
+
+      --primary: #2563eb;       /* Royal Blue */
+      --primary-dark: #1d4ed8;
+      --accent: #0891b2;        /* Teal */
+
+      --grad-text: linear-gradient(135deg, #2563eb 0%, #0891b2 100%);
+      --grad-card: linear-gradient(180deg, #4e54c8, #8f94fb);
+
+      --border: #e2e8f0;
+      --radius: 12px;
+      --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+      --shadow-md: 0 4px 10px rgba(0,0,0,0.07);
+      --shadow-lg: 0 10px 18px rgba(0,0,0,0.10);
+
+      --max-width: 1150px;
+    }
+
+    * { box-sizing: border-box; margin:0; padding:0; }
+    body {
+      background: var(--bg-body);
+      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+      color: var(--text-body);
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.6;
+    }
+    a { text-decoration: none; color: inherit; }
+
+    .container {
+      width: 100%;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* HEADER */
+    header {
+      background: rgba(255,255,255,0.9);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 72px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      font-size: 1.15rem;
+      color: var(--text-main);
+    }
+
+    .logo-square {
+      background: var(--primary);
+      color: #fff;
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:700;
+      letter-spacing:-0.5px;
+    }
+
+    .nav-links {
+      display:flex;
+      align-items:center;
+      gap:28px;
+    }
+
+    .nav-item {
+      font-weight:500;
+      font-size:0.95rem;
+      transition:0.2s;
+    }
+
+    .nav-item:hover { color:var(--primary); }
+
+    /* BUTTONS */
+    .btn {
+      padding:10px 20px;
+      border-radius:8px;
+      font-weight:600;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:0.95rem;
+      transition:0.2s;
+      cursor:pointer;
+    }
+
+    .btn-primary {
+      background:var(--primary);
+      color:white;
+      box-shadow:0 2px 4px rgba(37,99,235,0.25);
+    }
+    .btn-primary:hover {
+      background:var(--primary-dark);
+      transform:translateY(-2px);
+      box-shadow:0 4px 10px rgba(37,99,235,0.3);
+    }
+
+    .btn-outline {
+      background:white;
+      border:1px solid var(--border);
+      color:var(--text-main);
+    }
+    .btn-outline:hover {
+      border-color:var(--primary);
+      color:var(--primary);
+      background:#f8fafc;
+    }
+
+    /* HERO */
+    .hero {
+      text-align:center;
+      padding:100px 0 70px;
+      background: radial-gradient(circle at 50% -20%, #eff6ff 0%, transparent 60%);
+    }
+
+    .eyebrow {
+      display:inline-block;
+      background:#e0f2fe;
+      color:#0284c7;
+      font-size:0.85rem;
+      padding:6px 14px;
+      border-radius:50px;
+      font-weight:700;
+      margin-bottom:24px;
+    }
+
+    .hero h1 {
+      font-size:3.4rem;
+      font-weight:800;
+      letter-spacing:-0.03em;
+      margin-bottom:22px;
+      color:var(--text-main);
+    }
+
+    .hero p {
+      max-width:620px;
+      margin:0 auto 34px;
+      color:var(--text-muted);
+      font-size:1.2rem;
+    }
+
+    /* STATS */
+    .stats-bar {
+      margin-top:50px;
+      padding:24px;
+      background:white;
+      border:1px solid var(--border);
+      border-radius:16px;
+      display:flex;
+      justify-content:center;
+      gap:40px;
+      flex-wrap:wrap;
+      box-shadow:var(--shadow-sm);
+    }
+
+    .stat-item { text-align:center; }
+    .stat-val {
+      font-size:1.8rem;
+      font-weight:800;
+      color:var(--text-main);
+    }
+    .stat-label {
+      font-size:0.9rem;
+      color:var(--text-muted);
+      margin-top:6px;
+    }
+
+    /* SECTION TITLES */
+    .section-title {
+      text-align:center;
+      font-size:2.3rem;
+      margin-bottom:10px;
+      color:var(--text-main);
+    }
+
+    .section-subtitle {
+      text-align:center;
+      color:var(--text-muted);
+      max-width:600px;
+      margin:0 auto 50px;
+      font-size:1.05rem;
+    }
+
+    /* CARDS */
+    .grid-3 {
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+      gap:26px;
+      margin-bottom:80px;
+    }
+
+    .card {
+      background:white;
+      padding:32px;
+      border-radius:var(--radius);
+      border:1px solid var(--border);
+      transition:0.3s;
+      box-shadow:var(--shadow-sm);
+    }
+    .card:hover {
+      border-color:#cbd5e1;
+      transform:translateY(-6px);
+      box-shadow:var(--shadow-lg);
+    }
+
+    .icon-wrapper {
+      width:48px;
+      height:48px;
+      border-radius:10px;
+      background:#eff6ff;
+      color:var(--primary);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      margin-bottom:18px;
+    }
+
+    .feature-list {
+      list-style:none;
+      margin-top:16px;
+      padding-left:0;
+    }
+
+    .feature-list li {
+      display:flex;
+      align-items:center;
+      font-size:0.95rem;
+      gap:8px;
+      margin-bottom:10px;
+      color:var(--text-body);
+    }
+
+    .check {
+      font-weight:bold;
+      color:var(--primary);
+    }
+
+     /* --- CASE STUDY STRIP --- */
+    .case-strip {
+      background: var(--grad-card); /* blue Slate background for contrast area */
+      color: white;
+      padding: 60px 0;
+      border-radius: 20px;
+      margin: 60px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .case-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 40px;
+      position: relative; z-index: 2;
+    }
+    
+    .case-item h4 { color: white; font-size: 1.4rem; margin-bottom: 8px; }
+    .case-item p { color:  white; margin-bottom: 16px; }
+    .tag { 
+      background: rgba(255,255,255,0.1); 
+      padding: 4px 10px; border-radius: 4px; 
+      font-size: 0.8rem; font-family: monospace;
+      color: white;
+    }
+
+    /* CONTACT */
+    .contact-section {
+      padding:70px 0;
+      text-align:left;
+    }
+
+    .contact-box {
+      background:white;
+      padding:40px;
+      border-radius:16px;
+      border:1px solid var(--border);
+      max-width:600px;
+      margin:0 auto;
+      box-shadow:var(--shadow-md);
+    }
+
+    .copy-email {
+      background:#f1f5f9;
+      padding:15px;
+      border-radius:8px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      font-family:monospace;
+      cursor:pointer;
+      border:1px solid transparent;
+      font-size:1.05rem;
+      margin:28px 0;
+      transition:0.2s;
+    }
+    .copy-email:hover {
+      border-color:var(--primary);
+      color:var(--primary);
+    }
+
+    footer {
+      padding:40px 0;
+      text-align:center;
+      color:var(--text-muted);
+      border-top:1px solid var(--border);
+      font-size:0.9rem;
+      background:white;
+    }
+
+    @media (max-width:768px) {
+      .hero h1 { font-size:2.4rem; }
+      .nav-links { display:none; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="container nav-container">
+      <a href="#" class="brand">
+        <div class="logo-square">AV</div> <span>Atsu Vovor</span>
+      </a>
+      <div class="nav-links">
+        <a href="#services" class="nav-item">Services</a>
+        <a href="#work" class="nav-item">Work</a>
+        <a href="#contact" class="btn btn-primary">Book Intro Call</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+
+      <!-- HERO -->
+      <section class="hero">
+        <div class="eyebrow">Now Booking Contracts for 2025</div>
+        <h1>Data clarity for <br>
+          <span style="background:var(--grad-text);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">
+            growth-driven teams.
+          </span>
+        </h1>
+
+        <p>I help organizations automate reporting, build reliable dashboards, and turn messy data into a competitive advantage.</p>
+
+        <div style="display:flex;gap:14px;justify-content:center;margin-top:8px;">
+          <a href="#contact" class="btn btn-primary">Start a Project</a>
+          <a href="#work" class="btn btn-outline">View Portfolio</a>
+        </div>
+
+        <div class="stats-bar">
+          <div class="stat-item">
+            <div class="stat-val">10+</div>
+            <div class="stat-label">Years Experience</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-val">SQL & Python</div>
+            <div class="stat-label">Engineering Stack</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-val">BI</div>
+            <div class="stat-label">Tableau & PowerBI</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SERVICES -->
+      <section id="services" style="padding-top:70px;">
+        <h2 class="section-title">Specialized Services</h2>
+        <p class="section-subtitle">Flexible engagement models designed for SMBs, FinTech, and Enterprise teams.</p>
+
+        <div class="grid-3">
+
+          <!-- CARD 1 -->
+          <div class="card">
+            <div class="icon-wrapper">
+              <!-- trending-up line icon -->
+              <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M3 3v18h18"/>
+                <path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14.3"/>
+              </svg>
+            </div>
+            <h3>SME Analytics</h3>
+            <p style="color:var(--text-muted);font-size:0.93rem;">
+              Perfect for companies outgrowing Excel. I rebuild your reporting stack with modern BI.
+            </p>
+            <ul class="feature-list">
+              <li><span class="check">✓</span> Power BI / Tableau Setup</li>
+              <li><span class="check">✓</span> Excel Automation (Python/VBA)</li>
+              <li><span class="check">✓</span> Team Training</li>
+            </ul>
+          </div>
+
+          <!-- CARD 2 -->
+          <div class="card">
+            <div class="icon-wrapper">
+              <!-- server stacked icon -->
+              <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="2" width="20" height="8" rx="2" ry="2"/>
+                <rect x="2" y="14" width="20" height="8" rx="2" ry="2"/>
+                <line x1="6" y1="6" x2="6.01" y2="6"/>
+                <line x1="6" y1="18" x2="6.01" y2="18"/>
+              </svg>
+            </div>
+            <h3>Data Engineering</h3>
+            <p style="color:var(--text-muted);font-size:0.93rem;">
+              I build the pipelines that connect your tools into a single source of truth.
+            </p>
+            <ul class="feature-list">
+              <li><span class="check">✓</span> ETL Pipeline Development</li>
+              <li><span class="check">✓</span> SQL Data Warehousing</li>
+              <li><span class="check">✓</span> Data Cleaning & Prep</li>
+            </ul>
+          </div>
+
+          <!-- CARD 3 -->
+          <div class="card">
+            <div class="icon-wrapper">
+              <!-- shield icon -->
+              <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+            </div>
+            <h3>Governance & Risk</h3>
+            <p style="color:var(--text-muted);font-size:0.93rem;">
+              I help organizations implement data quality standards, lineage, and compliance reporting.
+            </p>
+            <ul class="feature-list">
+              <li><span class="check">✓</span> Data Quality Frameworks</li>
+              <li><span class="check">✓</span> Governance Dashboards</li>
+              <li><span class="check">✓</span> Compliance Reporting</li>
+            </ul>
+          </div>
+
+        </div>
+      </section>
+     
+      <!-- WORK -->
+      <section id="work" class="case-strip">
+        <div style="padding:0 40px;">
+          <h3 style="color:white; margin-bottom:40px;">Selected Outcomes</h3>
+          <div class="case-grid">
+            <div class="case-item">
+              <h4>Identity Review System</h4>
+              <p>Reduced manual review time by 60% for a cybersecurity firm using a custom Tableau interface.</p>
+              <span class="tag">Tableau</span> <span class="tag">SQL</span>
+            </div>
+            <div class="case-item">
+              <h4>Automated Reconciliation</h4>
+              <p>Saved 20 hours/month for a finance team by automating multi-sheet excel reconciliation with Python.</p>
+              <span class="tag">Python</span> <span class="tag">Streamlit</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section id="contact" class="contact-section" style="margin-top:18px">
+  	  <h2 style="text-align:left; margin-bottom:24px;">Contact & Next Steps</h3>
+
+  	  <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:16px;">
+
+    	   <!-- Contact Box -->
+    	   <div class="contact-box">
+      		   <h2>Let's discuss your data.</h2>
+      		   <p style="color:var(--text-muted)">I offer a free discovery call to scope your project. No commitment required.</p>
+      
+      		   <div class="copy-email" onclick="navigator.clipboard.writeText('atsu.vovor@bell.net'); alert('Email copied!');">
+        		<span>atsu.vovor@bell.net</span>
+        		<span style="font-size:0.8rem; color:var(--primary); text-transform:uppercase;">Copy</span>
+      		   </div>
+
+      		   <div style="margin-top:20px; font-size:0.9rem; text-align:center;">
+        		<a href="https://linkedin.com" style="color:var(--text-main); margin:0 10px;">LinkedIn</a> • 
+        		<a href="https://github.com" style="color:var(--text-main); margin:0 10px;">GitHub</a>
+      		   </div>
+    	       </div>
+
+    		<!-- Discuss Your Project Card -->
+    		<div class="card">
+      			<h3>Let's discuss your project</h4>
+      			<p style="color:var(--text-muted)">Tell me about your data challenges, reporting pain points, or a goal you want to achieve. I’ll respond with a short plan and a clear pricing estimate.</p>
+
+      		<ul class="features" style="margin-top:12px">
+        		<li><strong>Email:</strong> <a class="link" href="mailto:atsu.vovor@bell.net">atsu.vovor@bell.net</a></li>
+        		<li><strong>LinkedIn:</strong> <a class="link" href="https://www.linkedin.com/in/atsu-vovor-mmai-9188326">linkedin.com/in/atsu-vovor-mmai-9188326</a></li>
+        		<li><strong>GitHub:</strong> <a class="link" href="https://github.com/atsuvovor">github.com/atsuvovor</a></li>
+      		</ul>
+
+      		<div style="margin-top:14px">
+        		<a class="btn btn-primary" href="mailto:atsu.vovor@bell.net">Start conversation</a>
+      		</div>
+    	</div>
+
+    	<!-- Quick Brief Card -->
+    	   <div class="card">
+      		<h4 style="margin-bottom:8px">Quick brief (copy/paste)</h4>
+
+      		<p class="code-meta">Project name: 
+        		<br/>Budget range: 
+        		<br/>Timeline: 
+        		<br/>Primary data sources: 
+        		<br/>Key stakeholders: 
+      		</p>
+ 			<button onclick="copyProjectMeta()" class="btn btn-outline" style="margin-top:12px;">
+  				Copy Details
+			</button>
+      		<p style="color:var(--text-muted); margin-top:10px; font-size:13px;">Paste this when you email me — it helps me prepare a targeted response and proposal.</p>
+    	  	  </div>
+
+  		</div>
+	</section>
+
+
+    </div>
+  </main>
+
+  <footer>
+    © 2025 Atsu Vovor — Data & Analytics Consultant
+  </footer>
+  
+
+  <script>
+	function copyProjectMeta() {
+  		const text = document.querySelector(".code-meta").innerText.trim();
+  		navigator.clipboard.writeText(text)
+    			.then(() => {
+      				alert("Copied to clipboard!");
+    		})
+    		.catch(err => {
+      			console.error("Clipboard error:", err);
+      			alert("Copy failed.");
+   		});
+	}
+  </script>
+
+
+</body>
+</html>
