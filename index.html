@@ -211,6 +211,7 @@ body {
   position: fixed;
   top: 80px;
   width: 100%;
+  left: 0;
   background: #ffffff;
   color: #4e54c8;
   display: flex;
@@ -229,7 +230,7 @@ body {
 /* left section: home link */
 #slogan-bar #sloganHome {
   position: absolute;
-  left: 3px; /* aligns below sidebar toggle */
+  left: 0px; /* aligns below sidebar toggle */
   font-weight: 600;
   font-size: 1rem;
 }
@@ -357,14 +358,14 @@ body {
   top: 0;
   left: 0;
   width: 100%;
-  height: 10%;
+  height: 7%;
   background: #ffffff;
   display: flex;
   flex-direction: column;
   align-items: center; /* center everything horizontally */
   justify-content: center;
   gap: 4px;
-  padding: 10px 15px 14px 15px;
+  padding: 10px 15px 15px 15px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
   z-index: 1100; 
 }
@@ -502,6 +503,7 @@ body {
   position: fixed;
   top: 115px; /* sits under slogan */
   width: 100%;
+  left: 0px;
   background: linear-gradient(180deg, #4e54c8, #8f94fb);
   padding: 10px 0;
   display: flex;
@@ -545,7 +547,7 @@ body {
     	<h1>Atsu Vovor – Data & Analytics Portfolio</h1>
     	<h2 id="project-title"></h2>
     </div>
-  </div>
+  
   
    <!-- FIXED SLOGAN BAR --> 
    <div id="slogan-bar">
@@ -556,8 +558,9 @@ body {
     <div id="blue-nav-bar">
        <a href="#" onclick="showAllProjects()">🏠︎ All Projects</a>
        <a href="#" onclick="loadProject('dashboards')">📊 Dashboards</a>
+	<a href="#" onclick="loadProject('my-services')">💼 My Services</a>
     </div>
-
+   </div>
 
   <!-- SIDEBAR -->
   <div id="sidebar">
@@ -595,6 +598,7 @@ body {
         <a href="#" onclick="loadProject('resume')">My Resume</a>
 	<a href="#" onclick="loadProject('what-I-do')">What I Do</a>
         <a href="#" onclick="loadProject('tech-stack')">Technology Stack</a>
+	<a href="#" onclick="loadProject('my-services')">My Services</a>
       </div>
     </div>
 
@@ -690,10 +694,10 @@ const projectPages = {
   'market-intelligence': 'market-intelligence.html',
   'business-continuity': 'business_continuity_plan.html',
   'dashboards': 'dashboard.html',
+  'my-services': 'services_atsu_vovor_data_analytics.html',
   'process-engineering': 'interactive_DMAIC_case_studySPA.html',
   'articles': 'articles.html',
   'data-fabric-analytics': 'data_fabric_analytics.html',
-
   'resume': 'Atsu_Vovor_resume.html',
   'what-I-do':  'my_executive_intelligence_hub.html',
   'tech-stack': 'Atsu_Vovor_Technology_Stack.html'
@@ -711,6 +715,7 @@ function loadProject(key) {
     const titles = {
       'resume': 'My Resume',
       'what-I-do': 'What I Do',
+      'my-services': 'My Services',
       'tech-stack': 'Technology Stack'
     };
     header.textContent = titles[key] || key.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
@@ -769,7 +774,8 @@ loadProject = function (key) {
     const titles = {
       'resume': 'My Resume',
       'what-I-do': 'What I Do',
-      'tech-stack': 'Technology Stack'
+      'tech-stack': 'Technology Stack',
+      'my-services': 'My Services' 
     };
     const titleText = titles[key] || key.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
     header.textContent = "";
@@ -801,26 +807,6 @@ function toggleSubmenu() {
 </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
