@@ -6,6 +6,8 @@
 </p>
 
 #### *This complex visual identity combines the 'Nexus of Data' and 'Bridge Builder' motifs to represent the **centralization of data inputs** and the **AI-augmented synthesis** used to bridge the gap between simulation and real-world insight.*
+
+Visit the Live Site: Click here to access the portfolio homepage: https://atsuvovor.github.io/projects_portfolio.github.io/
 ---
 # Overview
 Welcome to my technical project portfolio! This repository serves as a centralized showcase of my skills, expertise, and completed projects across various domains including data analysis, machine learning, web development, and cybersecurity.
@@ -84,7 +86,7 @@ Visit the Live Site: Click here to access the portfolio homepage: https://atsuvo
 
 Browse Projects: Use the navigation bar or category filters to select a project of interest.
 
-View Source Code: For any specific project, look for the 'View Code' or 'GitHub' link, which will direct you to its dedicated repository within this organization.
+View Source Code: For any specific project, look for the 'View Code' or 'GitHub' link, which will direct you to its dedicated repository within my portfolio.
 
 ##  🤝 Connect With Me
 I am always open to collaboration and discussion about new projects or technical roles.
