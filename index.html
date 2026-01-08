@@ -34,7 +34,11 @@ body {
   transform: translateX(-100%);
   transition: transform 0.3s ease;
 }
-
+/* Chrome, Safari, Edge */
+#sidebar::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+}
 /* visible state */
 #sidebar.show {
   transform: translateX(0);
@@ -807,6 +811,7 @@ function toggleSubmenu() {
 </script>
 </body>
 </html>
+
 
 
 
