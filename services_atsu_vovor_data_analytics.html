@@ -3,6 +3,10 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">	
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
+
   <title>Atsu Vovor | Data & Analytics Consultant</title>
   <meta name="description" content="Turn data into decisions. Senior Analytics Consultant specializing in Dashboards, Automation, Data Engineering, and Governance." />
 
@@ -37,6 +41,7 @@
       --max-width: 1200px;
     }
 
+  
     * { box-sizing: border-box; margin:0; padding:0; }
     body {
       background: var(--bg-body);
@@ -46,6 +51,10 @@
       line-height: 1.6;
     }
     a { text-decoration: none; color: inherit; }
+
+	html, body {
+      overflow-y: auto;
+    }
 
     .container {
       width: 100%;
@@ -64,12 +73,20 @@
       z-index: 100;
     }
 
-    .nav-container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      height: 72px;
-    }
+	.nav-container {
+  		display: flex;
+  	flex-direction: column;     /* 👈 ALWAYS stack */
+  	align-items: flex-start;
+  	gap: 10px;
+ 	 padding: 12px 0;
+	}
+	@media (min-width: 769px) {
+  		.nav-container {
+    	padding: 8px 0;
+    	gap: 6px;
+  		}
+	}
+
 
     .brand {
       display: flex;
@@ -93,12 +110,24 @@
       letter-spacing:-0.5px;
     }
 
-    .nav-links {
-      display:flex;
-      align-items:center;
-      gap:28px;
-    }
+   .nav-links {
+  	display: flex;
+  	align-items: center;
+  	gap: 28px;
+  	width: 100%;                /* 👈 full row */
+  	flex-wrap: wrap;
+	}
 
+	@media (min-width: 769px) {  
+   	   .nav-links {
+  	      display: flex;
+  		  align-items: center;
+  		  gap: 12px;
+  		  width: 50%;                /* 👈 full row */
+  	      flex-wrap: wrap;
+	  }
+	}
+	
     .nav-item {
       font-weight:500;
       font-size:0.95rem;
@@ -106,6 +135,223 @@
     }
 
     .nav-item:hover { color:var(--primary); }
+
+	/* Layout on small screens*/
+
+	@media (max-width: 768px) {
+
+  .nav-container {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    height: auto;
+    padding: 12px 0;
+  }
+
+  /* BRAND ALWAYS ON TOP */
+  .brand {
+    order: 1;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  /* MENU ALWAYS BELOW BRAND */
+  .nav-links {
+    order: 2;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+  }
+}
+@media (max-width: 768px) {
+
+  .nav-item {
+    font-size: 0.9rem;
+  }
+
+  .btn-primary {
+    padding: 8px 14px;
+    font-size: 0.9rem;
+  }
+
+  .nav-search {
+    flex: 1 1 100%;
+  }
+}
+
+
+/* =========================
+   HEADER SEARCH
+========================= */
+.nav-search input {
+  height: 38px;
+  padding: 0 14px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  font-size: 0.9rem;
+  outline: none;
+  min-width: 160px;
+  transition: 0.2s ease;
+}
+
+.nav-search input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(37,99,235,0.15);
+}
+
+/* Mobile: full width */
+@media (max-width: 768px) {
+  .nav-search {
+    width: 50%;
+  }
+
+  .nav-search input {
+    width: 100%;
+  }
+}
+.search-highlight {
+  background: #fff3bf;
+  border-radius: 4px;
+  padding: 2px 4px;
+}
+
+/* =========================
+   NAV DROPDOWN (ABOUT)
+========================= */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  box-shadow: var(--shadow-md);
+  min-width: 180px;
+  display: none;
+  flex-direction: column;
+  padding: 8px 0;
+  z-index: 1000;
+}
+
+/* for iPhone positions*/
+@media (max-width: 768px) {
+
+  .dropdown-menu {
+    position: relative;   /* break out of absolute positioning */
+    top: 100%;               /* reset desktop value */
+    left: 0;
+    box-shadow: none;
+    border: none;
+	padding: 8px 0;
+  }
+
+}
+
+.dropdown-menu a {
+  padding: 10px 16px;
+  font-size: 0.9rem;
+  color: var(--text-main);
+  white-space: nowrap;
+}
+
+.dropdown-menu a:hover {
+  background: #f1f5f9;
+  color: var(--primary);
+}
+
+/* Show on hover */
+.dropdown:hover .dropdown-menu {
+   position: absolute;
+  display: flex;
+}
+
+@media (max-width: 768px) {
+  .dropdown:hover .dropdown-menu {
+	  position: absolute;
+      display: flex; 
+  }
+}
+
+/* =========================
+   HEADER ROWS
+========================= */
+
+.nav-row {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+/* ROW 1 */
+.nav-top {
+  justify-content: space-between;
+}
+
+/* ROW 2 */
+.nav-bottom {
+  justify-content: flex-end;
+}
+
+/* Ensure nav-links align right */
+.nav-bottom .nav-links {
+  width: auto;
+  justify-content: flex-end;
+}
+
+/* SEARCH sizing */
+.nav-top .nav-search {
+  min-width: 220px;
+}
+
+/* =========================
+   MOBILE STACKING
+========================= */
+@media (max-width: 768px) {
+
+  /* Stack ROW 1 */
+  .nav-top {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    text-align: center;
+  }
+
+  /* ROW 2: center menu */
+  .nav-bottom {
+    order: 2;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .nav-links {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  /* Search LAST + centered */
+  .nav-search {
+    order: 3;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .nav-search input {
+    width: 90%;
+    max-width: 320px;
+    text-align: left;
+  }
+}
+
+
 
     /* BUTTONS */
     .btn {
@@ -541,33 +787,142 @@ p {
       background:white;
     }
 
-    @media (max-width:768px) {
-      .hero h1 { font-size:2.4rem; }
-      .nav-links { display:none; }
-    }
-          
-  </style>
+   @media (max-width: 768px) {
+
+  .nav-container {
+    flex-direction: column;
+    align-items: flex-start;
+    height: auto;              
+    padding: 12px 0;
+    gap: 10px;
+  }
+
+  .brand {
+    align-self: flex-start;
+  }
+
+  .nav-links {
+    width: 100%;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+}
+
+
+
+ /* ============================================
+   DASHBOARD OVERLAY (FIXED UNDER HEADER)
+=============================================== */
+#embedded-viewer {
+  position: absolute;
+  top: 72px;                 /* SAME AS HEADER HEIGHT */
+  left: 0;
+  width: 100%;
+  height: auto;
+  background: #f8fafc;
+  z-index: 999;
+  display: none;
+  padding-bottom: 20px;
+  box-sizing: border-box;
+}
+
+/* Close button header */
+.viewer-header {
+  display: flex;
+  justify-content: flex-end;
+  padding: 12px 24px;
+  background: white;
+  border-bottom: 1px solid var(--border);
+}
+
+/* Iframe fills remaining space */
+#contentFrame,
+#dashboardFrame {
+  width: 100%;
+  height: 80vh;
+  border: none;
+  overflow: auto;
+  scrollbar-width: none;
+}
+iframe {
+  scrollbar-width: none;
+}
+
+iframe::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+/* Chrome, Edge, Safari */
+#contentFrame::-webkit-scrollbar,
+#dashboardFrame::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+</style>
 </head>
 
 <body>
 
   <!-- HEADER -->
-  <header>
-    <div class="container nav-container">
+<header>
+  <div class="container nav-container">
+
+    <!-- ROW 1 -->
+    <div class="nav-row nav-top">
       <a href="#" class="brand">
-        <div class="logo-square">NSA</div> <span>NexSimAlgo</span>
+        <div class="logo-square">NSA</div>
+        <span>NexSimAlgo</span>
       </a>
-      <div class="nav-links">
-        <a href="#services" class="nav-item">Services</a>
-        <a href="#work" class="nav-item">Work</a>
-        <a href="#contact" class="btn btn-primary">Book Intro Call</a>
+
+      <!-- 🔍 Search (TOP RIGHT) -->
+      <div class="nav-search">
+        <input
+          type="search"
+          id="siteSearch"
+          placeholder="🔍 Search…"
+          aria-label="Search site"
+        />
       </div>
     </div>
-  </header>
 
-  <main>
+    <!-- ROW 2 -->
+    <div class="nav-row nav-bottom">
+      <div class="nav-links">
+        <a href="#" class="nav-item" onclick="openProducts(event)">Products</a>
+        <a href="#services" class="nav-item" onclick="scrollToSection(event,'services')">Services</a>
+        <a href="#work" class="nav-item" onclick="scrollToSection(event,'work')">Work</a>
+
+        <div class="nav-item dropdown">
+          <a href="#" class="nav-item">About ▾</a>
+          <div class="dropdown-menu">
+            <a href="#" onclick="openAbout(event, 'about_company.html')">Company</a>
+            <a href="#" onclick="openAbout(event, 'about_founder.html')">Founder</a>
+            <a href="#" onclick="openAbout(event, 'about_vision.html')">Vision</a>
+          </div>
+        </div>
+
+        <a href="#contact" class="btn btn-primary" onclick="scrollToSection(event,'contact')">
+          Book Intro Call
+        </a>
+      </div>
+    </div>
+
+  </div>
+</header>
+
+
+  <!-- DYNAMIC CONTENT AREA (UNDER HEADER) -->
+  <section id="dynamic-content" style="display:none;">
+  	<iframe
+    	id="contentFrame"
+    	src=""
+    	style="width:100%; border:none; min-height:100vh;">
+  	</iframe>
+   </section>
+
+  <main id="home-content">
     <div class="container">
-
       <!-- HERO -->
       <section class="hero">
         <div class="eyebrow">Now Booking Contracts for 2026</div>
@@ -695,242 +1050,269 @@ p {
     </div>
    </section>
    
- <!-- UI/UX Cards Section -->
+<!-- FIXED DASHBOARD OVERLAY -->
+<div id="embedded-viewer">
+  <div class="viewer-header">
+    <button class="btn btn-outline close-btn" onclick="closeDashboard()">
+      Close Dashboard
+    </button>
+  </div>
+  <iframe id="dashboardFrame"></iframe>
+</div>
 
- 
+<!-- UI/UX Cards Section -->
 <section class="dashboard-section">
   <h2>UI/UX Highlights</h2>
   <p>Human-centered dashboards, app screens, and enterprise UX improvements.</p>
   <div class="dash-grid">
-     
     <div class="dashboard-box">
-      <img src="UI_UX_enhancements.png" alt="UI/UX Enhancements">
+      <img src="images/UI_UX_enhancements.png" alt="UI/UX Enhancements">
       <div class="dashboard-title">Dashboard Redesign</div>
       <div class="dashboard-desc">Crafting dashboards with advanced UI/UX for seamless, engaging experiences.</div>
     </div>
 
     <div class="dashboard-box">
-      <img src="cutting_edge_principles.png" alt="Cutting-Edge Principles">
+      <img src="images/cutting_edge_principles.png" alt="Cutting-Edge Principles">
       <div class="dashboard-title">Cutting-Edge Principles</div>
       <div class="dashboard-desc">Transforming data into intuitive, interactive visuals using modern design methods.</div>
     </div>
 
     <div class="dashboard-box">
-      <img src="minimalist_navigation2.png" alt="Minimalist UI Navigation">
+      <img src="images/minimalist_navigation2.png" alt="Minimalist UI Navigation">
       <div class="dashboard-title">Minimalist UI Navigation</div>
       <div class="dashboard-desc">Structured, clean interfaces make exploring insights effortless.</div>
     </div>
 
     <div class="dashboard-box">
-      <img src="Story_telling.png" alt="Data Storytelling">
-      <div class="dashboard-title">Data Storytelling/div>
+      <img src="images/Story_telling.png" alt="Data Storytelling">
+      <div class="dashboard-title">Data Storytelling</div>
       <div class="dashboard-desc">Dynamic visualizations convey clear, actionable data narratives.</div>
     </div>
-
-   </div>
+  </div>
 </section>
 
 <section class="dashboard-section">
-   <div class="dash-grid">
+  <div class="dash-grid">
+    <div class="dashboard-box">
+      <img src="images/responsive_design.png" alt="Responsive Design">
+      <div class="dashboard-title">Responsive Design</div>
+      <div class="dashboard-desc">Dashboards adapt smoothly across devices for optimal viewing.</div>
+    </div>
 
-        <!-- NEW CARD 1 -->
-        <div class="dashboard-box">
-          <img src="responsive_design.png" alt="Responsive Design">
-          <div class="dashboard-title">Responsive Design</div>
-          <div class="dashboard-desc">Dashboards adapt smoothly across devices for optimal viewing.</div>
-        </div>
+    <div class="dashboard-box">
+      <img src="images/microinteraction.png" alt="Microinteractions">
+      <div class="dashboard-title">Microinteractions</div>
+      <div class="dashboard-desc">Subtle animations enhance engagement and guide user interaction.</div>
+    </div>
 
-        <!-- NEW CARD 2 -->
-        <div class="dashboard-box">
-          <img src="microinteraction.png" alt="Microinteractions">
-          <div class="dashboard-title">Microinteractions</div>
-          <div class="dashboard-desc">Subtle animations enhance engagement and guide user interaction.</div>
-        </div>
-
-        <!-- NEW CARD 3 -->
-        <div class="dashboard-box">
-          <img src="accessibility.png" alt="Accessibility">
-          <div class="dashboard-title">Accessibility</div>
-          <div class="dashboard-desc">Inclusive design ensures clarity, readability, and usability for all.</div>
-        </div>
-
-      </div>
+    <div class="dashboard-box">
+      <img src="images/accessibility.png" alt="Accessibility">
+      <div class="dashboard-title">Accessibility</div>
+      <div class="dashboard-desc">Inclusive design ensures clarity, readability, and usability for all.</div>
+    </div>
+  </div>
 </section>
 
-<!-- end UI/UX Cards Section -->  
+<!-- WORK / Dashboards -->
+<section id="work" class="case-strip">
+  <section class="dashboard-section">
+    <h2>Interactive Dashboards</h2>
+    <p>Click on any dashboard below to explore interactive data insights.</p>
 
-   <!-- WORK -->
-   <section id="work" class="case-strip">
-      <!-- new -->
-      <section class="dashboard-section">
-        <h2>Interactive Dashboards</h2>
-        <p>Click on any dashboard below to explore interactive data insights.</p>
+    <div class="dash-grid">
 
-    	<div class="dash-grid">
+      <div class="dashboard-box" onclick="loadDashboard('CybersecurityKeyTerms.html')">
+        <img src="images/cyber_threat_key_terms.png" alt="Cybersecurity Key Terms">
+        <div class="dashboard-title"><h3>Cybersecurity Key Terms</h3></div>
+        <div class="dashboard-desc">Explore key terms and their contextual connections across threat intelligence documents.</div>
+        <h4>Tableau</h4>
+      </div>
 
-    	   <div class="dashboard-box" onclick="window.location.href='CybersecurityKeyTerms.html'">
-              <img src="cyber_threat_key_terms.png" alt="Cybersecurity Key Terms">
-              <div class="dashboard-title">
-                 <h3>Cybersecurity Key Terms</h3>
-              </div>
-             <div class="dashboard-desc">Explore key terms and their contextual connections across threat intelligence documents.</div>
-             <h4>Tableau</h4>
-           </div>
+      <div class="dashboard-box" onclick="loadDashboard('NumberofFileAccessedTracker.html')">
+        <img src="https://public.tableau.com/static/images/Cy/CyberThreatInsight-NumberoffileAccessDashboard/NumberofFileAccessedTracker/1.png" alt="Number of File Accessed Tracker">
+        <div class="dashboard-title"><h3>Number of File Accessed Tracker</h3></div>
+        <div class="dashboard-desc">Monitor abnormal spikes in file access behavior across users and systems.</div>
+        <h4>Tableau</h4>
+      </div>
 
-           <div class="dashboard-box" onclick="window.location.href='NumberofFileAccessedTracker.html'">
-               <img src="https://public.tableau.com/static/images/Cy/CyberThreatInsight-NumberoffileAccessDashboard/NumberofFileAccessedTracker/1.png" alt="Number of File Accessed Tracker">
-               <div class="dashboard-title">
-	           <h3>Number of File Accessed Tracker</h3>
-               </div>
-            <div class="dashboard-desc">Monitor abnormal spikes in file access behavior across users and systems.</div>
-                 <h4>Tableau</h4>
-            </div>
+      <div class="dashboard-box" onclick="loadDashboard('LoginAttemptsAnalytics.html')">
+        <img src="images/login_attenpts.png" alt="Login Attempts Analytics">
+        <div class="dashboard-title"><h3>Login Attempts Analytics</h3></div>
+        <div class="dashboard-desc">Analyze successful and failed login attempts to detect brute-force patterns.</div>
+        <h4>Tableau</h4>
+      </div>
 
-            <div class="dashboard-box" onclick="window.location.href='LoginAttemptsAnalytics.html'">
-                <img src="login_attenpts.png" alt="Login Attempts Analytics">
-                <div class="dashboard-title">
-                  <h3>Login Attempts Analytics</h3>
-               </div>
-               <div class="dashboard-desc">Analyze successful and failed login attempts to detect brute-force patterns.</div>
-                   <h4>Tableau</h4>
-             </div>
+      <div class="dashboard-box" onclick="loadDashboard('ThreatInsightReporting.html')">
+        <img src="https://public.tableau.com/static/images/Cy/CyberThreatInsightDashboard/IncidentSummaryandTrends/1.png" alt="Threat Insight Reporting">
+        <div class="dashboard-title"><h3>Threat Insight Reporting</h3></div>
+        <div class="dashboard-desc">Review incident summaries and trend analyses for proactive security monitoring.</div>
+        <h4>Tableau</h4>
+      </div>
 
-          <div class="dashboard-box" onclick="window.location.href='ThreatInsightReporting.html'">
-               <img src="https://public.tableau.com/static/images/Cy/CyberThreatInsightDashboard/IncidentSummaryandTrends/1.png" alt="Threat Insight Reporting">
-               <div class="dashboard-title">
-                    <h3>Threat Insight Reporting</h3>
-               </div>
-               <div class="dashboard-desc">Review incident summaries and trend analyses for proactive security monitoring.</div>
-                    <h4>Tableau</h4>
-               </div>
+      <div class="dashboard-box" onclick="window.open('https://atsu-vovor-ofac-sdn-risk-dashboard.streamlit.app/', '_blank')">
+        <img src="images/sanctions_dashboard.png" alt="OFAC SDN Risk Dashboard">
+        <div class="dashboard-title"><h3>OFAC SDN Risk Dashboard</h3></div>
+        <div class="dashboard-desc">Real-time risk scoring and sanctions insights built using Python & Streamlit.</div>
+        <h4>Streamlit & Python</h4>
+      </div>
 
-           <div class="dashboard-box" onclick="window.open('https://atsu-vovor-ofac-sdn-risk-dashboard.streamlit.app/', '_blank')">
-               <img src="ofac-sdn-thumbnail.png" alt="OFAC SDN Risk Dashboard">
-               <div class="dashboard-title">
-                  <h3>OFAC SDN Risk Dashboard</h3>
-               </div>
-              <div class="dashboard-desc">Real-time risk scoring and sanctions insights built using Python & Streamlit.</div>
-              <h4>Streamlit & Python</h4>
-           </div>
+      <div class="dashboard-box" onclick="window.open('https://atsuvovor.github.io/power_bi_projects/cyber_attack_insight_dashboard.html', '_blank')">
+        <img src="images/screenshot_Power_BI.png" alt="Power BI Cyber Attack Insight">
+        <div class="dashboard-title"><h3>Cyber Attack Insight Dashboard</h3></div>
+        <div class="dashboard-desc">Explore threat events, patterns, and high-risk activities using Power BI visual analytics.</div>
+        <h4>M & DAX Programming</h4>
+      </div>
 
-         <div class="dashboard-box" onclick="window.location.href='https://atsuvovor.github.io/power_bi_projects/cyber_attack_insight_dashboard.html'">
-              <img src="screenshot_Power_BI.png" alt="Power BI Cyber Attack Insight">
-              <div class="dashboard-title">
-                 <h3>Cyber Attack Insight Dashboard<h/3>
-              </div>
-             <div class="dashboard-desc">Explore threat events, patterns, and high-risk activities using Power BI visual analytics.</div>
-                 <h4>M & DAX Programming</h4>
-          </div>
-
-          <div class="dashboard-box"  onclick="window.location.href='https://atsuvovor.github.io/MS_Excel_Power_Pivot_Power_Query_Projects/ofac_sdn_sanctions_dashboard.html'">
-             <img src="Excel_screen_shot.png" alt="OFAC SDN Global Risk Monitor Dashboard">
-             <div class="dashboard-title">
-               <h3>Excel - OFAC SDN Global Risk Monitor</h3>
-             </div>
-            <div class="dashboard-desc">Global sanctions monitoring dashboard powered by Excel, Power Query, and Power Pivot.</div>
-            <h4>M & DAX Programming</h4>
-         </div>
-
-       </div>
-      </section>
-   </section>
- 
-      <!-- end New -->
-
-      <!-- CONTACT -->
-      <section id="contact" class="contact-section" style="margin-top:18px">
-  	  <h2 style="text-align:left; margin-bottom:24px;">Contact & Next Steps</h3>
-
-  	  <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:16px;">
-
-    	 <!-- Discuss Your Project Card -->
-    	<div class="card">
-      	    <h4>Let's discuss your project</h4>
-      	    <p style="color:var(--text-muted)">
-                Tell me about your data challenges, reporting pain points, or a goal you want to achieve. 
-	        I’ll respond with a short plan and a clear pricing estimate.
-             </p>
-
-             <p style="color:var(--text-muted)">
-                  <strong>I offer a free discovery call to scope your project. No commitment required.</strong>
-             </p>
-             
-             <div style="margin-top:14px">
-        	<a class="btn btn-primary" href="mailto:atsu.vovor@bell.net">Start conversation</a>
-      	     </div>
-
-    	</div>
-
-    	<!-- Quick Brief Card -->
-    	   <div class="card">
-      		<h4 style="margin-bottom:8px">Quick brief (copy/paste)</h4>
-               <div class="paragraph-background">
-      		  <p class="code-meta">
-                        Project name: 
-        		<br/>Budget range: 
-        		<br/>Timeline: 
-        		<br/>Primary data sources: 
-        		<br/>Key stakeholders: 
-      		   </p>
-                 </div>
- 		   <button onclick="copyProjectMeta()" class="btn btn-outline" style="margin-top:12px;">
-  				Copy Details
-		</button>
-      		<p style="color:var(--text-muted); margin-top:10px; font-size:13px;">
-                     Paste this when you email me — it helps me prepare a targeted response and proposal.
-                </p>
-    	  </div>
-              
-             <!-- Contact Box -->
-    	     <div class="contact-card">
-    		<h4 class="contact-name">Atsu Vovor, MMAI</h4>
-    		   <p class="contact-title">Consultant, Data & Analytics</p>
-
-    		   <p class="contact-line">📞 <a href="tel:+14167958246">416-795-8246</a></p>
-    		   <div class="copy-email" onclick="navigator.clipboard.writeText('atsu.vovor@bell.net'); alert('Email copied!');">
-        		<span>atsu.vovor@bell.net</span>
-        		<span style="font-size:0.8rem; color:var(--primary); text-transform:uppercase;">Copy</span>
-      		   </div>
-
-
-    		   <p class="contact-links">
-        	     🔗 
-        	     <a href="https://www.linkedin.com/in/atsu-vovor" target="_blank">LinkedIn</a> |
-        	     <a href="https://github.com/atsuvovor" target="_blank">GitHub Portfolio</a> |
-        	     <a href="https://public.tableau.com/app/profile/atsu.vovor" target="_blank">Tableau Portfolio</a>
-    		   </p>
-
-    		   <p class="contact-location">📍 Mississauga, ON</p> 
-		</div>
-
-  	    </div>
-	</section>
-
+      <div class="dashboard-box" onclick="window.open('https://atsuvovor.github.io/MS_Excel_Power_Pivot_Power_Query_Projects/ofac_sdn_sanctions_dashboard.html', '_blank')">
+        <img src="images/Excel_screen_shot.png" alt="OFAC SDN Global Risk Monitor Dashboard">
+        <div class="dashboard-title"><h3>Excel - OFAC SDN Global Risk Monitor</h3></div>
+        <div class="dashboard-desc">Global sanctions monitoring dashboard powered by Excel, Power Query, and Power Pivot.</div>
+        <h4>M & DAX Programming</h4>
+      </div>
 
     </div>
-  </main>
+  </section>
+</section>
 
-  <footer>
-    © 2025 Atsu Vovor — Data & Analytics Consultant
-  </footer>
+<!-- CONTACT SECTION -->
+<section id="contact" class="contact-section" style="margin-top:18px">
+  <h2 style="text-align:left; margin-bottom:24px;">Contact & Next Steps</h2>
+  <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:16px;">
+    
+    <!-- DISCUSS PROJECT -->
+    <div class="card">
+      <h4>Let's discuss your project</h4>
+      <p style="color:var(--text-muted)">Tell me about your data challenges, reporting pain points, or a goal you want to achieve. I’ll respond with a short plan and a clear pricing estimate.</p>
+      <p style="color:var(--text-muted)"><strong>I offer a free discovery call to scope your project. No commitment required.</strong></p>
+      <div style="margin-top:14px">
+        <a class="btn btn-primary" href="mailto:atsu.vovor@bell.net">Start conversation</a>
+      </div>
+    </div>
+
+    <!-- QUICK BRIEF -->
+    <div class="card">
+      <h4 style="margin-bottom:8px">Quick brief (copy/paste)</h4>
+      <div class="paragraph-background">
+        <p class="code-meta">
+          Project name: <br/>Budget range: <br/>Timeline: <br/>Primary data sources: <br/>Key stakeholders:
+        </p>
+      </div>
+      <button onclick="copyProjectMeta()" class="btn btn-outline" style="margin-top:12px;">Copy Details</button>
+      <p style="color:var(--text-muted); margin-top:10px; font-size:13px;">Paste this when you email me — it helps me prepare a targeted response and proposal.</p>
+    </div>
+
+    <!-- CONTACT CARD -->
+    <div class="contact-card">
+      <h4 class="contact-name">Atsu Vovor, MMAI</h4>
+      <p class="contact-title">Consultant, Data & Analytics</p>
+      <p class="contact-line">📞 <a href="tel:+14167958246">416-795-8246</a></p>
+      <div class="copy-email" onclick="navigator.clipboard.writeText('atsu.vovor@bell.net'); alert('Email copied!');">
+        <span>atsu.vovor@bell.net</span>
+        <span style="font-size:0.8rem; color:var(--primary); text-transform:uppercase;">Copy</span>
+      </div>
+      <p class="contact-links">
+        🔗 <a href="https://www.linkedin.com/in/atsu-vovor" target="_blank">LinkedIn</a> |
+        <a href="https://github.com/atsuvovor" target="_blank">GitHub Portfolio</a> |
+        <a href="https://public.tableau.com/app/profile/atsu.vovor" target="_blank">Tableau Portfolio</a>
+      </p>
+      <p class="contact-location">📍 Mississauga, ON</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+   © 2025 NexSimAlgo — Where Simulation Meets Insight
+</footer>
+
+<!-- SCRIPT -->
+<script>
+const dynamicContent = document.getElementById("dynamic-content");
+const frame = document.getElementById("contentFrame");
+const homeContent = document.getElementById("home-content");
+
+/* Open Products */
+function openProducts(event) {
+  event.preventDefault();
+  frame.src = "products.html";
+  dynamicContent.style.display = "block";
+  homeContent.style.display = "none";
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+/* Open Dashboard */
+function loadDashboard(page) {
+  frame.src = page;
+  dynamicContent.style.display = "block";
+  homeContent.style.display = "none";
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+/* About */
+
+function openAbout(event, page) {
+  event.preventDefault();
+  frame.src = page;
+  dynamicContent.style.display = "block";
+  homeContent.style.display = "none";
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+/* Restore homepage */
+function scrollToSection(event, sectionId) {
+  event.preventDefault();
+  dynamicContent.style.display = "none";
+  frame.src = "";
+  homeContent.style.display = "block";
+
+  const section = document.getElementById(sectionId);
+  if (section) {
+    section.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+}
+
+	
+// Close overlay
+function closeDashboard() {
+  viewer.style.display = "none";
+  frame.src = "";
   
+}
+// Copy project meta
+function copyProjectMeta() {
+  const text = document.querySelector(".code-meta").innerText.trim();
+  navigator.clipboard.writeText(text)
+    .then(() => alert("Copied to clipboard!"))
+    .catch(err => { console.error(err); alert("Copy failed."); });
+}
 
-  <script>
-	function copyProjectMeta() {
-  		const text = document.querySelector(".code-meta").innerText.trim();
-  		navigator.clipboard.writeText(text)
-    			.then(() => {
-      				alert("Copied to clipboard!");
-    		})
-    		.catch(err => {
-      			console.error("Clipboard error:", err);
-      			alert("Copy failed.");
-   		});
-	}
-   </script>
+const searchInput = document.getElementById("siteSearch");
+
+searchInput.addEventListener("input", () => {
+  const query = searchInput.value.toLowerCase().trim();
+
+  // Remove previous highlights
+  document.querySelectorAll(".search-highlight").forEach(el => {
+    el.classList.remove("search-highlight");
+  });
+
+  if (!query || query.length < 2) return;
+
+  const searchable = document.querySelectorAll(
+    "h1, h2, h3, h4, p, li, .dashboard-desc"
+  );
+
+  for (const el of searchable) {
+    if (el.textContent.toLowerCase().includes(query)) {
+      el.classList.add("search-highlight");
+      el.scrollIntoView({ behavior: "smooth", block: "center" });
+      break; // stop at first match
+    }
+  }
+});
+
+</script>
+
 
 
 </body>
 </html>
-
-
